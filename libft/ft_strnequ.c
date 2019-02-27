@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/19 16:58:13 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/20 15:29:09 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	size_t	i;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	if ((s1 == NULL && s2 == NULL) || n == 0)
+		return (1);
+	while (s1[i] != '\0' && s2[i] != '\0' && i < (n - 1) && s1[i] == s2[i])
+		i++;
+	if (s1[i] == s2[i])
+		return (1);
+	return (0);
 }

@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/17 12:25:13 by amamy             #+#    #+#             */
+/*   Updated: 2019/02/07 20:17:44 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+void	*ft_memalloc(size_t size)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	void	*mem;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	if (!(mem = (void*)malloc(size)))
+		return (NULL);
+	ft_memset(mem, 0, size);
+	return (mem);
 }

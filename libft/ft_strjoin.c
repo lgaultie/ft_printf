@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/20 14:38:03 by amamy             #+#    #+#             */
+/*   Updated: 2019/02/07 20:20:15 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	char	*dest;
+	size_t	size;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	if (!(dest = (char*)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	dest = ft_strcpy(dest, s1);
+	dest = ft_strcat(dest, s2);
+	return (dest);
 }

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/11 15:55:11 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/17 10:48:01 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	size_t			counter;
+	unsigned char	*dsts;
+	unsigned char	*srcs;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	dsts = (unsigned char*)dst;
+	srcs = (unsigned char*)src;
+	counter = 0;
+	while (counter < n)
+	{
+		dsts[counter] = srcs[counter];
+		counter++;
+	}
+	return (dsts);
 }

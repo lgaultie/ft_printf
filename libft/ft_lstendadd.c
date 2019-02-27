@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstendadd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2019/01/14 14:58:34 by amamy             #+#    #+#             */
+/*   Updated: 2019/02/07 20:16:54 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+void	ft_lstendadd(t_list *alst, t_list *new)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	t_list	*tmp;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	tmp = alst;
+	if (!alst)
+		return ;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	if (new)
+	{
+		tmp->next = new;
+		new->next = NULL;
+	}
 }
+

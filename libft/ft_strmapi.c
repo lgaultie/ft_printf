@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/19 16:16:13 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/19 16:50:50 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	size_t	counter;
+	char	*str;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	counter = 0;
+	if (s == NULL)
+		return (0);
+	if (f == NULL)
+		return (0);
+	if (!(str = ft_strdup(s)))
+		return (0);
+	while (str[counter] != '\0')
+	{
+		str[counter] = (*f)(counter, s[counter]);
+		counter++;
+	}
+	str[counter] = '\0';
+	return (str);
 }

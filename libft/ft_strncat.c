@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/14 12:43:25 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/14 12:53:44 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	size_t	counter;
+	size_t	end_dest;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	end_dest = ft_strlen(dest);
+	counter = 0;
+	while (src[counter] != '\0' && counter < n)
+	{
+		dest[end_dest] = src[counter];
+		counter++;
+		end_dest++;
+	}
+	dest[end_dest] = '\0';
+	return (dest);
 }

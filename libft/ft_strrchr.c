@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/15 14:15:55 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/15 16:43:11 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+char	*ft_strrchr(const char *s, int c)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	int		counter;
+	char	*source;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	source = (char*)s;
+	counter = ft_strlen(s);
+	if (c == '\0')
+		return (&source[counter]);
+	counter--;
+	while (counter >= 0 && source[counter] != c)
+		counter--;
+	if (source[counter] == c)
+		return (&source[counter]);
+	return (NULL);
 }

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:45 by amamy            ###   ########.fr       */
+/*   Created: 2018/11/16 11:29:33 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/23 12:10:45 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-
-
-int ft_printf(const char* str, ...) // fid a better name for the chat *
+char	*ft_strnstr(const char *hay, const char *ndl, size_t len)
 {
-  va_list args;
-  char    *buf;
-  int     nb;
+	size_t	cnt;
+	size_t	ndl_c;
 
-  if(!(buf = malloc(sizeof(char * 1000))))
-    return
-  va_start(args, str);
-  nb = va_arg(args, int);
-  ft_putstr(str);
-  ft_putnbr(nb);
-  ft_putstr("\n");
-  return (0);
+	cnt = 0;
+	ndl_c = 0;
+	if (ndl[0] == '\0')
+		return ((char*)hay);
+	while (hay[cnt] && cnt < len)
+	{
+		ndl_c = 0;
+		while (hay[cnt + ndl_c] == ndl[ndl_c] && (cnt + ndl_c) < len)
+		{
+			ndl_c++;
+			if (ndl[ndl_c] == '\0')
+				return (((char*)&hay[cnt]));
+		}
+		cnt++;
+	}
+	return (NULL);
 }

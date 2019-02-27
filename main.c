@@ -6,14 +6,15 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/26 18:35:46 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/27 16:22:19 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int main()
+int main(int argc, char **argv)
 {
-  printf("%s\n");
+  (void)argc;
+  ft_printf(argv[1], ft_atoi(argv[2]));
   return 0;
 }
