@@ -6,13 +6,14 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/27 11:27:35 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/27 15:52:21 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/02/28 11:21:20 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 CC = @clang
 CFLAGS += -Wall -Werror -Wextra
+RUNLIB = ranlib
 OBJDIR = obj
 SRCDIR = src
 LIBDIR = libft
@@ -30,8 +31,8 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 			$(CC) -o $@ $^
-																												// ar rc $(NAME) $(OBJ)
-																												// ranlib $(NAME)
+			ar rc $(NAME) $(OBJ)
+			$(RUNLIB) $(NAME)
 
 $(LIB):
 			@make -C $(LIBDIR)
