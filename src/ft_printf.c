@@ -6,31 +6,38 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 10:41:45 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/28 14:54:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/28 19:43:54 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+
+void	ft_no_percent(const char *format)
+{
+	ft_putstr(format);
+}
 
 int		ft_printf(const char *format, ...)
 {
-	int			i;
-	int			
-	va_list		arg;
+	int		len;
+	int		i;
 
+	i = 0;
+	len = 0;
+	while (format[i++] != '%' && format[i] != '\0')
+	if (format[i] == '%')
+		//len = ft_analyse(format);
+		len = 1;
+	else
+	{
+		ft_no_percent(format);
+		len = ft_strlen((char *)format);
+	}
+	return (len);
+}
 
-	va_start(ap, format);
-	while (format[i] != '%')
-		i++;
-	if (format[i + 1] == d)
-		va_arg(arg, int);
-	if (format[i + 1] == s)
-		va_arg(arg, char *);
-	if (format[i + 1] == c)
-		va_arg(arg, int);
-	if (format[i + 1] == p)
-		va_arg(arg, void *);
-	//on envoie arg j'sais pas ou
-	va_end(arg);
-	return (
+int		main()
+{
+	ft_printf("salut");
+	return (0);
 }
