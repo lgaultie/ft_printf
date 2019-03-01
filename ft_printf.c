@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/28 21:08:19 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/01 12:54:49 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ char	*ft_arg_type(char *type)
 }
 
 #include <stdio.h>
-char	*ft_analyse(char *format, va_list args)
+char	*ft_analyse(char *format, t_data *data)
 {
 	if (format[0] == 's')
 	{
-		return (va_arg(args, char*));
+		return (va_arg(data->ap, char*));
 	}
 	if (format[0] == 'd')
-		return (ft_itoa(va_arg(args, int)));
+		return (ft_itoa(va_arg(data->ap, int)));
 	return (NULL);
 }
 
@@ -42,20 +42,22 @@ char	*ft_analyse(char *format, va_list args)
 
 int		ft_printf(const char* format, ...) // fid a better name for the chat *
 {
-	va_list	args;
 	char	*buf;
 	int		i;
+	t_data	data;
+	t_data	*p_data;
 
 	i = 0;
 	if(!(buf = ft_memalloc(sizeof(char) * 1000)))
 		return (0);
-	va_start(args, format);
+	p_data = &data;
+	va_start(data.ap, format);
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && i++)
 		{
-			buf = ft_strcat(buf, ft_analyse((char*)&format[i + 1], args));
-			i = i + 2;
+			ft_strcat(buf, ft_analyse((char*)&format[i++], p_data));
+			printf("&format[i] : |%s| \nargs size : %zu\n", &format[i], ft_strlen(&format[i]));
 		}
 		buf[ft_strlen(buf)] = format[i];
 		i++;

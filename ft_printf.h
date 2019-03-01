@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/28 14:39:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/01 12:47:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <stdarg.h>
 # include "libft/libft.h"
+
+typedef	struct	s_data
+{
+	va_list ap;
+	int		ag_size;
+}				t_data;
 
 int ft_printf(const char* str, ...);
 
