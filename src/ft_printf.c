@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/01 14:35:24 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/01 16:26:18 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,40 @@ char	*ft_arg_type(char *type)
 #include <stdio.h>
 char	*ft_analyse(char *format, t_data *data)
 {
+	char *tmp;
 	if (format[0] == 's')
-	{
-		return (va_arg(data->ap, char*));
-	}
+		tmp = va_arg(data->ap, char*);
 	if (format[0] == 'd')
-		return (ft_itoa(va_arg(data->ap, int)));
-	return (NULL);
+		tmp = ft_itoa(va_arg(data->ap, int));
+	data->ag_size += ft_strlen(tmp);
+	ft_putstr("size :");
+	ft_putnbr(data->ag_size);
+	ft_putstr("\n");
+	return (tmp);
 }
 
 
 
 int		ft_printf(const char* format, ...) // fid a better name for the chat *
 {
-
-	char	*buf;
 	int		i;
-	t_data	data;
-	t_data	*p_data;
+	t_data	*data;
 
 	i = 0;
-	if(!(buf = ft_memalloc(sizeof(char) * 1000)))
+	if (!(data = ft_memalloc(sizeof(t_data))))
 		return (0);
-	p_data = &data;
-	va_start(data.ap, format);
+	if(!(data->buf = ft_memalloc(sizeof(char) * 1000)))
+		return (0);
+	va_start(data->ap, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && i++)
-		{
-			ft_strcat(buf, ft_analyse((char*)&format[i++], p_data));
-			printf("&format[i] : |%s| \nargs size : %zu\n", &format[i], ft_strlen(&format[i]));
-		}
-		buf[ft_strlen(buf)] = format[i];
+			ft_strcat(data->buf, ft_analyse((char*)&format[i++], data));
+		data->buf[i + data->ag_size] = format[i];
+		printf("|%c| %d\n", data->buf[i+ data-> ag_size], i + data->ag_size);
 		i++;
 	}
-	buf[ft_strlen(buf)] = '\0';
-	ft_putstr(buf);
+	data->buf[i + data->ag_size + 1] = '\0';
+	ft_putstr(data->buf);
 	return (0);
 }

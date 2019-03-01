@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/01 14:36:41 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/01 14:41:49 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,14 +35,14 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	@printf "compiling... "
-	@$(CC) -o $@ $^
+	$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
 $(LIB):
 	@make -C $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR) :
 	@mkdir $@

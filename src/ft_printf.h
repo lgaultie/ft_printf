@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/01 14:35:02 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/01 15:16:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef	struct	s_data
 {
 	va_list ap;
+	char 	*buf;
 	int		ag_size;
 }				t_data;
 
