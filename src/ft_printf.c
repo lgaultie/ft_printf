@@ -3,54 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/01 17:42:03 by amamy            ###   ########.fr       */
+/*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/01 18:35:19 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-int		ft_str_size(char * str)
-{
-	//here we need to calculate the size of the final string for malloc
-}
+** ft_analyse:
+** Analyze all the flags and options after the '%', and call the appropriate
+** function. Return what is to be printed.
 */
-
-char	*ft_arg_type(char *type)
-{
-	if (type[0] == 's')
-		return ("char *");
-	return (NULL);
-}
-
-#include <stdio.h>
-char	*ft_analyse(char *format, t_data *data)
-{
-	char *tmp;
-	if (format[0] == 's')
-		tmp = va_arg(data->ap, char*);
-	if (format[0] == 'd')
-		tmp = ft_itoa(va_arg(data->ap, int));
-	data->ag_size += (ft_strlen(tmp) - 2); // -2 to replace by flag size
-		return (tmp);
-}
-
-
-
-int		ft_printf(const char* format, ...) // fid a better name for the chat *
+char	*ft_analyse(char *str, t_data *data)
 {
 	int		i;
-	t_data	*data;
+	char	*tmp;
 
 	i = 0;
-	if (!(data = ft_memalloc(sizeof(t_data))))
+	while (str[i] != 'c' && str[i] != 's' && str[i] != 'p' \
+	&& str[i] != 'd' && str[i] != 'i' && str[i] != 'o' \
+	&& str[i] != 'u' && str[i] != 'x' && str[i] != 'X' \
+	&& str[i] != 'f')
+		i++;
+	if (str[i] == 's' || str[i] == 'S')
+		tmp = va_arg(data->ap, char*);
+	if (str[i] == 'd' || str[i] == 'D')
+		tmp = ft_itoa(va_arg(data->ap, int));
+	data->ag_size += (ft_strlen(tmp) - 2); // -2 to replace by the flag size
+	return (tmp);
+}
+
+/*
+** ft_printf_format:
+** Analyse format and create the appropriate buffer, then print it.
+** return the lenght of printed bits or -1.
+*/
+int		ft_print_format(char *format, t_data *data)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!(data->buf = ft_memalloc(sizeof(char) * 1000)))
 		return (0);
-	if(!(data->buf = ft_memalloc(sizeof(char) * 1000)))
-		return (0);
-	va_start(data->ap, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && i++)
@@ -60,5 +59,22 @@ int		ft_printf(const char* format, ...) // fid a better name for the chat *
 	}
 	data->buf[i + data->ag_size] = '\0';
 	ft_putstr(data->buf);
-	return (0);
+	return (ft_strlen(data->buf));
+}
+
+/*
+** ft_printf:
+** Return how many bytes has been printed, or -1 if there was an error.
+*/
+int		ft_printf(const char *format, ...)
+{
+	int			len;
+	t_data		*data;
+
+	if (!(data = ft_memalloc(sizeof(t_data))))
+		return (-1);
+	va_start(data->ap, format);
+	len = ft_print_format((char*)format, data);
+	va_end(data->ap);
+	return (len);
 }
