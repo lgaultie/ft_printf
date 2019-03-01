@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/01 12:54:49 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/01 14:35:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*ft_analyse(char *format, t_data *data)
 
 int		ft_printf(const char* format, ...) // fid a better name for the chat *
 {
+
 	char	*buf;
 	int		i;
 	t_data	data;
