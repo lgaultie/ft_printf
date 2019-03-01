@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 10:42:05 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/28 11:02:03 by lgaultie         ###   ########.fr       */
+/*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
+/*   Updated: 2019/03/01 14:30:27 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include "../libft/libft.h"
 
-int		ft_printf(const char *format, ...);
+typedef	struct	s_data
+{
+	va_list		ap;
+	int			ag_size;
+}				t_data;
+
+int		ft_printf(const char* format, ...);
 
 #endif

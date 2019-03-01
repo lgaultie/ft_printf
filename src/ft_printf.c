@@ -5,100 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 10:41:45 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/01 14:13:36 by lgaultie         ###   ########.fr       */
+/*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/01 15:38:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-int		ft_str_size(char * str)
-{
-	//here we need to calculate the size of the final string for malloc
-}
+** Analyze all the flags and options after the '%', and call the appropriate
+** function. Return what is to be printed.
 */
-
-char	*ft_arg_type(char *type)
+char	*ft_analyse_after_percent(char *str)
 {
-	if (type[0] == 's')
-		return ("char *");
-	return (NULL);
-}
-
-#include <stdio.h>
-char	*ft_analyse(char *format, t_data *data)
-{
-	if (format[0] == 's')
-	{
-		return (va_arg(data->ap, char*));
-	}
-	if (format[0] == 'd')
-		return (ft_itoa(va_arg(data->ap, int)));
-	return (NULL);
-}
-
-int		ft_printf(const char* format, ...) // fid a better name for the chat *
-{
-	char	*buf;
 	int		i;
-	t_data	data;
-	t_data	*p_data;
 
 	i = 0;
-	if(!(buf = ft_memalloc(sizeof(char) * 1000)))
-		return (0);
-	p_data = &data;
-	va_start(data.ap, format);
+	while (str[i] != ' ' && str[i] != '\n')
+	{
+		if (str[i] == 's' || str[i] == 'S')
+
+		if (str[i] == 'd' || str[i] == 'D')
+
+	}
+}
+
+/*
+** Analyse format and create the appropriate buffer, then print it.
+*/
+int		ft_printf_format(char *format, t_data data)
+{
+	int		i;
+	int		j;
+	char	*buffer;
+
+	i = 0;
+	j = 0;
+	if (!(buffer = ft_memalloc(sizeof(char)) * (ft_strlen(format) + 1)))
+		return ;
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%' && i++)
-		{
-			ft_strcat(buf, ft_analyse((char*)&format[i++], p_data));
-			printf("&format[i] : |%s| \nargs size : %zu\n", &format[i], ft_strlen(&format[i]));
-		}
-		buf[ft_strlen(buf)] = format[i];
+		if (format[i] == '%')
+			ft_strcat(buffer, ft_analyse_after_percent(&format[i + 1]));
+		buffer[i] = format[i];
 		i++;
 	}
-	buf[ft_strlen(buf)] = '\0';
-	ft_putstr(buf);
-	return (0);
-}
-
-
-
-
-
-
-/////////////////////////////////
-/*#include "ft_printf.h"
-
-void	ft_no_percent(const char *format)
-{
-	ft_putstr(format);
-}
-
-int		ft_printf(const char *format, ...)
-{
-	int		len;
-	int		i;
-
-	i = 0;
-	len = 0;
-	while (format[i++] != '%' && format[i] != '\0')
-	if (format[i] == '%')
-		//len = ft_analyse(format);
-		len = 1;
-	else
-	{
-		ft_no_percent(format);
-		len = ft_strlen((char *)format);
-	}
+	ft_putstr(buffer);
 	return (len);
 }
 
-int		main()
+/*
+** Return how many bytes has been printed, or -1 if there was an error.
+*/
+int		ft_printf(const char *format, ...)
 {
-	ft_printf("salut");
-	return (0);
-}*/
+	int			len;
+	va_list		ap;
+	t_data		data;
+
+	va_start(data->ap, last);
+	len = ft_print_format(format, data);
+	va_end(data->ap);
+	return (len);
+}
