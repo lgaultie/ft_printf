@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/01 16:26:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/01 17:42:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ char	*ft_analyse(char *format, t_data *data)
 		tmp = va_arg(data->ap, char*);
 	if (format[0] == 'd')
 		tmp = ft_itoa(va_arg(data->ap, int));
-	data->ag_size += ft_strlen(tmp);
-	ft_putstr("size :");
-	ft_putnbr(data->ag_size);
-	ft_putstr("\n");
-	return (tmp);
+	data->ag_size += (ft_strlen(tmp) - 2); // -2 to replace by flag size
+		return (tmp);
 }
 
 
@@ -59,10 +56,9 @@ int		ft_printf(const char* format, ...) // fid a better name for the chat *
 		if (format[i] == '%' && i++)
 			ft_strcat(data->buf, ft_analyse((char*)&format[i++], data));
 		data->buf[i + data->ag_size] = format[i];
-		printf("|%c| %d\n", data->buf[i+ data-> ag_size], i + data->ag_size);
 		i++;
 	}
-	data->buf[i + data->ag_size + 1] = '\0';
+	data->buf[i + data->ag_size] = '\0';
 	ft_putstr(data->buf);
 	return (0);
 }
