@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/01 18:35:19 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/02 14:17:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_analyse(char *str, t_data *data)
 		i++;
 	if (str[i] == 's' || str[i] == 'S')
 		tmp = va_arg(data->ap, char*);
-	if (str[i] == 'd' || str[i] == 'D')
+	if (str[i] == 'd' || str[i] == 'i')
 		tmp = ft_itoa(va_arg(data->ap, int));
 	data->ag_size += (ft_strlen(tmp) - 2); // -2 to replace by the flag size
 	return (tmp);
@@ -53,7 +53,7 @@ int		ft_print_format(char *format, t_data *data)
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && i++)
-			ft_strcat(data->buf, ft_analyse((char*)&format[i++], data));
+			ft_strcat(data->buf, ft_analyse(&format[i++], data));	//on passe adresse de format[i] marche pas --> ex %hhd
 		data->buf[i + data->ag_size] = format[i];
 		i++;
 	}
