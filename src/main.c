@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/01 16:52:15 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/02 16:48:27 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
   (void)argc;
   (void)argv;
-  //printf("Je m'appelle : |%24s| et j'ai ans\n", "Allan");
+  printf("% d\n", 15);
   ft_printf("Je m'appelle : |%s| et j'ai combien deja ? %d ans\n", "Allannique ta mere", 17);
   return 0;
 }
