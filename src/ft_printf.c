@@ -6,19 +6,19 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/03 12:55:33 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/03 14:12:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "ft_printf.h"
+#include <ft_printf.h>
 #include <stdio.h>
 
 /*
 ** ft_analyse_flags
 ** Analyze flags.
 */
-char	*ft_analyse_flags(char *flags, t_data	*data)
+char	*ft_analyse_conv(char *flags, t_data	*data)
 {
 	int		len;
 
@@ -33,6 +33,8 @@ char	*ft_analyse_flags(char *flags, t_data	*data)
 		ft_conv_p(flags, data);
 	if (flags[len] == 'u')
 		ft_conv_u(flags, data);
+	else
+		return (-1);
 	return (flags);
 }
 
@@ -62,10 +64,7 @@ char	*ft_got_flag(char *str, t_data *data)
 	}
 	flags[i] = str[i];
 	flags[i + 1] = '\0';
-	ft_analyse_flags(flags, data);
-	// flags[i] = str[i];
-	// flags[i + 1] = '\0';
-	// ft_analyse_conversion(flags);
+	ft_analyse_conv(flags, data);
 	return (data->buf);
 }
 
