@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/03 12:26:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/03 19:14:46 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,27 @@
 ** ft_analyse_flags
 ** Analyze flags.
 */
-char	*ft_analyse_flags(char *str)
+void	ft_analyse_conv(char *flags, t_data *data)
 {
-	int		i;
-	char	conversion;
+	int		len;
 
-	i = 0;
-	if (str[ft_strlen(str)] == 'd' || str[ft_strlen(str)] == 'i')
-	{
-		while (str[i] != 'd' && str[i] != 'i')
-		{
-			if (str[i] == ' ')
-				ft_space_flag(str);
-			if (str[i] == '0')
-				ft_0_flag(str);
-			if (str[i] == '+')
-				ft_plus_flag(str);
-			if (str[i] == '-')
-				ft_minus_flag(str);		//et la precision et longueur de champ ?
-			else
-				return (NULL);
-			i++;
-		}
-	}
-	return (str);
+	len = ft_strlen(flags) -1 ;
+	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
+		ft_conv_dif(flags, data);
+	// if (flags[len] == 'c' || flags[len] == 's')
+	// 	ft_conv_cs(flags, data);
+	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
+	// 	ft_conv_oxX(flags, data);
+	// if (flags[len] == 'p')
+	// 	ft_conv_p(flags, data);
+	// if (flags[len] == 'u')
+	// 	ft_conv_u(flags, data);
 }
 
 /*
 ** ft_got_flag:
-** Analyze flags and conversions.
+**
 */
-//on chope les flags, on les envoie dans une fonction qui les gere
-//on chope la conversion, on l'envoie dans une fonction qui fait une foret
-//de if pour voir comment le gerer
-//on doit faire une fonction qui recupere les deux et qui voit si c'est
-//compatible ou non et fait le resultat
 char	*ft_got_flag(char *str, t_data *data)
 {
 	int		i;
@@ -69,17 +55,15 @@ char	*ft_got_flag(char *str, t_data *data)
 	}
 	flags[i] = str[i];
 	flags[i + 1] = '\0';
-	//ft_analyse_flags(flags);
-	// flags[i] = str[i];
-	// flags[i + 1] = '\0';
-	// ft_analyse_conversion(flags);
+	data->flag_size = ft_strlen(flags) + 1;
+	ft_analyse_conv(flags, data);
 	return (data->buf);
 }
 
 /*
 ** ft_analyse:
-** Analyze the string, specify %% case, and call the appropriate function
-** when finding a %.
+** Analyze format, take care of %% case, and call an analyzing function
+** when finding a % to check flags and conversions.
 */
 char	*ft_analyse(char *str, t_data *data)
 {
@@ -95,8 +79,8 @@ char	*ft_analyse(char *str, t_data *data)
 		if (str[i] == '%' && str[i - 1] != '%')
 		{
 			ft_strjoin(data->buf, ft_got_flag(&str[i + 1], data));
-			//j = j + data->ag_size;
 			j = ft_strlen(data->buf);
+			i = i + data->flag_size;
 		}
 		data->buf[j] = str[i];
 		j++;
@@ -107,12 +91,13 @@ char	*ft_analyse(char *str, t_data *data)
 
 /*
 ** ft_printf_format:
-** Analyse format and create the appropriate buffer, then print it.
-** return the lenght of printed bits or -1.
+** Malloc, call for analyse and print the final buffer.
+** return the lenght of printed bits or -1 if error.
 */
 int		ft_print_format(char *format, t_data *data)
 {
-	if (!(data->buf = ft_memalloc(sizeof(char) * (ft_strlen(format) + 1))))
+	if (!(data->buf = ft_memalloc(sizeof(char) * 100000)))
+	// if (!(data->buf = ft_memalloc(sizeof(char) * (ft_strlen(format) + 1))))
 		return (-1);
 	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
