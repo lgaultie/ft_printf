@@ -6,34 +6,96 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/01 18:35:19 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/03 12:55:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
+#include <stdio.h>
+
+/*
+** ft_analyse_flags
+** Analyze flags.
+*/
+char	*ft_analyse_flags(char *flags, t_data	*data)
+{
+	int		len;
+
+	len = ft_strlen(flags);
+	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
+		ft_conv_dif(flags, data);
+	if (flags[len] == 'c' || flags[len] == 's')
+		ft_conv_cs(flags, data);
+	if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
+		ft_conv_oxX(flags, data);
+	if (flags[len] == 'p')
+		ft_conv_p(flags, data);
+	if (flags[len] == 'u')
+		ft_conv_u(flags, data);
+	return (flags);
+}
+
+/*
+** ft_got_flag:
+** Analyze flags and conversions.
+*/
+//on chope les flags, on les envoie dans une fonction qui les gere
+//on chope la conversion, on l'envoie dans une fonction qui fait une foret
+//de if pour voir comment le gerer
+//on doit faire une fonction qui recupere les deux et qui voit si c'est
+//compatible ou non et fait le resultat
+char	*ft_got_flag(char *str, t_data *data)
+{
+	int		i;
+	char	*flags;
+
+	i = 0;
+	if (!(flags = malloc(sizeof(char) * (ft_strlen(str) + 1))))
+		return (NULL);
+	while (str[i] != 'c' && str[i] != 's' && str[i] != 'p' && str[i] != 'd' \
+		&& str[i] != 'i' && str[i] != 'o' && str[i] != 'u' \
+		&& str[i] != 'x' && str[i] != 'X' && str[i] != 'f')
+	{
+		flags[i] = str[i];
+		i++;
+	}
+	flags[i] = str[i];
+	flags[i + 1] = '\0';
+	ft_analyse_flags(flags, data);
+	// flags[i] = str[i];
+	// flags[i + 1] = '\0';
+	// ft_analyse_conversion(flags);
+	return (data->buf);
+}
 
 /*
 ** ft_analyse:
-** Analyze all the flags and options after the '%', and call the appropriate
-** function. Return what is to be printed.
+** Analyze the string, specify %% case, and call the appropriate function
+** when finding a %.
 */
 char	*ft_analyse(char *str, t_data *data)
 {
 	int		i;
-	char	*tmp;
+	int		j;
 
 	i = 0;
-	while (str[i] != 'c' && str[i] != 's' && str[i] != 'p' \
-	&& str[i] != 'd' && str[i] != 'i' && str[i] != 'o' \
-	&& str[i] != 'u' && str[i] != 'x' && str[i] != 'X' \
-	&& str[i] != 'f')
+	j = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '%' && str[i + 1] == '%')
+			i++;
+		if (str[i] == '%' && str[i - 1] != '%')
+		{
+			ft_strjoin(data->buf, ft_got_flag(&str[i + 1], data));
+			//j = j + data->ag_size;
+			j = ft_strlen(data->buf);
+		}
+		data->buf[j] = str[i];
+		j++;
 		i++;
-	if (str[i] == 's' || str[i] == 'S')
-		tmp = va_arg(data->ap, char*);
-	if (str[i] == 'd' || str[i] == 'D')
-		tmp = ft_itoa(va_arg(data->ap, int));
-	data->ag_size += (ft_strlen(tmp) - 2); // -2 to replace by the flag size
-	return (tmp);
+	}
+	return (data->buf);
 }
 
 /*
@@ -43,21 +105,9 @@ char	*ft_analyse(char *str, t_data *data)
 */
 int		ft_print_format(char *format, t_data *data)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (!(data->buf = ft_memalloc(sizeof(char) * 1000)))
-		return (0);
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%' && i++)
-			ft_strcat(data->buf, ft_analyse((char*)&format[i++], data));
-		data->buf[i + data->ag_size] = format[i];
-		i++;
-	}
-	data->buf[i + data->ag_size] = '\0';
+	if (!(data->buf = ft_memalloc(sizeof(char) * (ft_strlen(format) + 1))))
+		return (-1);
+	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
 	return (ft_strlen(data->buf));
 }
