@@ -5,53 +5,61 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/02/27 11:27:35 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/28 11:21:20 by lgaultie         ###   ########.fr        #
+#    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
+#    Updated: 2019/03/01 14:41:49 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 CC = @clang
 CFLAGS += -Wall -Werror -Wextra
-RUNLIB = ranlib
 OBJDIR = obj
 SRCDIR = src
-LIBDIR = libft
-INCDIR = $(LIBDIR)
-HEAD = $(SRCDIR)/ft_printf.h
+LIBDIR	= libft
+INCDIR	= $(LIBDIR)
+HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	ft_printf.c	\
-				main.c
+SRCS =	main.c	\
+		ft_printf.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
-LIB = $(LIBDIR)/libft.a
+LIB		= $(LIBDIR)/libft.a
+
+_GREEN=\e[32m
+_YELLOW=\e[33m
+_BLUE=\e[34m
+_END=\e[0m
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
-			$(CC) -o $@ $^
-			ar rc $(NAME) $(OBJ)
-			$(RUNLIB) $(NAME)
+	@printf "compiling... "
+	$(CC) -o $@ $^
+	@printf "[$(_GREEN)✓$(_END)]\n"
 
 $(LIB):
-			@make -C $(LIBDIR)
+	@make -C $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
-			$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR):
-	 		@mkdir $@
+$(OBJDIR) :
+	@mkdir $@
 
-$(OBJ): | $(OBJDIR)
+$(OBJ) : | $(OBJDIR)
 
 clean:
-			@make -C $(LIBDIR) clean
-			@rm -rf $(OBJDIR)
+	@printf "clean... "
+	@make -C $(LIBDIR) clean
+	@rm -rf $(OBJDIR)
+	@printf "[$(_YELLOW)✓$(_END)]\n"
 
 fclean: clean
-			@make -C $(LIBDIR) fclean
-			@rm -f $(NAME)
+	@printf "fclean... "
+	@make -C $(LIBDIR) fclean
+	@rm -f $(NAME)
+	@printf "[$(_BLUE)✓$(_END)]\n"
 
 re: fclean all clean
 
