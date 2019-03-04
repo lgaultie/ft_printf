@@ -6,16 +6,20 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:57:13 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/03 14:35:49 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/04 20:19:40 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 
 char	*ft_conv_p(char *format, t_data *data)
 {
-	char *tmp;
+	unsigned long	ad;
+	char
 
-	tmp = ft_itoa_base(va_args(ap, void*), 16);
-	ft_putstr(tmp);
+	(void)format;
+	ft_putstr("Conv_P : ");
+	ad = (va_arg(data->ap, unsigned long));
+	ft_putnbr(ad);
+	return (NULL);
 }
