@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/04 20:15:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/05 14:29:34 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ char	*ft_got_flag(char *str, t_data *data)
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' \
 		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
 	{
-		ft_putstr("la\n");
-		ft_putchar(str[x]);
-		ft_putchar('\n');
+		// ft_putstr("la\n");
+		// ft_putchar(str[x]);
+		// ft_putchar('\n');
 		x++;
 	}
 	data->flag_size = x + 1;
+
+	printf("flag_size : %d\n", data->flag_size);
 	if (!(flags = malloc(sizeof(char) * (data->flag_size + 1))))
 		return (NULL);
 	flags = ft_strncpy(flags, str, data->flag_size);
@@ -73,11 +75,13 @@ char	*ft_analyse(char *str, t_data *data)
 
 	i = 0;
 	j = 0;
+	data->conv_t_sz = 0;
 	while (str[i] != '\0')
 	{
+		printf("str[%d] : |%c|\n", i, str[i]);
 		if (str[i] == '%' && str[i + 1] == '%')
-			i++;
-		if (str[i] == '%' && ( i == 0 || str[i - 1] != '%'))
+			j++;
+		if (str[i + j] == '%' && ((i+j) == 0 || str[(i + j) - 1] != '%'))
 		{
 			//data->buf = ft_strcat(data->buf, ft_got_flag(&str[i], data));
 			tmp = malloc(sizeof(char) * (ft_strlen(data->buf) + data->conv_sz + 1));
@@ -86,15 +90,21 @@ char	*ft_analyse(char *str, t_data *data)
 			free(data->buf);
 		//	data->buf = malloc(sizeof(char) * (ft_strlen(tmp) + data->conv_sz));
 			printf("data->buf avant= |%s|\nstr[i] = %c\n", data->buf, str[i]);
-			data->buf = ft_strdup(ft_strcat(tmp, ft_got_flag(&str[i], data)));
+			data->buf = ft_strdup(ft_strcat(tmp, ft_got_flag(&str[i + j], data)));
 			//printf("data->buf apres = |%s|\n", data->buf);
 			free(tmp);
-			j = ft_strlen(data->buf);
-			i = i + data->flag_size;
+			if (data->flag_size > data->conv_sz)
+				j += data->flag_size - data->conv_sz;
+			else if (data->conv_sz > data->flag_size)
+				j += data->conv_sz - data->flag_size;
+			//i = i + data->flag_size;
+			printf("conv_t_sz : %d\n", data->conv_t_sz);
 		}
-		data->buf[i] = str[i];						//ICI ON SEGFAULT SUR UN TRUC FREE
+		printf("copie : str[%d] : |%c| dans buf[%d]\n", (i + j + data->conv_t_sz), str[i + j + data->conv_t_sz], (i + data->conv_t_sz));
+		data->buf[i + data->conv_t_sz] = str[i + j];
+			//ICI ON SEGFAULT SUR UN TRUC FREE
 													//on ecrit apres le '\0'
-		//data->buf[j] = str[i];
+		//data->buf[i] = str[i];
 		//j++;
 		i++;
 	}

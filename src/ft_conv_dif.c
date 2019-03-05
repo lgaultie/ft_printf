@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/04 18:26:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:17:59 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_conv_dif(char *flags, t_data *data)
 	final[2] = '|';
 	final[3] = '\0';
 	data->conv_sz = 3;
+	data->conv_t_sz += data->conv_sz;
 	// i = 0;
 	// ap = (va_arg(data->ap, int));
 	// data->ap_size = (data->flag_size - ft_intlen(ap));

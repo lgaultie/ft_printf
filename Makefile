@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/01 14:41:49 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/05 12:21:19 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
 SRCS =	main.c	\
-		ft_printf.c
+		ft_printf.c	\
+		ft_conv_dif.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
