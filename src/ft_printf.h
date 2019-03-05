@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <libft.h>
+# include "../libft/libft.h"
 # include <stdio.h>
 
 typedef	struct	s_data
@@ -29,12 +29,13 @@ typedef	struct	s_data
 
 int		ft_printf(const char* str, ...);
 char	*ft_conv_dif(char *flags, t_data *data);
-void	ft_flag_zero(char *flags, t_data *data);
-void	ft_flag_plus(char *flags, t_data *data);
-void	ft_flag_minus(char *flags, t_data *data);
-void	ft_flag_space(char *flags, t_data *data);
-void	ft_espaces(char *flags, t_data *data);
-void	ft_precision(char *flags, t_data *data);
+char	*ft_jeqn_clqude(char *flags, t_data *data);
+// void	ft_flag_zero(char *flags, t_data *data);
+// void	ft_flag_plus(char *flags, t_data *data);
+// void	ft_flag_minus(char *flags, t_data *data);
+// void	ft_flag_space(char *flags, t_data *data);
+//void	ft_espaces(char *flags, t_data *data);
+//void	ft_precision(char *flags, t_data *data);
 
 #endif
 

@@ -23,6 +23,10 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 	{
 		final = ft_conv_dif(flags, data);
 	}
+	else if (flags[len] == 's')
+	{
+		final = ft_jonh_claude(flags, data);
+	}
 	// if (flags[len] == 'c' || flags[len] == 's')
 	// 	ft_conv_cs(flags, data);
 	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
@@ -33,18 +37,16 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 	// 	ft_conv_u(flags, data);
 	else
 		final = (NULL);
-	ft_putstr("avant return\n");
+//	ft_putstr("avant return\n");
 	return (final);
 }
 
 char	*ft_got_flag(char *str, t_data *data)
 {
-	int		i;
 	int		x;
 	char	*flags;
 	char	*final;
 
-	i = 0;
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' \
@@ -63,7 +65,7 @@ char	*ft_got_flag(char *str, t_data *data)
 	flags = ft_strncpy(flags, str, data->flag_size);
 	final = ft_analyse_conv(flags, data);
 	free(flags);
-	ft_putstr("Avant return de final dans ft_got_flag\n");
+	printf("got flag return : |%s|\n", final);
 	return (final);
 }
 
@@ -76,32 +78,34 @@ char	*ft_analyse(char *str, t_data *data)
 	i = 0;
 	j = 0;
 	data->conv_t_sz = 0;
-	while (str[i] != '\0')
+	while (str[i + j] != '\0')
 	{
-		printf("str[%d] : |%c|\n", i, str[i]);
-		if (str[i] == '%' && str[i + 1] == '%')
+		if (str[i + j] == '%' && str[i + j + 1] == '%')
 			j++;
 		if (str[i + j] == '%' && ((i+j) == 0 || str[(i + j) - 1] != '%'))
 		{
+
 			//data->buf = ft_strcat(data->buf, ft_got_flag(&str[i], data));
-			tmp = malloc(sizeof(char) * (ft_strlen(data->buf) + data->conv_sz + 1));
+			printf("buf just before tmp malloc : |%s|\n", data->buf);
+			//tmp = malloc(sizeof(char) * (ft_strlen(data->buf) + 1));
+			tmp = malloc(sizeof(char) * (1000)); // <- le malloc qui nique tout
 			ft_strcpy(tmp, data->buf);
 			printf("tmp = %s\n", tmp);
+			printf("data->buf'avant copy) = |%s|\n", data->buf);
 			free(data->buf);
-		//	data->buf = malloc(sizeof(char) * (ft_strlen(tmp) + data->conv_sz));
-			printf("data->buf avant= |%s|\nstr[i] = %c\n", data->buf, str[i]);
+			//	data->buf = malloc(sizeof(char) * (ft_strlen(tmp) + data->conv_sz));
 			data->buf = ft_strdup(ft_strcat(tmp, ft_got_flag(&str[i + j], data)));
+			printf("data->+buf = |%s|\n", data->buf);
 			//printf("data->buf apres = |%s|\n", data->buf);
 			free(tmp);
-			if (data->flag_size > data->conv_sz)
-				j += data->flag_size - data->conv_sz;
-			else if (data->conv_sz > data->flag_size)
-				j += data->conv_sz - data->flag_size;
+				j += data->flag_size;
 			//i = i + data->flag_size;
 			printf("conv_t_sz : %d\n", data->conv_t_sz);
 		}
-		printf("copie : str[%d] : |%c| dans buf[%d]\n", (i + j + data->conv_t_sz), str[i + j + data->conv_t_sz], (i + data->conv_t_sz));
+		printf("copie : str[%d] : |%c| dans buf[%d]\n", (i + j), str[i + j], (i + data->conv_t_sz));
 		data->buf[i + data->conv_t_sz] = str[i + j];
+		data->buf[i + data->conv_t_sz + 1] = '\0';
+		printf("%s\n", data->buf);
 			//ICI ON SEGFAULT SUR UN TRUC FREE
 													//on ecrit apres le '\0'
 		//data->buf[i] = str[i];

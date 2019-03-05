@@ -25,9 +25,9 @@ char	*ft_conv_dif(char *flags, t_data *data)
 (void)data;
 	 if(!(final = malloc(sizeof(char) * 10000)))
 	 	return (NULL);
-	final[0] = '|';
-	final[1] = 'i';
-	final[2] = '|';
+	final[0] = 'i';
+	final[1] = 'c';
+	final[2] = 'i';
 	final[3] = '\0';
 	data->conv_sz = 3;
 	data->conv_t_sz += data->conv_sz;
