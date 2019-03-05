@@ -6,35 +6,35 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/03 14:12:03 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/04 13:45:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 #include <stdio.h>
 
 /*
 ** ft_analyse_flags
 ** Analyze flags.
 */
-char	*ft_analyse_conv(char *flags, t_data	*data)
+char	*ft_analyse_conv(char *flags, t_data *data)
 {
 	int		len;
 
 	len = ft_strlen(flags);
-	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
-		ft_conv_dif(flags, data);
-	if (flags[len] == 'c' || flags[len] == 's')
-		ft_conv_cs(flags, data);
-	if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
-		ft_conv_oxX(flags, data);
-	if (flags[len] == 'p')
+	// if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
+	// 	ft_conv_dif(flags, data);
+	// if (flags[len] == 'c' || flags[len] == 's')
+	// 	ft_conv_cs(flags, data);
+	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
+	// 	ft_conv_oxX(flags, data);
+	if (flags[len - 1] == 'p')
 		ft_conv_p(flags, data);
-	if (flags[len] == 'u')
-		ft_conv_u(flags, data);
+	// if (flags[len] == 'u')
+	// 	ft_conv_u(flags, data);
 	else
-		return (-1);
+		return (NULL);
 	return (flags);
 }
 
@@ -82,9 +82,11 @@ char	*ft_analyse(char *str, t_data *data)
 	j = 0;
 	while (str[i] != '\0')
 	{
+
 		if (str[i] == '%' && str[i + 1] == '%')
 			i++;
-		if (str[i] == '%' && str[i - 1] != '%')
+			//if (str[i] == '%' && (i > 0 && str[i - 1] != '%'))
+		if (str[i] == '%' && ( i == 0 || str[i - 1] != '%'))
 		{
 			ft_strjoin(data->buf, ft_got_flag(&str[i + 1], data));
 			//j = j + data->ag_size;
