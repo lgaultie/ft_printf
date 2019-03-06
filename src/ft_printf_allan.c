@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:45:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/02 15:24:00 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/04 19:08:04 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int		ft_print_format(char *format, t_data *data)
 	{
 		if (format[i] == '%' && i++)
 			ft_strcat(data->buf, ft_analyse(&format[i++], data));	//on passe adresse de format[i], cad un char, marche pas --> ex %hhd
-		data->buf[i + data->ag_size] = format[i];
+		data->buf[i + data->ap_size] = format[i];
 		i++;
 	}
-	data->buf[i + data->ag_size] = '\0';
+	data->buf[i + data->ap_size] = '\0';
 	ft_putstr(data->buf);
 	return (ft_strlen(data->buf));
 }
