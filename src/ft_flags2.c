@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_p.c                                           :+:      :+:    :+:   */
+/*   ft_flags2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/03 13:57:13 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/06 21:33:12 by amamy            ###   ########.fr       */
+/*   Created: 2019/03/04 12:15:34 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/04 12:20:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_conv_p(char *format, t_data *data)
-{
-	unsigned long	ad;
-	char
-
-	(void)format;
-	ft_putstr("Conv_P : ");
-	ad = (va_arg(data->ap, unsigned long));
-	ft_putnbr(ad);
-	return (NULL);
-}
+// void	ft_espaces(char *flags, t_data *data)
+// {
+// 	int		i;
+//
+// 	i = 0;
+// }
+//
+// void	ft_precision(char *flags, t_data *data)
+// {
+// 	int		i;
+//
+// 	i = 0;
+// }
