@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_conv_s.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/06 15:46:58 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/06 15:47:25 by lgaultie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*ft_jonh_claude(char *flags, t_data *data)
@@ -6,21 +18,14 @@ char	*ft_jonh_claude(char *flags, t_data *data)
 	int		ap;
 	 char	*final;
 
-
 (void)i;
 (void)ap;
 (void)flags;
 (void)data;
-	 if(!(final = malloc(sizeof(char) * 1000)))
+	 if(!(final = ft_strdup("salut")))
 	 	return (NULL);
-	final[0] = 'S';
-	final[1] = 'A';
-	final[2] = 'l';
-	final[3] = 'U';
-	final[4] = 'T';
-	final[5] = '\0';
 	data->conv_sz = 5;
-	data->conv_t_sz += data->conv_sz;
+	data->conv_t_sz = data->conv_t_sz + data->conv_sz;
 	// i = 0;
 	// ap = (va_arg(data->ap, int));
 	// data->ap_size = (data->flag_size - ft_intlen(ap));
@@ -40,7 +45,6 @@ char	*ft_jonh_claude(char *flags, t_data *data)
 	// 	// 	ft_precision(flags, data);
 	// 	i++;
 	// }
-	ft_putstr("la\n");
 	// final = ft_strcat(flags, ft_itoa(ap));
 	return (final);
 }

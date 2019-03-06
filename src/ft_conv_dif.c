@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/05 12:17:59 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/06 15:46:44 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,14 @@ char	*ft_conv_dif(char *flags, t_data *data)
 	int		ap;
 	 char	*final;
 
-
 (void)i;
 (void)ap;
 (void)flags;
 (void)data;
-	 if(!(final = malloc(sizeof(char) * 10000)))
+	 if(!(final = ft_strdup("ici")))
 	 	return (NULL);
-	final[0] = 'i';
-	final[1] = 'c';
-	final[2] = 'i';
-	final[3] = '\0';
 	data->conv_sz = 3;
-	data->conv_t_sz += data->conv_sz;
+	data->conv_t_sz = data->conv_t_sz + data->conv_sz;
 	// i = 0;
 	// ap = (va_arg(data->ap, int));
 	// data->ap_size = (data->flag_size - ft_intlen(ap));
@@ -50,7 +45,6 @@ char	*ft_conv_dif(char *flags, t_data *data)
 	// 	// 	ft_precision(flags, data);
 	// 	i++;
 	// }
-	ft_putstr("ici\n");
 	// final = ft_strcat(flags, ft_itoa(ap));
 	return (final);
 }

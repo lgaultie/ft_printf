@@ -6,22 +6,25 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/05 12:21:19 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/06 11:57:59 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 CC = @clang
-CFLAGS += -Wall -Werror -Wextra
+CFLAGS += -Wall -Werror -Wextra -g3
 OBJDIR = obj
 SRCDIR = src
 LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	main.c	\
-		ft_printf.c	\
-		ft_conv_dif.c
+SRCS =	main.c			\
+		ft_printf.c		\
+		ft_conv_dif.c	\
+		ft_conv_s.c		\
+		ft_flags.c		\
+		ft_flags2.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

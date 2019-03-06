@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:10:38 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/04 18:01:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:16:06 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_flag_zero(char *flags, t_data *data)
 			i++;
 		}
 		nb_zero = ft_atoi(stock_nb);
-		while (j < nb_zero - data->ap_size)
+		while (j < nb_zero - data->ap_sz)
 		{
 			data->buf[ft_strlen(data->buf)] = '0';
 			j++;
