@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/06 22:23:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/07 21:16:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ typedef	struct	s_data
 	char 		*buf;
 	int			conv_sz;
 	int			conv_t_sz;
+	int			done;
 }				t_data;
 
 int		ft_printf(const char* str, ...);
 char	*ft_conv_dif(char *flags, t_data *data);
 char	*ft_jonh_claude(char *flags, t_data *data);
+char	*ft_analyse_flags(char *flags, t_data *data);
+char	*ft_precision_d(char *flags, t_data *data);
+int		ft_precision_s(char *flags, t_data *data);
 // void	ft_flag_zero(char *flags, t_data *data);
 // void	ft_flag_plus(char *flags, t_data *data);
 // void	ft_flag_minus(char *flags, t_data *data);
