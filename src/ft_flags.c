@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:10:38 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/07 21:18:27 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/07 22:26:21 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,19 @@ char	*ft_analyse_flags(char *flags, t_data *data)
 		if (flags[i] == '.' && (flags[i + 1] >= '0') && (flags[i + 1] <= '9'))
 		{
 			conv = ft_precision_d(flags, data);	//enlever le strdup et conv est malloqué parceque ret l'est ?
-		}		//attention c'est que pour d
+			//conv = ft_precision_s(flags, data);
+		}		//attention c'est que pour d... gerer
+		else if (flags[i] >= '0' && flags[i] <= '9')
+			conv = ft_width(flags, data);
+			//a gerer autrement... precision et largeur sont compatibles
+			//printf("Oui %020.2d moi c'est Loraine", 12);
+			//Oui                   12 moi c'est Loraine
+
+
+
+
+
+
 		// if (flags[i] == '0')
 		// 	ft_flag_zero(flags, data);
 		// if (flags[i] == '+')

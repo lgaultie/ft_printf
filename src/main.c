@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/07 21:16:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/07 22:48:00 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int main(int argc, char **argv)
 		return (-1);
 		data->flag_sz = 5;
 		data->ap_sz = 3;
-	str = ft_strdup("%.2s");
+	str = ft_strdup("%2s");
 
 	//		   FAUX --> Je m'appggel%le : |ICI| et j'ai cICIombien deja ? SALUT ans\n
 
 	//ft_printf(str);
-	printf("%d\n", ft_precision_s(str, data));
+	printf("%s\n", ft_width(str, data));
 
 	//ft_printf("FAUX --> Je m'appggel%%le : |%0177d| et j'ai c%dombien deja ? %07s ans\n"); <-------- segfault for sure
 	return 0;
