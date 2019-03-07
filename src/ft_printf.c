@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/06 22:07:06 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/06 22:23:54 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 	int		len;
 	char	*final;
 
+	//WOWOW il est ou le malloc de final ?
 	len = data->flag_sz - 1;
 	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
 	{
