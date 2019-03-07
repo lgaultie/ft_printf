@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/07 21:16:08 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/07 22:25:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*ft_jonh_claude(char *flags, t_data *data);
 char	*ft_analyse_flags(char *flags, t_data *data);
 char	*ft_precision_d(char *flags, t_data *data);
 int		ft_precision_s(char *flags, t_data *data);
+char	*ft_width(char *flags, t_data *data);
 // void	ft_flag_zero(char *flags, t_data *data);
 // void	ft_flag_plus(char *flags, t_data *data);
 // void	ft_flag_minus(char *flags, t_data *data);
