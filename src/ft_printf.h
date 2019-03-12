@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/07 22:25:41 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/12 11:53:28 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
+/*
+** --- Define ------------------------------------------------------------------
+*/
+
+/* les defines pour agir sur les bit du int flag;
+** bit activé = flag en place
+** if (data->flags & f_ZERO)
+*/
+
+# define F_ZERO 1
+# define F_PLUS 2
+# define F_MINUS 4
+# define F_SHARP 8
+# define F_SPACE 16
+# define F_WIDTH 32
+# define F_PRECIS 64
+
+
 typedef	struct	s_data
 {
 	va_list		ap;
@@ -26,6 +44,7 @@ typedef	struct	s_data
 	int			conv_sz;
 	int			conv_t_sz;
 	int			done;
+	int			flag;
 }				t_data;
 
 int		ft_printf(const char* str, ...);

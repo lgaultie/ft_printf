@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:10:38 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/07 22:26:21 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:20:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,26 @@ char	*ft_analyse_flags(char *flags, t_data *data)
 {
 	int		i;
 	char	*conv;
+	int		to_print;	//nb de chars de l'argv variadique a imprimer
 
 	i = 0;
 	while (flags[i] != '\0')
 	{
-		if (flags[i] == '.' && (flags[i + 1] >= '0') && (flags[i + 1] <= '9'))
+		if (flags[i] == '.' && flags[i + 1] >= '0' && flags[i + 1] <= '9')
 		{
-			conv = ft_precision_d(flags, data);	//enlever le strdup et conv est malloqué parceque ret l'est ?
-			//conv = ft_precision_s(flags, data);
-		}		//attention c'est que pour d... gerer
+			if (flags[ft_strlen(flags)] == 'd')
+				conv = ft_precision_d(flags, data);
+			if (flags[ft_strlen(flags)] == 's')
+				to_print = ft_precision_s(flags, data);
+			//FAIRE FLAG POUR PRECISION ICI
+		}
 		else if (flags[i] >= '0' && flags[i] <= '9')
+		{
 			conv = ft_width(flags, data);
-			//a gerer autrement... precision et largeur sont compatibles
-			//printf("Oui %020.2d moi c'est Loraine", 12);
-			//Oui                   12 moi c'est Loraine
+			//FAIRE FLAG POUR CHAMP ICI
+			//champ -> si inferieur, passe rien, sinon, rempli d'espace
+		}
+		else if (flags[i] == '+')
 
 
 

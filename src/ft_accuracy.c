@@ -6,17 +6,12 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/07 21:16:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/12 15:46:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-** s'occupe de la precision pour d: converti les chiffres de .123 en int,
-** pour ensuite ecrire dans une str malloquée le bon nombre de '0'.
-** C'est a dire 123 - ag_sz zeros.
-*/
 char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 {
 	int		i;
@@ -24,7 +19,7 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 	i = 0;
 	//printf("accuracy = %d\n", accuracy);
 	if (accuracy <= data->ap_sz)
-		return ("");		// et dans le cas de accuracy toute petite et ap_sz plus gros ? retour rien ?
+		return ("");	//on imprime rien, osef de flag si precision < taille ap
 	else
 	{
 		if (!(ret = malloc(sizeof(char) * (accuracy - data->ap_sz + 1))))
@@ -38,6 +33,12 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 	ret[i] = '\0';
 	return (ret);
 }
+
+/*
+** s'occupe de la precision pour d: converti les chiffres de .123 en int,
+** pour ensuite ecrire dans une str malloquée le bon nombre de '0'.
+** C'est a dire 123 - ag_sz zeros.
+*/
 
 char	*ft_precision_d(char *flags, t_data *data)
 {
