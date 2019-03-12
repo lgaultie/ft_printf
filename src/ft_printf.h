@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/06 22:52:42 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/12 16:49:37 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef	struct	s_data
 }				t_data;
 
 int		ft_printf(const char* str, ...);
+char	*ft_got_flag(char *str, t_data *data);
+char	*ft_next_p100(char *str, t_data *data);
+char	*ft_analyse(char *str, t_data *data);
 char	*ft_conv_dif(char *flags, t_data *data);
 char	*ft_jonh_claude(char *flags, t_data *data);
 // void	ft_flag_zero(char *flags, t_data *data);

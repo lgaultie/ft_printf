@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/06 13:52:07 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/12 16:47:30 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ HEAD	= $(SRCDIR)/ft_printf.h
 
 SRCS =	main.c	\
 		ft_printf.c	\
-		ft_conv_dif.c \
+		ft_analyse.c	\
+		ft_conv_dif.c	\
 		ft_conv_s.c
 
 CFLAGS += -I$(INCDIR)

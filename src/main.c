@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/07 23:18:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/12 18:27:14 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
 	t_data *data;
 
 	data = ft_memalloc(sizeof(t_data));
-	str = ft_strdup("%%blabla %d");
+	str = ft_strdup("la%%bla %dlol\n");
 	//
 	//		   FAUX --> Je m'appggel%le : |ICI| et j'ai cICIombien deja ? SALUT ans\n
 
