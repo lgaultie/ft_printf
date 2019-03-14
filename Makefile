@@ -6,12 +6,12 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/12 16:47:30 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/13 13:51:17 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
-CC = @clang
+CC = clang
 CFLAGS += -Wall -Werror -Wextra -g
 OBJDIR = obj
 SRCDIR = src
@@ -36,7 +36,7 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJ)
+$(NAME): $(OBJ) $(LIB)
 	@printf "compiling... "
 	$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
