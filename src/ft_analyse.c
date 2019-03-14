@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/14 21:02:33 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 21:11:30 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int		ft_next_p100_i(char *str)
 ** ft_next_p100
 ** Gives the index of the next char '%'
 */
-stati
 char	*ft_next_p100(char *str, t_data *data)
 {
 	int	i;
