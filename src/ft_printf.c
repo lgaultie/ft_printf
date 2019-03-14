@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 18:59:03 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/14 20:28:59 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 {
 	int		len;
 	char	*final;
+	char	*conv_flags;
 
 	len = data->flag_sz - 1;
 	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
@@ -65,11 +66,17 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 		final = ft_caps_x(data);
 	// if (flags[len] == 'p')
 	// 	ft_conv_p(flags, data);
-	// if (flags[len] == 'u')
-	// 	ft_conv_u(flags, data);
+	else if (flags[len] == 'u')
+		final = ft_conv_u(data);
 	else
 		final = (NULL);
-//	ft_putstr("avant return\n");
+		////////////////// faut assembler le retour de final la conversion
+		//////////////// avec le retour des options
+	printf("flags = |%s|\n", flags);
+	conv_flags = ft_analyse_options(flags, data);
+	printf("converted flags = |%s|\n", conv_flags);
+	final = ft_strjoin(conv_flags, final);
+	//////////////////// fonction a revoir
 	return (final);
 }
 

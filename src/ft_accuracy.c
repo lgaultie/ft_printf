@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/12 15:46:43 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/14 20:41:59 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,23 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 	int		i;
 
 	i = 0;
-	//printf("accuracy = %d\n", accuracy);
+	// printf("accuracy = %d\n", accuracy);
+	// printf("data->ap_sz = %d\n", data->ap_sz);
+	//data->ap_sz est totalement pétée..............
 	if (accuracy <= data->ap_sz)
 		return ("");	//on imprime rien, osef de flag si precision < taille ap
 	else
 	{
-		if (!(ret = malloc(sizeof(char) * (accuracy - data->ap_sz + 1))))
+		if (!(ret = malloc(sizeof(char) * (accuracy + 1))))
 			return (NULL);
-		while (i < accuracy - data->ap_sz)
+		while (i < accuracy)
 		{
 			ret[i] = '0';
 			i++;
 		}
 	}
 	ret[i] = '\0';
+	//printf("ret = %s\n", ret);
 	return (ret);
 }
 
