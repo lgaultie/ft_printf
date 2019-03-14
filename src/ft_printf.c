@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 20:28:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/14 21:21:42 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 		final = (NULL);
 		////////////////// faut assembler le retour de final la conversion
 		//////////////// avec le retour des options
-	printf("flags = |%s|\n", flags);
+	//printf("flags = |%s|\n", flags);
 	conv_flags = ft_analyse_options(flags, data);
-	printf("converted flags = |%s|\n", conv_flags);
+	//printf("converted flags = |%s|\n", conv_flags);
 	final = ft_strjoin(conv_flags, final);
 	//////////////////// fonction a revoir
 	return (final);
