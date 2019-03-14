@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/07 22:25:53 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/14 18:58:20 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ HEAD	= $(SRCDIR)/ft_printf.h
 
 SRCS =	main.c			\
 		ft_printf.c		\
-		ft_conv_dif.c	\
-		ft_conv_s.c		\
+		ft_d_i.c		\
+		ft_s_c.c		\
+		ft_o_x_X.c		\
 		ft_flags.c		\
 		ft_flags2.c		\
 		ft_accuracy.c	\

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/07 23:17:59 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 18:59:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ char	*ft_analyse_conv(char *flags, t_data *data)
 
 	len = data->flag_sz - 1;
 	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
-	{
-		final = ft_conv_dif(flags, data);
-	}
+		final = ft_conv_di(data);
 	else if (flags[len] == 's')
-	{
-		final = ft_jonh_claude(flags, data);
-	}
-	// if (flags[len] == 'c' || flags[len] == 's')
-	// 	ft_conv_cs(flags, data);
-	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
-	// 	ft_conv_oxX(flags, data);
+		final = ft_string(data);
+	else if (flags[len] == 'c')
+	 	final = ft_char(data);
+	else if (flags[len] == 'o')
+		final = ft_octal(data);
+	else if (flags[len] == 'x')
+		final = ft_hexa(data);
+	else if (flags[len] == 'X')
+		final = ft_caps_x(data);
 	// if (flags[len] == 'p')
 	// 	ft_conv_p(flags, data);
 	// if (flags[len] == 'u')
@@ -142,29 +142,23 @@ char	*ft_analyse(char *str, t_data *data)
 	j = 0;
 	data->conv_t_sz = 0;
 	//printf("&str[i] : |%s|\n", &str[i]);
-	printf("data buf debut: |%s|\n", data->buf);
 	while (data->done != 1)
 	{
-		printf("data buf : |%s|\n", data->buf);
 		if (str[i + j] == '%' && str[i + j + 1] == '%')
 			j++;
 		if (str[i + j] == '%' && ((i+j) == 0 || str[(i + j) - 1] != '%'))
 		{
-			printf("------------ON est sur un %% : %c index : %d------------\n", str[i+j], i + j);
 			//data->buf[i + data->conv_t_sz] = '\0';
 			tmp = ft_strdup(data->buf);
 			free(data->buf);
-			printf("data buf : |%s|\n", data->buf);
 			//printf("<join> ft_got_flag : |%s|\n", ft_got_flag(&str[i + j], data));
 			data->buf = ft_strjoin(tmp, ft_got_flag(&str[i + j], data));
 			free(tmp);
 			j += data->flag_sz;
-			ft_putstr("------------------------\n\n");
 		}
 
 		if ( (str[i + j] != '%') || ( (str[i + j] == '%') && (str[i + j - 1] == '%')) )
 		{
-			printf("------------ON est sur le CHAR : %c index : %d------------\n", str[i+j], i + j);
 			//printf("data buf : |%s|\n n_p100 : |%s|\n", data->buf,
 			//ft_next_p100(&str[i + j]));
 			tmp = ft_strdup(data->buf);
@@ -173,7 +167,6 @@ char	*ft_analyse(char *str, t_data *data)
 				return (NULL);
 			free(tmp);
 				i += ft_next_p100_i(&str[i + j], 0) - 1;
-			ft_putstr("------------------------\n\n");
 		}
 		//data->buf[i + data->conv_t_sz] = str[i + j];
 		i++;
