@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 21:21:25 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 23:39:25 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ char	*ft_jean_connard(char *flags, t_data *data)
 		final = ft_jonh_claude(flags, data);
 	else if (flags[len] == '%')
 		final = ft_p100(data);
+	else if (flags[len] == 'p')
+		final = ft_conv_p(data);
 	// if (flags[len] == 'c' || flags[len] == 's')
 	// 	ft_conv_cs(flags, data);
 	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
 	// 	ft_conv_oxX(flags, data);
-	// if (flags[len] == 'p')
-	// 	ft_conv_p(flags, data);
 	// if (flags[len] == 'u')
 	// 	ft_conv_u(flags, data);
 	else

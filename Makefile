@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/14 21:12:20 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/14 21:34:54 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS =	main.c	\
 		ft_printf.c	\
 		ft_analyse.c	\
 		ft_conv_dif.c	\
-		ft_conv_s.c
+		ft_conv_s.c		\
+		conv_p.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

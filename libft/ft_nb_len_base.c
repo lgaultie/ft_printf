@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:38:37 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/03 15:58:12 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 22:32:10 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 ** were in base X;
 */
 
-int	ft_nb_len_base(int value, int base)
+int	ft_nb_len_base(long value, int base)
 {
 	int	size;
 
@@ -26,7 +26,7 @@ int	ft_nb_len_base(int value, int base)
 		size++;
 	while (value != 0)
 	{
-		value = value / base;
+		value = value / (long)base;
 		size++;
 	}
 	return (size);

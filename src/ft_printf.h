@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/14 15:54:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 23:04:09 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*ft_next_p100(char *str, t_data *data);
 char	*ft_analyse(char *str, t_data *data);
 char	*ft_conv_dif(char *flags, t_data *data);
 char	*ft_jonh_claude(char *flags, t_data *data);
+char	*ft_conv_p(t_data *data);
 // void	ft_flag_zero(char *flags, t_data *data);
 // void	ft_flag_plus(char *flags, t_data *data);
 // void	ft_flag_minus(char *flags, t_data *data);

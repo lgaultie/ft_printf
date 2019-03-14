@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/14 20:59:49 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 23:38:31 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,17 @@ int main(int argc, char **argv)
 	i = 0;
 	data = ft_memalloc(sizeof(t_data));
 
-	// printf("----- Test 01 ----\n");
-	// str = ft_strdup("FAUX --> Je m'appggel%%le : |%d| et j'ai c%dombien deja ? %s ans\n");
-	// tmp = ft_printf(str);
-	// if ((ft_strcmp("FAUX --> Je m'appggel%le : |ICI| et j'ai cICIombien deja ? SALUT ans\n", tmp) == 0))
-	// {
+	str = ft_strdup(" %177d%%%s%%%d ");
+	ft_printf("%p\n", &test_nb);
+	printf("%p\n", &test_nb);
+	return 0;
+}
+
+// printf("----- Test 01 ----\n");
+// str = ft_strdup("FAUX --> Je m'appggel%%le : |%d| et j'ai c%dombien deja ? %s ans\n");
+// tmp = ft_printf(str);
+// if ((ft_strcmp("FAUX --> Je m'appggel%le : |ICI| et j'ai cICIombien deja ? SALUT ans\n", tmp) == 0))
+// {
 	// 	i++;
 	// 	printf("OK\n");
 	// }
@@ -98,78 +104,74 @@ int main(int argc, char **argv)
 	// tmp = ft_printf(str);
 	// if ((ft_strcmp("FAUX --> Je m'appggel%le : |ICI| et j'ai cICIombien deja ? SALUT ans\n", tmp) == 0))
 	// {
-	// 	i++;
-	// 	printf("OK\n");
-	// }
-	// else
-	// 	printf("NOOOON\n");
-	// printf("---------------\n\n");
-	//
-	// printf("----- Test 03 ----\n");
-	// str = ft_strdup("%%blabla %d");
-	// tmp = ft_printf(str);
-	// if ((ft_strcmp("%blabla ICI", tmp) == 0))
-	// {
-	// 	i++;
-	// 	printf("\nOK\n");
-	// }
-	// else
-	// 	printf("NOOOON\n");
-	// printf("---------------\n\n");
-	//
-	// printf("----- Test 04 ----\n");
-	// str = ft_strdup("");
-	// tmp = ft_printf(str);
-	// if ((ft_strcmp("", tmp) == 0))
-	// {
-	// 	i++;
-	// 	printf("\nOK\n");
-	// }
-	// else
-	// 	printf("NOOOON\n");
-	// printf("---------------\n\n");
-	//
-	// printf("----- Test 05 ----\n");
-	// str = ft_strdup("%dFAUX --> Je m'appg%%gelle : |%0177d| et j'ai c%dombien deja ? %07s ans\n");
-	// tmp = ft_printf(str);
-	// if ((ft_strcmp("ICIFAUX --> Je m'appg%gelle : |ICI| et j'ai cICIombien deja ? SALUT ans\n", tmp) == 0))
-	//
-	// {
-	// 	i++;
-	// 	printf("\nOK\n");
-	// }
-	// else
-	// 	printf("NOOOON\n");
-	// printf("---------------\n\n");
-	//
-	// printf("----- Test 06 ----\n");
-	// str = ft_strdup("%%%%%d\n");
-	// tmp = ft_printf(str);
-	// if ((ft_strcmp("%%ICI\n", tmp) == 0))
-	//
-	// {
-	// 	i++;
-	// 	printf("\nOK\n");
-	// }
-	// else
-	// 	printf("NOOOON\n");
-	// printf("---------------\n\n");
-	//
-	// printf("----- Test 07 ----\n");
-	// str = ft_strdup("%%%d%d%%%s%%\n");
-	// tmp = ft_printf(str);
-	// if ((ft_strcmp("%ICIICI%SALUT%\n", tmp) == 0))
-	//
-	// {
-	// 	i++;
-	// 	printf("\nOK\n");
-	// }
-	// else
-	// 	printf("NOOOON\n");
-	// printf("---------------\n\n");
+		// 	i++;
+		// 	printf("OK\n");
+		// }
+		// else
+		// 	printf("NOOOON\n");
+		// printf("---------------\n\n");
+		//
+		// printf("----- Test 03 ----\n");
+		// str = ft_strdup("%%blabla %d");
+		// tmp = ft_printf(str);
+		// if ((ft_strcmp("%blabla ICI", tmp) == 0))
+		// {
+			// 	i++;
+			// 	printf("\nOK\n");
+			// }
+			// else
+			// 	printf("NOOOON\n");
+			// printf("---------------\n\n");
+			//
+			// printf("----- Test 04 ----\n");
+			// str = ft_strdup("");
+			// tmp = ft_printf(str);
+			// if ((ft_strcmp("", tmp) == 0))
+			// {
+				// 	i++;
+				// 	printf("\nOK\n");
+				// }
+				// else
+				// 	printf("NOOOON\n");
+				// printf("---------------\n\n");
+				//
+				// printf("----- Test 05 ----\n");
+				// str = ft_strdup("%dFAUX --> Je m'appg%%gelle : |%0177d| et j'ai c%dombien deja ? %07s ans\n");
+				// tmp = ft_printf(str);
+				// if ((ft_strcmp("ICIFAUX --> Je m'appg%gelle : |ICI| et j'ai cICIombien deja ? SALUT ans\n", tmp) == 0))
+				//
+				// {
+					// 	i++;
+					// 	printf("\nOK\n");
+					// }
+					// else
+					// 	printf("NOOOON\n");
+					// printf("---------------\n\n");
+					//
+					// printf("----- Test 06 ----\n");
+					// str = ft_strdup("%%%%%d\n");
+					// tmp = ft_printf(str);
+					// if ((ft_strcmp("%%ICI\n", tmp) == 0))
+					//
+					// {
+						// 	i++;
+						// 	printf("\nOK\n");
+						// }
+						// else
+						// 	printf("NOOOON\n");
+						// printf("---------------\n\n");
+						//
+						// printf("----- Test 07 ----\n");
+						// str = ft_strdup("%%%d%d%%%s%%\n");
+						// tmp = ft_printf(str);
+						// if ((ft_strcmp("%ICIICI%SALUT%\n", tmp) == 0))
+						//
+						// {
+							// 	i++;
+							// 	printf("\nOK\n");
+							// }
+							// else
+							// 	printf("NOOOON\n");
+							// printf("---------------\n\n");
 
-	//printf("Score : %d/7\n", i);
-	str = ft_strdup(" %177d%%%s%%%d ");
-	ft_printf(str);
-	return 0;
-}
+							//printf("Score : %d/7\n", i);
