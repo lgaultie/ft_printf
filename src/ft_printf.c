@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 20:50:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 21:21:25 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*ft_jean_connard(char *flags, t_data *data)
 	// 	ft_conv_u(flags, data);
 	else
 		final = (NULL);
-//	ft_putstr("avant return\n");
 	return (final);
 }
 
@@ -51,10 +50,10 @@ char	*ft_got_flag(char *str, t_data *data)
 	int		x;
 	char	*flags;
 	char	*final;
+
 	/* IDEE :
 		ici, au lieu de chercher directement des conv qu'on connait, on peut chercher un char compris entre 65 et 90 (Maj) et entre 97 et 122 (minuscules). Pour les flags (hh, h, l, ll), verifier le char suivant
 	*/
-
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%'	\
@@ -62,21 +61,16 @@ char	*ft_got_flag(char *str, t_data *data)
 	{
 		x++;
 	}
-//	printf("x : %d\n", x);
-//printf("1 - flag_sz : %d\n", data->flag_sz);
 	if (str[x] == '%')
-		data->flag_sz = 1;	
+		data->flag_sz = 1;
 	else
 		data->flag_sz = x + 1;
-
-//printf("2 - flag_sz : %d\n", data->flag_sz);
 	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	flags = ft_strncpy(flags, str, data->flag_sz);
 	if ((final = ft_jean_connard(flags, data)) == NULL)
 		return (NULL);
 	free(flags);
-//	printf("got flag return : |%s|\n", final);
 	return (final);
 }
 

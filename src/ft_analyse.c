@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/14 21:11:30 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/14 21:20:07 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 ** ft_next_p100_i
 ** Gives the index of the next char '%'
 */
-static int		ft_next_p100_i(char *str)
+
+static int	ft_next_p100_i(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i] != '\0' && str[i] != '%')
@@ -28,17 +29,19 @@ static int		ft_next_p100_i(char *str)
 
 /*
 ** ft_next_p100
-** Gives the index of the next char '%'
+** Return a string copied from the begining of str and finishing by the char
+** preceeding its first '%' or by '\0' if no '%' found.
 */
-char	*ft_next_p100(char *str, t_data *data)
+
+char		*ft_next_p100(char *str, t_data *data)
 {
-	int	i;
-	int	n_p100;
-	char *ret;
+	int		i;
+	int		n_p100;
+	char	*ret;
 
 	i = 0;
 	n_p100 = ft_next_p100_i(str);
-	if(!(ret = malloc(sizeof(char) * (n_p100 + 1))))
+	if (!(ret = malloc(sizeof(char) * (n_p100 + 1))))
 		return (NULL);
 	while (str[i] != '\0' && str[i] != '%')
 	{
@@ -53,7 +56,7 @@ char	*ft_next_p100(char *str, t_data *data)
 
 static void	ft_cat_conv(t_data *data, char *str, int i)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strdup(data->buf);
 	free(data->buf);
@@ -63,7 +66,7 @@ static void	ft_cat_conv(t_data *data, char *str, int i)
 
 static void	ft_cat_txt(t_data *data, char *str, int i)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strdup(data->buf);
 	free(data->buf);
@@ -72,7 +75,7 @@ static void	ft_cat_txt(t_data *data, char *str, int i)
 	free(tmp);
 }
 
-char	*ft_analyse(char *str, t_data *data)
+char		*ft_analyse(char *str, t_data *data)
 {
 	int		i;
 
@@ -84,7 +87,7 @@ char	*ft_analyse(char *str, t_data *data)
 		{
 			ft_cat_conv(data, &str[1], i);
 			if ((str[i] == '%') && (str[i + 1] == '%'))
-			 	i += 2;
+				i += 2;
 			else
 				i += data->flag_sz + 1;
 		}
