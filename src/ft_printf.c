@@ -6,77 +6,46 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 21:21:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:22:37 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-/*
-** ft_next_p100_i
-** Used to get size from index [0] to the next conversion
-** mode 0 : size untouched.
-** mode 1 : size with %% understood as %.
-** mode 2 : index of next %.
-*/
-
-int		ft_next_p100_i(char *str, int	mode)
+static char	*ft_p100(t_data *data)
 {
-	int	p_nb;
-	int	i;
-
-	p_nb = 0;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '%' && str[i + 1] == '%')
-		{
-			if (mode == 1)
-				p_nb++;
-			if (mode == 2)
-				return (i);
-			i++;
-		}
-		if (str[i] == '%' && (i == 0 || str[i - 1] != '%'))
-			return (i - p_nb);
-		i++;
-	}
-	return (i);
+	data->conv_sz = 1;
+	data->conv_t_sz += data->conv_sz;
+	return ("%");
 }
 
-char	*ft_analyse_conv(char *flags, t_data *data)
+char	*ft_jean_connard(char *flags, t_data *data)
 {
 	int		len;
 	char	*final;
-	char	*conv_flags;
 
 	len = data->flag_sz - 1;
 	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
-		final = ft_conv_di(data);
+		final =	ft_conv_di(data);
 	else if (flags[len] == 's')
 		final = ft_string(data);
+	else if (flags[len] == '%')
+		final = ft_p100(data);
+	else if (flags[len] == 'p')
+		final = ft_conv_p(data);
+	else if (flags[len] == 'u')
+	 	final = ft_conv_u(data);
 	else if (flags[len] == 'c')
-	 	final = ft_char(data);
+		final = ft_char(data);
 	else if (flags[len] == 'o')
 		final = ft_octal(data);
 	else if (flags[len] == 'x')
 		final = ft_hexa(data);
 	else if (flags[len] == 'X')
-		final = ft_caps_x(data);
-	// if (flags[len] == 'p')
-	// 	ft_conv_p(flags, data);
-	else if (flags[len] == 'u')
-		final = ft_conv_u(data);
+	 	final = ft_caps_x(data);
 	else
 		final = (NULL);
-		////////////////// faut assembler le retour de final la conversion
-		//////////////// avec le retour des options
-	//printf("flags = |%s|\n", flags);
-	conv_flags = ft_analyse_options(flags, data);
-	//printf("converted flags = |%s|\n", conv_flags);
-	final = ft_strjoin(conv_flags, final);
-	//////////////////// fonction a revoir
 	return (final);
 }
 
@@ -85,126 +54,59 @@ char	*ft_got_flag(char *str, t_data *data)
 	int		x;
 	char	*flags;
 	char	*final;
-	/* IDEE :
-		ici, au lieu de chercher directement des conv qu'on connait, on peut chercher un char compris entre 65 et 90 (Maj) et entre 97 et 122 (minuscules). Pour les flags (hh, h, l, ll), verifier le char suivant
-	*/
 
+	/* IDEE :
+		ici, au lieu de chercher directement des conv qu'on connait,
+		on peut chercher un char compris entre 65 et 90 (Maj)
+		et entre 97 et 122 (minuscules).
+		Pour les flags (hh, h, l, ll), verifier le char suivant
+	*/
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
-		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' \
+		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%'	\
 		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
 	{
 		x++;
 	}
-	data->flag_sz = x + 1;
-
-	//printf("flag_sz : %d\n", data->flag_sz);
+	if (str[x] == '%')
+		data->flag_sz = 1;
+	else
+		data->flag_sz = x + 1;
 	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	flags = ft_strncpy(flags, str, data->flag_sz);
-	if ((final = ft_analyse_conv(flags, data)) == NULL)
+	if ((final = ft_jean_connard(flags, data)) == NULL)
 		return (NULL);
 	free(flags);
-//	printf("got flag return : |%s|\n", final);
 	return (final);
-}
-
-char	*ft_next_p100(char *str, t_data *data)
-{
-	int	i;
-	int	j;
-	int	n_p100;
-	char *ret;
-
-	i = 0;
-	j = 0;
-	n_p100 = ft_next_p100_i(str, 1);
-	if(!(ret = malloc(sizeof(char) * (n_p100 + 1))))
-		return (NULL);
-	//while ((i + j) <= n_p100)
-	while (str[i + j] != '\0')
-	{
-		if (str[i + j] == '%' && str[i + j + 1] == '%')
-			j++;
-		if (str[i + j] == '%' && (i == 0 || str[i + j - 1] != '%'))
-		{
-			ret[i] = '\0';
-			return (ret);
-		}
-		ret[i] = str[i + j];
-		i++;
-	}
-	ret[i] = '\0';
-	data->done = 1;
-	return (ret);
-}
-
-char	*ft_analyse(char *str, t_data *data)
-{
-	int		i;
-	int		j;
-	char	*tmp;
-
-	i = ft_next_p100_i(str, 0);
-	j = 0;
-	data->conv_t_sz = 0;
-	//printf("&str[i] : |%s|\n", &str[i]);
-	while (data->done != 1)
-	{
-		if (str[i + j] == '%' && str[i + j + 1] == '%')
-			j++;
-		if (str[i + j] == '%' && ((i+j) == 0 || str[(i + j) - 1] != '%'))
-		{
-			//data->buf[i + data->conv_t_sz] = '\0';
-			tmp = ft_strdup(data->buf);
-			free(data->buf);
-			//printf("<join> ft_got_flag : |%s|\n", ft_got_flag(&str[i + j], data));
-			data->buf = ft_strjoin(tmp, ft_got_flag(&str[i + j], data));
-			free(tmp);
-			j += data->flag_sz;
-		}
-
-		if ( (str[i + j] != '%') || ( (str[i + j] == '%') && (str[i + j - 1] == '%')) )
-		{
-			//printf("data buf : |%s|\n n_p100 : |%s|\n", data->buf,
-			//ft_next_p100(&str[i + j]));
-			tmp = ft_strdup(data->buf);
-			free(data->buf);
-			if (!(data->buf = ft_strjoin(tmp, ft_next_p100(&str[i + j], data))))
-				return (NULL);
-			free(tmp);
-				i += ft_next_p100_i(&str[i + j], 0) - 1;
-		}
-		//data->buf[i + data->conv_t_sz] = str[i + j];
-		i++;
-	}
-	//data->buf[i + data->conv_t_sz] = '\0';
-	return (data->buf);
 }
 
 int		ft_print_format(char *format, t_data *data)
 {
 	int		len;
 
-	if (!(data->buf = ft_next_p100(format, data)))
-        return (-1);
+	if (!(data->buf = ft_strnew(0)))
+		return (-1);
 	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
 	len = ft_strlen(data->buf);
-	free(data->buf);
+	//free(data->buf); to uncom when not in tests
 	return (len);
 }
 
-int		ft_printf(const char *format, ...)
+//int		ft_printf(const char *format, ...) Not for tests
+char		*ft_printf(const char *format, ...) // for tests
 {
 	int			len;
 	t_data		*data;
 
 	if (!(data = malloc(sizeof(t_data))))
-		return (-1);
+		return (NULL);
+		//return (-1);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
-	free(data);
-	return (len);
+	//free(data); to uncom when not in tests
+	//return (len); For realease
+	return (data->buf);
 }

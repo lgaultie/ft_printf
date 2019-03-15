@@ -6,13 +6,13 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/14 18:58:20 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/15 15:42:38 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
-CC = @clang
-CFLAGS += -Wall -Werror -Wextra -g3
+CC = clang
+CFLAGS += -Wall -Werror -Wextra -g
 OBJDIR = obj
 SRCDIR = src
 LIBDIR	= libft
@@ -21,13 +21,14 @@ HEAD	= $(SRCDIR)/ft_printf.h
 
 SRCS =	main.c			\
 		ft_printf.c		\
+		ft_analyse.c	\
 		ft_d_i.c		\
 		ft_s_c.c		\
 		ft_o_x_X.c		\
 		ft_flags.c		\
-		ft_flags2.c		\
 		ft_accuracy.c	\
-		ft_width.c
+		ft_width.c		\
+		ft_conv_p.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -40,16 +41,16 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJ)
+$(NAME): $(OBJ) $(LIB)
 	@printf "compiling... "
-	$(CC) -o $@ $^
+	@$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
 $(LIB):
 	@make -C $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR) :
 	@mkdir $@

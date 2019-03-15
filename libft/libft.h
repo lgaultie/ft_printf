@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 15:01:17 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/01/16 14:47:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:39:27 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ void			ft_display_array(char **tab);
 int				ft_intlen(int nb);
 int				ft_sqrt(int nb);
 char			*ft_strndup(const char *src, int n);
+char			*ft_itoa_base(long n, int base);
+int				ft_nb_len_base(long value, int base);
 
 #endif

@@ -75,7 +75,9 @@ SRCS =	ft_atoi.c			\
 		ft_lstprintstr.c	\
 		ft_display_array.c	\
 		ft_intlen.c			\
-		ft_strndup.c
+		ft_strndup.c		\
+		ft_itoa_base.c		\
+		ft_intlen_base.c
 
 OBJ = $(SRCS:.c=.o)
 HEADER = .
