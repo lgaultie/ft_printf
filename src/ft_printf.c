@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 23:39:25 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/15 14:44:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,23 @@ char	*ft_jean_connard(char *flags, t_data *data)
 
 	len = data->flag_sz - 1;
 	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
-		final = ft_conv_dif(flags, data);
+		final =	ft_conv_di(data);
 	else if (flags[len] == 's')
-		final = ft_jonh_claude(flags, data);
+		final = ft_string(data);
 	else if (flags[len] == '%')
 		final = ft_p100(data);
 	else if (flags[len] == 'p')
 		final = ft_conv_p(data);
-	// if (flags[len] == 'c' || flags[len] == 's')
-	// 	ft_conv_cs(flags, data);
-	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
-	// 	ft_conv_oxX(flags, data);
-	// if (flags[len] == 'u')
-	// 	ft_conv_u(flags, data);
+	else if (flags[len] == 'u')
+	 	final = ft_conv_u(data);
+	else if (flags[len] == 'c')
+		final = ft_char(data);
+	else if (flags[len] == 'o')
+		final = ft_octal(data);
+	else if (flags[len] == 'x')
+		final = ft_hexa(data);
+	else if (flags[len] == 'X')
+	 	final = ft_caps_x(data);
 	else
 		final = (NULL);
 	return (final);

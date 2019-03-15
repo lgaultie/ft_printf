@@ -6,11 +6,41 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:10:38 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/15 01:16:33 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/14 20:41:37 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*ft_analyse_options(char *flags, t_data *data)
+{
+	char	*converted_flags;
+	int		i;
+
+	i = 0;
+	// printf("ap_sz = %d\n", data->ap_sz);
+	// if (!(converted_flags = malloc(sizeof(char) * (data->ap_sz + 1))))
+	// 	return (0);
+	while (flags[i] != '\0')
+	{
+		if (flags[i] == '.')
+		{
+			// ft_putstr("tu retrentres bien ici mais ressort de la merde\n");
+			// printf("flags = |%s|\n", flags);
+			if (!(converted_flags = ft_precision_d(flags, data)))
+				return (NULL);
+		}
+		i++;
+	}
+	return (converted_flags);
+}
+
+
+
+
+
+
+
 
 void	ft_flag_zero(char *flags, t_data *data)
 {

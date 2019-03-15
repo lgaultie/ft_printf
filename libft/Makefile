@@ -6,7 +6,7 @@
 #    By: amamy <amamy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 20:19:54 by amamy             #+#    #+#              #
-#    Updated: 2019/03/03 18:26:24 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/15 11:22:27 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,8 +77,9 @@ SRC = 	ft_memset.c 	\
 		ft_strrealloc.c	\
 		ft_strndup.c	\
 		ft_lstendadd.c	\
-		ft_nb_len_base.c	\
-		ft_itoa_base.c
+		ft_itoa_base.c	\
+		ft_nb_len_base.c \
+		ft_intlen.c
 
 SRCO = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror

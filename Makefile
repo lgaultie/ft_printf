@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/14 21:34:54 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/15 00:50:42 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,18 @@ LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	main.c	\
-		ft_printf.c	\
+SRCS =	main.c		\
+		ft_printf.c		\
 		ft_analyse.c	\
-		ft_conv_dif.c	\
+		ft_d_i.c			\
+		ft_s_c.c			\
+		ft_o_x_X.c		\
+		ft_flags.c		\
+		ft_flags2.c		\
+		ft_accuracy.c	\
+		ft_width.c		\
 		ft_conv_s.c		\
-		conv_p.c
+		ft_conv_p.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
