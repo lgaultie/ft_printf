@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstendadd.c                                     :+:      :+:    :+:   */
+/*   ft_flags2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/14 14:58:34 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/03 19:26:26 by amamy            ###   ########.fr       */
+/*   Created: 2019/03/04 12:15:34 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/04 12:20:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstendadd(t_list *alst, t_list *new)
-{
-	t_list	*tmp;
-
-	tmp = alst;
-	if (!alst)
-		return ;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	if (new)
-	{
-		tmp->next = new;
-		new->next = NULL;
-	}
-}
+// void	ft_espaces(char *flags, t_data *data)
+// {
+// 	int		i;
+//
+// 	i = 0;
+// }
+//
+// void	ft_precision(char *flags, t_data *data)
+// {
+// 	int		i;
+//
+// 	i = 0;
+// }

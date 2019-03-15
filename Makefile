@@ -6,21 +6,31 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/01 14:41:49 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/15 00:50:42 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
-CC = @clang
-CFLAGS += -Wall -Werror -Wextra
+CC = clang
+CFLAGS += -Wall -Werror -Wextra -g
 OBJDIR = obj
 SRCDIR = src
 LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	main.c	\
-		ft_printf.c
+SRCS =	main.c		\
+		ft_printf.c		\
+		ft_analyse.c	\
+		ft_d_i.c			\
+		ft_s_c.c			\
+		ft_o_x_X.c		\
+		ft_flags.c		\
+		ft_flags2.c		\
+		ft_accuracy.c	\
+		ft_width.c		\
+		ft_conv_s.c		\
+		ft_conv_p.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -33,7 +43,7 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJ)
+$(NAME): $(OBJ) $(LIB)
 	@printf "compiling... "
 	$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"

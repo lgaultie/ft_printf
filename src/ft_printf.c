@@ -6,75 +6,100 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/02 14:17:53 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 01:25:27 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-/*
-** ft_analyse:
-** Analyze all the flags and options after the '%', and call the appropriate
-** function. Return what is to be printed.
-*/
-char	*ft_analyse(char *str, t_data *data)
+static char	*ft_p100(t_data *data)
 {
-	int		i;
-	char	*tmp;
-
-	i = 0;
-	while (str[i] != 'c' && str[i] != 's' && str[i] != 'p' \
-	&& str[i] != 'd' && str[i] != 'i' && str[i] != 'o' \
-	&& str[i] != 'u' && str[i] != 'x' && str[i] != 'X' \
-	&& str[i] != 'f')
-		i++;
-	if (str[i] == 's' || str[i] == 'S')
-		tmp = va_arg(data->ap, char*);
-	if (str[i] == 'd' || str[i] == 'i')
-		tmp = ft_itoa(va_arg(data->ap, int));
-	data->ag_size += (ft_strlen(tmp) - 2); // -2 to replace by the flag size
-	return (tmp);
+	data->conv_sz = 1;
+	data->conv_t_sz += data->conv_sz;
+	return ("%");
 }
 
-/*
-** ft_printf_format:
-** Analyse format and create the appropriate buffer, then print it.
-** return the lenght of printed bits or -1.
-*/
+char	*ft_jean_connard(char *flags, t_data *data)
+{
+	int		len;
+	char	*final;
+
+	len = data->flag_sz - 1;
+	if (flags[len] == 'd' || flags[len] == 'i' || flags[len] == 'f')
+		final =	ft_conv_di(data);
+	else if (flags[len] == 's')
+		final = ft_string(data);
+	else if (flags[len] == '%')
+		final = ft_p100(data);
+	else if (flags[len] == 'p')
+		final = ft_conv_p(data);
+	// if (flags[len] == 'c' || flags[len] == 's')
+	// 	ft_conv_cs(flags, data);
+	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
+	// 	ft_conv_oxX(flags, data);
+	// if (flags[len] == 'u')
+	// 	ft_conv_u(flags, data);
+	else
+		final = (NULL);
+	return (final);
+}
+
+char	*ft_got_flag(char *str, t_data *data)
+{
+	int		x;
+	char	*flags;
+	char	*final;
+
+	/* IDEE :
+		ici, au lieu de chercher directement des conv qu'on connait, on peut chercher un char compris entre 65 et 90 (Maj) et entre 97 et 122 (minuscules). Pour les flags (hh, h, l, ll), verifier le char suivant
+	*/
+	x = 0;
+	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
+		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%'	\
+		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
+	{
+		x++;
+	}
+	if (str[x] == '%')
+		data->flag_sz = 1;
+	else
+		data->flag_sz = x + 1;
+	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
+		return (NULL);
+	flags = ft_strncpy(flags, str, data->flag_sz);
+	if ((final = ft_jean_connard(flags, data)) == NULL)
+		return (NULL);
+	free(flags);
+	return (final);
+}
+
 int		ft_print_format(char *format, t_data *data)
 {
-	int		i;
-	int		j;
+	int		len;
 
-	i = 0;
-	j = 0;
-	if (!(data->buf = ft_memalloc(sizeof(char) * 1000)))
-		return (0);
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%' && i++)
-			ft_strcat(data->buf, ft_analyse(&format[i++], data));	//on passe adresse de format[i] marche pas --> ex %hhd
-		data->buf[i + data->ag_size] = format[i];
-		i++;
-	}
-	data->buf[i + data->ag_size] = '\0';
+	if (!(data->buf = ft_strnew(0)))
+		return (-1);
+	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
-	return (ft_strlen(data->buf));
+	len = ft_strlen(data->buf);
+	//free(data->buf); to uncom when not in tests
+	return (len);
 }
 
-/*
-** ft_printf:
-** Return how many bytes has been printed, or -1 if there was an error.
-*/
-int		ft_printf(const char *format, ...)
+//int		ft_printf(const char *format, ...) Not for tests
+char		*ft_printf(const char *format, ...) // for tests
 {
 	int			len;
 	t_data		*data;
 
-	if (!(data = ft_memalloc(sizeof(t_data))))
-		return (-1);
+	if (!(data = malloc(sizeof(t_data))))
+		return (NULL);
+		//return (-1);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
-	return (len);
+	//free(data); to uncom when not in tests
+	//return (len); For realease
+	return (data->buf);
 }

@@ -6,7 +6,7 @@
 #    By: amamy <amamy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 20:19:54 by amamy             #+#    #+#              #
-#    Updated: 2019/01/14 15:00:15 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/15 01:26:28 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,25 +76,34 @@ SRC = 	ft_memset.c 	\
 		ft_no_space.c	\
 		ft_strrealloc.c	\
 		ft_strndup.c	\
-		ft_lstendadd.c
+		ft_lstendadd.c	\
+		ft_nb_len_base.c \
+		ft_intlen.c
 
 SRCO = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
-HEADER = .
+HEADER = libft.h
+
+_GREEN=\e[32m
+_YELLOW=\e[33m
+_BLUE=\e[34m
+_END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(SRCO)
-	ar rcs $(NAME) $(SRCO)
+$(NAME): $(SRCO) $(HEADER)
+	@printf "compiling libft... "
+	@ar rcs $(NAME) $(SRCO)
+	@printf "[$(_GREEN)✓$(_END)]\n"
 
 %.o : %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(SRCO)
+	@rm -f $(SRCO)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
