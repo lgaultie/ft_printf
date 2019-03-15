@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/15 14:44:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/15 15:22:37 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ char	*ft_got_flag(char *str, t_data *data)
 	char	*final;
 
 	/* IDEE :
-		ici, au lieu de chercher directement des conv qu'on connait, on peut chercher un char compris entre 65 et 90 (Maj) et entre 97 et 122 (minuscules). Pour les flags (hh, h, l, ll), verifier le char suivant
+		ici, au lieu de chercher directement des conv qu'on connait,
+		on peut chercher un char compris entre 65 et 90 (Maj)
+		et entre 97 et 122 (minuscules).
+		Pour les flags (hh, h, l, ll), verifier le char suivant
 	*/
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \

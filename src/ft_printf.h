@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/15 11:24:28 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/15 15:24:27 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,3 @@ char	*ft_analyse_options(char *flags, t_data *data);
 //void	ft_precision(char *flags, t_data *data);
 
 #endif
-
-// va_list		ap;
-// int			flag_sz;
-// int			ap_sz;
-// int			ap_t_sz;
-// char 		*buf;
