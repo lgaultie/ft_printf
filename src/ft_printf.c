@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/15 11:45:57 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/15 14:44:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_jean_connard(char *flags, t_data *data)
 	else if (flags[len] == 'x')
 		final = ft_hexa(data);
 	else if (flags[len] == 'X')
-	 	ft_caps_x(data);
+	 	final = ft_caps_x(data);
 	else
 		final = (NULL);
 	return (final);
