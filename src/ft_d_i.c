@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 19:08:29 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 11:20:04 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ char	*ft_conv_u(t_data *data)
 	ap_sz = ft_intlen(ap);
 	if (!(final = malloc(sizeof(char) * (ap_sz + 1))))
 		return (NULL);
-	final = ft_itoa_base(ap, 10, 1);
+	final = ft_itoa_base_mode(ap, 10, 1);
 	return (final);
 }

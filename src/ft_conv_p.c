@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:57:13 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/15 01:12:52 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/15 11:24:19 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_conv_p(t_data *data)
 	ad = (va_arg(data->ap, unsigned long));
 	if (!(tmp = ft_strdup("0x")))
 		return (NULL);
-	if (!(final = ft_strjoin(tmp, ft_itoa_base(ad, 16, 2))))
+	if (!(final = ft_strjoin(tmp, ft_itoa_base(ad, 16))))
 		return (NULL);
 	while (final[i] != '\0')
 	{

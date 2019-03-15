@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/15 01:25:27 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/15 11:45:57 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ char	*ft_jean_connard(char *flags, t_data *data)
 		final = ft_p100(data);
 	else if (flags[len] == 'p')
 		final = ft_conv_p(data);
-	// if (flags[len] == 'c' || flags[len] == 's')
-	// 	ft_conv_cs(flags, data);
-	// if (flags[len] == 'o' || flags[len] == 'x' || flags[len] == 'X')
-	// 	ft_conv_oxX(flags, data);
-	// if (flags[len] == 'u')
-	// 	ft_conv_u(flags, data);
+	else if (flags[len] == 'u')
+	 	final = ft_conv_u(data);
+	else if (flags[len] == 'c')
+		final = ft_char(data);
+	else if (flags[len] == 'o')
+		final = ft_octal(data);
+	else if (flags[len] == 'x')
+		final = ft_hexa(data);
+	else if (flags[len] == 'X')
+	 	ft_caps_x(data);
 	else
 		final = (NULL);
 	return (final);

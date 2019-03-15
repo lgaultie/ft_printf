@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 18:58:26 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 18:58:28 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 11:21:06 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_abs(int nb)
 	return (nb);
 }
 
-char	*ft_itoa_base(unsigned int value, unsigned int base, int mode)
+char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode)
 {
 	char			*str;
 	char			*tab;
@@ -53,7 +53,7 @@ char	*ft_octal(t_data *data)
 	unsigned int	ap;
 
 	ap = (va_arg(data->ap, int));
-	final = ft_itoa_base(ap, 8, 1);
+	final = ft_itoa_base_mode(ap, 8, 1);
 	return (final);
 }
 
@@ -63,7 +63,7 @@ char	*ft_hexa(t_data *data)
 	unsigned int	ap;
 
 	ap = (va_arg(data->ap, int));
-	final = ft_itoa_base(ap, 16, 1);
+	final = ft_itoa_base_mode(ap, 16, 1);
 	return (final);
 }
 
@@ -73,6 +73,6 @@ char	*ft_caps_x(t_data *data)
 	unsigned int	ap;
 
 	ap = (va_arg(data->ap, int));
-	final = ft_itoa_base(ap, 16, 2);
+	final = ft_itoa_base_mode(ap, 16, 2);
 	return (final);
 }

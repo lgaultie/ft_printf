@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/15 01:32:21 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/15 11:28:46 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int main(int argc, char **argv)
 	data = ft_memalloc(sizeof(t_data));
 
 	str = ft_strdup(" %177d%%%s%%%d ");
-	ft_printf("%177dQTrop bien ca marche %%%s%%%d ", 12, "ertjifehuiehfwie haha :y", 1);
-//	printf("%p\n", &test_nb);
+	ft_printf("%p%% blabla %d\n", &test_nb, 36);
+	printf("%p%% blabla %d\n", &test_nb, 36);
 	return 0;
 }
 
