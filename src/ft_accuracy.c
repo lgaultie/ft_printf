@@ -6,11 +6,15 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 20:41:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:33:33 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+
+//NOTE: ces fonctions marchent bien si ap_sz est initialisé correctement
+
 
 char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 {

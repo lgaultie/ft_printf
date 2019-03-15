@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/15 15:22:37 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:33:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char	*ft_got_flag(char *str, t_data *data)
 	int		x;
 	char	*flags;
 	char	*final;
+	char	*returned_flags;
 
 	/* IDEE :
 		ici, au lieu de chercher directement des conv qu'on connait,
@@ -77,6 +78,16 @@ char	*ft_got_flag(char *str, t_data *data)
 	flags = ft_strncpy(flags, str, data->flag_sz);
 	if ((final = ft_jean_connard(flags, data)) == NULL)
 		return (NULL);
+//ici conv est le retour des conversions, il faut lui ajouter le retour des flags
+	if (!(returned_flags = malloc(sizeof(char) * (data->ap_sz + 1))))
+		return (NULL);
+
+
+
+
+
+
+//////////////////////////////////////////////////
 	free(flags);
 	return (final);
 }
