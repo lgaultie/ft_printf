@@ -6,7 +6,7 @@
 /*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/17 17:31:27 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/17 20:04:02 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,21 @@ char  *ft_only_conv(char *flags, t_data *data)
 char  *ft_flag_conv(char *flags, t_data *data)
 {
   char  *final;
+  int   i;
 
-  (void) data;
-  (void)flags;
-  final = (NULL);
-  return  (final);
+  i = 0;
+  data->flag = 0;
+  while (flag[i] != '\0')
+  {
+    if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
+    || flag[i + 1] == '*'))
+    {
+      data->flag |= F_PRECIS;
+    }
+    i++;
+}
+
+
+
+  return  ("fina");
 }

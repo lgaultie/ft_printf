@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/17 17:34:57 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/17 19:47:12 by takou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,14 @@ int main(int argc, char **argv)
 	i = 0;
 	data = ft_memalloc(sizeof(t_data));
 
+	// i |= 2; // active le bit 2
+	// i |= 4; // active le bit 4
+	// if (i & 2) // check if bit 2 is enable
+	// i &= ~2;// disable bit 2
+
 	str = ft_strdup(" %177d%%%s%%%d ");
-	ft_printf("%d%% b%plabla \n", 11, &test_nb);
-	//printf("%hd\n", 36);
+	ft_printf("%.5d%% b%plabla \n", i, &test_nb);
+	//printf("%.*d\n", 5, test_nb);
 	return 0;
 }
 
