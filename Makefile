@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/17 17:01:05 by takou            ###   ########.fr        #
+#    Updated: 2019/03/17 17:41:38 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRCS =	main.c		\
 		ft_flags2.c		\
 		ft_accuracy.c	\
 		ft_width.c		\
-		ft_conv_s.c		\
 		ft_conv_p.c		\
 		ft_flag_conv.c
 
