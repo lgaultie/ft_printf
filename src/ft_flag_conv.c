@@ -6,7 +6,7 @@
 /*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/18 12:31:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/18 12:43:59 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char  *ft_only_conv(char *flags, t_data *data)
 //recupere la conversion des flags
 //analyse les conversions et la fonction qui va les traiter, recupere le retour
 //fais le strjoin des deux
-char  *ft_flag_conv(char *flags, t_data *data)
+char  *ft_flag_conv(char *flag, t_data *data)
 {
 	char  *final;
 	int   i;
@@ -68,5 +68,6 @@ char  *ft_flag_conv(char *flags, t_data *data)
 		}
 		i++;
 	}
-	return  (final);
+	final = NULL;
+	return  ("fina");
 }

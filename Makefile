@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/15 15:42:38 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/18 12:43:35 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,11 @@ SRCS =	main.c			\
 		ft_d_i.c		\
 		ft_s_c.c		\
 		ft_o_x_X.c		\
-		ft_flags.c		\
+		ft_flags0.c		\
 		ft_accuracy.c	\
 		ft_width.c		\
-		ft_conv_p.c
+		ft_conv_p.c		\
+		ft_flag_conv.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -41,16 +42,16 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
+$(NAME): $(LIB) $(OBJ)
 	@printf "compiling... "
-	@$(CC) -o $@ $^
+	$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
 $(LIB):
 	@make -C $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR) :
 	@mkdir $@
