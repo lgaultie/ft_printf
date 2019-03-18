@@ -6,7 +6,7 @@
 /*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/17 20:04:02 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/18 12:48:00 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char  *ft_only_conv(char *flags, t_data *data)
   return (final);
 }
 
-char  *ft_flag_conv(char *flags, t_data *data)
+char  *ft_flag_conv(char *flag, t_data *data)
 {
   char  *final;
   int   i;
@@ -64,6 +64,6 @@ char  *ft_flag_conv(char *flags, t_data *data)
 }
 
 
-
+final = NULL;
   return  ("fina");
 }

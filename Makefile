@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/17 17:41:38 by takou            ###   ########.fr        #
+#    Updated: 2019/03/18 12:48:31 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
 	@printf "compiling... "
-	$(CC) -o $@ $^
+	@$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
 $(LIB):
