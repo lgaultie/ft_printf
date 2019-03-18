@@ -3,39 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 17:39:51 by lgaultie          #+#    #+#             */
-/*   Updated: 2018/11/17 10:14:57 by lgaultie         ###   ########.fr       */
+/*   Created: 2018/11/16 14:24:21 by amamy             #+#    #+#             */
+/*   Updated: 2019/02/07 20:15:20 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
-	int			i;
-	int			stock;
-	size_t		res;
+	size_t	cnt;
+	int		sign;
+	size_t	nb;
 
-	i = 0;
-	res = 0;
-	stock = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-')
-		stock = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	nb = 0;
+	cnt = 0;
+	sign = 1;
+	while ((nptr[cnt] >= '\t' && nptr[cnt] <= '\r') || nptr[cnt] == ' ')
+		cnt++;
+	if (nptr[cnt] == '-')
+		sign = -1;
+	if (nptr[cnt] == '+' || nptr[cnt] == '-')
+		cnt++;
+	while (nptr[cnt] >= '0' && nptr[cnt] <= '9')
 	{
-		res = res * 10 + (str[i] - 48);
-		if (stock == 1 && res > INT64_MAX)
+		nb = nb * 10 + (nptr[cnt] - 48);
+		if (sign == 1 && nb > __INT64_MAX__)
 			return (-1);
-		if (stock == -1 && res > (size_t)INT64_MAX + 1)
+		if (sign == -1 && nb > (size_t)__INT64_MAX__ + 1)
 			return (0);
-		i++;
+		cnt++;
 	}
-	res = res * stock;
-	return (res);
+	return (nb * sign);
 }

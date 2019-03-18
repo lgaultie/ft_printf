@@ -3,19 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstendadd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 15:35:05 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/01/16 14:46:56 by lgaultie         ###   ########.fr       */
+/*   Created: 2019/01/14 14:58:34 by amamy             #+#    #+#             */
+/*   Updated: 2019/03/03 19:26:26 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstendadd(t_list **alst, t_list *new)
+void	ft_lstendadd(t_list *alst, t_list *new)
 {
-	while ((*alst)->next != NULL)
-		*alst = (*alst)->next;
+	t_list	*tmp;
+
+	tmp = alst;
+	if (!alst)
+		return ;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
 	if (new)
-		(*alst)->next = new;
+	{
+		tmp->next = new;
+		new->next = NULL;
+	}
 }

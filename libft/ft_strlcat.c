@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 17:35:24 by lgaultie          #+#    #+#             */
-/*   Updated: 2018/11/14 16:01:10 by lgaultie         ###   ########.fr       */
+/*   Created: 2018/11/14 12:43:25 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/15 14:06:35 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t			i;
-	size_t			taille_src;
-	size_t			taille_dst;
-	unsigned char	*srcs;
+	size_t	counter;
+	size_t	end_dest;
+	size_t	len_dest;
 
-	taille_src = ft_strlen(src);
-	taille_dst = ft_strlen(dst);
-	srcs = (unsigned char*)src;
-	i = 0;
-	if (size < taille_dst)
-		return (taille_src + size);
-	while (size > taille_dst + i + 1 && srcs[i] != '\0')
+	len_dest = ft_strlen(dst);
+	end_dest = ft_strlen(dst);
+	counter = 0;
+	if (size < len_dest)
+		return (ft_strlen(src) + size);
+	while (src[counter] && ((len_dest + counter + 1) < size))
 	{
-		dst[taille_dst + i] = srcs[i];
-		i++;
+		dst[end_dest] = src[counter];
+		counter++;
+		end_dest++;
 	}
-	dst[taille_dst + i] = '\0';
-	return (taille_src + taille_dst);
+	dst[end_dest] = '\0';
+	return (ft_strlen(src) + len_dest);
 }

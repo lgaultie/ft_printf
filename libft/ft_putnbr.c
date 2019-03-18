@@ -3,38 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/17 10:50:53 by lgaultie          #+#    #+#             */
-/*   Updated: 2018/11/17 12:17:37 by lgaultie         ###   ########.fr       */
+/*   Created: 2018/11/22 18:47:49 by amamy             #+#    #+#             */
+/*   Updated: 2018/11/22 18:47:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int nb)
 {
-	if (n > 2147483647 || n < -2147483648)
-		return ;
-	if (n == -2147483648)
+	if (nb < 0)
 	{
-		ft_putstr("-2147483648");
-		return ;
-	}
-	if (n < 0)
-	{
-		n = n * (-1);
 		ft_putchar('-');
+		if (nb == -2147483648)
+		{
+			ft_putchar('2');
+			ft_putnbr(147483648);
+			return ;
+		}
+		nb = nb * -1;
 	}
-	if (n < 10)
+	if (nb >= 10)
 	{
-		ft_putchar(n + 48);
-		return ;
+		ft_putnbr(nb / 10);
+		ft_putchar((nb % 10) + '0');
 	}
-	if (n >= 10)
+	else
 	{
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + 48);
-		return ;
+		ft_putchar(nb + '0');
 	}
 }

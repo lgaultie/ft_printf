@@ -3,82 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 18:01:35 by lgaultie          #+#    #+#             */
-/*   Updated: 2018/11/23 15:19:29 by lgaultie         ###   ########.fr       */
+/*   Created: 2018/11/22 14:03:39 by amamy             #+#    #+#             */
+/*   Updated: 2019/03/03 18:03:28 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	ft_final(char *str, int n, int len)
+static char		*ft_nb_neg(char *str, int n)
 {
-	if (n >= 10)
-	{
-		while (len >= 0)
-		{
-			str[len - 1] = n % 10 + '0';
-			n = n / 10;
-			len--;
-		}
-	}
-}
+	size_t counter;
+	size_t end;
 
-static	void	*ft_number(char *str, int n, int neg, int len)
-{
-	if (n >= 0 && n < 10)
+	counter = 0;
+	str[counter] = '-';
+	end = ft_nb_len_base(n, 10);
+	if (n == -2147483648)
 	{
-		if (neg == 1)
-		{
-			str[0] = '-';
-			str[1] = n + '0';
-			str[2] = '\0';
-			return (str);
-		}
-		if (neg == 0)
-		{
-			str[0] = n + '0';
-			str[1] = '\0';
-			return (str);
-		}
+		counter = ft_nb_len_base(n, 10) - 1;
+		str[counter] = (n % 10) * -1 + 48;
+		n = n / 10;
+		counter--;
 	}
-	ft_final(str, n, len);
-	return (0);
-}
-
-static	char	*ft_neg_equal_1(char *s1, int y)
-{
-	s1[0] = '-';
-	s1[y] = '\0';
-	return (s1);
+	n = -n;
+	str[end] = '\0';
+	if (n != -2147483648)
+		counter = ft_nb_len_base(n, 10);
+	while (n != 0)
+	{
+		str[counter] = (n % 10) + 48;
+		n = n / 10;
+		counter--;
+	}
+	return (str);
 }
 
 char			*ft_itoa(int n)
 {
 	char	*str;
-	int		len;
-	int		neg;
-	int		j;
+	size_t	counter;
 
-	neg = 0;
-	j = ft_intlen(n);
-	len = ft_intlen(n);
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+	counter = 0;
+	if (!(str = (char*)malloc(sizeof(char) * ft_nb_len_base(n, 10) + 1)))
 		return (NULL);
-	if (n > 2147483647 || n < -2147483648 || n == 0)
-		return (ft_strdup("0"));
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	if (n == 0 || n == -0)
+		str[0] = '0';
+	if (n > 0)
+		counter = ft_nb_len_base(n, 10) - 1;
 	if (n < 0)
+		return (ft_nb_neg(str, n));
+	str[counter + 1] = '\0';
+	while (n != 0)
 	{
-		n = -n;
-		neg = 1;
+		str[counter] = (n % 10) + 48;
+		n = n / 10;
+		counter--;
 	}
-	if (n >= 0)
-		ft_number(str, n, neg, len);
-	if (neg == 1)
-		ft_neg_equal_1(str, j);
-	str[j] = '\0';
 	return (str);
 }

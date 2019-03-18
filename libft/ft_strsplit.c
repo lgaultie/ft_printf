@@ -3,102 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 10:55:33 by lgaultie          #+#    #+#             */
-/*   Updated: 2018/11/22 18:52:31 by lgaultie         ###   ########.fr       */
+/*   Created: 2018/11/21 15:21:56 by amamy             #+#    #+#             */
+/*   Updated: 2019/02/07 20:20:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_nb_words(char *s1, char c)
+static size_t	ft_count_words(const char *str, char c)
 {
-	int		i;
-	int		count_of_words;
+	size_t	run;
+	size_t	nb_words;
 
-	i = 0;
-	count_of_words = 0;
-	while (s1[i] != '\0')
+	nb_words = 0;
+	run = 0;
+	while (str[run] != '\0')
 	{
-		if (s1[i] != c && (s1[i + 1] == c || s1[i + 1] == '\0'))
-			count_of_words++;
-		i++;
+		if (str[run] == c)
+			run++;
+		if (str[run] != c && str[run] != '\0')
+		{
+			nb_words++;
+			while (str[run] != c && str[run] != '\0')
+				run++;
+		}
 	}
-	return (count_of_words);
+	return (nb_words);
 }
 
-static	int		ft_max_word_size(char *s1, char c)
+static char		**ft_create_array(char **array, char const *str, char c)
 {
-	int		i;
-	int		max_word_size;
-	int		actual_word_size;
+	size_t	run;
+	size_t	size;
+	size_t	line;
 
-	i = 0;
-	actual_word_size = 0;
-	max_word_size = 0;
-	while (s1[i] != '\0')
+	run = 0;
+	size = 0;
+	line = 0;
+	while (str[run] != '\0')
 	{
-		while (s1[i] == c && s1[i] != '\0')
-			i++;
-		while (s1[i] != c && s1[i] != '\0')
+		if (str[run] == c)
+			run++;
+		if (str[run] != c)
 		{
-			actual_word_size++;
-			i++;
+			while (str[run] != c && str[run] != '\0')
+			{
+				run++;
+				size++;
+			}
+			if (!(array[line] = (char*)malloc(sizeof(char) * (size + 1))))
+				return (NULL);
+			size = 0;
+			line++;
 		}
-		if (actual_word_size > max_word_size)
-			max_word_size = actual_word_size;
-		actual_word_size = 0;
-		i++;
 	}
-	return (max_word_size);
+	return (array);
 }
 
-static	void	*ft_fill(char *str, char **tab, char c)
+static char		**ft_fill(char **array, char const *str, char c)
 {
-	int		i;
-	int		j;
-	int		k;
+	size_t	run;
+	size_t	counter;
+	size_t	line;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (str[k] != '\0' && i < ft_nb_words(str, c) + 1)
+	counter = 0;
+	run = 0;
+	line = 0;
+	while (str[run] != '\0')
 	{
-		while (str[k] == c)
-			k++;
-		while (str[k] != c && str[k] != '\0')
+		if (str[run] == c)
+			run++;
+		if (str[run] != c)
 		{
-			tab[i][j] = str[k];
-			j++;
-			k++;
+			while (str[run] != c && str[run] != '\0')
+			{
+				array[line][counter] = str[run];
+				run++;
+				counter++;
+			}
+			array[line][counter] = '\0';
+			counter = 0;
+			line++;
 		}
-		tab[i][j] = '\0';
-		j = 0;
-		i++;
 	}
-	return (0);
+	return (array);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	**tab_of_tab;
-	int		i;
+	char	**array;
 
-	i = 0;
 	if (s == NULL)
 		return (NULL);
-	if (!(tab_of_tab = (char **)malloc(sizeof(char*) \
-			* ft_nb_words((char*)s, c) + 1)))
-		return (0);
-	while (i < ft_nb_words((char*)s, c) + 1)
-	{
-		if (!(tab_of_tab[i] = (char *)malloc(sizeof(char) \
-			* ft_max_word_size((char*)s, c) + 1)))
-			return (NULL);
-		i++;
-	}
-	ft_fill((char*)s, tab_of_tab, c);
-	tab_of_tab[i - 1] = 0;
-	return (tab_of_tab);
+	if (!(array = (char**)malloc(sizeof(char*) * (ft_count_words(s, c) + 1))))
+		return (NULL);
+	if (!(ft_create_array(array, s, c)))
+		return (NULL);
+	ft_fill(array, s, c);
+	array[ft_count_words(s, c)] = 0;
+	return (array);
 }
