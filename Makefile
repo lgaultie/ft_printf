@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/18 12:43:35 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/17 17:41:38 by takou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,14 @@ LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	main.c			\
+SRCS =	main.c		\
 		ft_printf.c		\
 		ft_analyse.c	\
-		ft_d_i.c		\
-		ft_s_c.c		\
+		ft_d_i.c			\
+		ft_s_c.c			\
 		ft_o_x_X.c		\
-		ft_flags0.c		\
+		ft_flags.c		\
+		ft_flags2.c		\
 		ft_accuracy.c	\
 		ft_width.c		\
 		ft_conv_p.c		\
@@ -42,7 +43,7 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJ)
+$(NAME): $(OBJ) $(LIB)
 	@printf "compiling... "
 	$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
