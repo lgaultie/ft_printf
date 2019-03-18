@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 20:41:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/18 19:01:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 	{
 		if (!(ret = malloc(sizeof(char) * (accuracy + 1))))
 			return (NULL);
-		while (i < accuracy)
+		while (i < accuracy - data->ap_sz)
 		{
 			ret[i] = '0';
 			i++;
@@ -83,7 +83,6 @@ int		ft_precision_s(char *flags, t_data *data)
 	int		i;
 	int		j;
 	char	*conv;
-	int		accuracy;
 
 	i = 0;
 	j = 0;
@@ -98,9 +97,9 @@ int		ft_precision_s(char *flags, t_data *data)
 			j++;
 	}
 	conv[j] = '\0';
-	accuracy = ft_atoi(conv);
+	i = ft_atoi(conv);
 	free(conv);
-	if (accuracy < data->ap_sz)
-		return (accuracy);
-	return (data->ap_sz);
+	if (i < data->ap_sz)
+		return (i);
+	return (0);
 }

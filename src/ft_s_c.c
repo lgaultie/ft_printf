@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/14 15:03:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:36:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ char	*ft_char(t_data *data)
 {
 	char	ap;
 	char	*final;
-
 	ap = (va_arg(data->ap, int));
+	data->ap_sz = 1;
 	if (!(final = malloc(sizeof(char) * 2)))
 		return (NULL);
 	final[0] = ap;
