@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 18:01:59 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/19 18:40:38 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ static void	ft_cat_conv(t_data *data, char *str, int i)
 {
 	char	*tmp;
 
-	tmp = ft_strdup(data->buf);
+	if (!(tmp = ft_strdup(data->buf)))
+		return ;
 	free(data->buf);
-	data->buf = ft_strjoin(tmp, ft_got_flag(&str[i], data));
+	if (!(data->buf = ft_strjoin(tmp, ft_got_flag(&str[i], data))))
+		return ;
 	free(tmp);
 }
 
@@ -68,7 +70,8 @@ static void	ft_cat_txt(t_data *data, char *str, int i)
 {
 	char	*tmp;
 
-	tmp = ft_strdup(data->buf);
+	if (!(tmp = ft_strdup(data->buf)))
+		return ;
 	free(data->buf);
 	if (!(data->buf = ft_strjoin(tmp, ft_next_p100(&str[i], data))))
 		return ;
