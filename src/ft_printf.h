@@ -66,6 +66,8 @@ char	*ft_caps_x(t_data *data);
 char	*ft_conv_u(t_data *data);
 char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode);
 char	*ft_analyse_options(char *flags, t_data *data);
+char 	*ft_flag_conv(char *flags, t_data *data);
+char 	*ft_only_conv(char *flags, t_data *data);
 // void	ft_flag_zero(char *flags, t_data *data);
 // void	ft_flag_plus(char *flags, t_data *data);
 // void	ft_flag_minus(char *flags, t_data *data);
@@ -74,9 +76,3 @@ char	*ft_analyse_options(char *flags, t_data *data);
 //void	ft_precision(char *flags, t_data *data);
 
 #endif
-
-// va_list		ap;
-// int			flag_sz;
-// int			ap_sz;
-// int			ap_t_sz;
-// char 		*buf;
