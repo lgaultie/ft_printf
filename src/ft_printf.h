@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/18 13:56:46 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/19 12:12:07 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define F_SPACE 16
 # define F_WIDTH 32
 # define F_PRECIS 64
+# define DONE 128
 
 typedef	struct	s_data
 {
@@ -42,7 +43,6 @@ typedef	struct	s_data
 	char 		*buf;
 	int			conv_sz;
 	int			conv_t_sz;
-	int			done;
 	int			flag;
 }				t_data;
 
