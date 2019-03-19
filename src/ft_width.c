@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/19 12:08:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:30:40 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ char	*ft_width(char *flags, t_data *data)
 	i = 0;
 	j = 0;
 	zero = 0;
-	if (!(conv = malloc(sizeof(char) * (data->flag_sz - 1))))
-		return (0);
 	while (flags[i] == '%')
 		i++;
 	if (flags[i] == '0')
@@ -63,15 +61,25 @@ char	*ft_width(char *flags, t_data *data)
 		data->flag |= F_ZERO;
 		zero = 1;				//a refaire avec booleen flag f_zero
 	}
-	while (flags[i] >= '0' && flags[i] <= '9')
+	if (data->flag & F_WIDTH)
 	{
-		conv[j] = flags[i];
-		i++;
-		j++;
+		width = data->tmp;
+		data->flag &= ~F_WIDTH;
 	}
-	conv[j] = '\0';
-	width = ft_atoi(conv);
-	free(conv);
+	else
+	{
+		if (!(conv = malloc(sizeof(char) * (data->flag_sz - 1))))
+			return (0);
+		while (flags[i] >= '0' && flags[i] <= '9')
+		{
+			conv[j] = flags[i];
+			i++;
+			j++;
+		}
+		conv[j] = '\0';
+		width = ft_atoi(conv);
+		free(conv);
+	}
 	if (!(conv = ft_width2(width, zero, data)))
 		return (NULL);
 	return (conv);

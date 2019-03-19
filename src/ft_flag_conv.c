@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/19 13:43:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:08:18 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,11 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != '\0')
 	{
 		if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
-			|| flag[i + 1] == '*'))		//mal fait, le * peux marcher aussi dans width + le * est pas forcement direct apres le %
+			|| flag[i + 1] == '*'))
+		//mal fait, le * peux marcher aussi dans width. "le * est pas forcement direct apres le %" <- faux, c'est le "." qui est apres le %, et l'*' semble ne pouvoir etre q'apres le '.'
 			data->flag |= F_PRECIS;
-		else if (flag[i] >= '0' && flag[i] <= '9')
+		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
+				&& (data->flag ^ F_PRECIS))
 			data->flag |= F_WIDTH;
 		else if (flag[i] == ' ')
 			data->flag |= F_SPACE;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_d_i.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/18 18:23:38 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:22:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_conv_di(t_data *data)
 	int		ap_sz;
 	char	*final;
 
+	if (data->flag & F_WIDTH)
+		data->tmp = (va_arg(data->ap, int));
 	ap = (va_arg(data->ap, int));
 	ap_sz = ft_intlen(ap);
 	data->ap_sz = ap_sz;
