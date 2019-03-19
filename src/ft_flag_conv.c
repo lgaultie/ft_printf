@@ -6,7 +6,7 @@
 /*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/19 10:54:37 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 12:11:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,10 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != '\0')
 	{
 		if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
-			|| flag[i + 1] == '*'))
+			|| flag[i + 1] == '*'))		//mal fait, le * peux marcher aussi dans width + le * est pas forcement direct apres le %
 			data->flag |= F_PRECIS;
 		else if (flag[i] >= '0' && flag[i] <= '9')
-			data->flag |= F_WIDTH;			//flag zero est activé ou non dans width
+			data->flag |= F_WIDTH;
 		else if (flag[i] == ' ')
 			data->flag |= F_SPACE;
 		else if (flag[i] == '#')
@@ -127,7 +127,10 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		else if (flag[i] == '-')
 			data->flag |= F_MINUS;
 		else
+		{
+			ft_putstr("%*d avec * pas bien géré donc return null\n");
 			return (NULL);
+		}
 		i++;
 	}
 	if (!(conv = ft_only_conv(&flag[i], data)))

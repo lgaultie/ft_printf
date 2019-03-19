@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 11:49:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 12:11:19 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(int argc, char **argv)
 	str = ft_strdup(" %177d%%%s%%%d ");
 		//printf("%d%% b%plabla \n", i, &test_nb);
 	printf("i = |%*d|,|%d|, test\n", 2, 1, i);
+	ft_printf("i = |%*d|,|%d|, test\n", 2, 1, i);
 	//ft_printf("i = %55d  %.10s  %d test\n",2,"nononononononon", i);
 	//ft_printf("i = |%.100s|, |%d|, test\n","COUCOU",i);
 
