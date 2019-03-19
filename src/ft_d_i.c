@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/19 18:22:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/19 19:33:41 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_conv_di(t_data *data)
 	int		ap_sz;
 	char	*final;
 
-	if (data->flag & F_WIDTH)
+	if (data->flag & F_STAR && data->flag & F_WIDTH)
 		data->tmp = (va_arg(data->ap, int));
 	ap = (va_arg(data->ap, int));
 	ap_sz = ft_intlen(ap);

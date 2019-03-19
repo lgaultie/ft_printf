@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/19 18:30:40 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/19 20:09:00 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_width2(int width, int zero, t_data *data)
+char	*ft_width2(int width, t_data *data)
 {
 	int		i;
 	char	*ret;
@@ -22,7 +22,7 @@ char	*ft_width2(int width, int zero, t_data *data)
 		return (NULL);
 	if (width > data->ap_sz)
 	{
-		if (zero == 1)
+		if (data->flag & F_ZERO)
 		{
 			while (i < width - data->ap_sz)
 			{
@@ -30,7 +30,7 @@ char	*ft_width2(int width, int zero, t_data *data)
 				i++;
 			}
 		}
-		if (zero == 0)
+		if (data->flag ^ F_ZERO)
 		{
 			while (i < width - data->ap_sz)
 			{
@@ -47,24 +47,20 @@ char	*ft_width(char *flags, t_data *data)
 {
 	int		i;
 	int		j;
-	int		zero;
 	char	*conv;
 	int		width;
 
 	i = 0;
 	j = 0;
-	zero = 0;
 	while (flags[i] == '%')
 		i++;
 	if (flags[i] == '0')
-	{
 		data->flag |= F_ZERO;
-		zero = 1;				//a refaire avec booleen flag f_zero
-	}
-	if (data->flag & F_WIDTH)
+	if (flags[0] == '*')
 	{
 		width = data->tmp;
 		data->flag &= ~F_WIDTH;
+		data->flag &= ~F_STAR;
 	}
 	else
 	{
@@ -80,7 +76,7 @@ char	*ft_width(char *flags, t_data *data)
 		width = ft_atoi(conv);
 		free(conv);
 	}
-	if (!(conv = ft_width2(width, zero, data)))
+	if (!(conv = ft_width2(width, data)))
 		return (NULL);
 	return (conv);
 }
