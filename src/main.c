@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 14:33:58 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:16:51 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ int main(int argc, char **argv)
 
 	str = ft_strdup(" %177d%%%s%%%d ");
 		//printf("%d%% b%plabla \n", i, &test_nb);
-	ft_printf("i = |%.5d|,|%d|, test\n", 7, 1);
+	printf("i = |%5.4d|test\n", 7);
+	printf("i = |%5.2d|test\n", 7);
+	ft_printf("i = |%5.4d|test\n", 7);
+	ft_printf("i = |%5.2d|test\n", 7);
+
 	//ft_printf("i = %55d  %.10s  %d test\n",2,"nononononononon", i);
 	//ft_printf("i = |%.100s|, |%d|, test\n","COUCOU",i);
 
+	//PUTAIN PRINTF printf("i = |%05.2d|test\n", 7);
 	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
 	// MARCHE PAS ft_printf("i = %00.05d test\n",i);
 		// 	ft_printf(51172,0x7fffaa13f3c0) malloc: *** error for object 0x1016b0fa8: pointer being freed was not allocated
