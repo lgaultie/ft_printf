@@ -6,7 +6,7 @@
 /*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/19 12:11:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 13:43:59 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		else if (flag[i] == '-')
 			data->flag |= F_MINUS;
 		else
-		{
-			ft_putstr("%*d avec * pas bien géré donc return null\n");
 			return (NULL);
-		}
 		i++;
 	}
 	if (!(conv = ft_only_conv(&flag[i], data)))
