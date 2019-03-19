@@ -6,66 +6,12 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/15 11:28:46 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/19 11:59:00 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-
-// int		ft_next_p100_i(char *str, int	mode)
-// {
-// 	int	p_nb;
-// 	int	i;
-//
-// 	p_nb = 0;
-// 	i = 0;
-// 	while (str[i] != '\0')
-// 	{
-// 		if (str[i] == '%' && str[i + 1] == '%')
-// 		{
-// 			if (mode == 1)
-// 				p_nb++;
-// 			if (mode == 2)
-// 				return (i);
-// 			i++;
-// 		}
-// 		if (str[i] == '%' && (i == 0 || str[i - 1] != '%'))
-// 			return (i - p_nb);
-// 		i++;
-// 	}
-// 	return (i);
-// }
-//
-// char	*ft_next_p100(char *str, t_data *data)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	n_p100;
-// 	char *ret;
-//
-// 	i = 0;
-// 	j = 0;
-// 	n_p100 = ft_next_p100_i(str, 1);
-// 	if(!(ret = malloc(sizeof(char) * (n_p100 + 1))))
-// 		return (NULL);
-// 	//while ((i + j) <= n_p100)
-// 	while (str[i + j] != '\0')
-// 	{
-// 		if (str[i + j] == '%' && str[i + j + 1] == '%')
-// 			j++;
-// 		if (str[i + j] == '%' && (i == 0 || str[i + j - 1] != '%'))
-// 		{
-// 			ret[i] = '\0';
-// 			return (ret);
-// 		}
-// 		ret[i] = str[i + j];
-// 		i++;
-// 	}
-// 	ret[i] = '\0';
-// 	data->done = 1;
-// 	return (ret);
-// }
 
 int main(int argc, char **argv)
 {
@@ -77,13 +23,29 @@ int main(int argc, char **argv)
 	int		i;
 
 	t_data *data;
-	test_nb = 7;
-	i = 0;
+	test_nb = 9;
+	i = 7;
 	data = ft_memalloc(sizeof(t_data));
 
+	// i |= 2; // active le bit 2
+	// i |= 4; // active le bit 4
+	// if (i & 2) // check if bit 2 is enable
+	// i &= ~2;// disable bit 2
+
 	str = ft_strdup(" %177d%%%s%%%d ");
-	ft_printf("%p%% blabla %d\n", &test_nb, 36);
-	printf("%p%% blabla %d\n", &test_nb, 36);
+		//printf("%d%% b%plabla \n", i, &test_nb);
+	printf("i = |%.5s|,|%d|, test\n", "Coucou", 1);
+	//ft_printf("i = %55d  %.10s  %d test\n",2,"nononononononon", i);
+	//ft_printf("i = |%.100s|, |%d|, test\n","COUCOU",i);
+
+	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
+	// MARCHE PAS ft_printf("i = %00.05d test\n",i);
+		// 	ft_printf(51172,0x7fffaa13f3c0) malloc: *** error for object 0x1016b0fa8: pointer being freed was not allocated
+		// *** set a breakpoint in malloc_error_break to debug
+		// [1]    51172 abort      ./ft_printf
+
+
+	//printf("%", 5, test_nb);
 	return 0;
 }
 
