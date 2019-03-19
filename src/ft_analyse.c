@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_analyse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 12:11:31 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/18 18:49:14 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char		*ft_next_p100(char *str, t_data *data)
 		i++;
 	}
 	if (str[i] == '\0')
-		data->flag |= DONE;
+		data->done = 1;
 	ret[i] = '\0';
 	return (ret);
 }
@@ -81,7 +81,7 @@ char		*ft_analyse(char *str, t_data *data)
 
 	i = 0;
 	data->conv_t_sz = 0;
-	while (data->flag ^ DONE)
+	while (data->done != 1)
 	{
 		if (str[i] == '%')
 		{
