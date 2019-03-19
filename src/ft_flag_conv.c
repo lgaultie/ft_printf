@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/18 19:12:24 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 10:54:37 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char  *ft_only_conv(char *flags, t_data *data)
 }
 
 //et avec un flag random -->erreur
-char	*ft_which_flag(char *flag, char conv, t_data *data)
+char	*ft_which_flag(char *flag, char conv, char *conv2, t_data *data)
 {
 	int		i;
 	char	*final;
@@ -55,16 +55,24 @@ char	*ft_which_flag(char *flag, char conv, t_data *data)
 
 	i = 0;
 	nb_to_print = 0;
-	// if ((data->flag & F_PRECIS) && conv == 's')		//quels flags sont compatibles?
-	// {
-	//
-	// }
-	if ((data->flag & F_PRECIS) && (conv == 'd' || conv == 'i'))
+	if ((data->flag & F_PRECIS) && conv == 's')		//quels flags sont compatibles?
+	{
+		nb_to_print = ft_precision_s(flag, data);
+		if (nb_to_print < data->ap_sz)
+		{
+			if (!(final = ft_strsub(conv2, 0, nb_to_print)))
+				return (NULL);
+		}
+		else
+			return (conv2);
+	}
+	else if ((data->flag & F_PRECIS) && (conv == 'd' || conv == 'i'))
 	{
 		if (!(final = ft_precision_d(flag, data)))
 			return (NULL);
+
 	}
-	if (data->flag & F_WIDTH)
+	else if (data->flag & F_WIDTH)		//mis un else if sinon precision annulée
 	{
 		if (!(final = ft_width(flag, data)))
 			return (NULL);
@@ -124,8 +132,10 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	}
 	if (!(conv = ft_only_conv(&flag[i], data)))
 		return (NULL);
-	if (!(tmp = ft_which_flag(flag, flag[i], data)))
+	if (!(tmp = ft_which_flag(flag, flag[i], conv, data)))
 		return (NULL);
+	if ((data->flag & F_PRECIS) && flag[i] == 's')		//cas des precisions s géré
+		return (tmp);
 	if (!(final = ft_strjoin(tmp, conv)))
 		return (NULL);
 	free(tmp);

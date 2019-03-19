@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/18 19:01:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/19 10:53:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,5 @@ int		ft_precision_s(char *flags, t_data *data)
 	free(conv);
 	if (i < data->ap_sz)
 		return (i);
-	return (0);
+	return (data->ap_sz);
 }
