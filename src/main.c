@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 18:40:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/19 18:57:50 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,8 @@ int main(int argc, char **argv)
 	// i &= ~2;// disable bit 2
 
 	str = ft_strdup(" %177d%%%s%%%d ");
-<<<<<<< HEAD
 	printf("Vrai : i = |%*d|,|%d|, test\n", 5, 17, 1);
-	ft_printf("Mine = i = |%8*d|,|%d|, test\n",5, 17, 1);
-=======
-		//printf("%d%% b%plabla \n", i, &test_nb);
-	printf("i = |%5.4d|test\n", 7);
-	printf("i = |%5.2d|test\n", 7);
-	ft_printf("i = |%5.4d|test\n", 7);
-	ft_printf("i = |%5.2d|test\n", 7);
-
->>>>>>> 4c0437d91ce23b676cdb805e94a71765364ba92f
+	ft_printf("Mine = i = |%*d|,|%d|, test\n",5, 17, 1);
 	//ft_printf("i = %55d  %.10s  %d test\n",2,"nononononononon", i);
 	//ft_printf("i = |%.100s|, |%d|, test\n","COUCOU",i);
 

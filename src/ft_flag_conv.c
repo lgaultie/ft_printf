@@ -6,7 +6,7 @@
 /*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/19 18:43:16 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/19 19:00:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,21 +117,13 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		&& flag[i] != 'x' && flag[i] != 'X' \
 		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != '\0')
 	{
-<<<<<<< HEAD
-		if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
-			|| flag[i + 1] == '*'))
-		//mal fait, le * peux marcher aussi dans width. "le * est pas forcement direct apres le %" <- faux, c'est le "." qui est apres le %, et l'*' semble ne pouvoir etre q'apres le '.'
-			data->flag |= F_PRECIS;
-		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
-				&& (data->flag ^ F_PRECIS))
-=======
 		if (flag[0] == '0')
 			data->flag |= F_ZERO;
 		else if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
-			|| flag[i + 1] == '*'))		//mal fait, le * peux marcher aussi dans width + le * est pas forcement direct apres le %
+			|| flag[i + 1] == '*'))
 			data->flag |= F_PRECIS;
-		else if ((flag[i] >= '0' && flag[i] <= '9') && (data->flag ^ F_PRECIS))		//mal fait, cas %0.5d
->>>>>>> 4c0437d91ce23b676cdb805e94a71765364ba92f
+		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
+				&& (data->flag ^ F_PRECIS)) //mal fait, cas %0.5d
 			data->flag |= F_WIDTH;
 		else if (flag[i] == ' ')
 			data->flag |= F_SPACE;
