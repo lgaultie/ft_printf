@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 20:12:27 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 13:20:01 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef	struct	s_data
 	int			conv_t_sz;
 	int			flag;
 	int			tmp;
+	int			done;
 }				t_data;
 
 //int		ft_printf(const char* str, ...);
