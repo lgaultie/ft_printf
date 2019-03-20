@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 17:46:18 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 19:11:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,36 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 	int		i;
 
 	i = 0;
-	// printf("accuracy = %d\n", accuracy);
-	// printf("data->ap_sz = %d\n", data->ap_sz);
-	//data->ap_sz est totalement pétée..............
 	if (accuracy <= data->ap_sz)
-		return ("");	//on imprime rien, osef de flag si precision < taille ap
+	{
+		if (data->flag & F_PLUS)
+			return (ft_strdup("+"));
+		return (ft_strdup(""));
+	}
 	else
 	{
 		if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 			return (NULL);
-		while (i < accuracy - data->ap_sz)
+		if (data->flag & F_PLUS)
 		{
-			ret[i] = '0';
+			ret[i] = '+';
 			i++;
+			while (i < accuracy - data->ap_sz + 1)
+			{
+				ret[i] = '0';
+				i++;
+			}
+		}
+		else
+		{
+			while (i < accuracy - data->ap_sz)
+			{
+				ret[i] = '0';
+				i++;
+			}
 		}
 	}
 	ret[i] = '\0';
-	//printf("ret = %s\n", ret);
 	return (ret);
 }
 
@@ -56,7 +69,7 @@ char	*ft_precision_d(char *flags, t_data *data)
 	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))	//flag_size + 1 - 2 pour le % et d
 		return (NULL);
 	//printf("flags = %s\n", flags);
-	while (flags[i] == '%' || flags[i] == '.')
+	while (flags[i] == '%' || flags[i] == '.' || flags[i] == '+')
 		i++;
 	while (flags[i] >= '0' && flags[i] <= '9')
 	{
@@ -135,6 +148,8 @@ char	*ft_preci_width2(int before, int after, t_data *data)
 			after--;
 		}
 	}
+	if (data->flag & F_PLUS)
+		final[i - 1] = '+';
 	final[i] = '\0';
 	return (final);
 }

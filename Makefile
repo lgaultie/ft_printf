@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/20 17:37:44 by amamy            ###   ########.fr        #
+#    Updated: 2019/03/20 18:39:27 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS =	main.c			\
 		ft_memset.c		\
 		ft_nb_len_base.c	\
 		ft_strcat.c		\
-		ft_strcpy.c
+		ft_strcpy.c		\
+		ft_plus_minus.c
 
 
 CFLAGS += -I$(INCDIR)

@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 17:51:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 19:11:36 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ int main(int argc, char **argv)
 
 
 	str = ft_strdup(" %177d%%%s%%%d ");
-	printf("Vrai : i = %5%\n");
-	ft_printf("Mine : i = %5%\n");
+	printf("Vrai : %+2.5d\n", 12345);
+	ft_printf("Vrai : %+2.5d\n", 12345);
 	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);
 	// ft_printf("i = |%05.2d|test\n", 7);
 	// ft_printf("i = %00.05d test\n",i);
+	// ft_printf("Mine : i = %5%\n");
 
 	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
 
