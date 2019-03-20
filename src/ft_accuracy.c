@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_accuracy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 15:31:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 20:48:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 	int		i;
 
 	i = 0;
-	// printf("accuracy = %d\n", accuracy);
-	// printf("data->ap_sz = %d\n", data->ap_sz);
-	//data->ap_sz est totalement pétée..............
 	if (accuracy <= data->ap_sz)
 		return ("");	//on imprime rien, osef de flag si precision < taille ap
 	else
@@ -33,7 +30,6 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 		}
 	}
 	ret[i] = '\0';
-	//printf("ret = %s\n", ret);
 	return (ret);
 }
 
@@ -49,27 +45,28 @@ char	*ft_precision_d(char *flags, t_data *data)
 	int		j;
 	char	*conv;
 	char	*ret;
-	int		accuracy;
 
 	i = 0;
 	j = 0;
-	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))	//flag_size + 1 - 2 pour le % et d
-		return (NULL);
-	//printf("flags = %s\n", flags);
-	while (flags[i] == '%' || flags[i] == '.')
-		i++;
-	while (flags[i] >= '0' && flags[i] <= '9')
+	if (flags[1] == '*')
 	{
-			conv[j] = flags[i];
-			i++;
-			j++;
-			//printf("conv = %s\n", conv);
+		i = data->tmp;
+		data->flag &= ~F_PRECIS & ~F_STAR;
 	}
-	conv[j] = '\0';
-	accuracy = ft_atoi(conv);
-	free(conv);
+	else
+	{
+		while (flags[i] == '.' || flags[i] == '*')
+			i++;
+		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+			return (NULL);
+		while (flags[i] >= '0' && flags[i] <= '9')
+				conv[j++] = flags[i++];
+		conv[j] = '\0';
+		i = ft_atoi(conv);
+		free(conv);
+	}
 	ret = NULL;
-	if (!(ret = ft_precision_d2(data, ret, accuracy)))
+	if (!(ret = ft_precision_d2(data, ret, i)))
 		return (NULL);
 	return (ret);
 }
@@ -86,19 +83,22 @@ int		ft_precision_s(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
-		return (0);
-	while (flags[i] == '%' || flags[i] == '.')
-		i++;
-	while (flags[i] >= '0' && flags[i] <= '9')
+	if (flags[1] == '*')
 	{
-			conv[j] = flags[i];
-			i++;
-			j++;
+		i = data->tmp;
+		data->flag &= ~F_PRECIS & ~F_STAR;
 	}
-	conv[j] = '\0';
-	i = ft_atoi(conv);
-	free(conv);
+	else
+	{
+		while (flags[i] <= '0' && flags[i] >= '9')
+			i++;
+		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+			return (0);
+		while (flags[i] < '0' || flags[i] > '9')
+				conv[j++] = flags[i++];
+		i = ft_atoi(conv);
+		free(conv);
+	}
 	if (i < data->ap_sz)
 		return (i);
 	return (data->ap_sz);
@@ -117,7 +117,6 @@ char	*ft_preci_width2(int before, int after, t_data *data)
 		while (i < after - data->ap_sz)
 			final[i++] = '0';
 	}
-	printf("after = %d, ap_sz = %d\n", after, data->ap_sz);
 	if (after < data->ap_sz && before > after)
 	{
 		while (i < before - data->ap_sz)

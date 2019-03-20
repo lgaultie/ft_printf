@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:30:46 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 15:30:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 20:31:54 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char  *ft_only_conv(char *flags, t_data *data)
 	if (flags[0] == 'd' || flags[0] == 'i' || flags[0] == 'f')
 		final =	ft_conv_di(data);
 	else if (flags[0] == 's')
-		final = ft_string(data);
+		final = ft_string( NULL, data, 0);
 	else if (flags[0] == '%')
 		final = ft_p100(data);
 	else if (flags[0] == 'p')
@@ -53,18 +53,21 @@ char	*ft_which_flag(char *flag, char conv, char *conv2, t_data *data)
 	char	*final;
 	int		nb_to_print;
 
+	(void)conv2;
 	i = 0;
 	nb_to_print = 0;
 	if ((data->flag & F_PRECIS) && conv == 's')		//quels flags sont compatibles?
 	{
-		nb_to_print = ft_precision_s(flag, data);
-		if (nb_to_print < data->ap_sz)
-		{
-			if (!(final = ft_strsub(conv2, 0, nb_to_print)))
-				return (NULL);
-		}
-		else
-			return (conv2);
+		if(!(final = ft_string(flag, data, 1)))
+			return (NULL);
+		// nb_to_print = ft_precision_s(flag, data);
+		// if (nb_to_print < data->ap_sz)
+		// {
+		// 	if (!(final = ft_strsub(conv2, 0, nb_to_print)))
+		// 		return (NULL);
+		// }
+		// else
+		// 	return (conv2);
 	}
 	// else if (data->flag & F_ZERO)
 	// {
@@ -126,14 +129,18 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			data->flag |= F_ZERO;
 		else if (flag[i] == '.' && (data->flag & F_WIDTH))
 			data->flag |= F_W_P;
-		else if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
-			|| flag[i + 1] == '*'))
-			data->flag |= F_PRECIS;
 		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
-				&& (data->flag ^ F_PRECIS)) //mal fait, cas %0.5d
+		&& (data->flag ^ F_PRECIS)) //mal fait, cas %0.5d
 		{
 			data->flag |= F_WIDTH;
 			if (flag[i] == '*')
+			data->flag |= F_STAR;
+		}
+		else if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
+			|| flag[i + 1] == '*'))
+		{
+			data->flag |= F_PRECIS;
+			if (flag[i + 1] == '*')
 				data->flag |= F_STAR;
 		}
 		else if (flag[i] == ' ')
