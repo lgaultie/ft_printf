@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 14:04:09 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:30:02 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char		*ft_printf(const char *format, ...) // for tests
 	int			len;
 	t_data		*data;
 
-	if (!(data = malloc(sizeof(t_data))))
+	if (!(data =  ft_memalloc(sizeof(t_data))))
 		return (NULL);
 		//return (-1);
 	va_start(data->ap, format);

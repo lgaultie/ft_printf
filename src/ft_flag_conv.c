@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/20 14:04:29 by lgaultie         ###   ########.fr       */
+/*   Created: 2019/03/20 15:30:46 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/20 15:30:51 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,8 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			data->flag |= F_PLUS;
 		else if (flag[i] == '-')
 			data->flag |= F_MINUS;
-		else
-			return (NULL);
+		// else
+		// 	return (NULL);
 		i++;
 	}
 	if (!(conv = ft_only_conv(&flag[i], data)))

@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 13:31:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:31:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char		*ft_next_p100(char *str, t_data *data)
 
 	i = 0;
 	n_p100 = ft_next_p100_i(str);
-	if (!(ret = malloc(sizeof(char) * (n_p100 + 1))))
+	if (!(ret = ft_memalloc(sizeof(char) * (n_p100 + 1))))
 		return (NULL);
 	while (str[i] != '\0' && str[i] != '%')
 	{
@@ -85,6 +85,7 @@ char		*ft_analyse(char *str, t_data *data)
 	i = 0;
 	data->done = 0;
 	data->conv_t_sz = 0;
+
 	while (data->done != 1)
 	{
 		if (str[i] == '%')

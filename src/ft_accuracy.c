@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 15:08:50 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:31:46 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 		return ("");	//on imprime rien, osef de flag si precision < taille ap
 	else
 	{
-		if (!(ret = malloc(sizeof(char) * (accuracy + 1))))
+		if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 			return (NULL);
 		while (i < accuracy - data->ap_sz)
 		{
@@ -53,7 +53,7 @@ char	*ft_precision_d(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (!(conv = malloc(sizeof(char) * (data->flag_sz - 1))))	//flag_size + 1 - 2 pour le % et d
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))	//flag_size + 1 - 2 pour le % et d
 		return (NULL);
 	//printf("flags = %s\n", flags);
 	while (flags[i] == '%' || flags[i] == '.')
@@ -86,7 +86,7 @@ int		ft_precision_s(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (!(conv = malloc(sizeof(char) * (data->flag_sz - 1))))
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 		return (0);
 	while (flags[i] == '%' || flags[i] == '.')
 		i++;

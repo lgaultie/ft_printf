@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 18:58:26 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/18 18:44:58 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:58:50 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode)
 	while (tmp /= base)
 		size++;
 	size = size + 1;
-	if (!(str = (char *)malloc(sizeof(char) * size + 1)))
+	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
 	str[size] = '\0';
 	while (size > 0)
