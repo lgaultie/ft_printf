@@ -6,11 +6,11 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/20 15:22:16 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/20 16:36:01 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 CC = clang
 CFLAGS += -Wall -Werror -Wextra -g
 OBJDIR = obj
@@ -30,7 +30,27 @@ SRCS =	main.c			\
 		ft_width.c		\
 		ft_conv_p.c		\
 		ft_flag_conv.c	\
-		ft_zero.c
+		ft_zero.c		\
+		ft_intlen.c		\
+		ft_itoa.c		\
+		ft_itoa_base.c	\
+		ft_memalloc.c	\
+		ft_putchar.c	\
+		ft_putstr.c		\
+		ft_strdup.c		\
+		ft_strjoin.c	\
+		ft_strlen.c		\
+		ft_strncpy.c	\
+		ft_strnew.c		\
+		ft_strsub.c		\
+		ft_tolower.c	\
+		ft_atoi.c		\
+		ft_bzero.c		\
+		ft_memset.c		\
+		ft_nb_len_base.c	\
+		ft_strcat.c		\
+		ft_strcpy.c
+
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -43,15 +63,14 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
+$(NAME): $(OBJ)
 	@printf "compiling... "
-	@$(CC) -o $@ $^
+	@ar rcs $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
-$(LIB):
-	@make -C $(LIBDIR)
-
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
+	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: $(LIBDIR)/%.c $(HEAD)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR) :

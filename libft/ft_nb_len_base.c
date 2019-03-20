@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nb_len_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/03 14:38:37 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/14 22:32:10 by amamy            ###   ########.fr       */
+/*   Created: 2019/03/20 16:18:33 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/20 16:18:57 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Takes an int and tells you how much space it would take if the number
-** were in base X;
-*/
+#include "libft.h"
 
 int	ft_nb_len_base(long value, int base)
 {

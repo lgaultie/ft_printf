@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 15:29:04 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:21:42 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	//char *str;
+	char *str;
 	// char	*tmp;
 	int		test_nb;
 	int		i;
@@ -49,8 +49,8 @@ int main(int argc, char **argv)
 
 	//printf("%", 5, test_nb);
 
-	printf("Vrai : i = |%.*s|,|%d|, test\n", 3, "SAlUT", 17);
-	ft_printf("Mine = i = |%4s|,|%d|, test\n", "SAlUT", 17);
+	// printf("Vrai : i = |%.*s|,|%d|, test\n", 3, "SAlUT", 17);
+	// ft_printf("Mine = i = |%.*s|,|%d|, test\n", 3, "SAlUT", 17);
 	return 0;
 }
 

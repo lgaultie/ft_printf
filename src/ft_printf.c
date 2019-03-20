@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 15:30:02 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:40:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,19 @@ int		ft_print_format(char *format, t_data *data)
 	return (len);
 }
 
-//int		ft_printf(const char *format, ...) Not for tests
-char		*ft_printf(const char *format, ...) // for tests
+int		ft_printf(const char *format, ...)
+//char		*ft_printf(const char *format, ...) // for tests
 {
 	int			len;
 	t_data		*data;
 
 	if (!(data =  ft_memalloc(sizeof(t_data))))
-		return (NULL);
+		return (-1);
 		//return (-1);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
 	//free(data); to uncom when not in tests
-	//return (len); For realease
-	return (data->buf);
+	return (len);
+	//return (data->buf);
 }
