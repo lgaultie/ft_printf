@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 20:12:10 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 13:31:19 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char		*ft_next_p100(char *str, t_data *data)
 		i++;
 	}
 	if (str[i] == '\0')
-		data->flag |= B_DONE;
+		data->done = 1;
 	ret[i] = '\0';
 	return (ret);
 }
@@ -83,8 +83,9 @@ char		*ft_analyse(char *str, t_data *data)
 	int		i;
 
 	i = 0;
+	data->done = 0;
 	data->conv_t_sz = 0;
-	while (data->flag ^ B_DONE)
+	while (data->done != 1)
 	{
 		if (str[i] == '%')
 		{

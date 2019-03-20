@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/19 10:53:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:08:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,71 @@ int		ft_precision_s(char *flags, t_data *data)
 	if (i < data->ap_sz)
 		return (i);
 	return (data->ap_sz);
+}
+
+char	*ft_preci_width2(int before, int after, t_data *data)
+{
+	int		i;
+	char	*final;
+
+	i = 0;
+	if (!(final = malloc(sizeof(char) * (before + after + data->ap_sz + 1))))
+		return (NULL);
+	if (before == after || before < after)
+	{
+		while (i < after - data->ap_sz)
+			final[i++] = '0';
+	}
+	printf("after = %d, ap_sz = %d\n", after, data->ap_sz);
+	if (after < data->ap_sz && before > after)
+	{
+		while (i < before - data->ap_sz)
+			final[i++] = ' ';
+	}
+	if ((after > data->ap_sz && before > after) || (after == data->ap_sz))
+	{
+		while (before > after)
+		{
+			final[i++] = ' ';
+			before--;
+		}
+		while (after > data->ap_sz)
+		{
+			final[i++] = '0';
+			after--;
+		}
+	}
+	final[i] = '\0';
+	return (final);
+}
+
+char	*ft_preci_width(char *flag, t_data *data)
+{
+	int		i;
+	int		j;
+	char	*final;
+	char	*before;
+	char	*after;
+
+	i = 0;
+	j = 0;
+	if (!(before = malloc(sizeof(char) * data->flag_sz + 1)))
+		return (NULL);
+	if (!(after = malloc(sizeof(char) * data->flag_sz + 1)))
+		return (NULL);
+	while (flag[i] != '.')
+		before[j++] = flag[i++];
+	before[j] = '\0';
+	j = 0;
+	i++;
+	while (flag[i + 1] != '\0')
+		after[j++] = flag[i++];
+	after[j] = '\0';
+	i = ft_atoi(before);
+	j = ft_atoi(after);
+	free(before);
+	free(after);
+	if (!(final = ft_preci_width2(i, j, data)))
+		return (NULL);
+	return (final);
 }

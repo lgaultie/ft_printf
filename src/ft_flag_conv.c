@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 16:42:44 by takou             #+#    #+#             */
-/*   Updated: 2019/03/19 20:01:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 14:04:29 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ char	*ft_which_flag(char *flag, char conv, char *conv2, t_data *data)
 		if (!(final = ft_precision_d(flag, data)))
 			return (NULL);
 	}
+	else if (((data->flag & F_W_P) && (conv == 'd' || conv == 'i')))
+	{
+		if (!(final = ft_preci_width(flag, data)))
+			return (NULL);
+	}
 	else if (data->flag & F_WIDTH)		//mis un else if sinon precision annulée
 	{
 		if (!(final = ft_width(flag, data)))
@@ -119,10 +124,12 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	{
 		if (flag[0] == '0')
 			data->flag |= F_ZERO;
-		if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
+		else if (flag[i] == '.' && (data->flag & F_WIDTH))
+			data->flag |= F_W_P;
+		else if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
 			|| flag[i + 1] == '*'))
 			data->flag |= F_PRECIS;
-		if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
+		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
 				&& (data->flag ^ F_PRECIS)) //mal fait, cas %0.5d
 		{
 			data->flag |= F_WIDTH;

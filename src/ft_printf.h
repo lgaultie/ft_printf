@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/19 20:12:27 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 13:54:07 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@
 # define F_WIDTH 32
 # define F_PRECIS 64
 # define F_STAR 128
-# define B_DONE 256
+# define F_W_P 256
+# define B_DONE 512
 
 typedef	struct	s_data
 {
 	va_list		ap;
+	int			done;
 	int			flag_sz;
 	int			ap_sz;
 	char 		*buf;
@@ -71,6 +73,7 @@ char	*ft_analyse_options(char *flags, t_data *data);
 char 	*ft_flag_conv(char *flags, t_data *data);
 char 	*ft_only_conv(char *flags, t_data *data);
 char	*ft_zero(char *flag, t_data *data);
+char	*ft_preci_width(char *flag, t_data *data);
 // void	ft_flag_zero(char *flags, t_data *data);
 // void	ft_flag_plus(char *flags, t_data *data);
 // void	ft_flag_minus(char *flags, t_data *data);
