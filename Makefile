@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/20 16:51:28 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/20 17:37:44 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,13 +80,11 @@ $(OBJ) : | $(OBJDIR)
 
 clean:
 	@printf "clean... "
-	@make -C $(LIBDIR) clean
 	@rm -rf $(OBJDIR)
 	@printf "[$(_YELLOW)✓$(_END)]\n"
 
 fclean: clean
 	@printf "fclean... "
-	@make -C $(LIBDIR) fclean
 	@rm -f $(NAME)
 	@printf "[$(_BLUE)✓$(_END)]\n"
 
