@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/19 14:41:51 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 14:58:49 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_got_flag(char *str, t_data *data)
 		data->flag_sz = 1;
 	else
 		data->flag_sz = x + 1;
-	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
+	if (!(flags =  ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	flags = ft_strncpy(flags, str, data->flag_sz);
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
@@ -77,7 +77,7 @@ char		*ft_printf(const char *format, ...) // for tests
 	int			len;
 	t_data		*data;
 
-	if (!(data = malloc(sizeof(t_data))))
+	if (!(data =  ft_memalloc(sizeof(t_data))))
 		return (NULL);
 		//return (-1);
 	va_start(data->ap, format);

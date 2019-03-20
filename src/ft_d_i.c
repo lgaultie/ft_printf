@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_d_i.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/19 19:33:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 14:57:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_conv_di(t_data *data)
 	ap = (va_arg(data->ap, int));
 	ap_sz = ft_intlen(ap);
 	data->ap_sz = ap_sz;
-	if (!(final = malloc(sizeof(char) * (ap_sz + 1))))
+	if (!(final = ft_memalloc(sizeof(char) * (ap_sz + 1))))
 		return (NULL);
 	final = ft_itoa(ap);
 	return (final);
@@ -38,7 +38,7 @@ char	*ft_conv_u(t_data *data)
 	ap = (va_arg(data->ap, unsigned int));
 	ap_sz = ft_intlen(ap);
 	data->ap_sz = ap_sz;
-	if (!(final = malloc(sizeof(char) * (ap_sz + 1))))
+	if (!(final = ft_memalloc(sizeof(char) * (ap_sz + 1))))
 		return (NULL);
 	final = ft_itoa_base_mode(ap, 10, 1);
 	return (final);
