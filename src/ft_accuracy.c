@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 20:48:29 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/20 21:56:57 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,32 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 
 	i = 0;
 	if (accuracy <= data->ap_sz)
-		return ("");	//on imprime rien, osef de flag si precision < taille ap
+	{
+		if (data->flag & F_PLUS)
+			return (ft_strdup("+"));
+		return (ft_strdup(""));
+	}
 	else
 	{
 		if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 			return (NULL);
-		while (i < accuracy - data->ap_sz)
+		if (data->flag & F_PLUS)
 		{
-			ret[i] = '0';
+			ret[i] = '+';
 			i++;
+			while (i < accuracy - data->ap_sz + 1)
+			{
+				ret[i] = '0';
+				i++;
+			}
+		}
+		else
+		{
+			while (i < accuracy - data->ap_sz)
+			{
+				ret[i] = '0';
+				i++;
+			}
 		}
 	}
 	ret[i] = '\0';
@@ -55,15 +72,23 @@ char	*ft_precision_d(char *flags, t_data *data)
 	}
 	else
 	{
-		while (flags[i] == '.' || flags[i] == '*')
-			i++;
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))	//flag_size + 1 - 2 pour le % et d
 			return (NULL);
+		//printf("flags = %s\n", flags);
+		while (flags[i] == '%' || flags[i] == '.' || flags[i] == '+')
+			i++;
 		while (flags[i] >= '0' && flags[i] <= '9')
-				conv[j++] = flags[i++];
-		conv[j] = '\0';
-		i = ft_atoi(conv);
-		free(conv);
+		{
+			while (flags[i] == '.' || flags[i] == '*')
+				i++;
+			if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+				return (NULL);
+			while (flags[i] >= '0' && flags[i] <= '9')
+					conv[j++] = flags[i++];
+			conv[j] = '\0';
+			i = ft_atoi(conv);
+			free(conv);
+		}
 	}
 	ret = NULL;
 	if (!(ret = ft_precision_d2(data, ret, i)))
@@ -135,6 +160,8 @@ char	*ft_preci_width2(int before, int after, t_data *data)
 			after--;
 		}
 	}
+	if (data->flag & F_PLUS)
+		final[i - 1] = '+';
 	final[i] = '\0';
 	return (final);
 }
