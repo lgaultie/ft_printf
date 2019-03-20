@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 15:31:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:46:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ char	*ft_preci_width2(int before, int after, t_data *data)
 		while (i < after - data->ap_sz)
 			final[i++] = '0';
 	}
-	printf("after = %d, ap_sz = %d\n", after, data->ap_sz);
 	if (after < data->ap_sz && before > after)
 	{
 		while (i < before - data->ap_sz)

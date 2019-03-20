@@ -6,12 +6,17 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 16:21:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:51:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+
+// ----------------- BITWISE ---------------------
+// i |= 2; // active le bit 2
+// if (i & 2) // check if bit 2 is enable
+// i &= ~2;// disable bit 2
 
 int main(int argc, char **argv)
 {
@@ -27,30 +32,16 @@ int main(int argc, char **argv)
 	i = 0;
 	data = ft_memalloc(sizeof(t_data));
 
-	// i |= 2; // active le bit 2
-	// if (i & 2) // check if bit 2 is enable
-	// i &= ~2;// disable bit 2
 
 	str = ft_strdup(" %177d%%%s%%%d ");
-	printf("Vrai : i = |%5.05d|,|%d|, test\n", 3, 17);
-	ft_printf("Mine : i = |%5.05d|,|%d|, test\n",3, 17);
+	printf("Vrai : i = %5%\n");
+	ft_printf("Mine : i = %5%\n");
 	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);
+	// ft_printf("i = |%05.2d|test\n", 7);
+	// ft_printf("i = %00.05d test\n",i);
 
-
-	//ft_printf("i = %55d  %.10s  %d test\n",2,"nononononononon", i);
-	//ft_printf("i = |%.100s|, |%d|, test\n","COUCOU",i);
-
-	//PUTAIN PRINTF printf("i = |%05.2d|test\n", 7);
 	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
-	// MARCHE PAS ft_printf("i = %00.05d test\n",i);
-		// 	ft_printf(51172,0x7fffaa13f3c0) malloc: *** error for object 0x1016b0fa8: pointer being freed was not allocated
-		// *** set a breakpoint in malloc_error_break to debug
-		// [1]    51172 abort      ./ft_printf
 
-	//printf("%", 5, test_nb);
-
-	// printf("Vrai : i = |%.*s|,|%d|, test\n", 3, "SAlUT", 17);
-	// ft_printf("Mine = i = |%.*s|,|%d|, test\n", 3, "SAlUT", 17);
 	return 0;
 }
 
