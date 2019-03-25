@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 18:58:26 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 14:58:50 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/25 15:36:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_abs(int nb)
 	return (nb);
 }
 
-char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode)
+char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m)
 {
 	char			*str;
 	char			*tab;
@@ -27,12 +27,12 @@ char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode)
 	int				size;
 
 	size = 0;
-	if (mode == 1)
+	if (m == 1)
 		tab = "0123456789abcdef";
-	else if (mode == 2)
+	else if (m == 2)
 		tab = "0123456789ABCDEF";
-	tmp = value;
-	while (tmp /= base)
+	tmp = v;
+	while (tmp /= b)
 		size++;
 	size = size + 1;
 	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
@@ -40,9 +40,9 @@ char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode)
 	str[size] = '\0';
 	while (size > 0)
 	{
-		str[size - 1] = tab[ft_abs(value % base)];
+		str[size - 1] = tab[ft_abs(v % b)];
 		size--;
-		value /= base;
+		v /= b;
 	}
 	return (str);
 }
@@ -51,10 +51,22 @@ char	*ft_octal(t_data *data)
 {
 	char			*final;
 	unsigned int	ap;
+	char			*tmp;
 
 	ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	final = ft_itoa_base_mode(ap, 8, 1);
+	if (data->flag & F_SHARP)
+	{
+		tmp = ft_itoa_base_mode(ap, 8, 1);
+		if (!(final = ft_strjoin("0", tmp)))
+			return (NULL);
+		free(tmp);
+	}
+	else
+	{
+		if (!(final = ft_itoa_base_mode(ap, 8, 1)))
+			return (NULL);
+	}
 	return (final);
 }
 
@@ -62,10 +74,22 @@ char	*ft_hexa(t_data *data)
 {
 	char			*final;
 	unsigned int	ap;
+	char			*tmp;
 
 	ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	final = ft_itoa_base_mode(ap, 16, 1);
+	if (data->flag & F_SHARP)
+	{
+		tmp = ft_itoa_base_mode(ap, 16, 1);
+		if (!(final = ft_strjoin("0x", tmp)))
+			return (NULL);
+		free(tmp);
+	}
+	else
+	{
+		if (!(final = ft_itoa_base_mode(ap, 16, 1)))
+			return (NULL);
+	}
 	return (final);
 }
 
@@ -73,9 +97,21 @@ char	*ft_caps_x(t_data *data)
 {
 	char			*final;
 	unsigned int	ap;
+	char			*tmp;
 
 	ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	final = ft_itoa_base_mode(ap, 16, 2);
+	if (data->flag & F_SHARP)
+	{
+		tmp = ft_itoa_base_mode(ap, 16, 2);
+		if (!(final = ft_strjoin("0x", tmp)))
+			return (NULL);
+		free(tmp);
+	}
+	else
+	{
+		if (!(final = ft_itoa_base_mode(ap, 16, 2)))
+			return (NULL);
+	}
 	return (final);
 }

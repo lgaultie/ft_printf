@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_accuracy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 21:56:57 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:24:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,20 @@ char	*ft_precision_d2(t_data *data, char *ret, int accuracy)
 			ret[i] = '+';
 			i++;
 			while (i < accuracy - data->ap_sz + 1)
-			{
-				ret[i] = '0';
-				i++;
-			}
+				ret[i++] = '0';
 		}
 		else
 		{
-			while (i < accuracy - data->ap_sz)
+			if (data->flag & F_MINUS)
 			{
-				ret[i] = '0';
-				i++;
+				ret[i++] = '-';
+				while (i < accuracy - data->ap_sz + 1)
+					ret[i++] = '0';
+			}
+			else
+			{
+				while (i < accuracy - data->ap_sz)
+					ret[i++] = '0';
 			}
 		}
 	}
@@ -74,8 +77,8 @@ char	*ft_precision_d(char *flags, t_data *data)
 	{
 		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))	//flag_size + 1 - 2 pour le % et d
 			return (NULL);
-		//printf("flags = %s\n", flags);
-		while (flags[i] == '%' || flags[i] == '.' || flags[i] == '+')
+		printf("flags = %s\n", flags);
+		while (flags[i] < '0' || flags[i] > '9')
 			i++;
 		while (flags[i] >= '0' && flags[i] <= '9')
 		{
@@ -133,35 +136,53 @@ char	*ft_preci_width2(int before, int after, t_data *data)
 {
 	int		i;
 	char	*final;
+	int		minus;
 
 	i = 0;
+	minus = 0;
+	if (data->flag & F_MINUS)
+		minus = 1;
 	if (!(final = malloc(sizeof(char) * (before + after + data->ap_sz + 1))))
 		return (NULL);
 	if (before == after || before < after)
 	{
-		while (i < after - data->ap_sz)
-			final[i++] = '0';
+		if (data->flag & F_PLUS)
+		{
+			final[i++] = '+';
+			while (i < after - data->ap_sz + 1)
+				final[i++] = '0';
+		}
+		else
+		{
+			while (i < after - data->ap_sz)
+				final[i++] = '0';
+		}
 	}
 	if (after < data->ap_sz && before > after)
 	{
+		if (data->flag & F_PLUS)
+			final[i++] = '+';
 		while (i < before - data->ap_sz)
 			final[i++] = ' ';
 	}
 	if ((after > data->ap_sz && before > after) || (after == data->ap_sz))
 	{
-		while (before > after)
+		if (minus == 0)
 		{
-			final[i++] = ' ';
-			before--;
+			while (before > after)
+			{
+				final[i++] = ' ';
+				before--;
+			}
 		}
+		if (data->flag & F_PLUS)
+			final[i - 1] = '+';
 		while (after > data->ap_sz)
 		{
 			final[i++] = '0';
 			after--;
 		}
 	}
-	if (data->flag & F_PLUS)
-		final[i - 1] = '+';
 	final[i] = '\0';
 	return (final);
 }
@@ -180,6 +201,8 @@ char	*ft_preci_width(char *flag, t_data *data)
 		return (NULL);
 	if (!(after = malloc(sizeof(char) * data->flag_sz + 1)))
 		return (NULL);
+	while (flag[i] < '0' || flag[i] > '9')
+		i++;
 	while (flag[i] != '.')
 		before[j++] = flag[i++];
 	before[j] = '\0';

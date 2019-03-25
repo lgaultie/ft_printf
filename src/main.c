@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 21:55:01 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:46:38 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,31 @@ int main(int argc, char **argv)
 
 
 	str = ft_strdup(" %177d%%%s%%%d ");
-	printf("Vrai : i = |%.3s|,|%d|, test\n", "Salut", 17);
-	ft_printf("Mine : i = |%.3s|,|%d|, test\n", "Salut", 17);
-	printf("Vrai : %+2.5d\n", 12345);
-	ft_printf("Vrai : %+2.5d\n", 12345);
+	// printf("Vrai : i = |%s|,|%d|, test\n", "Salut", 17);
+	// ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
+	printf("Vrai : |%-.10d|\n", -18);
+	ft_printf("Vrai : |%-.10d|\n", -18);
+	// ft_printf("Vrai : |%.10s|\n", "ouiiiiiiiiiiiiiiiii");
+	// ft_printf("Vrai : |%-1.0d|\n", -18);
 	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);
 	// ft_printf("i = |%05.2d|test\n", 7);
 	// ft_printf("i = %00.05d test\n",i);
 	// ft_printf("Mine : i = %5%\n");
 
-<<<<<<< HEAD
-	// printf("Vrai : i = %5%\n");
-	// ft_printf("Mine : i = %5%\n");
-	//PUTAIN PRINTF printf("i = |%05.2d|test\n", 7);
-	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
-	// MARCHE PAS ft_printf("i = %00.05d test\n",i);
-
-
-
-
-=======
-	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
-
->>>>>>> e19e91eb73b4ed239d31e3e2b1b3e92e48c39fbd
+// <<<<<<< HEAD
+// 	// printf("Vrai : i = %5%\n");
+// 	// ft_printf("Mine : i = %5%\n");
+// 	//PUTAIN PRINTF printf("i = |%05.2d|test\n", 7);
+// 	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
+// 	// MARCHE PAS ft_printf("i = %00.05d test\n",i);
+//
+//
+//
+//
+// =======
+// 	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
+//
+// >>>>>>> e19e91eb73b4ed239d31e3e2b1b3e92e48c39fbd
 	return 0;
 }
 // printf("----- Test 01 ----\n int + Accuracy\n");

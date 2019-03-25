@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_d_i.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 19:22:43 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:36:24 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,16 @@ char	*ft_conv_di(t_data *data)
 	data->ap_sz = ap_sz;
 	if (!(final = ft_memalloc(sizeof(char) * (ap_sz + 1))))
 		return (NULL);
-	final = ft_itoa(ap);
+	if (((data->flag & F_PLUS) || (data->flag & F_MINUS)) && ap < 0 \
+	&& data->flag & F_PRECIS)
+	{
+		ap = -ap;
+		final = ft_itoa(ap);
+		data->ap_sz--;
+		data->flag |= F_PLUS_MINUS;
+	}
+	else
+		final = ft_itoa(ap);
 	return (final);
 }
 

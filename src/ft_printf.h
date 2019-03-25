@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 21:53:23 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/25 17:03:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define F_STAR 128
 # define F_W_P 256
 # define B_DONE 512
+# define F_PLUS_MINUS 1024
 
 typedef	struct	s_data
 {
@@ -50,8 +51,8 @@ typedef	struct	s_data
 	int			tmp;
 }				t_data;
 
-//int		ft_printf(const char* str, ...);
-char	*ft_printf(const char* str, ...);
+int		ft_printf(const char* str, ...);
+//char	*ft_printf(const char* str, ...);
 char	*ft_conv_di(t_data *data);
 char	*ft_string(char *flag, t_data *data, int mode);
 char	*ft_char(t_data *data);
@@ -64,11 +65,12 @@ char	*ft_conv_p(t_data *data);
 char	*ft_precision_d(char *flags, t_data *data);
 int		ft_precision_s(char *flags, t_data *data);
 char	*ft_width(char *flags, t_data *data);
+char	*ft_width_2(char *flags, t_data *data);
 char	*ft_octal(t_data *data);
 char	*ft_hexa(t_data *data);
 char	*ft_caps_x(t_data *data);
 char	*ft_conv_u(t_data *data);
-char	*ft_itoa_base_mode(unsigned int value, unsigned int base, int mode);
+char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m);
 char	*ft_analyse_options(char *flags, t_data *data);
 char 	*ft_flag_conv(char *flags, t_data *data);
 char 	*ft_only_conv(char *flags, t_data *data);
@@ -76,11 +78,5 @@ char	*ft_zero(char *flag, t_data *data);
 char	*ft_preci_width(char *flag, t_data *data);
 char	*ft_plus(char *flag, t_data *data);
 char	*ft_minus(char *flag, t_data *data);
-// void	ft_flag_zero(char *flags, t_data *data);
-// void	ft_flag_plus(char *flags, t_data *data);
-// void	ft_flag_minus(char *flags, t_data *data);
-// void	ft_flag_space(char *flags, t_data *data);
-//void	ft_espaces(char *flags, t_data *data);
-//void	ft_precision(char *flags, t_data *data);
 
 #endif

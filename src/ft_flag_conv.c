@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:30:46 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 21:54:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:45:46 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,24 @@ char	*ft_which_flag(char *flag, char conv, char *conv2, t_data *data)
 	(void)conv2;
 	i = 0;
 	nb_to_print = 0;
-	if ((data->flag & F_PRECIS) && conv == 's')		//quels flags sont compatibles?
+	// if (data->flag & F_MINUS)
+	// {
+	// 	if (!(final = ft_strnew(0)))
+	// 	return (NULL);
+	// }
+	if (data->flag & F_SHARP)
+	{
+		if (!(final = ft_strnew(0)))
+		return (NULL);
+	}
+	else if ((data->flag & F_PRECIS) && conv == 's')		//quels flags sont compatibles?
 	{
 		if(!(final = ft_string(flag, data, 1)))
 			return (NULL);
-		// nb_to_print = ft_precision_s(flag, data);
-		// if (nb_to_print < data->ap_sz)
-		// {
-		// 	if (!(final = ft_strsub(conv2, 0, nb_to_print)))
-		// 		return (NULL);
-		// }
-		// else
-		// 	return (conv2);
 	}
-	// else if (data->flag & F_ZERO)
-	// {
-	// 	if (!(final = ft_zero(flag, data)))
-	// 		return (NULL);
-	// }
 	else if (((data->flag & F_PRECIS) && (conv == 'd' || conv == 'i')))
 	{
+		ft_putstr("oui");
 		if (!(final = ft_precision_d(flag, data)))
 			return (NULL);
 	}
@@ -87,6 +85,25 @@ char	*ft_which_flag(char *flag, char conv, char *conv2, t_data *data)
 	else if (data->flag & F_WIDTH)		//mis un else if sinon precision annulée
 	{
 		if (!(final = ft_width(flag, data)))
+			return (NULL);
+	}
+	else if (data->flag & F_PLUS)
+	{
+		if (!(final = ft_plus(flag, data)))
+			return (NULL);
+	}
+	else if (data->flag & F_SPACE)
+	{
+		if (!(final = ft_strnew(1)))
+			return (NULL);
+		if (data->flag & F_MINUS)
+			(void)data;
+		else
+			final[0] = ' ';
+	}
+	else if (data->flag & F_MINUS)
+	{
+		if (!(final = ft_minus(flag, data)))
 			return (NULL);
 	}
 	else
@@ -151,6 +168,10 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			data->flag |= F_PLUS;
 		else if (flag[i] == '-')
 			data->flag |= F_MINUS;
+		else if (flag[i] == '#')
+			data->flag |= F_SHARP;
+		else if (flag[i] == ' ')
+			data->flag |= F_SPACE;
 		// else
 		// 	return (NULL);
 		i++;
@@ -161,8 +182,20 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		return (NULL);
 	if ((data->flag & F_PRECIS) && flag[i] == 's')		//cas des precisions s géré
 		return (tmp);
+	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) && !(data->flag & F_PRECIS))
+//ouais mais non, dans le cas de -4.5 par exemple, rentre ici alors que non...
+		{
+			//ft_putstr("non");
+			if (!(tmp = ft_width_2(flag, data)))
+				return (NULL);
+			if (!(final = ft_strjoin(conv, tmp)))
+				return (NULL);
+		}
+	else
+	{
 	if (!(final = ft_strjoin(tmp, conv)))
 		return (NULL);
+	}
 	free(tmp);		//free ici beug
 	return  (final);
 }
