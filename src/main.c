@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/22 16:26:57 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/27 19:45:27 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,13 @@ int main(int argc, char **argv)
 	// i |= 2; // active le bit 2
 	// if (i & 2) // check if bit 2 is enable
 	// i &= ~2;// disable bit 2
+	//i &= ~4;
 
-
-	i |= 2;
-	i |= 4;
-	if (i & 2)
-	ft_putstr("2\n");
-	if (i & 4)
-	ft_putstr("4\n");
-	if ((i & 2) && (~(i & 4)))
-		ft_putstr("both\n---------------------\n");
-
-		//i &= ~4;
-		if (i & 2)
-		ft_putstr("2\n");
-		if (i & 4)
-		ft_putstr("4\n");
-		printf("i & 4 : %d\n((i ^ 4)) : %d\n", (i ^ 4), ~(i & 4));
-		if ((i & 2) && ~(i & 4))
-		ft_putstr("both\n");
 	str = ft_strdup(" %177d%%%s%%%d ");
-	//printf("Vrai : i = |%.*s|,|%d|, test\n", 3,"Salut", 17);
-	//ft_printf("Mine : i = |%.*s|,|%d|, test\n", "Salut", 17);
+		//  printf("Vrai : i = |%.6s|,|%d|, test\n", "Salut", 17);
+		//  ft_printf("Mine : i = |%.6s|,|%d|, test\n\n", "Salut", 17);
+	printf("Vrai : i = |%*s|,|%d|, test\n", 6, "Salut", 17);
+	ft_printf("Mine : i = |%*s|,|%d|, test\n", 6, "Salut", 17);
 //	printf("Vrai : %+2.5d\n", 12345);
 //	ft_printf("Vrai : %+2.5d\n", 12345);
 	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);

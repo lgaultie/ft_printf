@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/22 15:47:13 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/27 19:12:12 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,32 @@ char	*ft_string(char *flag, t_data *data, int mode)
 	if (mode == 1)
 	{
 		ap = data->tmp_s;
-		if (data->flag & F_STAR && (data->flag & F_WIDTH || data->flag & F_PRECIS))
-			data->tmp = (va_arg(data->ap, int));
-		len = ft_precision_s(flag, data);
-		//printf("len : %d\n", len);
-		data->ap_sz = len;
-		if (!(final = ft_strsub(ap, 0, len)))
+		if (data->flag & F_PRECIS)
+		{
+			len = ft_precision_s(flag, data);
+			if (!(final = ft_strsub(ap, 0, len)))
 			return (NULL);
+		}
+		if (data->flag & F_WIDTH)
+		{
+			if (!(final = ft_strjoin(ft_width(flag, data), ap)))
+				return (NULL);
+		}
+		data->ap_sz = len;
 	}
 	if (mode == 0)
 	{
-		if (data->flag ^ F_STAR)
+		if (!(data->flag & F_STAR))
 			ap = (va_arg(data->ap, char*));
-		if (data->flag & F_PRECIS)
+		if (data->flag & F_PRECIS || data->flag & F_WIDTH)
 		{
 			if (data->flag & F_STAR)
+			{
 				data->tmp = (va_arg(data->ap, int));
-			if ((data->flag & F_PRECIS) && (data->flag ^ F_STAR))
+				data->tmp_s = (va_arg(data->ap, char *));
+			}
+			if ((data->flag & F_PRECIS || data->flag & F_WIDTH)
+				&& (!(data->flag & F_STAR)))
 				data->tmp_s = ft_strdup(ap);
 			return ("");
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_accuracy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/22 15:46:20 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/27 17:53:51 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int		ft_precision_s(char *flags, t_data *data)
 	{
 		i = data->tmp;
 		data->flag &= ~F_PRECIS & ~F_STAR;
+
 	}
 	else
 	{

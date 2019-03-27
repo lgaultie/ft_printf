@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 14:15:37 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/27 18:17:17 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_width2(int width, t_data *data)
 				ret[i] = '0';
 				i++;
 			}
-		if (data->flag ^ F_ZERO)
+		if (!(data->flag & F_ZERO))
 			while (i < width - data->ap_sz)
 			{
 				ret[i] = ' ';		//remplacer par des . pour les tests

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:30:46 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/21 18:13:33 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/27 19:02:49 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_which_flag(char *flag, char conv, char *conv2, t_data *data)
 	(void)conv2;
 	i = 0;
 	nb_to_print = 0;
-	if ((data->flag & F_PRECIS) && conv == 's')		//quels flags sont compatibles?
+	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) && conv == 's')		//quels flags sont compatibles?
 	{
 		if(!(final = ft_string(flag, data, 1)))
 			return (NULL);
