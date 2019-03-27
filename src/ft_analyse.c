@@ -6,15 +6,14 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/20 15:31:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:43:54 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** ft_next_p100_i
-** Gives the index of the next char '%'
+** ft_next_p100_i: Gives the index of the next char '%'
 */
 
 static int	ft_next_p100_i(char *str)
@@ -54,29 +53,51 @@ char		*ft_next_p100(char *str, t_data *data)
 	return (ret);
 }
 
+/*
+** ft_cat_conv: join previous format with new converted sentence
+*/
+
 static void	ft_cat_conv(t_data *data, char *str, int i)
 {
 	char	*tmp;
+	char	*tmp2;
 
 	if (!(tmp = ft_strdup(data->buf)))
 		return ;
 	free(data->buf);
-	if (!(data->buf = ft_strjoin(tmp, ft_got_flag(&str[i], data))))
+	tmp2 = ft_got_flag(&str[i], data);
+	if (!(data->buf = ft_strjoin(tmp, tmp2)))
 		return ;
 	free(tmp);
+	free(tmp2);		//Fais des erreurs de pointer being free not allocated
+	//dans le cas de %s par exemple, faut corriger %s pour quil retourne
+	//tjrs un malloc
 }
+
+/*
+** ft_cat_txt: join previous converted sentence with the rest of format
+*/
 
 static void	ft_cat_txt(t_data *data, char *str, int i)
 {
 	char	*tmp;
+	char	*tmp2;
 
 	if (!(tmp = ft_strdup(data->buf)))
 		return ;
 	free(data->buf);
-	if (!(data->buf = ft_strjoin(tmp, ft_next_p100(&str[i], data))))
+	tmp2 = ft_next_p100(&str[i], data);
+	if (!(data->buf = ft_strjoin(tmp, tmp2)))
 		return ;
 	free(tmp);
+	free(tmp2);
 }
+
+/*
+** ft_analyse : create the final sentence to be printed by joining different
+** parts, all returned by multiples conversions (case where ft_analyse finds
+** a %), or not (format).
+*/
 
 char		*ft_analyse(char *str, t_data *data)
 {
@@ -85,7 +106,6 @@ char		*ft_analyse(char *str, t_data *data)
 	i = 0;
 	data->done = 0;
 	data->conv_t_sz = 0;
-
 	while (data->done != 1)
 	{
 		if (str[i] == '%')

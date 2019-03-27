@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/25 16:53:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/27 15:19:25 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ char	*ft_width(char *flags, t_data *data)
 	}
 	else
 	{
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz))))
+// if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+//INVALID READ SIZE OF ONE, donc j'ai mis a data->flag_sz tout court
 			return (0);
 		while (flags[i] == '+' || flags[i] < '0' || flags[i] > '9')
 			i++;

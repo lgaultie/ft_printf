@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/25 17:03:18 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:25:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m);
 char	*ft_analyse_options(char *flags, t_data *data);
 char 	*ft_flag_conv(char *flags, t_data *data);
 char 	*ft_only_conv(char *flags, t_data *data);
+char	*ft_which_flag(char *flag, char conv, t_data *data);
 char	*ft_zero(char *flag, t_data *data);
 char	*ft_preci_width(char *flag, t_data *data);
 char	*ft_plus(char *flag, t_data *data);

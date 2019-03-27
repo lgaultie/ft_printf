@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/25 18:46:38 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:25:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,12 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	char *str;
-	//char	*tmp;
-	int		test_nb;
-	int		i;
 
-	t_data *data;
-	test_nb = 9;
-	i = 0;
-	data = ft_memalloc(sizeof(t_data));
-
-
-	str = ft_strdup(" %177d%%%s%%%d ");
 	// printf("Vrai : i = |%s|,|%d|, test\n", "Salut", 17);
 	// ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
-	printf("Vrai : |%-.10d|\n", -18);
-	ft_printf("Vrai : |%-.10d|\n", -18);
+	printf("Vrai : %% |%2.11d|\n", 18);
+	ft_printf("Vrai : %% |%2.11d|\n", 18);
+	// ft_printf("Vrai : |%1d|\n", -18);		WTF
 	// ft_printf("Vrai : |%.10s|\n", "ouiiiiiiiiiiiiiiiii");
 	// ft_printf("Vrai : |%-1.0d|\n", -18);
 	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);

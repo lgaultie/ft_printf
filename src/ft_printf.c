@@ -6,19 +6,21 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/25 15:49:41 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/27 16:35:49 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-static char	*ft_analyse_flags(char *flags, t_data *data)
+/*
+** ft_analyse_flag: checks if we need to analyse flags or simply do a conversion
+*/
+
+static char		*ft_analyse_flags(char *flags, t_data *data)
 {
 	int		len;
 	char	*final;
 
-	final = NULL;
 	len = data->flag_sz;
 	if (len == 1)
 		final = ft_only_conv(flags, data);
@@ -27,24 +29,22 @@ static char	*ft_analyse_flags(char *flags, t_data *data)
 	return (final);
 }
 
-char	*ft_got_flag(char *str, t_data *data)
+/*
+** ft_got_flag: returns the new converted sentence by calling ft_analyse_flags,
+** %flagconv will be replaced by this new sentence.
+*/
+
+char			*ft_got_flag(char *str, t_data *data)
 {
 	int		x;
 	char	*flags;
 	char	*final;
 
-	/* IDEE :
-		ici, au lieu de chercher directement des conv qu'on connait, on peut chercher
-		un char compris entre 65 et 90 (Maj) et entre 97 et 122 (minuscules). Pour
-		les flags (hh, h, l, ll), verifier le char suivant
-	*/
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%'	\
 		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
-	{
 		x++;
-	}
 	if (str[x] == '%')
 		data->flag_sz = 1;
 	else
@@ -58,7 +58,11 @@ char	*ft_got_flag(char *str, t_data *data)
 	return (final);
 }
 
-int		ft_print_format(char *format, t_data *data)
+/*
+** ft_print_format : print final sentence returned by ft_analyse.
+*/
+
+static int		ft_print_format(char *format, t_data *data)
 {
 	int		len;
 
@@ -67,23 +71,24 @@ int		ft_print_format(char *format, t_data *data)
 	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
 	len = ft_strlen(data->buf);
-	//free(data->buf); to uncom when not in tests
+	free(data->buf);
 	return (len);
 }
 
-int		ft_printf(const char *format, ...)
-//char		*ft_printf(const char *format, ...) // for tests
+/*
+** ft_printf : if error returns -1, else return nb of printed caracters
+*/
+
+int				ft_printf(const char *format, ...)
 {
 	int			len;
 	t_data		*data;
 
-	if (!(data =  ft_memalloc(sizeof(t_data))))
-		return (0);
-		//return (-1);
+	if (!(data = ft_memalloc(sizeof(t_data))))
+		return (-1);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
-	//free(data); to uncom when not in tests
+	free(data);
 	return (len);
-	//return (data->buf);
 }
