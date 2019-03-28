@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 16:42:41 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 19:15:13 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ int		ft_active_flag(char *flag, t_data *data)
 		{
 			data->flag |= F_WIDTH;
 			if (flag[i] == '*')
+				data->flag |= F_STAR;
+		}
+		else if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
+			|| flag[i + 1] == '*'))
+		{
+			data->flag |= F_PRECIS;
+			if (flag[i + 1] == '*')
 				data->flag |= F_STAR;
 		}
 		else
@@ -97,11 +104,11 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		if (!(ret_conv = ft_only_conv(&flag[i], data)))
 			return (NULL);
 	}
-	if ((data->flag & F_PRECIS) && flag[i] == 's')
-		return (ret_conv);
 	//cas des flags apres les conv pour le '-' et du width, voir brouillon
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
+	if ((data->flag & F_PRECIS) && flag[i] == 's')
+		return (ret_flag);
 	if (flag[i] == '%')
 	{
 		if (!(final = ft_percent_percent(ret_flag, data)))

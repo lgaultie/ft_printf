@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_analyse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/28 15:50:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 19:01:45 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,12 @@ static void	ft_cat_conv(t_data *data, char *str, int i)
 	if (!(tmp = ft_strdup(data->buf)))
 		return ;
 	free(data->buf);
-	tmp2 = ft_got_flag(&str[i], data);
+	if (!(tmp2 = ft_got_flag(&str[i], data)))
+		return ;
 	if (!(data->buf = ft_strjoin(tmp, tmp2)))
 		return ;
 	free(tmp);
-	free(tmp2);		//Fais des erreurs de pointer being free not allocated
-	//dans le cas de %s par exemple, faut corriger %s pour quil retourne
-	//tjrs un malloc
+	free(tmp2);
 }
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 20:39:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/28 18:49:32 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,43 @@ char	*ft_string(char *flag, t_data *data, int mode)
 {
 	char	*ap;
 	char	*final;
-	int		len;
 
-	len = 0;
 	if (mode == 1)
 	{
-		if (data->flag & F_STAR && (data->flag & F_WIDTH || data->flag & F_PRECIS))
-			data->tmp = (va_arg(data->ap, int));
+		ap = data->tmp_s;
 		if (data->flag & F_PRECIS)
 		{
-			len = ft_precision_s(flag, data);
-		}
-		ap = (va_arg(data->ap, char*));
-		data->ap_sz = ft_strlen(ap);
-		if (!(final = ft_strsub(ap, 0, len)))
+			data->ap_sz = ft_precision_s(flag, data);
+			if (!(final = ft_strsub(ap, 0, data->ap_sz)))
 			return (NULL);
+		}
+		if (data->flag & F_WIDTH)
+		{
+			data->ap_sz = ft_strlen(ap);
+			if (!(final = ft_strjoin(ft_width(flag, data), ap)))
+				return (NULL);
+		}
 	}
 	if (mode == 0)
 	{
-		if (data->flag & F_PRECIS)
-			return ("");
-		ap = (va_arg(data->ap, char*));
+		if (!(data->flag & F_STAR))
+			ap = (va_arg(data->ap, char*));
+		if (data->flag & F_PRECIS || data->flag & F_WIDTH)
+		{
+			if (data->flag & F_STAR)
+			{
+				data->tmp = (va_arg(data->ap, int));
+				data->tmp_s = (va_arg(data->ap, char *));
+			}
+			if ((data->flag & F_PRECIS || data->flag & F_WIDTH)
+				&& (!(data->flag & F_STAR)))
+				data->tmp_s = ft_strdup(ap);
+			return (ft_strdup(""));
+		}
 		data->ap_sz = ft_strlen(ap);
-		if (!(final =  ft_memalloc(sizeof(char) * (data->ap_sz + 1))))
-			return (NULL);
-		final = ap;
+		// if (!(final =  ft_memalloc(sizeof(char) * (data->ap_sz + 1))))
+		// 	return (NULL);
+		final = ft_strdup(ap);
 	}
 	return (final);
 }
