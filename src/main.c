@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/28 19:35:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 20:21:49 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,17 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	// printf("Vrai : i = |%s|,|%d|, test\n", "Salut", 17);
-	// ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
-//	ft_tests();
-	printf("V : |% %|\n");
-	ft_printf("M : |% %|\n");
+	printf("|%-6d|\n", 5000);
+	//ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
+	//ft_tests();
+	// printf("V : |% %|\n");
+	// ft_printf("M : |% %|\n");
 	// ft_printf("Vrai : %% |%-5%|\n");
 	// ft_printf("Vrai : %% |%5%|\n");
 	// ft_printf("Vrai : %% |%2.11u|\n", 18);
-	// ft_printf("Vrai : |%1d|\n", -18);		WTF
-	// ft_printf("Vrai : |%.10s|\n", "ouiiiiiiiiiiiiiiiii");
-	// ft_printf("Vrai : |%-1.0d|\n", -18);
-	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);
-	// ft_printf("i = |%05.2d|test\n", 7);
+	//ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);
+	//ft_printf("i = |%05.2d|test\n", 7);
 	// ft_printf("i = %00.05d test\n",i);
-	// ft_printf("Mine : i = %5%\n");
 
 // <<<<<<< HEAD
 // 	// printf("Vrai : i = %5%\n");

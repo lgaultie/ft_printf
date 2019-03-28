@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 19:12:03 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 20:00:46 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,4 +257,44 @@ void	ft_tests()
 
 	printf("Score : %d/18\n\n", i);
 
+	printf("----- Test 19 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|% %|\n");
+	tmp = ft_printf(str);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|%|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 20 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%1d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-18|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 21 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%-1.0d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-18|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("Score : %d/21\n\n", i);
 }
