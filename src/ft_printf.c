@@ -6,7 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 19:48:53 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/28 21:37:18 by amamy            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> 23bbbf5a5035ebea7107b24fb3f15c18b229e708
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +84,18 @@ static int		ft_print_format(char *format, t_data *data)
 ** ft_printf : if error returns -1, else return nb of printed caracters
 */
 
-// int				ft_printf(const char *format, ...)
+//int				ft_printf(const char *format, ...)
 char		*ft_printf(const char *format, ...) // for tests
 {
 	int			len;
 	t_data		*data;
 
 	if (!(data = ft_memalloc(sizeof(t_data))))
-	return (NULL);
-		// return (-1);
+		return (NULL);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
 	free(data); //to uncom when not in tests
 	return (data->buf);
- 	// return (len);
+ 	//return (len);
 }
