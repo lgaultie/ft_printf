@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_analyse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/21 11:36:53 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/28 16:37:57 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,33 @@ char		*ft_next_p100(char *str, t_data *data)
 static void	ft_cat_conv(t_data *data, char *str, int i)
 {
 	char	*tmp;
+	char	*flag;
 
 	if (!(tmp = ft_strdup(data->buf)))
 		return ;
+	if (!(flag = ft_got_flag(&str[i], data)))
+		return ;
 	free(data->buf);
-	if (!(data->buf = ft_strjoin(tmp, ft_got_flag(&str[i], data))))
+	if (!(data->buf = ft_strjoin(tmp, flag)))
 		return ;
 	free(tmp);
+	free(flag);
 }
 
 static void	ft_cat_txt(t_data *data, char *str, int i)
 {
 	char	*tmp;
+	char	*p100;
 
 	if (!(tmp = ft_strdup(data->buf)))
 		return ;
+	if (!(p100 = ft_next_p100(&str[i], data)))
+		return ;
 	free(data->buf);
-	if (!(data->buf = ft_strjoin(tmp, ft_next_p100(&str[i], data))))
+	if (!(data->buf = ft_strjoin(tmp, p100)))
 		return ;
 	free(tmp);
+	free(p100);
 }
 
 char		*ft_analyse(char *str, t_data *data)

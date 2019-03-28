@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takou <takou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/21 09:40:49 by takou            ###   ########.fr       */
+/*   Updated: 2019/03/28 16:18:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,23 @@ int		ft_print_format(char *format, t_data *data)
 	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
 	len = ft_strlen(data->buf);
-	//free(data->buf); to uncom when not in tests
+	free(data->buf); //to uncom when not in tests
 	return (len);
 }
 
-//int		ft_printf(const char *format, ...)
-char		*ft_printf(const char *format, ...) // for tests
+// char		*ft_printf(const char *format, ...) // for tests
+int		ft_printf(const char *format, ...)
 {
 	int			len;
 	t_data		*data;
 
 	if (!(data =  ft_memalloc(sizeof(t_data))))
-		return (NULL);
-		//return (-1);
+		return (-1);
+		// return (NULL);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
-	//free(data); to uncom when not in tests
-	//return (len);
-	return (data->buf);
+	free(data); //to uncom when not in tests
+	return (len);
+	// return (data->buf);
 }

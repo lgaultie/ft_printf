@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/27 18:17:17 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/28 15:35:01 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char	*ft_width2(int width, t_data *data)
 	char	*ret;
 
 	i = 0;
-	if (!(ret = malloc(sizeof(char) * (width - data->ap_sz + 1))))
-		return (NULL);
 	if (width > data->ap_sz)
 	{
+		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
+			return (NULL);
 		if (data->flag & F_ZERO)
 			while (i < width - data->ap_sz)
 			{
@@ -34,8 +34,10 @@ char	*ft_width2(int width, t_data *data)
 				ret[i] = ' ';		//remplacer par des . pour les tests
 				i++;
 			}
+		ret[i] = '\0';
 	}
-	ret[i] = '\0';
+	else
+		ret = ft_strdup("");
 	return (ret);
 }
 
@@ -62,6 +64,7 @@ char	*ft_width(char *flags, t_data *data)
 			conv[j++] = flags[i++];
 		i = ft_atoi(conv);
 		free(conv);
+		data->flag &= ~F_WIDTH;
 	}
 	if (!(conv = ft_width2(i, data)))
 		return (NULL);
