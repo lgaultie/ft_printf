@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 19:15:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 19:32:29 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_active_flag(char *flag, t_data *data)
 		else if (flag[i] == '.' && (data->flag & F_WIDTH))
 			data->flag |= F_W_P;
 		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
-			&& (data->flag ^ F_PRECIS)) //mal fait, cas %0.5d
+			&& !(data->flag & F_PRECIS)) //mal fait, cas %0.5d
 		{
 			data->flag |= F_WIDTH;
 			if (flag[i] == '*')
