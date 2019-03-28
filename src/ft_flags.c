@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 20:14:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:28:24 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	char	*final;
 	char	*ret_conv;
 	char	*ret_flag;
+	char	*ret_flag2;
 	int		i;
 
 	i = ft_active_flag(flag, data);
@@ -109,6 +110,14 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			return (NULL);
 	}
 	//cas des flags apres les conv pour le '-' et du width, voir brouillon
+	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
+	&& !(data->flag & F_PRECIS))
+	{
+		if (!(ret_flag2 = ft_width(flag, data)))
+			return (NULL);
+		if (!(final = ft_strjoin(ret_conv, ret_flag2)))
+			return (NULL);
+	}
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
 	if ((data->flag & F_PRECIS) && flag[i] == 's')
