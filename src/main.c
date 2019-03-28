@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/27 18:25:08 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:37:58 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ int main(int argc, char **argv)
 
 	// printf("Vrai : i = |%s|,|%d|, test\n", "Salut", 17);
 	// ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
-	printf("Vrai : %% |%2.11d|\n", 18);
-	ft_printf("Vrai : %% |%2.11d|\n", 18);
+	printf("Vrai : |%-5%| |%2.3d|\n", 5);
+	ft_printf("Vrai : |%-5%| |%2.3d|\n", 5);
+	// ft_printf("Vrai : %% |%-5%|\n");
+	// ft_printf("Vrai : %% |%5%|\n");
+	// ft_printf("Vrai : %% |%2.11u|\n", 18);
 	// ft_printf("Vrai : |%1d|\n", -18);		WTF
 	// ft_printf("Vrai : |%.10s|\n", "ouiiiiiiiiiiiiiiiii");
 	// ft_printf("Vrai : |%-1.0d|\n", -18);

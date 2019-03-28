@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/27 19:37:03 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 14:43:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 	if (data->flag & F_MINUS)
 		minus = 1;
 	size = ft_calculate_size(before, after, data);
-	if (!(final = ft_memalloc(sizeof(char) * size)))
+	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
 	if (before == after || before < after)
 	{

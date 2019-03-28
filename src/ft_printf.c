@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/27 16:35:49 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:05:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ char			*ft_got_flag(char *str, t_data *data)
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%'	\
 		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
 		x++;
-	if (str[x] == '%')
-		data->flag_sz = 1;
+	if (str[x] == '%' && str[x - 1] == '%')
+			data->flag_sz = 1;
 	else
 		data->flag_sz = x + 1;
 	if (!(flags = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))

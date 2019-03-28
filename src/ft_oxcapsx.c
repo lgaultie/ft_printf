@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_o_x_X.c                                         :+:      :+:    :+:   */
+/*   ft_oxX.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/14 18:58:26 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/25 15:36:50 by lgaultie         ###   ########.fr       */
+/*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
+/*   Updated: 2019/03/28 15:20:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ char	*ft_octal(t_data *data)
 
 	ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	if (data->flag & F_SHARP)
+	if ((data->flag & F_SHARP) && ap != 0)
 	{
 		tmp = ft_itoa_base_mode(ap, 8, 1);
-		if (!(final = ft_strjoin("0", tmp)))
-			return (NULL);
+		{
+			if (!(final = ft_strjoin("0", tmp)))
+				return (NULL);
+		}
 		free(tmp);
 	}
 	else
@@ -78,11 +80,13 @@ char	*ft_hexa(t_data *data)
 
 	ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	if (data->flag & F_SHARP)
+	if ((data->flag & F_SHARP) && (ap != 0))
 	{
 		tmp = ft_itoa_base_mode(ap, 16, 1);
-		if (!(final = ft_strjoin("0x", tmp)))
-			return (NULL);
+		{
+			if (!(final = ft_strjoin("0x", tmp)))
+				return (NULL);
+		}
 		free(tmp);
 	}
 	else
@@ -101,10 +105,10 @@ char	*ft_caps_x(t_data *data)
 
 	ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	if (data->flag & F_SHARP)
+	if ((data->flag & F_SHARP) && (ap != 0))
 	{
 		tmp = ft_itoa_base_mode(ap, 16, 2);
-		if (!(final = ft_strjoin("0x", tmp)))
+		if (!(final = ft_strjoin("0X", tmp)))
 			return (NULL);
 		free(tmp);
 	}
