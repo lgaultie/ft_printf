@@ -6,11 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/30 23:18:06 by amamy            ###   ########.fr       */
-=======
-/*   Updated: 2019/03/30 16:26:02 by lgaultie         ###   ########.fr       */
->>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
+/*   Updated: 2019/03/30 23:36:28 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +40,8 @@ char	*ft_conv_di(t_data *data)
 
 	if (data->flag & F_STAR && (data->flag & F_WIDTH || data->flag & F_PRECIS))
 		data->tmp = (va_arg(data->ap, int));
-<<<<<<< HEAD
 	if (data->flag & F_H || data->flag & F_HH || data->flag & F_L
 	|| data->flag & F_LL)
-=======
-	ap = (va_arg(data->ap, int));
-	ap_sz = ft_intlen(ap);
-	data->ap_sz = ap_sz;
-	if (ap < 0)
-	{
-		data->flag |= AP_NEG;
-		ap = -ap;
-		data->ap_sz--;
-	}
-	if (((data->flag & F_PLUS) || (data->flag & F_MINUS)) && ap < 0 \
-	&& data->flag & F_PRECIS)
->>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 	{
 		if (!(final = ft_conv_dlh(data)))
 			return (NULL);

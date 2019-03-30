@@ -6,11 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/30 21:45:36 by amamy            ###   ########.fr       */
-=======
-/*   Updated: 2019/03/30 19:29:52 by lgaultie         ###   ########.fr       */
->>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
+/*   Updated: 2019/03/30 23:37:48 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +51,9 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 		ft_putstr("flag minus activé\n");
 		printf("flag[i] = %c\n", flag[i]);
 		data->flag |= F_MINUS;
-<<<<<<< HEAD
+	}
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
-=======
-	}
->>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 }
 
 int		ft_active_flag(char *flag, t_data *data)

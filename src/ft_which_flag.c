@@ -6,11 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/30 20:52:44 by amamy            ###   ########.fr       */
-=======
-/*   Updated: 2019/03/30 18:35:21 by lgaultie         ###   ########.fr       */
->>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
+/*   Updated: 2019/03/30 23:38:06 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +29,7 @@ char	*ft_which_flag3(char *flag, char cv, t_data *data)
 	}
 	if (data->flag & F_H || data->flag & F_HH || data->flag & F_L
 		|| data->flag & F_LL)
-		return (ft_strdup("")); // on peut faire ca ? 
+		return (ft_strdup("")); // on peut faire ca ?
 	else
 		final = NULL;
 	return (final);
