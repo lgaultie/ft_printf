@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/28 21:50:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/30 19:35:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define F_W_P 256
 # define B_DONE 512
 # define F_PLUS_MINUS 1024
+# define AP_NEG 2048
 
 typedef	struct	s_data
 {
@@ -49,9 +50,9 @@ typedef	struct	s_data
 	int			conv_t_sz;
 	int			flag;
 	int			tmp;
+	int			width_precis_minus;
 	char 		*tmp_s;
 }				t_data;
-
 
 //int		ft_printf(const char* str, ...);
 char	*ft_printf(const char* str, ...);
@@ -81,5 +82,6 @@ char	*ft_preci_width(char *flag, t_data *data);
 char	*ft_plus(char *flag, t_data *data);
 char	*ft_width_minus(char *flag, t_data *data);
 char	*ft_minus(char *flag, t_data *data);
+char	*ft_preci_width_minus(char *flag, t_data *data);
 
 #endif

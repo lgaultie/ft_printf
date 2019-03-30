@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 21:56:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/30 17:41:52 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,56 @@ char	*ft_width2(int width, t_data *data)
 		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
 			return (NULL);
 		if (data->flag & F_ZERO)
-			while (i < width - data->ap_sz)
+		{
+			if (data->flag & AP_NEG)
 			{
-				ret[i] = '0';
-				i++;
+				ret[i++] = '-';
+				while (i < width - data->ap_sz - 1)
+				{
+					ret[i] = '0';
+					i++;
+				}
 			}
+			else
+			{
+				while (i < width - data->ap_sz - 1)
+				{
+					ret[i] = '0';
+					i++;
+				}
+			}
+		}
 		if (!(data->flag & F_ZERO))
-			while (i < width - data->ap_sz)
+		{
+			if (data->flag & AP_NEG)
 			{
-				ret[i] = ' ';		//remplacer par des . pour les tests
-				i++;
+				while (i < width - data->ap_sz - 1)
+				{
+					ret[i] = ' ';		//remplacer par des . pour les tests
+					i++;
+				}
+				ret[i++] = '-';
+				ret[i] = '\0';
 			}
-		ret[i] = '\0';
+			else
+			{
+				while (i < width - data->ap_sz)
+				{
+					ret[i] = ' ';		//remplacer par des . pour les tests
+					i++;
+				}
+				ret[i] = '\0';
+			}
+		}
 	}
-	else
+	if (width <= data->ap_sz)
+	{
+		if (data->flag & AP_NEG)
+			return (ft_strdup("-"));
+		else if (data->flag & F_PLUS)
+			return (ft_strdup("+"));
 		ret = ft_strdup("");
+	}
 	return (ret);
 }
 
@@ -57,7 +92,8 @@ char	*ft_width(char *flags, t_data *data)
 	{
 		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 			return (0);
-		while (flags[i] >= '0' && flags[i] <= '9')
+		while ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '+' \
+		|| flags[i] == '-')
 			conv[j++] = flags[i++];
 		i = ft_atoi(conv);
 		free(conv);
@@ -84,12 +120,25 @@ char	*ft_width_minus2(int width, t_data *data)
 				ret[i] = '0';
 				i++;
 			}
-		if (data->flag ^ F_ZERO)
-			while (i < width - data->ap_sz)
+		if (!(data->flag & F_ZERO))
+		{
+			if (data->flag & AP_NEG)
 			{
-				ret[i] = ' ';		//remplacer par des . pour les tests
-				i++;
+				while (i < width - data->ap_sz - 1)
+				{
+					ret[i] = ' ';		//remplacer par des . pour les tests
+					i++;
+				}
 			}
+			else
+			{
+				while (i < width - data->ap_sz)
+				{
+					ret[i] = ' ';		//remplacer par des . pour les tests
+					i++;
+				}
+			}
+		}
 	}
 	if (data->flag & F_PLUS)
 		ret[i++] = '+';

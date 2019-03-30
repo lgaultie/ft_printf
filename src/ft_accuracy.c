@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 21:33:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/03/30 16:45:47 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	i = 0;
 	if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 		return (NULL);
-	if (data->flag & F_PLUS)
+	if (data->flag & AP_NEG)
+	{
+		ret[i] = '-';
+		i++;
+		while (i < accuracy - data->ap_sz + 1)
+			ret[i++] = '0';
+	}
+	else if (data->flag & F_PLUS)
 	{
 		ret[i] = '+';
 		i++;
@@ -58,10 +65,10 @@ static int		ft_precision_d_else(char *flags, t_data *data)
 			return (-1);
 		while (flags[i] >= '0' && flags[i] <= '9')
 			conv[j++] = flags[i++];
-		conv[j] = '\0';
-		i = ft_atoi(conv);
-		free(conv);
 	}
+	conv[j] = '\0';
+	i = ft_atoi(conv);
+	free(conv);
 	return (i);
 }
 
@@ -86,7 +93,9 @@ char			*ft_precision_d(char *flags, t_data *data)
 	conv = NULL;
 	if (i <= data->ap_sz)
 	{
-		if (data->flag & F_PLUS)
+		if (data->flag & AP_NEG)
+			return (ft_strdup("-"));
+		else if (data->flag & F_PLUS)
 			return (ft_strdup("+"));
 		return (ft_strdup(""));
 	}

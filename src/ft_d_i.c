@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 17:13:18 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/30 16:26:02 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ char	*ft_conv_di(t_data *data)
 	ap = (va_arg(data->ap, int));
 	ap_sz = ft_intlen(ap);
 	data->ap_sz = ap_sz;
+	if (ap < 0)
+	{
+		data->flag |= AP_NEG;
+		ap = -ap;
+		data->ap_sz--;
+	}
 	if (((data->flag & F_PLUS) || (data->flag & F_MINUS)) && ap < 0 \
 	&& data->flag & F_PRECIS)
 	{
