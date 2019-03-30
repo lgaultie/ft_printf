@@ -6,7 +6,11 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/30 23:18:42 by amamy            ###   ########.fr       */
+=======
+/*   Updated: 2019/03/30 19:35:50 by lgaultie         ###   ########.fr       */
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +41,14 @@
 # define F_W_P 256
 # define B_DONE 512
 # define F_PLUS_MINUS 1024
+<<<<<<< HEAD
 # define F_H 2048
 # define F_HH 4096
 # define F_L 8192
 # define F_LL 16384
+=======
+# define AP_NEG 2048
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 
 typedef	struct	s_data
 {
@@ -53,9 +61,9 @@ typedef	struct	s_data
 	int			conv_t_sz;
 	int			flag;
 	int			tmp;
+	int			width_precis_minus;
 	char 		*tmp_s;
 }				t_data;
-
 
 //int		ft_printf(const char* str, ...);
 char	*ft_printf(const char* str, ...);
@@ -85,6 +93,7 @@ char	*ft_preci_width(char *flag, t_data *data);
 char	*ft_plus(char *flag, t_data *data);
 char	*ft_width_minus(char *flag, t_data *data);
 char	*ft_minus(char *flag, t_data *data);
+<<<<<<< HEAD
 char	*ft_dh(t_data *data);
 char	*ft_dhh(t_data *data);
 char	*ft_dl(t_data *data);
@@ -94,5 +103,8 @@ char	*ft_oh(t_data *data, int ap_tmp);
 char	*ft_ohh(t_data *data, int ap_tmp);
 char	*ft_ol(t_data *data, int ap_tmp);
 char	*ft_oll(t_data *data, int ap_tmp);
+=======
+char	*ft_preci_width_minus(char *flag, t_data *data);
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 
 #endif

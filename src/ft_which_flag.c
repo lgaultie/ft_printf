@@ -6,7 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/30 20:52:44 by amamy            ###   ########.fr       */
+=======
+/*   Updated: 2019/03/30 18:35:21 by lgaultie         ###   ########.fr       */
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +21,12 @@
 ** Will return the converted flag.
 */
 
-char	*ft_which_flag3(char *flag, t_data *data)
+char	*ft_which_flag3(char *flag, char cv, t_data *data)
 {
 	char	*final;
 
-	if (data->flag & F_MINUS)
+	(void)cv;
+	if (data->flag & F_MINUS && !(data->flag & F_W_P))
 	{
 		if (!(final = ft_minus(flag, data)))
 			return (NULL);
@@ -34,11 +39,12 @@ char	*ft_which_flag3(char *flag, t_data *data)
 	return (final);
 }
 
-char	*ft_which_flag2(char *flag, t_data *data)
+char	*ft_which_flag2(char *flag, char cv, t_data *data)
 {
 	char	*final;
 
-	if (data->flag & F_WIDTH)
+	if (data->flag & F_WIDTH && !(data->flag & F_PRECIS) \
+	&& !(data->flag & F_W_P))
 	{
 		if (!(final = ft_width(flag, data)))
 			return (NULL);
@@ -58,7 +64,7 @@ char	*ft_which_flag2(char *flag, t_data *data)
 			final[0] = ' ';
 	}
 	else
-		final = ft_which_flag3(flag, data);
+		final = ft_which_flag3(flag, cv, data);
 	return (final);
 }
 
@@ -87,6 +93,6 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else
-		final = ft_which_flag2(flag, data);
+		final = ft_which_flag2(flag, cv, data);
 	return (final);
 }

@@ -6,7 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/30 15:38:22 by amamy            ###   ########.fr       */
+=======
+/*   Updated: 2019/03/30 18:34:05 by lgaultie         ###   ########.fr       */
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,5 +313,70 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("Score : %d/22\n\n", i);
+	printf("----- Test 23 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%+3.3d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-018|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 24 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%+3.3d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-018|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 25 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%+1.0d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-18|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 26 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%8.9d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-000000018|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 27 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%9d|\n");
+	tmp = ft_printf(str, -18);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|      -18|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("Score : %d/27\n\n", i);
 }

@@ -6,7 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/30 21:45:36 by amamy            ###   ########.fr       */
+=======
+/*   Updated: 2019/03/30 19:29:52 by lgaultie         ###   ########.fr       */
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +51,16 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 			data->flag &= ~F_MINUS;
 	}
 	else if (flag[i] == '-')
+	{
+		ft_putstr("flag minus activé\n");
+		printf("flag[i] = %c\n", flag[i]);
 		data->flag |= F_MINUS;
+<<<<<<< HEAD
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
+=======
+	}
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 }
 
 int		ft_active_flag(char *flag, t_data *data)
@@ -118,6 +129,8 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	char	*ret_conv;
 	char	*ret_flag;
 	char	*ret_flag2;
+	char	*ret;
+	char	*tmp;
 	int		i;
 
 	i = ft_active_flag(flag, data);
@@ -126,10 +139,15 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		if (!(ret_conv = ft_only_conv(&flag[i], data)))
 			return (NULL);
 	}
-	//cas des flags apres les conv pour le '-' et du width, voir brouillon
 	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
-	&& !(data->flag & F_PRECIS))
+	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
+	&& !(data->flag & F_PLUS))
 	{
+		if (data->flag & AP_NEG)
+		{
+			if (!(ret_conv = ft_strjoin("-", ret_conv)))
+				return (NULL);
+		}
 		if (!(ret_flag2 = ft_width_minus(flag, data)))
 			return (NULL);
 		if (!(final = ft_strjoin(ret_conv, ret_flag2)))
@@ -149,6 +167,20 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	}
 	if (!(final = ft_strjoin(ret_flag, ret_conv)))
 		return (NULL);
+	if (data->flag & F_W_P && data->flag & F_MINUS)
+	{
+		i = 0;
+		if (!(ret = malloc(sizeof(char) * (data->width_precis_minus + 1))))
+			return (NULL);
+		while (i < data->width_precis_minus - 1)
+			ret[i++] = ' ';
+		ret[i] = '\0';
+		tmp = final;
+		if (!(final = ft_strjoin(tmp, ret)))
+			return (NULL);
+		free(ret);
+		free(tmp);
+	}
 	free(ret_conv);
 	free(ret_flag);
 	return (final);

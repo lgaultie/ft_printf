@@ -6,7 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/30 22:41:33 by amamy            ###   ########.fr       */
+=======
+/*   Updated: 2019/03/30 19:37:30 by lgaultie         ###   ########.fr       */
+>>>>>>> 72306ea4e9454d3982e3458d0ae616d9d98e8443
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +93,7 @@ char		*ft_printf(const char *format, ...) // for tests
 
 	if (!(data = ft_memalloc(sizeof(t_data))))
 		return (NULL);
+		//return (-1);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
