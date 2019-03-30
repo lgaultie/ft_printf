@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 20:00:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/28 21:59:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,5 +296,18 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("Score : %d/21\n\n", i);
+	printf("----- Test 22 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%-6d|\n");
+	tmp = ft_printf(str, 5000);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|5000  |\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("Score : %d/22\n\n", i);
 }
