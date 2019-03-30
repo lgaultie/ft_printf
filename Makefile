@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/28 15:27:04 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/30 22:52:51 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,9 @@ SRCS =	main.c			\
 		ft_strcpy.c		\
 		ft_plus_minus.c	\
 		ft_only_conv.c	\
-		ft_width_prc.c
+		ft_width_prc.c	\
+		ft_d_hh_ll.c	\
+		ft_o_hh_ll.c
 
 
 CFLAGS += -I$(INCDIR)

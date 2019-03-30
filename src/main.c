@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/28 21:59:10 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/30 23:15:37 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	printf("|%-1.0d|\n", -18);
-	ft_printf("|%-1.0d|\n", -18);
-	//ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
-	//ft_tests();
+	// printf("|%d|\n", -18);
+	printf("Vrai : |%ld|\n", 9223372036854775807);
+	ft_printf("Mine : |%ld|\n", 9223372036854775807);
+	// ft_tests();
 	// printf("V : |% %|\n");
 	// ft_printf("M : |% %|\n");
 	// ft_printf("Vrai : %% |%-5%|\n");

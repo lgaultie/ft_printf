@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 21:56:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/30 22:41:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char			*ft_got_flag(char *str, t_data *data)
 	if (!(flags = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	flags = ft_strncpy(flags, str, data->flag_sz);
+
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
 		return (NULL);
 	free(flags);

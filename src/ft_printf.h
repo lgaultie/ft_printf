@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/28 21:50:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/03/30 23:18:42 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@
 # define F_W_P 256
 # define B_DONE 512
 # define F_PLUS_MINUS 1024
+# define F_H 2048
+# define F_HH 4096
+# define F_L 8192
+# define F_LL 16384
 
 typedef	struct	s_data
 {
@@ -81,5 +85,14 @@ char	*ft_preci_width(char *flag, t_data *data);
 char	*ft_plus(char *flag, t_data *data);
 char	*ft_width_minus(char *flag, t_data *data);
 char	*ft_minus(char *flag, t_data *data);
+char	*ft_dh(t_data *data);
+char	*ft_dhh(t_data *data);
+char	*ft_dl(t_data *data);
+char	*ft_dll(t_data *data);
+char	*ft_conv_olh(t_data *data, int ap);
+char	*ft_oh(t_data *data, int ap_tmp);
+char	*ft_ohh(t_data *data, int ap_tmp);
+char	*ft_ol(t_data *data, int ap_tmp);
+char	*ft_oll(t_data *data, int ap_tmp);
 
 #endif
