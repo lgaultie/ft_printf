@@ -37,7 +37,7 @@ static char		*ft_nb_neg(char *str, long n, int base)
 	return (str);
 }
 
-char			*ft_itoa_base(long n, int base)
+char			*ft_itoa_base(long long n, int base)
 {
 	char	*str;
 	long	counter;
