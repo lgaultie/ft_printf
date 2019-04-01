@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 14:54:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 21:12:23 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 	}
 	else if (flag[i] == '-')
 		data->flag |= F_MINUS;
-	}
+	else if (flag[i] == '%')
+		data->flag |= F_PERCENT;
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
 }
@@ -60,8 +61,9 @@ int		ft_active_flag(char *flag, t_data *data)
 	i = 0;
 	while (flag[i] != 'd' && flag[i] != 'c' && flag[i] != 's' \
 		&& flag[i] != 'p' && flag[i] != 'x' && flag[i] != 'o' \
-		&& flag[i] != 'x' && flag[i] != 'X' && flag[i] != '%' \
-		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != '\0')
+		&& flag[i] != 'x' && flag[i] != 'X' \
+		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != 'u' \
+		&& flag[i] != '\0')
 	{
 		if (flag[0] == '0')
 			data->flag |= F_ZERO;
@@ -124,19 +126,21 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	int		i;
 
 	i = ft_active_flag(flag, data);
-	if (flag[i] != '%')
+	if (flag[i] != '%' && !(data->flag & F_PERCENT))
 	{
 		if (!(ret_conv = ft_only_conv(&flag[i], data)))
 			return (NULL);
 	}
-	// if (data->flag & AP_NEG && (data->flag & F_W_P || data->flag & F_PRECIS \
-	// 	|| data->flag & F_WIDTH))
+	// printf("ret_conv = %s\n", ret_conv);
+	// if (data->flag & AP_NEG && data->flag & F_MINUS \
+	// && (data->flag & F_W_P || data->flag & F_PRECIS || data->flag & F_WIDTH))
 	// 	return (ret_conv);
+
 	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
 	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
 	&& !(data->flag & F_PLUS))
 	{
-		if (data->flag & AP_NEG)
+		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 		{
 			if (!(ret_conv = ft_strjoin("-", ret_conv)))
 				return (NULL);
@@ -147,8 +151,26 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			return (NULL);
 		return (final);
 	}
+	if (data->flag & F_PERCENT)
+	{
+		data->conv_sz = 1;
+		if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
+			return (NULL);
+		if (!(final = ft_strjoin(ret_flag, "%")))
+			return (NULL);
+		free(ret_flag);
+		return (final);
+	}
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
+	//printf("ret_flag = %s\n", ret_flag);
+	// if (data->flag & F_SHARP)
+	// 	{
+	// 		tmp = ret_flag;
+	// 		if (!(ret_flag = ft_strjoin("0x", ret_flag)))
+	// 			return (NULL);
+	// 		free(tmp);
+	// 	}
 	if ((data->flag & F_PRECIS) && flag[i] == 's')
 		return (ret_flag);
 	if (flag[i] == '%')
@@ -172,7 +194,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		}
 		else
 		{
-			while (i < data->width_precis_minus - 1)
+			while (i < data->width_precis_minus)
 				ret[i++] = ' ';
 		}
 		ret[i] = '\0';

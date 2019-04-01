@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 16:45:47 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 16:24:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,95 @@
 static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 {
 	int		i;
+	int		surplus;
 
 	i = 0;
+	surplus = 0;
 	if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 		return (NULL);
-	if (data->flag & AP_NEG)
+	if (accuracy > data->conv_sz)
 	{
-		ret[i] = '-';
-		i++;
-		while (i < accuracy - data->ap_sz + 1)
-			ret[i++] = '0';
+		if (data->flag & F_ZERO)
+		{
+			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+			{
+				ret[i++] = '-';
+				while (i < accuracy - data->conv_sz - 1)
+				{
+					ret[i] = '0';
+					i++;
+				}
+			}
+			else
+			{
+				while (i < accuracy - data->conv_sz - 1)
+				{
+					ret[i] = '0';
+					i++;
+				}
+			}
+		}
+		if (!(data->flag & F_ZERO))
+		{
+			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+			{
+				while (i < accuracy - data->conv_sz - 1)
+				{
+					ret[i] = '0';		//remplacer par des . pour les tests
+					i++;
+				}
+				ret[i++] = '-';
+				ret[i] = '\0';
+			}
+			else
+			{
+				if (data->flag & F_SHARP)
+					surplus = 2;
+					while (i < accuracy - data->conv_sz - surplus)
+					{
+						ret[i] = '0';		//remplacer par des . pour les tests
+					i++;
+				}
+				ret[i] = '\0';
+			}
+		}
 	}
-	else if (data->flag & F_PLUS)
+	// if (accuracy <= data->conv_sz)
+	// {
+	//
+	// }
+	// if (data->flag & AP_NEG)
+	// {
+	// 	if (!(data->flag & F_UNSIGNED))
+	// 	{
+	// 		ret[i] = '-';
+	// 		i++;
+	// 	}
+	// 	while (i < accuracy - data->ap_sz + 1)
+	// 		ret[i++] = '0';
+	// }
+	// else if (data->flag & F_PLUS)
+	// {
+	// 	ret[i] = '+';
+	// 	i++;
+	// 	while (i < accuracy - data->ap_sz + 1)
+	// 		ret[i++] = '0';
+	// }
+	// else
+	// {
+	// 	if (data->flag & F_MINUS && !(data->flag & F_UNSIGNED))
+	// 		while (i < accuracy - data->ap_sz + 1)
+	// 			ret[i++] = '0';
+	// 	else
+	// 		while (i < accuracy - data->ap_sz)
+	// 			ret[i++] = '0';
+	if (accuracy <= data->conv_sz)
 	{
-		ret[i] = '+';
-		i++;
-		while (i < accuracy - data->ap_sz + 1)
-			ret[i++] = '0';
-	}
-	else
-	{
-		if (data->flag & F_MINUS && (ret[i++] = '-'))
-			while (i < accuracy - data->ap_sz + 1)
-				ret[i++] = '0';
-		else
-			while (i < accuracy - data->ap_sz)
-				ret[i++] = '0';
+		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+			return (ft_strdup("-"));
+		else if (data->flag & F_PLUS)
+			return (ft_strdup("+"));
+		ret = ft_strdup("");
 	}
 	return (ret);
 }

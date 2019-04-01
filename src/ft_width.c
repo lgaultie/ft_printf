@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 14:38:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 16:48:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ char	*ft_width2(int width, t_data *data)
 			return (NULL);
 		if (data->flag & F_ZERO)
 		{
-			if (data->flag & AP_NEG)
+			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 			{
 				ret[i++] = '-';
-				while (i < width - data->ap_sz - 1)
+				while (i < width - data->conv_sz - 1)
 				{
 					ret[i] = '0';
 					i++;
@@ -37,7 +37,7 @@ char	*ft_width2(int width, t_data *data)
 			}
 			else
 			{
-				while (i < width - data->ap_sz - 1)
+				while (i < width - data->conv_sz - 1)
 				{
 					ret[i] = '0';
 					i++;
@@ -46,9 +46,9 @@ char	*ft_width2(int width, t_data *data)
 		}
 		if (!(data->flag & F_ZERO))
 		{
-			if (data->flag & AP_NEG)
+			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 			{
-				while (i < width - data->ap_sz - 1)
+				while (i < width - data->conv_sz - 1)
 				{
 					ret[i] = ' ';		//remplacer par des . pour les tests
 					i++;
@@ -60,7 +60,7 @@ char	*ft_width2(int width, t_data *data)
 			{
 				if (data->flag & F_SHARP)
 					surplus = 2;
-				while (i < width - data->ap_sz - surplus)
+				while (i < width - data->conv_sz)
 				{
 					ret[i] = ' ';		//remplacer par des . pour les tests
 					i++;
@@ -69,9 +69,9 @@ char	*ft_width2(int width, t_data *data)
 			}
 		}
 	}
-	if (width <= data->ap_sz)
+	if (width <= data->conv_sz)
 	{
-		if (data->flag & AP_NEG && !(data->flag & UNSIGNED))
+		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 			return (ft_strdup("-"));
 		else if (data->flag & F_PLUS)
 			return (ft_strdup("+"));
@@ -124,10 +124,10 @@ char	*ft_width_minus2(int width, t_data *data)
 	i = 0;
 	if (!(ret = malloc(sizeof(char) * (width - data->ap_sz + 1))))
 		return (NULL);
-	if (width > data->ap_sz)
+	if (width > data->conv_sz)
 	{
 		if (data->flag & F_ZERO)
-			while (i < width - data->ap_sz)
+			while (i < width - data->conv_sz)
 			{
 				ret[i] = '0';
 				i++;
@@ -136,7 +136,7 @@ char	*ft_width_minus2(int width, t_data *data)
 		{
 			if (data->flag & AP_NEG)
 			{
-				while (i < width - data->ap_sz - 1)
+				while (i < width - data->conv_sz)
 				{
 					ret[i] = ' ';		//remplacer par des . pour les tests
 					i++;
@@ -144,7 +144,7 @@ char	*ft_width_minus2(int width, t_data *data)
 			}
 			else
 			{
-				while (i < width - data->ap_sz)
+				while (i < width - data->conv_sz)
 				{
 					ret[i] = ' ';		//remplacer par des . pour les tests
 					i++;
@@ -177,7 +177,8 @@ char	*ft_width_minus(char *flags, t_data *data)
 	{
 		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 			return (0);
-		while (flags[i] == '+' || flags[i] < '0' || flags[i] > '9')
+		while (flags[i] == '+' || flags[i] < '0' || flags[i] > '9' \
+		|| flags[i] == '-')
 			i++;
 		while (flags[i] >= '0' && flags[i] <= '9')
 			conv[j++] = flags[i++];

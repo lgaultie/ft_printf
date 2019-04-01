@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 23:36:28 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 18:12:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,14 @@ char	*ft_conv_di(t_data *data)
 		ap = (va_arg(data->ap, int));
 		ap_sz = ft_intlen(ap);
 		data->ap_sz = ap_sz;
+		if (ap < 0 && !(data->flag & ONLY_CONV))
+		{
+			data->flag |= AP_NEG;
+			ap = -ap;
+		}
 		if (((data->flag & F_PLUS) || (data->flag & F_MINUS)) && ap < 0 \
 		&& data->flag & F_PRECIS)
 		{
-			ap = -ap;
 			if (!(final = ft_itoa(ap)))
 				return (NULL);
 			data->ap_sz--;
@@ -66,12 +70,43 @@ char	*ft_conv_di(t_data *data)
 			if (!(final = ft_itoa(ap)))
 				return (NULL);
 		}
+		data->conv_sz = ft_strlen(final);
 		return (final);
 	}
 }
 
 char	*ft_conv_u(t_data *data)
 {
+	// char			*final;
+	// int				ap;
+	// char			*tmp;
+	//
+	// data->flag |= F_UNSIGNED;
+	// ap = (va_arg(data->ap, int));
+	// if (ap < 0)
+	// 	data->flag |= AP_NEG;
+	// data->ap_sz = ft_intlen(ap);
+	// if (data->flag & F_H || data->flag & F_HH || data->flag & F_L
+	// || data->flag & F_LL)
+	// {
+	// 	if (!(final = ft_conv_olh(data, ap)))
+	// 		return (NULL);
+	// }
+	// else
+	// {
+	// 	if ((data->flag & F_SHARP) && ap != 0)
+	// 	{
+	// 		tmp = ft_itoa_base_mode(ap, 10, 1);
+	// 		if (!(final = ft_strjoin("0", tmp)))
+	// 			return (NULL);
+	// 		free(tmp);
+	// 	}
+	// 	else
+	// 	{
+	// 		if (!(final = ft_itoa_base_mode(ap, 10, 1)))
+	// 			return (NULL);
+	// 	}
+	// }
 	unsigned int	ap;
 	int				ap_sz;
 	char			*final;
@@ -81,5 +116,6 @@ char	*ft_conv_u(t_data *data)
 	data->ap_sz = ap_sz;
 	if (!(final = ft_itoa_base_mode(ap, 10, 1)))
 		return (NULL);
+	data->conv_sz = ft_strlen(final);
 	return (final);
 }

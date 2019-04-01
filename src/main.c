@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 14:53:29 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 21:09:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,24 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
+	char *str;
 
-
+	str = malloc(sizeof(char) * 3);
+	str[0] = '1';
+	str[1] = '2';
+	str[2] = '\0';
 	// printf("|%d|\n", -18);
-	printf("Vrai : |%ld|\n", 9223372036854775807);
-	ft_printf("Mine : |%ld|\n", 9223372036854775807);
 	// ft_tests();
-
 	//char *oui = NULL;
-	printf("|%18o|\n", -42);
-	printf("|%8o|\n", -42);
-	ft_printf("|%18o|\n", -42);
-	ft_printf("|%8o|\n", -42);
+
+	printf("|%.6%|\n");
+	ft_printf("|%.0%|\n");
+	// printf("|%-20.8o|\n", -42);
+	// ft_printf("|%-20.8o|\n", -42);
+	// printf("|%-20.15o|\n", -42);
+	// ft_printf("|%-20.15o|\n", -42);
+	// printf("|%-3.6o|\n", -17);
+	// ft_printf("|%-3.6o|\n", -17);
 	//ft_tests();
 	//ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
 

@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 14:53:54 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 20:25:28 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define F_L 8192
 # define F_LL 16384
 # define AP_NEG 32768
+# define F_UNSIGNED 65536
+# define ONLY_CONV 131072
+# define F_PERCENT 262144
 
 typedef	struct	s_data
 {
