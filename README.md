@@ -28,10 +28,12 @@ To do :
 
  FLAG # —> marche pour o, x, X pour o = un 0 est placé devant la valeur printf("|%#o|", 16); |020| pour x = un 0x est placé devant la valeur || pour X = un 0X est placé devant la valeur printf("|%#x|", 16); |0x10| pour f = le point décimal sera toujours affiché marche pas sur c, s, d, i, u
 
-
 Allan :
-create hh file for o and d
-d : long and long long dosnt work
-o : nothing works hh doesnt overlap?? wtf
-ft_analyse : changed data->done to B_DONE
-
+Makefile to check doesnt seem to make everuthinh all the time and del them
+flah h, hh, l, ll
+d : LONG_MIN a revoir
+i : LONG_MIN a revoir
+o :
+u
+x
+X

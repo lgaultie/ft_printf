@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 23:37:48 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 13:47:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ void ft_active_cast(char *flag, t_data *data, int i)
 	int	len;
 
 	len = ft_strlen(&flag[i]);
-	if (flag[i] == 'h' && len == 2)
-		data->flag |= F_H;
-	if (flag[i] == 'h' && flag[i + 1] == 'h' && len == 3)
+
+	if (flag[i] == 'h' && flag[i + 1] == 'h' && len == 3 && (!(data->flag & F_H)))
 		data->flag |= F_HH;
-	if (flag[i] == 'l' && len == 2)
+	else if (flag[i] == 'h' && len == 2 && (!(data->flag & F_HH)))
+		data->flag |= F_H;
+	else if (flag[i] == 'l' && len == 2 && (!(data->flag & F_LL)))
 		data->flag |= F_L;
-	if (flag[i] == 'l' && flag[i + 1] == 'l' && len == 3)
+	else if (flag[i] == 'l' && flag[i + 1] == 'l' && len == 3 && (!(data->flag & F_L)))
 		data->flag |= F_LL;
 }
 
@@ -48,8 +49,6 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 	}
 	else if (flag[i] == '-')
 	{
-		ft_putstr("flag minus activé\n");
-		printf("flag[i] = %c\n", flag[i]);
 		data->flag |= F_MINUS;
 	}
 	else if (flag[i] == 'h' || flag[i] == 'l')

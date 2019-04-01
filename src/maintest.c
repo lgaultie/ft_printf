@@ -6,12 +6,13 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 23:38:27 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 21:04:54 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 void	ft_tests()
 {
@@ -374,5 +375,336 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("Score : %d/27\n\n", i);
+	printf("----- Test 28 ----\n(|%%hhd|, (char)(-32768)\n");
+	str = ft_strdup("|%hd|\n");
+	tmp = ft_printf(str, (short)(-32768));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-32768|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 29 ----\n(|%%hd|, (short)(-32769)\n");
+	str = ft_strdup("|%hd|\n");
+	tmp = ft_printf(str, (short)(-32769));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|32767|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 30 ----\n(|%%hd|, (short)(32767)\n");
+	str = ft_strdup("|%hd|\n");
+	tmp = ft_printf(str, (short)(32767));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|32767|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 31 ----\n(|%%hd|, (short)(32768)\n");
+	str = ft_strdup("|%hd|\n");
+	tmp = ft_printf(str, (short)(32768));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-32768|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+
+	printf("----- Test 32 ----\n(|%%ho|, (short)(65535)\n");
+	str = ft_strdup("|%ho|\n");
+	tmp = ft_printf(str, (short)(65535));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|177777|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 33 ----\n(|%%ho|, (short)(65536)\n");
+	str = ft_strdup("|%ho|\n");
+	tmp = ft_printf(str, (short)(65536));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 34 ----\n(|%%ho|, (short)(0)\n");
+	str = ft_strdup("|%ho|\n");
+	tmp = ft_printf(str, (short)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 35 ----\n(|%%ho|, (short)(-1)\n");
+	str = ft_strdup("|%ho|\n");
+	tmp = ft_printf(str, (short)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|177777|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 36 ----\n(|%%hhd|, (char)(-128)\n");
+	str = ft_strdup("|%hhd|\n");
+	tmp = ft_printf(str, (char)(-128));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-128|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 37 ----\n(|%%hhd|, (char)(-129)\n");
+	str = ft_strdup("|%hhd|\n");
+	tmp = ft_printf(str, (char)(-129));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|127|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 38 ----\n(|%%hhd|, (char)(127)\n");
+	str = ft_strdup("|%hhd|\n");
+	tmp = ft_printf(str, (char)(127));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|127|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 39 ----\n(|%%hhd|, (char)(128)\n");
+	str = ft_strdup("|%hhd|\n");
+	tmp = ft_printf(str, (char)(128));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-128|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 40 ----\n(|%%hho|, (char)(0)\n");
+	str = ft_strdup("|%hhd|\n");
+	tmp = ft_printf(str, (char)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 41 ----\n(|%%hho|, (char)(-1)\n");
+	str = ft_strdup("|%hho|\n");
+	tmp = ft_printf(str, (char)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|377|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 42 ----\n(|%%hho|, (char)(255)\n");
+	str = ft_strdup("|%hho|\n");
+	tmp = ft_printf(str, (char)(255));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|377|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 43 ----\n(|%%hho|, (char)(256)\n");
+	str = ft_strdup("|%hho|\n");
+	tmp = ft_printf(str, (char)(256));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 44 ----\n(|%%ld|, (long)-9223372036854775808)\n");
+	str = ft_strdup("|%ld|\n");
+	tmp = ft_printf(str, (long)(-9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 45 ----\n(|%%ld|, (long)(9223372036854775807)\n");
+	str = ft_strdup("|%ld|\n");
+	tmp = ft_printf(str, (long)(9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 46 ----\n(|%%lld|, (long long)-9223372036854775807)\n");
+	str = ft_strdup("|%lld|\n");
+	tmp = ft_printf(str, (long long)(-9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 47 ----\n(|%%lld|, (long)(9223372036854775807)\n");
+	str = ft_strdup("|%lld|\n");
+	tmp = ft_printf(str, (long long)(9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	printf("----- Test 48 ----\n(|%%lo|, (long)-9223372036854775808)\n");
+	str = ft_strdup("|%lo|\n");
+	tmp = ft_printf(str, (long)(-9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 45 ----\n(|%%ld|, (long)(9223372036854775807)\n");
+	str = ft_strdup("|%ld|\n");
+	tmp = ft_printf(str, (long)(9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 46 ----\n(|%%lld|, (long long)-9223372036854775807)\n");
+	str = ft_strdup("|%lld|\n");
+	tmp = ft_printf(str, (long long)(-9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 47 ----\n(|%%lld|, (long)(9223372036854775807)\n");
+	str = ft_strdup("|%lld|\n");
+	tmp = ft_printf(str, (long long)(9223372036854775807));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("Score : %d/47\n\n", i);
 }

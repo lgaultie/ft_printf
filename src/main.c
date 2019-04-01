@@ -6,12 +6,14 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/30 23:32:07 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 21:19:36 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
+
 void	ft_tests();
 // ----------------- BITWISE ---------------------
 // i |= 2; // active le bit 2
@@ -23,15 +25,15 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
+	//printf("%lld\n", i);
 
-	// printf("|%d|\n", -18);
-	printf("Vrai : |%ld|\n", 9223372036854775807);
-	ft_printf("Mine : |%ld|\n", 9223372036854775807);
+//	ft_tests();
+
+	printf("Vrai : |%ld|\n", (long)LONG_MIN + 1);
+	ft_printf("Mine : |%ld|\n", (long)LONG_MIN + 1);
 	// ft_tests();
 
 	//char *oui = NULL;
-	printf("|%8.6s|\n", "ouiiiiiiiiiiiiiiiiiiiii");
-	ft_printf("|%8.6s|\n", "ouiiiiiiiiiiiiiiiiiiiii");
 	//ft_tests();
 	//ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
 
