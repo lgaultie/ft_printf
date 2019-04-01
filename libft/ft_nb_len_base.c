@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_nb_len_base(long value, int base)
+int	ft_nb_len_base(long long value, int base)
 {
 	int	size;
 
@@ -23,7 +23,7 @@ int	ft_nb_len_base(long value, int base)
 		size++;
 	while (value != 0)
 	{
-		value = value / (long)base;
+		value = value / (long long)base;
 		size++;
 	}
 	return (size);

@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/03/30 15:40:41 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/03/30 23:29:46 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,42 +19,43 @@ LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	main.c					\
-		ft_printf.c				\
-		ft_analyse.c			\
-		ft_d_i.c				\
-		ft_s_c.c				\
-		ft_oxcapsx.c			\
-		ft_flags.c				\
-		ft_accuracy.c			\
-		ft_width.c				\
-		ft_p.c					\
-		ft_which_flag.c			\
-		ft_zero.c				\
-		ft_intlen.c				\
-		ft_itoa.c				\
-		ft_itoa_base.c			\
-		ft_memalloc.c			\
-		ft_putchar.c			\
-		ft_putstr.c				\
-		ft_strdup.c				\
-		ft_strjoin.c			\
-		ft_strlen.c				\
-		ft_strncpy.c			\
-		ft_strnew.c				\
-		ft_strsub.c				\
-		ft_tolower.c			\
-		ft_atoi.c				\
-		ft_bzero.c				\
-		ft_memset.c				\
-		ft_nb_len_base.c		\
-		ft_strcat.c				\
-		ft_strcpy.c				\
-		ft_plus_minus.c			\
-		ft_only_conv.c			\
-		ft_width_prc.c			\
-		ft_precis_width_minus.c
-
+SRCS =	main.c			\
+		ft_printf.c		\
+		ft_analyse.c	\
+		ft_d_i.c		\
+		ft_s_c.c		\
+		ft_oxcapsx.c		\
+		ft_flags.c		\
+		ft_accuracy.c	\
+		ft_width.c		\
+		ft_p.c			\
+		ft_which_flag.c	\
+		ft_zero.c		\
+		ft_intlen.c		\
+		ft_itoa.c		\
+		ft_itoa_base.c	\
+		ft_memalloc.c	\
+		ft_putchar.c	\
+		ft_putstr.c		\
+		ft_strdup.c		\
+		ft_strjoin.c	\
+		ft_strlen.c		\
+		ft_strncpy.c	\
+		ft_strnew.c		\
+		ft_strsub.c		\
+		ft_tolower.c	\
+		ft_atoi.c		\
+		ft_bzero.c		\
+		ft_memset.c		\
+		ft_nb_len_base.c	\
+		ft_strcat.c		\
+		ft_strcpy.c		\
+		ft_plus_minus.c	\
+		ft_only_conv.c	\
+		ft_width_prc.c	\
+		ft_precis_width_minus.c	\
+		ft_d_hh_ll.c	\
+		ft_o_hh_ll.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

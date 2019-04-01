@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 14:19:08 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:53:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ char	*ft_which_flag3(char *flag, char cv, t_data *data)
 		if (!(final = ft_minus(flag, data)))
 			return (NULL);
 	}
+	if (data->flag & F_H || data->flag & F_HH || data->flag & F_L
+		|| data->flag & F_LL)
+		return (ft_strdup("")); // on peut faire ca ?
 	else
 		final = NULL;
 	return (final);

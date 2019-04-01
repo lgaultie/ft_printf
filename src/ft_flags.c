@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 14:32:54 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:54:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 ** F_STAR: case of %.*d for example.
 ** SHOULD ALSO DISABLED IGNORED FLAGS QUAND YEN A DES INCOMPATIBLES............
 */
+
+void ft_active_cast(char *flag, t_data *data, int i)
+{
+	int	len;
+
+	len = ft_strlen(&flag[i]);
+	if (flag[i] == 'h' && len == 2)
+		data->flag |= F_H;
+	if (flag[i] == 'h' && flag[i + 1] == 'h' && len == 3)
+		data->flag |= F_HH;
+	if (flag[i] == 'l' && len == 2)
+		data->flag |= F_L;
+	if (flag[i] == 'l' && flag[i + 1] == 'l' && len == 3)
+		data->flag |= F_LL;
+}
 
 void	ft_active_flag2(char *flag, t_data *data, int i)
 {
@@ -33,6 +48,9 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 	}
 	else if (flag[i] == '-')
 		data->flag |= F_MINUS;
+	}
+	else if (flag[i] == 'h' || flag[i] == 'l')
+		ft_active_cast(flag, data, i);
 }
 
 int		ft_active_flag(char *flag, t_data *data)

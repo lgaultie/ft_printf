@@ -67,7 +67,7 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
-char			*ft_itoa(int n);
+char			*ft_itoa(long long n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -89,8 +89,8 @@ char			*ft_no_space(char const *s);
 char			*ft_strrealloc(char *str, int len);
 char			*ft_strndup(const char *s1, ssize_t len);
 void			lstendadd(t_list *alst, t_list *new);
-int				ft_nb_len_base(long value, int base);
-char			*ft_itoa_base(long n, int base);
-int				ft_intlen(int nb);
+int				ft_nb_len_base(long long value, int base);
+char			*ft_itoa_base(long long n, int base);
+int				ft_intlen(long long nb);
 
 #endif

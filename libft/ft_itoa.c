@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char		*ft_nb_neg(char *str, int n)
+static char		*ft_nb_neg(char *str, long long n)
 {
 	size_t counter;
 	size_t end;
@@ -20,17 +20,9 @@ static char		*ft_nb_neg(char *str, int n)
 	counter = 0;
 	str[counter] = '-';
 	end = ft_nb_len_base(n, 10);
-	if (n == -2147483648)
-	{
-		counter = ft_nb_len_base(n, 10) - 1;
-		str[counter] = (n % 10) * -1 + 48;
-		n = n / 10;
-		counter--;
-	}
 	n = -n;
 	str[end] = '\0';
-	if (n != -2147483648)
-		counter = ft_nb_len_base(n, 10);
+	counter = ft_nb_len_base(n, 10);
 	while (n != 0)
 	{
 		str[counter] = (n % 10) + 48;
@@ -40,7 +32,7 @@ static char		*ft_nb_neg(char *str, int n)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long n)
 {
 	char	*str;
 	size_t	counter;

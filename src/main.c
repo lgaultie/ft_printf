@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 14:36:31 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:53:29 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
+
+	// printf("|%d|\n", -18);
+	printf("Vrai : |%ld|\n", 9223372036854775807);
+	ft_printf("Mine : |%ld|\n", 9223372036854775807);
+	// ft_tests();
+
 	//char *oui = NULL;
 	printf("|%18o|\n", -42);
 	printf("|%8o|\n", -42);
@@ -30,6 +36,7 @@ int main(int argc, char **argv)
 	ft_printf("|%8o|\n", -42);
 	//ft_tests();
 	//ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
+
 	// printf("V : |% %|\n");
 	// ft_printf("M : |% %|\n");
 	// ft_printf("Vrai : %% |%-5%|\n");
@@ -52,6 +59,5 @@ int main(int argc, char **argv)
 // =======
 // 	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
 //
-// >>>>>>> e19e91eb73b4ed239d31e3e2b1b3e92e48c39fbd
 	return 0;
 }

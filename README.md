@@ -27,3 +27,11 @@ To do :
  FLAG 0 —> marche sur p, d, i, o, u, x, X, f ajoute len - nb zeros devant le nb printf("|%0d|", 34); |34| printf("|%06d|", 34); |000034| printf("|%08u|", 34); |00000034| marche pas sur: c, s
 
  FLAG # —> marche pour o, x, X pour o = un 0 est placé devant la valeur printf("|%#o|", 16); |020| pour x = un 0x est placé devant la valeur || pour X = un 0X est placé devant la valeur printf("|%#x|", 16); |0x10| pour f = le point décimal sera toujours affiché marche pas sur c, s, d, i, u
+
+
+Allan :
+create hh file for o and d
+d : long and long long dosnt work
+o : nothing works hh doesnt overlap?? wtf
+ft_analyse : changed data->done to B_DONE
+

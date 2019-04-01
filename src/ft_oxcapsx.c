@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 14:38:57 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:54:02 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,26 @@ char	*ft_octal(t_data *data)
 	if (ap < 0)
 		data->flag |= AP_NEG;
 	data->ap_sz = ft_intlen(ap);
-	if ((data->flag & F_SHARP) && ap != 0)
+	if (data->flag & F_H || data->flag & F_HH || data->flag & F_L
+	|| data->flag & F_LL)
 	{
-		tmp = ft_itoa_base_mode(ap, 8, 1);
-		{
-			if (!(final = ft_strjoin("0", tmp)))
-				return (NULL);
-		}
-		free(tmp);
+		if (!(final = ft_conv_olh(data, ap)))
+			return (NULL);
 	}
 	else
 	{
-		if (!(final = ft_itoa_base_mode(ap, 8, 1)))
-			return (NULL);
+		if ((data->flag & F_SHARP) && ap != 0)
+		{
+			tmp = ft_itoa_base_mode(ap, 8, 1);
+			if (!(final = ft_strjoin("0", tmp)))
+				return (NULL);
+			free(tmp);
+		}
+		else
+		{
+			if (!(final = ft_itoa_base_mode(ap, 8, 1)))
+				return (NULL);
+		}
 	}
 	return (final);
 }
