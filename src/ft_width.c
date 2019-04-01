@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 17:41:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:38:40 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ char	*ft_width2(int width, t_data *data)
 {
 	int		i;
 	char	*ret;
+	int		surplus;
 
 	i = 0;
-	if (width > data->ap_sz)
+	surplus = 0;
+	if (width > data->conv_sz)
 	{
 		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
 			return (NULL);
@@ -56,7 +58,9 @@ char	*ft_width2(int width, t_data *data)
 			}
 			else
 			{
-				while (i < width - data->ap_sz)
+				if (data->flag & F_SHARP)
+					surplus = 2;
+				while (i < width - data->ap_sz - surplus)
 				{
 					ret[i] = ' ';		//remplacer par des . pour les tests
 					i++;
@@ -67,7 +71,7 @@ char	*ft_width2(int width, t_data *data)
 	}
 	if (width <= data->ap_sz)
 	{
-		if (data->flag & AP_NEG)
+		if (data->flag & AP_NEG && !(data->flag & UNSIGNED))
 			return (ft_strdup("-"));
 		else if (data->flag & F_PLUS)
 			return (ft_strdup("+"));
@@ -92,9 +96,17 @@ char	*ft_width(char *flags, t_data *data)
 	{
 		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 			return (0);
-		while ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '+' \
-		|| flags[i] == '-')
-			conv[j++] = flags[i++];
+		while (flags[i] != '\0')
+		{
+			if (flags[i] == '#')
+				i++;
+			if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '+' \
+			|| flags[i] == '-')
+				conv[j] = flags[i];
+			i++;
+			j++;
+		}
+		conv[i] = '\0';
 		i = ft_atoi(conv);
 		free(conv);
 		data->flag &= ~F_WIDTH;

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 18:35:21 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:19:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,12 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 
 	if (data->flag & F_SHARP)
 	{
-		if (!(final = ft_strnew(0)))
+		if (data->flag & F_WIDTH)
+		{
+			if (!(final = ft_width(flag, data)))
+				return (NULL);
+		}
+		else if (!(final = ft_strnew(0)))
 			return (NULL);
 	}
 	else if ((data->flag & F_PRECIS || data->flag & F_WIDTH) && cv == 's')
@@ -75,12 +80,14 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 		if (!(final = ft_string(flag, data, 1)))
 			return (NULL);
 	}
-	else if (((data->flag & F_PRECIS) && (cv == 'd' || cv == 'i')))
+	else if (((data->flag & F_PRECIS) && (cv == 'd' || cv == 'i' \
+	|| cv == 'x' || cv == 'o' || cv == 'X')))
 	{
 		if (!(final = ft_precision_d(flag, data)))
 			return (NULL);
 	}
-	else if (((data->flag & F_W_P) && (cv == 'd' || cv == 'i' || cv == 'u')))
+	else if (((data->flag & F_W_P) && (cv == 'd' || cv == 'i' || cv == 'u' \
+	|| cv == 'o' || cv == 'x' || cv == 'X')))
 	{
 		if (!(final = ft_preci_width(flag, data)))
 			return (NULL);

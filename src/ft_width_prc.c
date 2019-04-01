@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 19:26:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 13:49:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 			data->width_precis_minus = before - after;
 		return (final);
 	}
-
-
 	else if (before == after || before < after)
 	{
 		if (data->flag & AP_NEG)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_oxX.c                                           :+:      :+:    :+:   */
+/*   ft_oxcapsx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/28 15:20:41 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:38:57 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m)
 char	*ft_octal(t_data *data)
 {
 	char			*final;
-	unsigned int	ap;
+	int				ap;
 	char			*tmp;
 
 	ap = (va_arg(data->ap, int));
+	data->flag |= UNSIGNED;
+	if (ap < 0)
+		data->flag |= AP_NEG;
 	data->ap_sz = ft_intlen(ap);
 	if ((data->flag & F_SHARP) && ap != 0)
 	{
@@ -75,10 +78,13 @@ char	*ft_octal(t_data *data)
 char	*ft_hexa(t_data *data)
 {
 	char			*final;
-	unsigned int	ap;
+	int				ap;
 	char			*tmp;
 
 	ap = (va_arg(data->ap, int));
+	data->flag |= UNSIGNED;
+	if (ap < 0)
+		data->flag |= AP_NEG;
 	data->ap_sz = ft_intlen(ap);
 	if ((data->flag & F_SHARP) && (ap != 0))
 	{
@@ -100,10 +106,13 @@ char	*ft_hexa(t_data *data)
 char	*ft_caps_x(t_data *data)
 {
 	char			*final;
-	unsigned int	ap;
+	int				ap;
 	char			*tmp;
 
 	ap = (va_arg(data->ap, int));
+	data->flag |= UNSIGNED;
+	if (ap < 0)
+		data->flag |= AP_NEG;
 	data->ap_sz = ft_intlen(ap);
 	if ((data->flag & F_SHARP) && (ap != 0))
 	{

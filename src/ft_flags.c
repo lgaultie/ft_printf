@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 19:29:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 14:32:54 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,11 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 	else if (flag[i] == '+')
 	{
 		data->flag |= F_PLUS;
-		if (data->flag & F_MINUS)
-			data->flag &= ~F_MINUS;
+		//if (data->flag & F_MINUS)
+			//data->flag &= ~F_MINUS;
 	}
 	else if (flag[i] == '-')
-	{
-		ft_putstr("flag minus activé\n");
-		printf("flag[i] = %c\n", flag[i]);
 		data->flag |= F_MINUS;
-	}
 }
 
 int		ft_active_flag(char *flag, t_data *data)
@@ -115,6 +111,9 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		if (!(ret_conv = ft_only_conv(&flag[i], data)))
 			return (NULL);
 	}
+	// if (data->flag & AP_NEG && (data->flag & F_W_P || data->flag & F_PRECIS \
+	// 	|| data->flag & F_WIDTH))
+	// 	return (ret_conv);
 	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
 	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
 	&& !(data->flag & F_PLUS))
@@ -148,8 +147,16 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		i = 0;
 		if (!(ret = malloc(sizeof(char) * (data->width_precis_minus + 1))))
 			return (NULL);
-		while (i < data->width_precis_minus - 1)
-			ret[i++] = ' ';
+		if (!(data->flag & F_PLUS))
+		{
+			while (i < data->width_precis_minus)
+				ret[i++] = ' ';
+		}
+		else
+		{
+			while (i < data->width_precis_minus - 1)
+				ret[i++] = ' ';
+		}
 		ret[i] = '\0';
 		tmp = final;
 		if (!(final = ft_strjoin(tmp, ret)))
