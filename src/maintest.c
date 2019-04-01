@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 21:28:28 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 21:30:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -375,6 +375,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
+<<<<<<< HEAD
 	printf("----- Test 28 ----\n(|%%hhd|, (char)(-32768)\n");
 	str = ft_strdup("|%hd|\n");
 	tmp = ft_printf(str, (short)(-32768));
@@ -698,6 +699,13 @@ void	ft_tests()
 	tmp = ft_printf(str, (long long)(9223372036854775807));
 	printf("Before : OK\n");
 	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
+=======
+	printf("----- Test 28 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	str = ft_strdup("|%+-8.6d|\n");
+	tmp = ft_printf(str, 17);
+	printf("Before : OK\n");
+	if ((ft_strcmp("|+000017 |\n", tmp) == 0))
+>>>>>>> 9f932fe3ae11fd51b02755e3665692c4345cee7d
 	{
 		i++;
 		printf("\n----> OK <----\n\n");
@@ -706,5 +714,9 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
+<<<<<<< HEAD
 	printf("Score : %d/47\n\n", i);
+=======
+	printf("Score : %d/28\n\n", i);
+>>>>>>> 9f932fe3ae11fd51b02755e3665692c4345cee7d
 }

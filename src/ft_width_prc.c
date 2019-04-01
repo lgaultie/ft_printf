@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/30 19:26:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/01 18:01:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,55 +41,55 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 		return (NULL);
 	if (data->flag & F_MINUS)
 	{
-		if (data->flag & AP_NEG)
+		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 		{
 			final[i++] = '-';
-			while (i < after - data->ap_sz + 1)
+			while (i < after - data->conv_sz + 1)
 				final[i++] = '0';
 		}
 		else if (data->flag & F_PLUS)
 		{
 			final[i++] = '+';
-			while (i < after - data->ap_sz + 1)
+			while (i < after - data->conv_sz +1)
 				final[i++] = '0';
 		}
 		else
 		{
-			while (i < after - data->ap_sz)
+			while (i < after - data->conv_sz)
 				final[i++] = '0';
 		}
 		if (before > after)
-			data->width_precis_minus = before - after;
+			data->width_precis_minus = before - i - data->conv_sz;
+		final[i] = '\0';
 		return (final);
 	}
-
-
 	else if (before == after || before < after)
 	{
 		if (data->flag & AP_NEG)
 		{
 			final[i++] = '-';
-			while (i < after - data->ap_sz + 1)
+			while (i < after - data->conv_sz + 1)
 				final[i++] = '0';
 		}
 		else if (data->flag & F_PLUS)
 		{
 			final[i++] = '+';
-			while (i < after - data->ap_sz + 1)
+			while (i < after - data->conv_sz + 1)
 				final[i++] = '0';
 		}
 		else
 		{
-			while (i < after - data->ap_sz)
+			while (i < after - data->conv_sz)
 				final[i++] = '0';
 		}
+		final[i] = '\0';
 		return (final);
 	}
-	else if (after < data->ap_sz && before > after)
+	else if (after < data->conv_sz && before > after)
 	{
 		if (data->flag & AP_NEG)
 		{
-			while (i < before - data->ap_sz - 1)
+			while (i < before - data->conv_sz - 1)
 			final[i++] = ' ';
 			final[i++] = '-';
 		}
@@ -97,11 +97,11 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 		{
 			if (data->flag & F_PLUS)
 				final[i++] = '+';
-			while (i < before - data->ap_sz)
+			while (i < before - data->conv_sz)
 				final[i++] = ' ';
 		}
 	}
-	else if ((after > data->ap_sz && before > after) || (after == data->ap_sz))
+	else if ((after > data->ap_sz && before > after) || (after == data->conv_sz))
 	{
 		if (!(data->flag & AP_NEG))
 		{
@@ -112,7 +112,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 			}
 			if (data->flag & F_PLUS)
 				final[i - 1] = '+';
-			while (after > data->ap_sz)
+			while (after > data->conv_sz)
 			{
 				final[i++] = '0';
 				after--;
@@ -126,7 +126,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				before--;
 			}
 			final[i++] = '-';
-			while (after > data->ap_sz)
+			while (after > data->conv_sz)
 			{
 				final[i++] = '0';
 				after--;

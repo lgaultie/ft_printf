@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 21:19:36 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 22:10:49 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,36 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
+	char *str;
 
 	//printf("%lld\n", i);
 
 //	ft_tests();
 
-	printf("Vrai : |%ld|\n", (long)LONG_MIN + 1);
-	ft_printf("Mine : |%ld|\n", (long)LONG_MIN + 1);
-	// ft_tests();
+	printf("Vrai : |%hho|\n", (char)120);
+	ft_printf("Mine : |%hho|\n", (char)120);
+	printf("Vrai2 : |%o|\n", -12);
+	ft_printf("Mine2 : |%o|\n", -12);
 
+	str = malloc(sizeof(char) * 3);
+	str[0] = '1';
+	str[1] = '2';
+	str[2] = '\0';
+	// printf("|%d|\n", -18);
+
+	// ft_tests();
 	//char *oui = NULL;
+
+
+	printf("|%6%|\n");
+	ft_printf("|%.0%|\n");
+	// printf("|%-20.8o|\n", -42);
+	// ft_printf("|%-20.8o|\n", -42);
+	// printf("|%-20.15o|\n", -42);
+	// ft_printf("|%-20.15o|\n", -42);
+	// printf("|%-3.6o|\n", -17);
+	// ft_printf("|%-3.6o|\n", -17);
+
 	//ft_tests();
 	//ft_printf("Mine : i = |%s|,|%d|, test\n", "Salut", 17);
 

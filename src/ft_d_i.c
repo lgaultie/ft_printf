@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/01 20:45:17 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 21:56:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,36 @@ char	*ft_conv_di(t_data *data)
 
 char	*ft_conv_u(t_data *data)
 {
+	// char			*final;
+	// int				ap;
+	// char			*tmp;
+	//
+	// data->flag |= F_UNSIGNED;
+	// ap = (va_arg(data->ap, int));
+	// if (ap < 0)
+	// 	data->flag |= AP_NEG;
+	// data->ap_sz = ft_intlen(ap);
+	// if (data->flag & F_H || data->flag & F_HH || data->flag & F_L
+	// || data->flag & F_LL)
+	// {
+	// 	if (!(final = ft_conv_olh(data, ap)))
+	// 		return (NULL);
+	// }
+	// else
+	// {
+	// 	if ((data->flag & F_SHARP) && ap != 0)
+	// 	{
+	// 		tmp = ft_itoa_base_mode(ap, 10, 1);
+	// 		if (!(final = ft_strjoin("0", tmp)))
+	// 			return (NULL);
+	// 		free(tmp);
+	// 	}
+	// 	else
+	// 	{
+	// 		if (!(final = ft_itoa_base_mode(ap, 10, 1)))
+	// 			return (NULL);
+	// 	}
+	// }
 	unsigned int	ap;
 	int				ap_sz;
 	char			*final;
@@ -51,5 +81,6 @@ char	*ft_conv_u(t_data *data)
 	data->ap_sz = ap_sz;
 	if (!(final = ft_itoa_base_mode(ap, 10, 1)))
 		return (NULL);
+	data->conv_sz = ft_strlen(final);
 	return (final);
 }

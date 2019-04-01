@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 17:22:53 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/01 22:00:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define F_L 8192
 # define F_LL 16384
 # define AP_NEG 32768
+# define F_UNSIGNED 65536
+# define ONLY_CONV 131072
+# define F_PERCENT 262144
 
 typedef	struct	s_data
 {
@@ -58,8 +61,8 @@ typedef	struct	s_data
 	char 		*tmp_s;
 }				t_data;
 
-//int		ft_printf(const char* str, ...);
-char				*ft_printf(const char* str, ...);
+// char				*ft_printf(const char* str, ...);
+int		ft_printf(const char* str, ...);
 char				*ft_conv_di(t_data *data);
 char				*ft_string(char *flag, t_data *data, int mode);
 char				*ft_char(t_data *data);
