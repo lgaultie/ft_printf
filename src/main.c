@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 11:43:33 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:23:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int main(int argc, char **argv)
 	//char *oui = NULL;
 
 
-	printf("|%X|\n", -42);
-	ft_printf("|%X|\n", -42);
+	printf("|%.6d|\n", 42);
+	ft_printf("|%.6d|\n", 42);
 	// printf("|%-20.8o|\n", -42);
 	// ft_printf("|%-20.8o|\n", -42);
 	// printf("|%-20.15o|\n", -42);

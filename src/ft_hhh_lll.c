@@ -6,13 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 21:09:38 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 12:03:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned long long	ft_conv_hhhlll_u(t_data *data)
+unsigned long long		ft_conv_hhhlll_u(t_data *data)
 {
 	unsigned long long	ap;
 
@@ -29,7 +29,7 @@ unsigned long long	ft_conv_hhhlll_u(t_data *data)
 	return (ap);
 }
 
- long long			ft_conv_hhhlll(t_data *data)
+ long long				ft_conv_hhhlll(t_data *data)
 {
 	long long			ap;
 
