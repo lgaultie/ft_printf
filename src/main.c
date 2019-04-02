@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 16:06:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:28:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,20 @@ int main(int argc, char **argv)
 	//char *oui = NULL;
 
 
-	printf("%+u\n", 4294967295);
-	ft_printf("%+u\n", 4294967295);
+	printf("\n|%-10s| is a string\n", "this");
+	ft_printf("|%-10s| is a string\n\n", "this");
+	printf("--------------\n\n");
+	printf("|%-5.2s| is a string\n", "this");
+	ft_printf("|%-5.2s| is a string\n\n", "this");
+	printf("--------------\n\n");
+	printf("|%-5.2s| is a string\n", "");
+	ft_printf("|%-5.2s| is a string\n\n", "");
+	printf("--------------\n\n");
+	printf("|%.*s|\n", 7, "Salut");
+	ft_printf("|%.*s|\n", 7, "Salut");
+	printf("--------------\n\n");
+	printf("|%-1.0d|\n", -18);
+	ft_printf("|%-1.0d|\n\n", -18);
 	// ft_printf("|%.0s|\n", "salutttt");
 	// printf("|%-20.8o|\n", -42);
 	// ft_printf("|%-20.8o|\n", -42);
