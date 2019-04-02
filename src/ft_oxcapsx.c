@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 12:23:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:25:52 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_octal(t_data *data)
 {
 	char				*final;
 	int					ap;
-	//long long			ap2;
 	char				*tmp;
 
 	data->flag |= F_UNSIGNED;
