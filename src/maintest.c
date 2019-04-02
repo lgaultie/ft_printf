@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 14:36:56 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 18:35:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -374,7 +374,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 28 ----\n(|%%hhd|, (short)(-32768)\n");
+	printf("----- Test 28 ----\n(|%%hd|, (short)(-32768)\n");
 	str = ft_strdup("|%hd|\n");
 	tmp = ft_printf(str, (short)(-32768));
 	printf("Before : OK\n");
@@ -532,7 +532,7 @@ void	ft_tests()
 	printf("---------------\n\n");
 
 	printf("----- Test 40 ----\n(|%%hho|, (char)(0)\n");
-	str = ft_strdup("|%hhd|\n");
+	str = ft_strdup("|%hho|\n");
 	tmp = ft_printf(str, (char)(0));
 	printf("Before : OK\n");
 	if ((ft_strcmp("|0|\n", tmp) == 0))
@@ -585,9 +585,9 @@ void	ft_tests()
 
 	printf("----- Test 44 ----\n(|%%ld|, (long)-9223372036854775808)\n");
 	str = ft_strdup("|%ld|\n");
-	tmp = ft_printf(str, (long)(-9223372036854775807));
+	tmp = ft_printf(str, (long)(LONG_MIN));
 	printf("Before : OK\n");
-	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	if ((ft_strcmp("|-9223372036854775808|\n", tmp) == 0))
 	{
 		i++;
 		printf("\n----> OK <----\n\n");
@@ -598,7 +598,7 @@ void	ft_tests()
 
 	printf("----- Test 45 ----\n(|%%ld|, (long)(9223372036854775807)\n");
 	str = ft_strdup("|%ld|\n");
-	tmp = ft_printf(str, (long)(9223372036854775807));
+	tmp = ft_printf(str, (long)(LONG_MAX));
 	printf("Before : OK\n");
 	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
 	{
@@ -609,11 +609,11 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 46 ----\n(|%%lld|, (long long)-9223372036854775807)\n");
+	printf("----- Test 46 ----\n(|%%lld|, (long long)-9223372036854775808)\n");
 	str = ft_strdup("|%lld|\n");
-	tmp = ft_printf(str, (long long)(-9223372036854775807));
+	tmp = ft_printf(str, (long long)(LLONG_MIN));
 	printf("Before : OK\n");
-	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	if ((ft_strcmp("|-9223372036854775808|\n", tmp) == 0))
 	{
 		i++;
 		printf("\n----> OK <----\n\n");
@@ -624,7 +624,7 @@ void	ft_tests()
 
 	printf("----- Test 47 ----\n(|%%lld|, (long)(9223372036854775807)\n");
 	str = ft_strdup("|%lld|\n");
-	tmp = ft_printf(str, (long long)(9223372036854775807));
+	tmp = ft_printf(str, (long long)(LLONG_MAX));
 	printf("Before : OK\n");
 	if ((ft_strcmp("|9223372036854775807|\n", tmp) == 0))
 	{
@@ -635,11 +635,11 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 48 ----\n(|%%lo|, (long)-9223372036854775808)\n");
+	printf("----- Test 48 ----\n(|%%lo|, (long)LONG_MIN)\n");
 	str = ft_strdup("|%lo|\n");
-	tmp = ft_printf(str, (long)(-9223372036854775807));
+	tmp = ft_printf(str, (long)(LONG_MIN));
 	printf("Before : OK\n");
-	if ((ft_strcmp("|-9223372036854775807|\n", tmp) == 0))
+	if ((ft_strcmp("|1000000000000000000000|\n", tmp) == 0))
 	{
 		i++;
 		printf("\n----> OK <----\n\n");

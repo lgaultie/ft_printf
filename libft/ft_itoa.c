@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:03:39 by amamy             #+#    #+#             */
-/*   Updated: 2019/03/03 18:03:28 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 17:45:44 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 static char		*ft_nb_neg(char *str, long long n)
 {
-	size_t counter;
-	size_t end;
+	size_t	counter;
+	size_t	end;
+	int		min;
 
 	counter = 0;
+	min = 0;
 	str[counter] = '-';
 	end = ft_nb_len_base(n, 10);
+	if (n < -9223372036854775807 && n++)
+		min = 1;
 	n = -n;
 	str[end] = '\0';
 	counter = ft_nb_len_base(n, 10);
@@ -29,6 +33,8 @@ static char		*ft_nb_neg(char *str, long long n)
 		n = n / 10;
 		counter--;
 	}
+	if (min == 1)
+		str[19] = '8';
 	return (str);
 }
 

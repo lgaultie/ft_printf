@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 16:06:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 18:36:46 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int main(int argc, char **argv)
 
 	// printf("%lld\n", i);
 
-	// ft_tests();
+	//ft_tests();
 	//
-	// printf("Vrai : |%hd|\n", (short)-32768);
-	// ft_printf("Mine : |%hd|\n\n", (short)-32768);
+	printf("Vrai : |%lo|\n", (long)LONG_MAX);
+	ft_printf("Mine : |%lo|\n", (long)LONG_MAX);
 	// printf("Vrai- : |%6.2s|\n", "this");
 	// ft_printf("Vrai- : |%6.2s|\n", "this");
 
@@ -39,8 +39,8 @@ int main(int argc, char **argv)
 	//char *oui = NULL;
 
 
-	printf("%+u\n", 4294967295);
-	ft_printf("%+u\n", 4294967295);
+	// printf("%\n", 4294967295);
+	// ft_printf("%+u\n", 4294967295);
 	// ft_printf("|%.0s|\n", "salutttt");
 	// printf("|%-20.8o|\n", -42);
 	// ft_printf("|%-20.8o|\n", -42);
