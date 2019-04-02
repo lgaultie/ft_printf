@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 12:56:07 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 14:55:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ char				*ft_minus(char *flag, t_data *data);
 unsigned long long	ft_conv_hhhlll_u(t_data *data);
 long long			ft_conv_hhhlll(t_data *data);
 char				*ft_preci_width_minus(char *flag, t_data *data);
+char				*ft_width_s(char *flags, t_data *data);
 
 #endif
