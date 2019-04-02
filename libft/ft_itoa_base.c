@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 12:22:54 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:45:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m)
 	return (str);
 }
 
-char	*ft_itoa_b_m_ul_2(unsigned int v, unsigned int b, int m)
+char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m)
 {
 	char			*str;
 	char			*tab;

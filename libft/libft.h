@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 20:20:26 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 12:23:21 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:48:22 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ int				ft_intlen(long long nb);
 char			*ft_itoa_base_mode(unsigned int v, unsigned int b, int m);
 char			*ft_itoa_base_mode_2(long long v, unsigned int b, int m);
 char			*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m);
-char			*ft_itoa_b_m_ul_2(unsigned int v, unsigned int b, int m);
+char			*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m);
 
 #endif
