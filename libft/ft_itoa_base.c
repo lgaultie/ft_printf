@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/01 16:45:12 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 12:22:54 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,46 @@ static int		ft_abs(int nb)
 	return (nb);
 }
 
-char	*ft_itoa_base_mode(long long v, unsigned int b, int m)
+
+
+
+
+
+
+char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m)
 {
 	char			*str;
 	char			*tab;
-	long long		tmp;
+	unsigned int	tmp;
 	int				size;
+
+	size = 0;
+	if (m == 1)
+		tab = "0123456789abcdef";
+	else if (m == 2)
+		tab = "0123456789ABCDEF";
+	tmp = v;
+	while (tmp /= b)
+		size++;
+	size = size + 1;
+	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
+		return (NULL);
+	str[size] = '\0';
+	while (size > 0)
+	{
+		str[size - 1] = tab[ft_abs(v % b)];
+		size--;
+		v /= b;
+	}
+	return (str);
+}
+
+char	*ft_itoa_base_mode_2(long long v, unsigned int b, int m)
+{
+	char		*str;
+	char		*tab;
+	long long	tmp;
+	int			size;
 
 	size = 0;
 	if (m == 1)
@@ -103,9 +137,37 @@ char	*ft_itoa_base_mode(long long v, unsigned int b, int m)
 
 char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m)
 {
+	char				*str;
+	char				*tab;
+	unsigned long long	tmp;
+	int					size;
+
+	size = 0;
+	if (m == 1)
+		tab = "0123456789abcdef";
+	else if (m == 2)
+		tab = "0123456789ABCDEF";
+	tmp = v;
+	while (tmp /= b)
+		size++;
+	size = size + 1;
+	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
+		return (NULL);
+	str[size] = '\0';
+	while (size > 0)
+	{
+		str[size - 1] = tab[ft_abs(v % b)];
+		size--;
+		v /= b;
+	}
+	return (str);
+}
+
+char	*ft_itoa_b_m_ul_2(unsigned int v, unsigned int b, int m)
+{
 	char			*str;
 	char			*tab;
-	unsigned long long		tmp;
+	unsigned int	tmp;
 	int				size;
 
 	size = 0;
