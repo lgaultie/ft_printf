@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 13:54:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:04:11 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 		if (data->flag & F_MINUS)
 			(void)data;
-		else
+		else if (!(data->flag & F_PERCENT))
 			final[0] = ' ';
 	}
 	else

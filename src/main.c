@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 15:14:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:06:42 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	(void)argv;
 	// char *str;
 
-	//printf("%lld\n", i);
+	// printf("%lld\n", i);
 
 	// ft_tests();
 	//

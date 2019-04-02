@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 14:56:04 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:05:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	}
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
-	//printf("ret_flag = %s\n", ret_flag);
+		// if (data->flag & F_SHARP)
 	// if (data->flag & F_SHARP)
 	// 	{
 	// 		tmp = ret_flag;
