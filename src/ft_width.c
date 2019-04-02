@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 14:52:06 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 15:12:07 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ char	*ft_width_minus2(int width, t_data *data)
 		{
 			if (data->flag & AP_NEG)
 			{
-				while (i < width - data->conv_sz)
+				while (i < width - data->conv_sz - 1)
 				{
 					ret[i] = ' ';		//remplacer par des . pour les tests
 					i++;

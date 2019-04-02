@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 14:55:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 15:14:39 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ int main(int argc, char **argv)
 
 	//printf("%lld\n", i);
 
-	ft_tests();
-
-	printf("Vrai : |%hd|\n", (short)-32768);
-	ft_printf("Mine : |%hd|\n\n", (short)-32768);
-	printf("Vrai- : |%6.2s|\n", "this");
-	ft_printf("Vrai- : |%6.2s|\n", "this");
+	// ft_tests();
+	//
+	// printf("Vrai : |%hd|\n", (short)-32768);
+	// ft_printf("Mine : |%hd|\n\n", (short)-32768);
+	// printf("Vrai- : |%6.2s|\n", "this");
+	// ft_printf("Vrai- : |%6.2s|\n", "this");
 
 
 	//char *oui = NULL;
 
 
-	printf("|%6.20s|\n", "this");
-	ft_printf("|%6.20s|\n", "this");
+	printf("%+u\n", 4294967295);
+	ft_printf("%+u\n", 4294967295);
 	// ft_printf("|%.0s|\n", "salutttt");
 	// printf("|%-20.8o|\n", -42);
 	// ft_printf("|%-20.8o|\n", -42);
