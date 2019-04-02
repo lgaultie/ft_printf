@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 18:36:46 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 18:45:42 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,34 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	// char *str;
-
-	// printf("%lld\n", i);
 
 	//ft_tests();
-	//
+
 	printf("Vrai : |%lo|\n", (long)LONG_MAX);
 	ft_printf("Mine : |%lo|\n", (long)LONG_MAX);
-	// printf("Vrai- : |%6.2s|\n", "this");
-	// ft_printf("Vrai- : |%6.2s|\n", "this");
 
 
-	//char *oui = NULL;
+
+	// printf("\n|%-10s| is a string\n", "this");
+	// ft_printf("|%-10s| is a string\n\n", "this");
+	// printf("--------------\n\n");
+	// printf("|%-5.2s| is a string\n", "this");
+	// ft_printf("|%-5.2s| is a string\n\n", "this");
+	// printf("--------------\n\n");
+	// printf("|%-5.2s| is a string\n", "");
+	// ft_printf("|%-5.2s| is a string\n\n", "");
+	// printf("--------------\n\n");
+	// printf("|%.*s|\n", 7, "Salut");
+	// ft_printf("|%.*s|\n", 7, "Salut");
+	// printf("--------------\n\n");
+	// printf("|%-1.0d|\n", -18);
+	// ft_printf("|%-1.0d|\n\n", -18);
 
 
-	// printf("%\n", 4294967295);
-	// ft_printf("%+u\n", 4294967295);
+
+
+
+
 	// ft_printf("|%.0s|\n", "salutttt");
 	// printf("|%-20.8o|\n", -42);
 	// ft_printf("|%-20.8o|\n", -42);
@@ -61,7 +72,7 @@ int main(int argc, char **argv)
 	//ft_printf("i = |%05.2d|test\n", 7);
 	// ft_printf("i = %00.05d test\n",i);
 
-// <<<<<<< HEAD
+
 // 	// printf("Vrai : i = %5%\n");
 // 	// ft_printf("Mine : i = %5%\n");
 // 	//PUTAIN PRINTF printf("i = |%05.2d|test\n", 7);
