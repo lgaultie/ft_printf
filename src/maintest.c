@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 18:35:33 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 21:18:54 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -648,6 +648,44 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
+	printf("----- Test 49 ----\n(|%%lo|, (long)LONG_MAX)\n");
+	str = ft_strdup("|%lo|\n");
+	tmp = ft_printf(str, (long)(LONG_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|777777777777777777777|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
 
-	printf("Score : %d/47\n\n", i);
+	printf("----- Test 50 ----\n(|%%llo|, (long long)LONG_MIN)\n");
+	str = ft_strdup("|%llo|\n");
+	tmp = ft_printf(str, (long long)(LLONG_MIN));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|1000000000000000000000|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test 51 ----\n(|%%llo|, (long long)LONG_MAX)\n");
+	str = ft_strdup("|%llo|\n");
+	tmp = ft_printf(str, (long long)(LONG_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|777777777777777777777|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("Score : %d/51\n\n", i);
 }

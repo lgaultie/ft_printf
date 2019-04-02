@@ -31,9 +31,9 @@ To do :
 Allan :
 Makefile to check doesnt seem to make everuthinh all the time and del them
 flah h, hh, l, ll
-d : LONG_MIN a revoir
-i : LONG_MIN a revoir
-o :
-u
-x
-X
+d : OK
+i : OK
+o : OK
+u :
+x :
+X :
