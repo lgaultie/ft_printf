@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 12:25:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/02 13:44:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_octal(t_data *data)
 		|| data->flag & F_LL)
 			tmp = ft_itoa_b_m_ul((int)ap, 8, 1);
 		else
-			tmp = ft_itoa_b_m_ul_2((int)ap, 8, 1);
+			tmp = ft_itoa_b_m_ui((int)ap, 8, 1);
 		if (!(final = ft_strjoin("0", tmp)))
 			return (NULL);
 		free(tmp);
@@ -48,7 +48,7 @@ char	*ft_octal(t_data *data)
 				return (NULL);
 		}
 	}
-
+	data->conv_sz = ft_strlen(final);
 	return (final);
 }
 
