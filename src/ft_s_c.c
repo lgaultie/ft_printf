@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 14:23:42 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/02 14:42:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char		*ft_string(char *flag, t_data *data, int mode)
 
 	if (mode == 1)
 	{
-		ft_putstr("1\n");
 		ap = data->tmp_s;
 		if (data->flag & F_PRECIS)
 		{
@@ -58,7 +57,7 @@ char		*ft_string(char *flag, t_data *data, int mode)
 	}
 	if (mode == 0)
 	{
-		ft_putstr("0\n");
+
 		if (!(final = ft_string_1(data)))
 			return (NULL);
 	}
