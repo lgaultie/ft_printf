@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 18:54:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 19:11:22 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 
 	// ft_tests();
 
-	printf("Vrai : |%hhX|\n", (char)-1);
-	ft_printf("Mine : |%hhX|\n", (char)-1);
+	printf("Vrai : |%.*s|\n", 7, "SALUT");
+	ft_printf("Mine : |%.*s|\n", 7, "SALUT");
 
 
 	// printf("|%-5.2s| is a string\n", "");
