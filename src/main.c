@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 12:08:20 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 14:10:23 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 
 	 // ft_tests();
 
-	printf("Vrai : |%lu|\n", 4294967296);
-	ft_printf("Mine : |%lu|\n", 4294967296);
+	printf("Vrai : |%d|\n", 67296);
+	ft_printf("Mine : |%d|\n", 67296);
 	// printf("Vrai : |%lu|\n", (unsigned long)4294967296);
 	// ft_printf("Mine : |%lu|\n", (unsigned long)4294967296);
 
