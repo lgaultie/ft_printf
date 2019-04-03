@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 23:40:10 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 12:57:15 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,33 @@ int main(int argc, char **argv)
 
 	 // ft_tests();
 
-	printf("Vrai : |%lo|\n", (long)LONG_MIN);
-	ft_printf("Mine : |%lo|\n", (long)LONG_MIN);
+	// printf("Vrai : |%lo|\n", (long)LONG_MIN);
+	// ft_printf("%.5d\n", -42);
 	// printf("Vrai : |%lu|\n", (unsigned long)4294967296);
 	// ft_printf("Mine : |%lu|\n", (unsigned long)4294967296);
 
 
-
-	// printf("\n|%-10s| is a string\n", "this");
-	// ft_printf("|%-10s| is a string\n\n", "this");
-	// printf("--------------\n\n");
-	// printf("|%-5.2s| is a string\n", "this");
-	// ft_printf("|%-5.2s| is a string\n\n", "this");
-	// printf("--------------\n\n");
+	printf("|%-20s| is a string\n", "this");
+	ft_printf("|%-20s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-2s| is a string\n", "this");
+	ft_printf("|%-2s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-.2s| is a string\n", "this");
+	ft_printf("|%-.2s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-5.2s| is a string\n", "this");
+	ft_printf("|%-5.2s| is a string\n", "this");
+	printf("--------------\n");
 	// printf("|%-5.2s| is a string\n", "");
 	// ft_printf("|%-5.2s| is a string\n\n", "");
-	// printf("--------------\n\n");
+	// printf("--------------\n");
 	// printf("|%.*s|\n", 7, "Salut");
 	// ft_printf("|%.*s|\n", 7, "Salut");
-	// printf("--------------\n\n");
+	// printf("--------------\n");
 	// printf("|%-1.0d|\n", -18);
 	// ft_printf("|%-1.0d|\n\n", -18);
+	// //cas des # avec des width etc ajout de 0x ou 0X avant les flags
 
 
 

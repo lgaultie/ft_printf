@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 16:05:04 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 12:56:36 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,19 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
 	&& !(data->flag & F_PLUS))
 	{
-		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED) \
+		&& (flag[i] != 's' || flag[i] != 'c'))
 		{
 			if (!(ret_conv = ft_strjoin("-", ret_conv)))
 				return (NULL);
 		}
+		//printf("ret_conv = |%s| && final = ||\n", ret_conv);
 		if (!(ret_flag2 = ft_width_minus(flag, data)))
 			return (NULL);
 		if (!(final = ft_strjoin(ret_conv, ret_flag2)))
 			return (NULL);
+		free(ret_conv);
+		free(ret_flag2);
 		return (final);
 	}
 	if (data->flag & F_PERCENT)
@@ -171,7 +175,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	// 			return (NULL);
 	// 		free(tmp);
 	// 	}
-	if ((data->flag & F_PRECIS) && flag[i] == 's')
+	if ((data->flag & F_PRECIS) && (flag[i] == 's' || flag[i] == 'c'))
 		return (ret_flag);
 	if (flag[i] == '%')
 	{
