@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 14:15:55 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 18:26:38 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_conv_u(t_data *data)
 	char			*final;
 
 	ap = 0;
-	final = ft_conv_hhhlll_u(data, 10);
+	final = ft_conv_hhhlll_u(data, 10, 1);
 	ap_sz = ft_intlen(ap);
 	data->ap_sz = ap_sz;
 	data->conv_sz = ft_strlen(final);

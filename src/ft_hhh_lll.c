@@ -6,13 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 14:12:38 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 18:10:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_conv_hhhlll_u(t_data *data, int base)
+char	*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 {
 	unsigned long long	ap;
 
@@ -28,10 +28,10 @@ char	*ft_conv_hhhlll_u(t_data *data, int base)
 	{
 		ap = (va_arg(data->ap, int));
 		data->ap_sz = ft_intlen(ap);
-		return (ft_itoa_base_mode((int)ap, base, 1));
+		return (ft_itoa_base_mode((int)ap, base, mode));
 	}
 	data->ap_sz = ft_intlen(ap);
-	return (ft_itoa_b_m_ul(ap, base, 1));
+	return (ft_itoa_b_m_ul(ap, base, mode));
 }
 
  char	*ft_conv_hhhlll(t_data *data)

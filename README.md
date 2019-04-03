@@ -31,5 +31,5 @@ d : OK
 i : OK
 o : OK
 u : OK
-x :
-X :
+x : OK
+X : OK
