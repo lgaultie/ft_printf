@@ -6,13 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 12:41:12 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 14:12:38 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_conv_hhhlll_u(t_data *data, int base)
+char	*ft_conv_hhhlll_u(t_data *data, int base)
 {
 	unsigned long long	ap;
 
@@ -34,7 +34,7 @@ char		*ft_conv_hhhlll_u(t_data *data, int base)
 	return (ft_itoa_b_m_ul(ap, base, 1));
 }
 
- long long				ft_conv_hhhlll(t_data *data)
+ char	*ft_conv_hhhlll(t_data *data)
 {
 	long long			ap;
 
@@ -48,5 +48,12 @@ char		*ft_conv_hhhlll_u(t_data *data, int base)
 		ap = (long long)(va_arg(data->ap, long long));
 	else
 		ap = (va_arg(data->ap, int));
-	return (ap);
+	data->ap_sz = ft_intlen(ap);
+	if (ap < 0 && !(data->flag & ONLY_CONV) && (data->flag & F_PRECIS
+		|| data->flag & F_WIDTH))
+	{
+		data->flag |= AP_NEG;
+		ap = -ap;
+	}
+	return (ft_itoa(ap));
 }

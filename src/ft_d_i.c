@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 14:00:37 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 14:15:55 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,16 @@
 
 char	*ft_conv_di(t_data *data)
 {
-	long long		ap;
-	int				ap_sz;
 	char			*final;
 
 	if (data->flag & F_STAR && (data->flag & F_WIDTH || data->flag & F_PRECIS))
 		data->tmp = (va_arg(data->ap, int));
-	ap = ft_conv_hhhlll(data);
-	ap_sz = ft_intlen(ap);
-	data->ap_sz = ap_sz;
-	if (ap < 0 && !(data->flag & ONLY_CONV) && (data->flag & F_PRECIS
-		|| data->flag & F_WIDTH))
+	final = ft_conv_hhhlll(data);
+	if (((data->flag & F_PLUS) || (data->flag & F_MINUS)) \
+		&& (data->flag & AP_NEG) && data->flag & F_PRECIS)
 	{
-		data->flag |= AP_NEG;
-		ap = -ap;
-	}
-	if (((data->flag & F_PLUS) || (data->flag & F_MINUS)) && ap < 0 \
-		&& data->flag & F_PRECIS)
-	{
-		if (!(final = ft_itoa(ap)))
-			return (NULL);
 		data->ap_sz--;
 		data->flag |= F_PLUS_MINUS;
-	}
-	else
-	{
-		if (!(final = ft_itoa(ap)))
-			return (NULL);
 	}
 	data->conv_sz = ft_strlen(final);
 	return (final);

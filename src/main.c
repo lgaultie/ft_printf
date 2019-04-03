@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 15:25:21 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:27:10 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int main(int argc, char **argv)
 	(void)argv;
 
 	 // ft_tests();
+
+	printf("Vrai : |%d|\n", 67296);
+	ft_printf("Mine : |%d|\n", 67296);
 
 	// printf("Vrai : |%lo|\n", (long)LONG_MIN);
 	// ft_printf("%.5d\n", -42);
