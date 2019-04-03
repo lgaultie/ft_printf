@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 15:09:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:31:37 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ static char		*ft_only_conv3(char *flags, t_data *data)
 	}
 	else if (flags[0] == 'x')
 	{
-		if (!(final = ft_hexa(data)))
+		if (!(final = ft_hexa(data, 1)))
 			return (NULL);
 	}
 	else if (flags[0] == 'X')
 	{
-		if (!(final = ft_caps_x(data)))
+		if (!(final = ft_hexa(data, 2)))
 			return (NULL);
 	}
 	else if (flags[0] == '%')

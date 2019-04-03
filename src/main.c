@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 16:38:51 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 18:54:14 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,15 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	 // ft_tests();
+	// ft_tests();
 
-	printf("Vrai : |%llx|\n", (long long)10);
-	ft_printf("Mine : |%llx|\n", (long long)10);
+	printf("Vrai : |%hhX|\n", (char)-1);
+	ft_printf("Mine : |%hhX|\n", (char)-1);
 
 
 	// printf("|%-5.2s| is a string\n", "");
 	// ft_printf("|%-5.2s| is a string\n\n", "");
 
-	printf("|%-20s| is a string\n", "this");
-	ft_printf("|%-20s| is a string\n", "this");
-	printf("--------------\n");
-	printf("|%-2s| is a string\n", "this");
-	ft_printf("|%-2s| is a string\n", "this");
-	printf("--------------\n");
-	printf("|%-.2s| is a string\n", "this");
-	ft_printf("|%-.2s| is a string\n", "this");
-	printf("--------------\n");
-	printf("|%-5.2s| is a string\n", "this");
-	ft_printf("|%-5.2s| is a string\n", "this");
-	printf("--------------\n");
-	printf("|%-7.7s| is a string\n", "this");
-	ft_printf("|%-7.7s| is a string\n", "this");
-	printf("--------------\n");
-	printf("|%-5.2s| is a string\n", "");
-	ft_printf("|%-5.2s| is a string\n\n", "");
 	// printf("--------------\n");
 	// printf("|%.*s|\n", 7, "Salut");
 	// ft_printf("|%.*s|\n", 7, "Salut");

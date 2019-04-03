@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 15:07:17 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 18:51:55 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	ft_tests()
 	char	*str;
 	char	*tmp;
 	int		i;
+	int		total;
 
 	i = 0;
-	printf("----- Test 01 ----\n(%%s, SALUT)\n");
+	total = 0;
+	printf("----- Test %d ----\n(%%s, SALUT)\n", ++total);
 	str = ft_strdup("|%s|\n");
 	tmp = ft_printf(str, "SAlUT");
 	printf("Before : OK\n");
@@ -34,7 +36,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 02 ----\n(%%d, 5)\n");
+	printf("----- Test %d ----\n(%%d, 5)\n", ++total);
 	str = ft_strdup("|%d|\n");
 	tmp = ft_printf(str, 5);
 	printf("Before : OK\n");
@@ -47,7 +49,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 03 ----\n(%%.7s, SALUT)\n");
+	printf("----- Test %d ----\n(%%.7s, SALUT)\n", ++total);
 	str = ft_strdup("|%.7s|\n");
 	tmp = ft_printf(str, "SAlUT");
 	printf("Before : OK\n");
@@ -60,7 +62,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 04 ----\n(%%.3s, SALUT) - char * + accuracy\n");
+	printf("----- Test %d ----\n(%%.3s, SALUT)\n", ++total);
 	str = ft_strdup("|%.3s|\n");
 	tmp = ft_printf(str, "SAlUT");
 	printf("Before : OK\n");
@@ -73,7 +75,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 05 ----\n(%%.7d, 5) - char * + accuracy\n");
+	printf("----- Test %d ----\n(%%.7d, 5)\n", ++total);
 	str = ft_strdup("|%.7d|\n");
 	tmp = ft_printf(str, 5);
 	printf("Before : OK\n");
@@ -86,7 +88,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 06 ----\n(%%.3d, 5) - char * + accuracy\n");
+	printf("----- Test %d ----\n(%%.3d, 5)\n", ++total);
 	str = ft_strdup("|%.3d|\n");
 	tmp = ft_printf(str, 5);
 	printf("Before : OK\n");
@@ -100,7 +102,7 @@ void	ft_tests()
 	printf("---------------\n\n");
 
 
-	// printf("----- Test 07 ----\n(%%.*s, 7, SALUT) - char * + accuracy + *\n");
+	// printf("----- Test %d ----\n(%%.*s, 7, SALUT) - char * + accuracy + *\n");
 	// str = ft_strdup("|%.*s|\n");
 	// tmp = ft_printf(str, 7, "SAlUT");
 	// printf("Before : OK\n");
@@ -113,7 +115,7 @@ void	ft_tests()
 	// 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");;
 	// printf("---------------\n\n");
 
-	// printf("----- Test 08 ----\n(%%.*s, 3, SALUT) - char * + accuracy + *\n");
+	// printf("----- Test %d ----\n(%%.*s, 3, SALUT) - char * + accuracy + *\n");
 	// str = ft_strdup("|%.*s|\n");
 	// tmp = ft_printf(str, 3, "SAlUT");
 	// printf("Before : OK\n");
@@ -126,7 +128,7 @@ void	ft_tests()
 	// 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	// printf("---------------\n\n");
 
-	printf("----- Test 09 ----\n(|%%.*d|, 7, 5) int + accuracy + *\n");
+	printf("----- Test %d ----\n(|%%.*d|, 7, 5)\n", ++total);
 	str = ft_strdup("|%.*d|\n");
 	tmp = ft_printf(str, 7, 5);
 	printf("Before : OK\n");
@@ -139,7 +141,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 10 ----\n(|%%.*d|, 3, 5) int + accuracy + *\n");
+	printf("----- Test %d ----\n(|%%.*d|, 3, 5)\n", ++total);
 	str = ft_strdup("|%.*d|\n");
 	tmp = ft_printf(str, 3, 5);
 	printf("Before : OK\n");
@@ -152,7 +154,7 @@ void	ft_tests()
 		printf("NOOOON\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 11 ----\n(|%%7s|, SALUT) int + accuracy + *\n");
+	printf("----- Test %d ----\n(|%%7s|, SALUT)\n", ++total);
 	str = ft_strdup("|%7s|\n");
 	tmp = ft_printf(str, "SALUT");
 	printf("Before : OK\n");
@@ -165,7 +167,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 12 ----\n(|%%3s|, SALUT)\n");
+	printf("----- Test %d ----\n(|%%3s|, SALUT)\n", ++total);
 	str = ft_strdup("|%3s|\n");
 	tmp = ft_printf(str, "SALUT");
 	printf("Before : OK\n");
@@ -178,7 +180,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 13 ----\n(%%7d, 5)\n");
+	printf("----- Test %d ----\n(%%7d, 5)\n", ++total);
 	str = ft_strdup("|%7d|\n");
 	tmp = ft_printf(str, 5);
 	printf("Before : OK\n");
@@ -191,7 +193,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 14 ----\n(%%3d, 5)\n");
+	printf("----- Test %d ----\n(%%3d, 5)\n", ++total);
 	str = ft_strdup("|%3d|\n");
 	tmp = ft_printf(str, 5);
 	printf("Before : OK\n");
@@ -204,7 +206,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	// printf("----- Test 15 ----\n(%%*s, 7,SALUT) -\n");
+	// printf("----- Test %d ----\n(%%*s, 7,SALUT) -\n");
 	// str = ft_strdup("|%*s|\n");
 	// tmp = ft_printf(str, 7, "SALUT");
 	// printf("Before : OK\n");
@@ -217,7 +219,7 @@ void	ft_tests()
 	// 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	// printf("---------------\n\n");
 
-	// printf("----- Test 16 ----\n(%%*s, 3, SALUT) -\n");
+	// printf("----- Test %d ----\n(%%*s, 3, SALUT) -\n");
 	// str = ft_strdup("|%*s|\n");
 	// tmp = ft_printf(str, 3, "SALUT");
 	// printf("Before : OK\n");
@@ -230,7 +232,7 @@ void	ft_tests()
 	// 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	// printf("---------------\n\n");
 
-	printf("----- Test 17 ----\n(|%%*d|, 7, 5) - int + Width + *\n");
+	printf("----- Test %d ----\n(|%%*d|, 7, 5)\n", ++total);
 	str = ft_strdup("|%*d|\n");
 	tmp = ft_printf(str, 7, 5);
 	printf("Before : OK\n");
@@ -243,7 +245,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 18 ----\n(|%%*d|, 3, 5) - int + Width + *\n");
+	printf("----- Test %d ----\n(|%%*d|, 3, 5)\n", ++total);
 	str = ft_strdup("|%*d|\n");
 	tmp = ft_printf(str, 3, 5);
 	printf("Before : OK\n");
@@ -257,7 +259,7 @@ void	ft_tests()
 	printf("---------------\n\n");
 
 
-	printf("----- Test 19 ----\n(|%% %%|)\n");
+	printf("----- Test %d ----\n(|%% %%|)\n", ++total);
 	str = ft_strdup("|% %|\n");
 	tmp = ft_printf(str);
 	printf("Before : OK\n");
@@ -270,7 +272,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 20 ----\n(|%%1d|, -18)\n");
+	printf("----- Test %d ----\n(|%%1d|, -18)\n", ++total);
 	str = ft_strdup("|%1d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -283,7 +285,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 21 ----\n(|%%-1.0d|, -18)\n");
+	printf("----- Test %d ----\n(|%%-1.0d|, -18)\n", ++total);
 	str = ft_strdup("|%-1.0d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -296,7 +298,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 22 ----\n(|%%-6d|, 5000)\n");
+	printf("----- Test %d ----\n(|%%-6d|, 5000)\n", ++total);
 	str = ft_strdup("|%-6d|\n");
 	tmp = ft_printf(str, 5000);
 	printf("Before : OK\n");
@@ -309,7 +311,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 23 ----\n(|%%+3.3d|, -18)\n");
+	printf("----- Test %d ----\n(|%%+3.3d|, -18)\n", ++total);
 	str = ft_strdup("|%+3.3d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -322,7 +324,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 24 ----\n(|%%+3.3d|, -18) - int + Width + *\n");
+	printf("----- Test %d ----\n(|%%+3.3d|, -18)\n", ++total);
 	str = ft_strdup("|%+3.3d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -335,7 +337,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 25 ----\n(|%%+1.0d|, -18)\n");
+	printf("----- Test %d ----\n(|%%+1.0d|, -18)\n", ++total);
 	str = ft_strdup("|%+1.0d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -348,7 +350,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 26 ----\n(|%%8.9.d|, -18)\n");
+	printf("----- Test %d ----\n(|%%8.9.d|, -18)\n", ++total);
 	str = ft_strdup("|%8.9d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -361,7 +363,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 27 ----\n(|%%9d|, -18)\n");
+	printf("----- Test %d ----\n(|%%9d|, -18)\n", ++total);
 	str = ft_strdup("|%9d|\n");
 	tmp = ft_printf(str, -18);
 	printf("Before : OK\n");
@@ -374,7 +376,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 28 ----\n(|%%hd|, (short)(-32768)\n");
+	printf("----- Test %d ----\n(|%%hd|, (short)(-32768)\n", ++total);
 	str = ft_strdup("|%hd|\n");
 	tmp = ft_printf(str, (short)(-32768));
 	printf("Before : OK\n");
@@ -387,7 +389,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 29 ----\n(|%%hd|, (short)(-32769)\n");
+	printf("----- Test %d ----\n(|%%hd|, (short)(-32769)\n", ++total);
 	str = ft_strdup("|%hd|\n");
 	tmp = ft_printf(str, (short)(-32769));
 	printf("Before : OK\n");
@@ -400,7 +402,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 30 ----\n(|%%hd|, (short)(32767)\n");
+	printf("----- Test %d ----\n(|%%hd|, (short)(32767)\n", ++total);
 	str = ft_strdup("|%hd|\n");
 	tmp = ft_printf(str, (short)(32767));
 	printf("Before : OK\n");
@@ -413,7 +415,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 31 ----\n(|%%hd|, (short)(32768)\n");
+	printf("----- Test %d ----\n(|%%hd|, (short)(32768)\n", ++total);
 	str = ft_strdup("|%hd|\n");
 	tmp = ft_printf(str, (short)(32768));
 	printf("Before : OK\n");
@@ -427,7 +429,7 @@ void	ft_tests()
 	printf("---------------\n\n");
 
 
-	printf("----- Test 32 ----\n(|%%ho|, (short)(65535)\n");
+	printf("----- Test %d ----\n(|%%ho|, (short)(65535)\n", ++total);
 	str = ft_strdup("|%ho|\n");
 	tmp = ft_printf(str, (short)(65535));
 	printf("Before : OK\n");
@@ -440,7 +442,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 33 ----\n(|%%ho|, (short)(65536)\n");
+	printf("----- Test %d ----\n(|%%ho|, (short)(65536)\n", ++total);
 	str = ft_strdup("|%ho|\n");
 	tmp = ft_printf(str, (short)(65536));
 	printf("Before : OK\n");
@@ -453,7 +455,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 34 ----\n(|%%ho|, (short)(0)\n");
+	printf("----- Test %d ----\n(|%%ho|, (short)(0)\n", ++total);
 	str = ft_strdup("|%ho|\n");
 	tmp = ft_printf(str, (short)(0));
 	printf("Before : OK\n");
@@ -466,7 +468,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 35 ----\n(|%%ho|, (short)(-1)\n");
+	printf("----- Test %d ----\n(|%%ho|, (short)(-1)\n", ++total);
 	str = ft_strdup("|%ho|\n");
 	tmp = ft_printf(str, (short)(-1));
 	printf("Before : OK\n");
@@ -479,7 +481,7 @@ void	ft_tests()
 	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 36 ----\n(|%%hhd|, (char)(-128)\n");
+	printf("----- Test %d ----\n(|%%hhd|, (char)(-128)\n", ++total);
 	str = ft_strdup("|%hhd|\n");
 	tmp = ft_printf(str, (char)(-128));
 	printf("Before : OK\n");
@@ -492,7 +494,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 37 ----\n(|%%hhd|, (char)(-129)\n");
+	printf("----- Test %d ----\n(|%%hhd|, (char)(-129)\n", ++total);
 	str = ft_strdup("|%hhd|\n");
 	tmp = ft_printf(str, (char)(-129));
 	printf("Before : OK\n");
@@ -505,7 +507,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 38 ----\n(|%%hhd|, (char)(127)\n");
+	printf("----- Test %d ----\n(|%%hhd|, (char)(127)\n", ++total);
 	str = ft_strdup("|%hhd|\n");
 	tmp = ft_printf(str, (char)(127));
 	printf("Before : OK\n");
@@ -518,7 +520,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 39 ----\n(|%%hhd|, (char)(128)\n");
+	printf("----- Test %d ----\n(|%%hhd|, (char)(128)\n", ++total);
 	str = ft_strdup("|%hhd|\n");
 	tmp = ft_printf(str, (char)(128));
 	printf("Before : OK\n");
@@ -531,7 +533,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 40 ----\n(|%%hho|, (char)(0)\n");
+	printf("----- Test %d ----\n(|%%hho|, (char)(0)\n", ++total);
 	str = ft_strdup("|%hho|\n");
 	tmp = ft_printf(str, (char)(0));
 	printf("Before : OK\n");
@@ -544,7 +546,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 41 ----\n(|%%hho|, (char)(-1)\n");
+	printf("----- Test %d ----\n(|%%hho|, (char)(-1)\n", ++total);
 	str = ft_strdup("|%hho|\n");
 	tmp = ft_printf(str, (char)(-1));
 	printf("Before : OK\n");
@@ -557,7 +559,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 42 ----\n(|%%hho|, (char)(255)\n");
+	printf("----- Test %d ----\n(|%%hho|, (char)(255)\n", ++total);
 	str = ft_strdup("|%hho|\n");
 	tmp = ft_printf(str, (char)(255));
 	printf("Before : OK\n");
@@ -570,7 +572,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 43 ----\n(|%%hho|, (char)(256)\n");
+	printf("----- Test %d ----\n(|%%hho|, (char)(256)\n", ++total);
 	str = ft_strdup("|%hho|\n");
 	tmp = ft_printf(str, (char)(256));
 	printf("Before : OK\n");
@@ -583,7 +585,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 44 ----\n(|%%ld|, (long)-9223372036854775808)\n");
+	printf("----- Test %d ----\n(|%%ld|, (long)-9223372036854775808)\n", ++total);
 	str = ft_strdup("|%ld|\n");
 	tmp = ft_printf(str, (long)(LONG_MIN));
 	printf("Before : OK\n");
@@ -596,7 +598,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 45 ----\n(|%%ld|, (long)(9223372036854775807)\n");
+	printf("----- Test %d ----\n(|%%ld|, (long)(9223372036854775807)\n", ++total);
 	str = ft_strdup("|%ld|\n");
 	tmp = ft_printf(str, (long)(LONG_MAX));
 	printf("Before : OK\n");
@@ -609,7 +611,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 46 ----\n(|%%lld|, (long long)-9223372036854775808)\n");
+	printf("----- Test %d ----\n(|%%lld|, (long long)-9223372036854775808)\n", ++total);
 	str = ft_strdup("|%lld|\n");
 	tmp = ft_printf(str, (long long)(LLONG_MIN));
 	printf("Before : OK\n");
@@ -622,7 +624,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 47 ----\n(|%%lld|, (long)(9223372036854775807)\n");
+	printf("----- Test %d ----\n(|%%lld|, (long)(9223372036854775807)\n", ++total);
 	str = ft_strdup("|%lld|\n");
 	tmp = ft_printf(str, (long long)(LLONG_MAX));
 	printf("Before : OK\n");
@@ -635,7 +637,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 48 ----\n(|%%lo|, (long)LONG_MIN)\n");
+	printf("----- Test %d ----\n(|%%lo|, (long)LONG_MIN)\n", ++total);
 	str = ft_strdup("|%lo|\n");
 	tmp = ft_printf(str, (long)(LONG_MIN));
 	printf("Before : OK\n");
@@ -648,7 +650,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 49 ----\n(|%%lo|, (long)LONG_MAX)\n");
+	printf("----- Test %d ----\n(|%%lo|, (long)LONG_MAX)\n", ++total);
 	str = ft_strdup("|%lo|\n");
 	tmp = ft_printf(str, (long)(LONG_MAX));
 	printf("Before : OK\n");
@@ -661,7 +663,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 50 ----\n(|%%llo|, (long long)LONG_MIN)\n");
+	printf("----- Test %d ----\n(|%%llo|, (long long)LONG_MIN)\n", ++total);
 	str = ft_strdup("|%llo|\n");
 	tmp = ft_printf(str, (long long)(LLONG_MIN));
 	printf("Before : OK\n");
@@ -674,7 +676,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 51 ----\n(|%%llo|, (long long)LONG_MAX)\n");
+	printf("----- Test %d ----\n(|%%llo|, (long long)LONG_MAX)\n", ++total);
 	str = ft_strdup("|%llo|\n");
 	tmp = ft_printf(str, (long long)(LONG_MAX));
 	printf("Before : OK\n");
@@ -687,7 +689,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 52 ----\n(|%%hhu|, (char)(0)\n");
+	printf("----- Test %d ----\n(|%%hhu|, (char)(0)\n", ++total);
 	str = ft_strdup("|%hhu|\n");
 	tmp = ft_printf(str, (char)(0));
 	printf("Before : OK\n");
@@ -700,7 +702,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 53 ----\n(|%%hhu|, (char)(-1)\n");
+	printf("----- Test %d ----\n(|%%hhu|, (char)(-1)\n", ++total);
 	str = ft_strdup("|%hhu|\n");
 	tmp = ft_printf(str, (char)(-1));
 	printf("Before : OK\n");
@@ -713,7 +715,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 54 ----\n(|%%hhu|, (char)(255)\n");
+	printf("----- Test %d ----\n(|%%hhu|, (char)(255)\n", ++total);
 	str = ft_strdup("|%hhu|\n");
 	tmp = ft_printf(str, (char)(255));
 	printf("Before : OK\n");
@@ -726,7 +728,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 55 ----\n(|%%hhu|, (char)(256)\n");
+	printf("----- Test %d ----\n(|%%hhu|, (char)(256)\n", ++total);
 	str = ft_strdup("|%hhu|\n");
 	tmp = ft_printf(str, (char)(256));
 	printf("Before : OK\n");
@@ -739,7 +741,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 56 ----\n(|%%hu|, (short)(0)\n");
+	printf("----- Test %d ----\n(|%%hu|, (short)(0)\n", ++total);
 	str = ft_strdup("|%hu|\n");
 	tmp = ft_printf(str, (short)(0));
 	printf("Before : OK\n");
@@ -752,7 +754,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 57 ----\n(|%%hu|, (short)(-1)\n");
+	printf("----- Test %d ----\n(|%%hu|, (short)(-1)\n", ++total);
 	str = ft_strdup("|%hu|\n");
 	tmp = ft_printf(str, (short)(-1));
 	printf("Before : OK\n");
@@ -765,9 +767,9 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 58 ----\n(|%%hu|, (short)(65535)\n");
+	printf("----- Test %d ----\n(|%%hu|, (short)(65535)\n", ++total);
 	str = ft_strdup("|%hu|\n");
-	tmp = ft_printf(str, (char)(65535));
+	tmp = ft_printf(str, (short)(65535));
 	printf("Before : OK\n");
 	if ((ft_strcmp("|65535|\n", tmp) == 0))
 	{
@@ -778,9 +780,9 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 59 ----\n(|%%hu|, (short)(65536)\n");
+	printf("----- Test %d ----\n(|%%hu|, (short)(65536)\n", ++total);
 	str = ft_strdup("|%hu|\n");
-	tmp = ft_printf(str, (char)(65536));
+	tmp = ft_printf(str, (short)(65536));
 	printf("Before : OK\n");
 	if ((ft_strcmp("|0|\n", tmp) == 0))
 	{
@@ -791,7 +793,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 60 ----\n(|%%lu|, (long)(0)\n");
+	printf("----- Test %d ----\n(|%%lu|, (long)(0)\n", ++total);
 	str = ft_strdup("|%lu|\n");
 	tmp = ft_printf(str, (long)(0));
 	printf("Before : OK\n");
@@ -804,7 +806,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 61 ----\n(|%%lu|, (long)(-1)\n");
+	printf("----- Test %d ----\n(|%%lu|, (long)(-1)\n", ++total);
 	str = ft_strdup("|%lu|\n");
 	tmp = ft_printf(str, (long)(-1));
 	printf("Before : OK\n");
@@ -817,7 +819,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 62 ----\n(|%%lu|, (long)(LONG_MAX)\n");
+	printf("----- Test %d ----\n(|%%lu|, (long)(LONG_MAX)\n", ++total);
 	str = ft_strdup("|%lu|\n");
 	tmp = ft_printf(str, (long)(LONG_MAX));
 	printf("Before : OK\n");
@@ -830,7 +832,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 63 ----\n(|%%lu|, (long)(LONG_MAX + 1)\n");
+	printf("----- Test %d ----\n(|%%lu|, (long)(LONG_MAX + 1)\n", ++total);
 	str = ft_strdup("|%lu|\n");
 	tmp = ft_printf(str, (long)(LONG_MAX + 1));
 	printf("Before : OK\n");
@@ -845,7 +847,7 @@ void	ft_tests()
 
 
 
-	printf("----- Test 64 ----\n(|%%llu|, (long long)(0)\n");
+	printf("----- Test %d ----\n(|%%llu|, (long long)(0)\n", ++total);
 	str = ft_strdup("|%llu|\n");
 	tmp = ft_printf(str, (long long)(0));
 	printf("Before : OK\n");
@@ -858,7 +860,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 65 ----\n(|%%llu|, (long long)(-1)\n");
+	printf("----- Test %d ----\n(|%%llu|, (long long)(-1)\n", ++total);
 	str = ft_strdup("|%llu|\n");
 	tmp = ft_printf(str, (long)(-1));
 	printf("Before : OK\n");
@@ -871,7 +873,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 66 ----\n(|%%llu|, (long long)(LLONG_MAX)\n");
+	printf("----- Test %d ----\n(|%%llu|, (long long)(LLONG_MAX)\n", ++total);
 	str = ft_strdup("|%llu|\n");
 	tmp = ft_printf(str, (long)(LLONG_MAX));
 	printf("Before : OK\n");
@@ -884,7 +886,7 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
-	printf("----- Test 67 ----\n(|%%llu|, (long long)(LLONG_MAX + 1)\n");
+	printf("----- Test %d ----\n(|%%llu|, (long long)(LLONG_MAX + 1)\n", ++total);
 	str = ft_strdup("|%llu|\n");
 	tmp = ft_printf(str, (long)(LLONG_MAX + 1));
 	printf("Before : OK\n");
@@ -897,6 +899,422 @@ void	ft_tests()
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
 
+	printf("----- Test %d ----\n(|%%hhx|, (char)(0)\n", ++total);
+	str = ft_strdup("|%hhx|\n");
+	tmp = ft_printf(str, (char)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
 
-	printf("Score : %d/67\n\n", i);
+	printf("----- Test %d ----\n(|%%hhx|, (char)(-1)\n", ++total);
+	str = ft_strdup("|%hhx|\n");
+	tmp = ft_printf(str, (char)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|ff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hhx|, (char)(255)\n", ++total);
+	str = ft_strdup("|%hhx|\n");
+	tmp = ft_printf(str, (char)(255));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|ff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hhx|, (char)(256)\n", ++total);
+	str = ft_strdup("|%hhx|\n");
+	tmp = ft_printf(str, (char)(256));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hx|, (short)(0)\n", ++total);
+	str = ft_strdup("|%hx|\n");
+	tmp = ft_printf(str, (short)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hx|, (short)(-1)\n", ++total);
+	str = ft_strdup("|%hx|\n");
+	tmp = ft_printf(str, (short)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|ffff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hx|, (short)(65535)\n", ++total);
+	str = ft_strdup("|%hx|\n");
+	tmp = ft_printf(str, (short)(USHRT_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|ffff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hx|, (short)(65535)\n", ++total);
+	str = ft_strdup("|%hx|\n");
+	tmp = ft_printf(str, (short)(USHRT_MAX + 1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lx|, (long)(0)\n", ++total);
+	str = ft_strdup("|%lx|\n");
+	tmp = ft_printf(str, (long)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lx|, (long)(-1)\n", ++total);
+	str = ft_strdup("|%lx|\n");
+	tmp = ft_printf(str, (long)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|ffffffffffffffff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lx|, (long)(LONG_MAX)\n", ++total);
+	str = ft_strdup("|%lx|\n");
+	tmp = ft_printf(str, (long)(LONG_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|7fffffffffffffff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lx|, (LONG_MAX + 1)(0)\n", ++total);
+	str = ft_strdup("|%lx|\n");
+	tmp = ft_printf(str, (long)(LONG_MAX + 1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|8000000000000000|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llx|, (long long)(0)\n", ++total);
+	str = ft_strdup("|%llx|\n");
+	tmp = ft_printf(str, (long long)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llx|, (long long)(0)\n", ++total);
+	str = ft_strdup("|%llx|\n");
+	tmp = ft_printf(str, (long long)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|ffffffffffffffff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llx|, (long long)(LLONG_MAX)\n", ++total);
+	str = ft_strdup("|%llx|\n");
+	tmp = ft_printf(str, (long long)(LLONG_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|7fffffffffffffff|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llx|, (long long)(LLONG_MAX + 1)\n", ++total);
+	str = ft_strdup("|%llx|\n");
+	tmp = ft_printf(str, (long long)(LLONG_MAX + 1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|8000000000000000|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hhX|, (char)(0)\n", ++total);
+	str = ft_strdup("|%hhX|\n");
+	tmp = ft_printf(str, (char)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hhX|, (char)(-1)\n", ++total);
+	str = ft_strdup("|%hhX|\n");
+	tmp = ft_printf(str, (char)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|FF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hhX|, (char)(255)\n", ++total);
+	str = ft_strdup("|%hhX|\n");
+	tmp = ft_printf(str, (char)(255));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|FF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hhX|, (char)(256)\n", ++total);
+	str = ft_strdup("|%hhX|\n");
+	tmp = ft_printf(str, (char)(256));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hX|, (short)(0)\n", ++total);
+	str = ft_strdup("|%hX|\n");
+	tmp = ft_printf(str, (short)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hX|, (short)(-1)\n", ++total);
+	str = ft_strdup("|%hX|\n");
+	tmp = ft_printf(str, (short)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|FFFF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hX|, (short)(65535)\n", ++total);
+	str = ft_strdup("|%hX|\n");
+	tmp = ft_printf(str, (short)(USHRT_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|FFFF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%hX|, (short)(65535)\n", ++total);
+	str = ft_strdup("|%hX|\n");
+	tmp = ft_printf(str, (short)(USHRT_MAX + 1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lX|, (long)(0)\n", ++total);
+	str = ft_strdup("|%lX|\n");
+	tmp = ft_printf(str, (long)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lX|, (long)(-1)\n", ++total);
+	str = ft_strdup("|%lX|\n");
+	tmp = ft_printf(str, (long)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|FFFFFFFFFFFFFFFF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lX|, (long)(LONG_MAX)\n", ++total);
+	str = ft_strdup("|%lX|\n");
+	tmp = ft_printf(str, (long)(LONG_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|7FFFFFFFFFFFFFFF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%lX|, (LONG_MAX + 1)(0)\n", ++total);
+	str = ft_strdup("|%lX|\n");
+	tmp = ft_printf(str, (long)(LONG_MAX + 1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|8000000000000000|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llX|, (long long)(0)\n", ++total);
+	str = ft_strdup("|%llX|\n");
+	tmp = ft_printf(str, (long long)(0));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|0|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llX|, (long long)(0)\n", ++total);
+	str = ft_strdup("|%llX|\n");
+	tmp = ft_printf(str, (long long)(-1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|FFFFFFFFFFFFFFFF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llX|, (long long)(LLONG_MAX)\n", ++total);
+	str = ft_strdup("|%llX|\n");
+	tmp = ft_printf(str, (long long)(LLONG_MAX));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|7FFFFFFFFFFFFFFF|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%llX|, (long long)(LLONG_MAX + 1)\n", ++total);
+	str = ft_strdup("|%llX|\n");
+	tmp = ft_printf(str, (long long)(LLONG_MAX + 1));
+	printf("Before : OK\n");
+	if ((ft_strcmp("|8000000000000000|\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+
+	printf("Score : %d/%d\n\n", i, total);
 }
