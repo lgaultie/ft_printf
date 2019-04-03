@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 12:40:25 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 15:23:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,19 @@ char	*ft_octal(t_data *data)
 
 char	*ft_hexa(t_data *data)
 {
-	char			*final;
-	int				ap;
-	char			*tmp;
+	char				*final;
+	char				*tmp;
 
 	data->flag |= F_UNSIGNED;
-	ap = (va_arg(data->ap, int));
-	if (ap < 0)
-		data->flag |= AP_NEG;
-	data->ap_sz = ft_intlen(ap);
-	if ((data->flag & F_SHARP) && (ap != 0))
+	tmp = ft_conv_hhhlll_u(data, 16);
+	if ((data->flag & F_SHARP) && (ft_strcmp(tmp, "0") != 0))
 	{
-		tmp = ft_itoa_base_mode(ap, 16, 1);
-		{
-			if (!(final = ft_strjoin("0x", tmp)))
-				return (NULL);
-		}
+		if (!(final = ft_strjoin("0x", tmp)))
+			return (NULL);
 		free(tmp);
 	}
 	else
-	{
-		if (!(final = ft_itoa_base_mode(ap, 16, 1)))
-			return (NULL);
-	}
+		final = tmp;
 	data->conv_sz = ft_strlen(final);
 	return (final);
 }
