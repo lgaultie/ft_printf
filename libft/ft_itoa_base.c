@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 12:45:04 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 12:30:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m)
 	str[size] = '\0';
 	while (size > 0)
 	{
-		str[size - 1] = tab[ft_abs(v % b)];
+		str[size - 1] = tab[v % b];
 		size--;
 		v /= b;
 	}

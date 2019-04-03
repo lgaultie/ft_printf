@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 23:25:38 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 12:40:25 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ char	*ft_octal(t_data *data)
 	char				*final;
 	char				*tmp;
 	unsigned long long	ap;
-	// int	ap; //Ca et le AP  NEG en bas, aucune diff au file checker si on met ou enleve...
 
 	(void)ap;
 	data->flag |= F_UNSIGNED;
-	tmp = ft_conv_hhhlll_u(data);
-	// if (ap < 0)
-	// 	data->flag |= AP_NEG;
+	tmp = ft_conv_hhhlll_u(data, 8);
 	if ((data->flag & F_SHARP) && (ft_strcmp(tmp, "0") != 0))
 	{
 		if (!(final = ft_strjoin("0", tmp)))

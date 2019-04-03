@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 23:40:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/03 12:41:26 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char				*ft_preci_width(char *flag, t_data *data);
 char				*ft_plus(char *flag, t_data *data);
 char				*ft_width_minus(char *flag, t_data *data);
 char				*ft_minus(char *flag, t_data *data);
-char				*ft_conv_hhhlll_u(t_data *data);
+char				*ft_conv_hhhlll_u(t_data *data, int base);
 long long			ft_conv_hhhlll(t_data *data);
 char				*ft_preci_width_minus(char *flag, t_data *data);
 char				*ft_width_s(char *flags, t_data *data);
