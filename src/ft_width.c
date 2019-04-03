@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 12:20:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:44:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_width2(int width, t_data *data)
 			}
 			else
 			{
-				while (i < width - data->conv_sz - 1)
+				while (i < width - data->conv_sz)
 				{
 					ret[i] = '0';
 					i++;

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 15:21:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:03:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char	*ft_string_1(t_data *data)
 		{
 			data->tmp = (va_arg(data->ap, int));
 			data->tmp_s = (va_arg(data->ap, char *));
+			//printf("data->tmp = |%d|  data->tmp_s = |%s|\n", data->tmp, data->tmp_s);
 		}
 		if ((data->flag & F_PRECIS || data->flag & F_WIDTH)
 		&& (!(data->flag & F_STAR)))
