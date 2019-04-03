@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 12:56:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:21:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 				return (NULL);
 		}
 	}
-	else if ((data->flag & F_PRECIS || data->flag & F_WIDTH) && cv == 's')
+	else if ((data->flag & F_PRECIS || data->flag & F_WIDTH) && cv == 's' \
+	&& !(data->flag & F_W_P))
 	{
 		if (!(final = ft_string(flag, data, 1)))
 			return (NULL);
@@ -98,9 +99,11 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 		if (!(final = ft_precision_d(flag, data)))
 			return (NULL);
 	}
-	else if (((data->flag & F_W_P) && (cv == 'd' || cv == 'i' || cv == 'u' \
-	|| cv == 'o' || cv == 'x' || cv == 'X' || cv == 'u')))
+	else if (data->flag & F_W_P) //&& (cv == 'd' || cv == 'i' || cv == 'u' \
+	//|| cv == 'o' || cv == 'x' || cv == 'X' || cv == 's')))
 	{
+		if (cv == 's')
+			data->flag |= F_S;
 		if (!(final = ft_preci_width(flag, data)))
 			return (NULL);
 	}

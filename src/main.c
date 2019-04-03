@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/03 14:00:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:25:21 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int main(int argc, char **argv)
 	printf("|%-5.2s| is a string\n", "this");
 	ft_printf("|%-5.2s| is a string\n", "this");
 	printf("--------------\n");
-	// printf("|%-5.2s| is a string\n", "");
-	// ft_printf("|%-5.2s| is a string\n\n", "");
+	printf("|%-7.7s| is a string\n", "this");
+	ft_printf("|%-7.7s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-5.2s| is a string\n", "");
+	ft_printf("|%-5.2s| is a string\n\n", "");
 	// printf("--------------\n");
 	// printf("|%.*s|\n", 7, "Salut");
 	// ft_printf("|%.*s|\n", 7, "Salut");

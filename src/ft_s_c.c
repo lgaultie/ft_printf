@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 13:01:25 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:21:40 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char		*ft_string(char *flag, t_data *data, int mode)
 
 	if (mode == 0)
 	{
+		// ft_putstr("\nici dans ft_s_c.c mode 0");
 		if (!(final = ft_string_1(data)))
 			return (NULL);
 	}
@@ -70,17 +71,16 @@ char		*ft_string(char *flag, t_data *data, int mode)
 		}
 		if (data->flag & F_W_P)
 		{
-			ft_putstr("ici dans ft_s_c.c\n");
 			data->ap_sz = ft_precision_s(flag, data);
 			if (!(final = ft_strsub(ap, 0, data->ap_sz)))
 				return (NULL);
 			ret_width = ft_width_s(flag, data);
-			printf("final = |%s| && ret_width = |%s|\n", final, ret_width);
 			tmp = final;
 			if (!(final = ft_strjoin(ret_width, tmp)))
 				return (NULL);
 			free(tmp);
 			free(ret_width);
+			// printf("final dans string1 = |%s|\n\n", final);
 		}
 	}
 	return (final);

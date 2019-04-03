@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 12:20:35 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:23:51 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 	int		i;
 	char	*final;
 	int		size;
+	char	*ap;
 
 	i = 0;
 	size = ft_calculate_size(before, after, data);
@@ -41,26 +42,39 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 		return (NULL);
 	if (data->flag & F_MINUS)
 	{
-		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+		if (data->flag & F_S)
 		{
-			final[i++] = '-';
-			while (i < after - data->conv_sz + 1)
-				final[i++] = '0';
-		}
-		else if (data->flag & F_PLUS)
-		{
-			final[i++] = '+';
-			while (i < after - data->conv_sz +1)
-				final[i++] = '0';
+			ap = data->tmp_s;
+			if (!(final = ft_strsub(ap, 0, after)))
+				return (NULL);
+			if (before > after)
+				data->width_precis_minus = before - after;
+			if (after >= before)
+				data->width_precis_minus = before - data->conv_sz;
 		}
 		else
 		{
-			while (i < after - data->conv_sz)
-				final[i++] = '0';
-		}
-		if (before > after)
+			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+			{
+				final[i++] = '-';
+				while (i < after - data->conv_sz + 1)
+					final[i++] = '0';
+			}
+			else if (data->flag & F_PLUS)
+			{
+				final[i++] = '+';
+				while (i < after - data->conv_sz +1)
+					final[i++] = '0';
+			}
+			else
+			{
+				while (i < after - data->conv_sz)
+					final[i++] = '0';
+			}
+			if (before > after)
 			data->width_precis_minus = before - i - data->conv_sz;
-		final[i] = '\0';
+			final[i] = '\0';
+		}
 		return (final);
 	}
 	else if (before == after || before < after)
