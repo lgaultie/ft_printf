@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 18:03:50 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 22:31:15 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ static char	*ft_string_1(t_data *data)
 	if (!(data->flag & F_STAR))
 		ap = (va_arg(data->ap, char*));
 	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
-	&& !(data->flag & F_MINUS))
+	&& (!(data->flag & F_MINUS)))
 	{
 		if (data->flag & F_STAR)
 		{
 			data->tmp = (va_arg(data->ap, int));
 			data->tmp_s = (va_arg(data->ap, char *));
-			//printf("data->tmp = |%d|  data->tmp_s = |%s|\n", data->tmp, data->tmp_s);
 		}
-		if ((data->flag & F_PRECIS || data->flag & F_WIDTH)
+		if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
 		&& (!(data->flag & F_STAR)))
 			data->tmp_s = ft_strdup(ap);
 		data->ap_sz = ft_strlen(ap);

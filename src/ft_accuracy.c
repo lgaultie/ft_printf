@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 18:39:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 22:38:10 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,10 +184,11 @@ int				ft_precision_s(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (flags[1] == '*')
+	if (data->flag & F_STAR)
 	{
 		i = data->tmp;
 		data->flag &= ~F_PRECIS & ~F_STAR;
+		return (i);
 	}
 	else
 	{
@@ -206,7 +207,6 @@ int				ft_precision_s(char *flags, t_data *data)
 		i = ft_atoi(conv);
 		free(conv);
 	}
-	//printf("i de accuracy_s = %d\n",i);
 	if (i > data->ap_sz)
 		return (data->ap_sz);
 	else
