@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/02 23:44:07 by amamy            ###   ########.fr        #
+#    Updated: 2019/04/03 11:42:08 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS =	main.c			\
 		ft_analyse.c	\
 		ft_d_i.c		\
 		ft_s_c.c		\
-		ft_oxcapsx.c		\
+		ft_oxcapsx.c	\
 		ft_flags.c		\
 		ft_accuracy.c	\
 		ft_width.c		\

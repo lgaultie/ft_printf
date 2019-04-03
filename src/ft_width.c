@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 15:12:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 12:20:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ char	*ft_width_minus2(int width, t_data *data)
 	char	*ret;
 
 	i = 0;
-	if (!(ret = malloc(sizeof(char) * (width - data->ap_sz + 1))))
-		return (NULL);
 	if (width > data->conv_sz)
 	{
+		if (!(ret = malloc(sizeof(char) * (width - data->ap_sz + 1))))
+			return (NULL);
 		if (data->flag & F_ZERO)
 			while (i < width - data->conv_sz)
 			{
@@ -138,7 +138,7 @@ char	*ft_width_minus2(int width, t_data *data)
 			{
 				while (i < width - data->conv_sz - 1)
 				{
-					ret[i] = ' ';		//remplacer par des . pour les tests
+					ret[i] = ' ';
 					i++;
 				}
 			}
@@ -146,12 +146,14 @@ char	*ft_width_minus2(int width, t_data *data)
 			{
 				while (i < width - data->conv_sz)
 				{
-					ret[i] = ' ';		//remplacer par des . pour les tests
+					ret[i] = ' ';
 					i++;
 				}
 			}
 		}
 	}
+	else
+		return (ft_strdup(""));
 	if (data->flag & F_PLUS)
 		ret[i++] = '+';
 	ret[i] = '\0';
