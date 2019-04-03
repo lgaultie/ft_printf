@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 15:23:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:55:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 	char	*final;
 	int		size;
 	char	*ap;
+	int		surplus;
 
 	i = 0;
+	surplus = 0;
 	size = ft_calculate_size(before, after, data);
 	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
@@ -51,6 +53,10 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				data->width_precis_minus = before - after;
 			if (after >= before)
 				data->width_precis_minus = before - data->conv_sz;
+			if (ap[0] == '\0' && before > after)
+				data->width_precis_minus = before;
+			if (ap[0] == '\0' && before <= after)
+				data->width_precis_minus = after;
 		}
 		else
 		{
@@ -59,21 +65,23 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				final[i++] = '-';
 				while (i < after - data->conv_sz + 1)
 					final[i++] = '0';
-			}
-			else if (data->flag & F_PLUS)
-			{
-				final[i++] = '+';
-				while (i < after - data->conv_sz +1)
-					final[i++] = '0';
+				final[i] = '\0';
+				if (after == 0)
+					data->width_precis_minus = 0;
 			}
 			else
 			{
-				while (i < after - data->conv_sz)
+				if (data->flag & F_PLUS)
+				{
+					surplus = 1;
+					final[i++] = '+';
+				}
+				while (i < after - data->conv_sz + surplus)
 					final[i++] = '0';
-			}
+				final[i] = '\0';
 			if (before > after)
-			data->width_precis_minus = before - i - data->conv_sz;
-			final[i] = '\0';
+				data->width_precis_minus = before - i - data->conv_sz;
+			}
 		}
 		return (final);
 	}
@@ -177,6 +185,8 @@ char	*ft_preci_width2(char *flag, t_data *data, int i, int j)
 		after[j++] = flag[i++];
 	after[j] = '\0';
 	i = ft_atoi(before);
+	// if (i == 0)
+	// 	i = 1;
 	j = ft_atoi(after);
 	free(before);
 	free(after);

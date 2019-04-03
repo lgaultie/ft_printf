@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 15:21:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 19:07:14 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 		data->flag |= F_MINUS;
 	else if (flag[i] == '%')
 		data->flag |= F_PERCENT;
+	else if ((flag[0] == '0' || ((flag[i - 1] < '0' || flag[i - 1] > '9') && i > 1)))
+		data->flag |= F_ZERO;
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
 }
@@ -66,9 +68,7 @@ int		ft_active_flag(char *flag, t_data *data)
 		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != 'u' \
 		&& flag[i] != '\0')
 	{
-		if (flag[0] == '0')
-			data->flag |= F_ZERO;
-		else if (flag[i] == '.' && (data->flag & F_WIDTH))
+		if (flag[i] == '.' && (data->flag & F_WIDTH))
 			data->flag |= F_W_P;
 		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
 			&& !(data->flag & F_PRECIS))
@@ -131,6 +131,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	{
 		if (!(ret_conv = ft_only_conv(&flag[i], data)))
 			return (NULL);
+		//printf("dans ft_flags.c ret_only_conversion = |%s|\n", ret_conv);
 	}
 	// if (data->flag & AP_NEG && data->flag & F_MINUS \
 	// && (data->flag & F_W_P || data->flag & F_PRECIS || data->flag & F_WIDTH))
@@ -194,6 +195,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	if (data->flag & F_W_P && data->flag & F_MINUS)
 	{
 		i = 0;
+		//ft_putstr("ft_flags.c rentre dans F_W_P et MINUS\n");
 		if (!(ret = malloc(sizeof(char) * (data->width_precis_minus + 1))))
 			return (NULL);
 		if (!(data->flag & F_PLUS))

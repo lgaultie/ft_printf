@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/02 14:47:35 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:39:39 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 			}
 			else
 			{
-				while (i < accuracy - data->conv_sz - 1)
+				while (i < accuracy - data->conv_sz)
 				{
 					ret[i] = '0';
 					i++;
@@ -206,6 +206,7 @@ int				ft_precision_s(char *flags, t_data *data)
 		i = ft_atoi(conv);
 		free(conv);
 	}
+	//printf("i de accuracy_s = %d\n",i);
 	if (i > data->ap_sz)
 		return (data->ap_sz);
 	else

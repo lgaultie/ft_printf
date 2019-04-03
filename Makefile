@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/03 11:42:08 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/03 19:07:47 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,6 @@ SRCS =	main.c			\
 		ft_plus_minus.c	\
 		ft_only_conv.c	\
 		ft_width_prc.c	\
-		ft_precis_width_minus.c	\
 		ft_hhh_lll.c	\
 		ft_strcmp.c
 
