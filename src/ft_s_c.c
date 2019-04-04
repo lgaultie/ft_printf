@@ -3,40 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 22:31:15 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/04 13:20:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void ft_string_1_PW(char *ap, t_data *data)
+{
+	if (data->flag & F_STAR)
+	{
+		data->tmp = (va_arg(data->ap, int));
+		data->tmp_s = (va_arg(data->ap, char *));
+	}
+	else
+		data->tmp_s = ft_strdup(ap);
+}
+
 
 static char	*ft_string_1(t_data *data)
 {
 	char	*ap;
 
 	if (!(data->flag & F_STAR))
-		ap = (va_arg(data->ap, char*));
+		ap = ft_strdup((va_arg(data->ap, char*)));
+	// if (!(data->flag & F_STAR) && ap == NULL)
+	// 	return (ft_strdup("(null)"));
 	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
 	&& (!(data->flag & F_MINUS)))
 	{
-		if (data->flag & F_STAR)
-		{
-			data->tmp = (va_arg(data->ap, int));
-			data->tmp_s = (va_arg(data->ap, char *));
-		}
-		if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
-		&& (!(data->flag & F_STAR)))
-			data->tmp_s = ft_strdup(ap);
-		data->ap_sz = ft_strlen(ap);
-		data->conv_sz = ft_strlen(ap);
-		return (ft_strdup(""));
+		ft_string_1_PW(ap, data);
 	}
-	data->tmp_s = ap;
 	data->conv_sz = ft_strlen(ap);
 	data->ap_sz = ft_strlen(ap);
-	return (ft_strdup(ap));
+	if (data->flag & F_MINUS)
+		data->tmp_s = ap;
+	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
+	&& (!(data->flag & F_MINUS)))
+	{
+		free (ap);
+		ap = ft_strdup("");
+	}
+	return (ap);
 }
 
 char		*ft_string(char *flag, t_data *data, int mode)
