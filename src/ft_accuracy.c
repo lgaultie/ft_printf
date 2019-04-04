@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 22:38:10 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/04 15:58:39 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,10 +151,10 @@ char			*ft_precision_d(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (flags[1] == '*' && (i = data->tmp))
-		data->flag &= ~F_PRECIS & ~F_STAR;
-	else
-		i = ft_precision_d_else(flags, data);
+	// if (flags[1] == '*' && (i = data->tmp)) a virer
+	// 	data->flag &= ~F_PRECIS & ~F_STAR;
+	// else
+	i = ft_precision_d_else(flags, data);
 	conv = NULL;
 	if (i <= data->ap_sz)
 	{
@@ -184,29 +184,20 @@ int				ft_precision_s(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (data->flag & F_STAR)
+	while (flags[i] <= '0' || flags[i] >= '9')
+		i++;
+	if (data->flag & F_W_P)
 	{
-		i = data->tmp;
-		data->flag &= ~F_PRECIS & ~F_STAR;
-		return (i);
-	}
-	else
-	{
-		while (flags[i] <= '0' || flags[i] >= '9')
+		while (flags[i] != '.')
 			i++;
-		if (data->flag & F_W_P)
-		{
-			while (flags[i] != '.')
-				i++;
-			i++;
-		}
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
-			return (0);
-		while (flags[i] >= '0' && flags[i] <= '9' && flags[i] != '\0')
-			conv[j++] = flags[i++];
-		i = ft_atoi(conv);
-		free(conv);
+		i++;
 	}
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+		return (0);
+	while (flags[i] >= '0' && flags[i] <= '9' && flags[i] != '\0')
+		conv[j++] = flags[i++];
+	i = ft_atoi(conv);
+	free(conv);
 	if (i > data->ap_sz)
 		return (data->ap_sz);
 	else

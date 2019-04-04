@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 19:07:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/04 16:02:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 ** ft_active_flag: Analyses between % and the conversion, enable needed flags.
 ** F_W_P: active flag width + accuracy (ex: %5.2d)
-** F_STAR: case of %.*d for example.
 ** SHOULD ALSO DISABLED IGNORED FLAGS QUAND YEN A DES INCOMPATIBLES............
 */
 
@@ -74,15 +73,11 @@ int		ft_active_flag(char *flag, t_data *data)
 			&& !(data->flag & F_PRECIS))
 		{
 			data->flag |= F_WIDTH;
-			if (flag[i] == '*')
-				data->flag |= F_STAR;
 		}
 		else if (flag[i] == '.' && ((flag[i + 1] >= '0' && flag[i + 1] <= '9')
 			|| flag[i + 1] == '*'))
 		{
 			data->flag |= F_PRECIS;
-			if (flag[i + 1] == '*')
-				data->flag |= F_STAR;
 		}
 		else
 			ft_active_flag2(flag, data, i);

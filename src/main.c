@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/04 13:08:08 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/04 15:59:25 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ int main(int argc, char **argv)
 
 	// ft_tests();
 
-   printf("%s\n", NULL);
-ft_printf("%s\n", NULL);
+//    printf("%.*s\n", 7, "this is a string");
+// ft_printf("%.*s\n", 7, "this is a string");
+
+//    printf("%s\n", "this is a string");
+// ft_printf("%s\n", "this is a string");
+
+//    printf("%s\n", NULL);
+// ft_printf("%s\n", NULL);
 
 	// printf("%s\n", "lol");
 	// ft_printf("%s\n", "lol");
