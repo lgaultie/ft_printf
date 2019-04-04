@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 16:05:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/04 16:07:31 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,12 +132,12 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			return (NULL);
 		//printf("dans ft_flags.c ret_only_conversion = |%s|\n", ret_conv);
 	}
-	if (data->flag & F_ZERO)
-		ft_putstr("F_ZERO ACTIF\n");
-	if (data->flag & F_W_P)
-		ft_putstr("F_W_P ACTIF\n");
-	if (data->flag & AP_NEG)
-		ft_putstr("AP_NEG ACTIF\n");
+	// if (data->flag & F_ZERO)
+	// 	ft_putstr("F_ZERO ACTIF\n");
+	// if (data->flag & F_W_P)
+	// 	ft_putstr("F_W_P ACTIF\n");
+	// if (data->flag & AP_NEG)
+	// 	ft_putstr("AP_NEG ACTIF\n");
 
 
 	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
