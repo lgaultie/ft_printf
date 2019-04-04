@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 18:44:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/04 15:57:47 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_width2(int width, t_data *data)
 			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 			{
 				ret[i++] = '-';
-				while (i < width - data->conv_sz - 1)
+				while (i < width - data->conv_sz)
 				{
 					ret[i] = '0';
 					i++;
@@ -50,7 +50,7 @@ char	*ft_width2(int width, t_data *data)
 			{
 				while (i < width - data->conv_sz - 1)
 				{
-					ret[i] = ' ';		//remplacer par des . pour les tests
+					ret[i] = ' ';
 					i++;
 				}
 				ret[i++] = '-';
@@ -58,13 +58,15 @@ char	*ft_width2(int width, t_data *data)
 			}
 			else
 			{
-				if (data->flag & F_SHARP)
-					surplus = 2;
-				while (i < width - data->conv_sz)
+				if (data->flag & F_PLUS)
+					surplus = 1;
+				while (i < width - data->conv_sz - surplus)
 				{
-					ret[i] = ' ';		//remplacer par des . pour les tests
+					ret[i] = ' ';
 					i++;
 				}
+				if (data->flag & F_PLUS)
+				ret[i++] = '+';
 				ret[i] = '\0';
 			}
 		}

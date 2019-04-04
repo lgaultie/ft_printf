@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 22:38:10 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/04 15:46:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 			{
 				if (data->flag & F_SHARP)
 					surplus = 2;
+				if (data->flag & F_PLUS)
+				{
+					surplus--;
+					ret[i++] = '+';
+				}
 				while (i < accuracy - data->conv_sz - surplus)
 				{
 					ret[i] = '0';		//remplacer par des . pour les tests

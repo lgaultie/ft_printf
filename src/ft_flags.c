@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 19:07:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/04 16:01:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void ft_active_cast(char *flag, t_data *data, int i)
 void	ft_active_flag2(char *flag, t_data *data, int i)
 {
 	if (flag[i] == ' ')
+	{
+		//printf("flag[i] = |%c|\n", flag[i]);
 		data->flag |= F_SPACE;
+	}
 	else if (flag[i] == '#')
 		data->flag |= F_SHARP;
 	else if (flag[i] == '+')
@@ -51,7 +54,8 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 		data->flag |= F_MINUS;
 	else if (flag[i] == '%')
 		data->flag |= F_PERCENT;
-	else if ((flag[0] == '0' || ((flag[i - 1] < '0' || flag[i - 1] > '9') && i > 1)))
+	else if ((flag[0] == '0' || ((flag[i - 1] < '0' || flag[i - 1] > '9') \
+	&& flag[i - 1] != '.' && i > 1)))
 		data->flag |= F_ZERO;
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
@@ -133,9 +137,13 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			return (NULL);
 		//printf("dans ft_flags.c ret_only_conversion = |%s|\n", ret_conv);
 	}
-	// if (data->flag & AP_NEG && data->flag & F_MINUS \
-	// && (data->flag & F_W_P || data->flag & F_PRECIS || data->flag & F_WIDTH))
-	// 	return (ret_conv);
+	if (data->flag & F_ZERO)
+		ft_putstr("F_ZERO ACTIF\n");
+	if (data->flag & F_W_P)
+		ft_putstr("F_W_P ACTIF\n");
+	if (data->flag & AP_NEG)
+		ft_putstr("AP_NEG ACTIF\n");
+
 
 	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
 	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
@@ -165,8 +173,11 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		free(ret_flag);
 		return (final);
 	}
+	if (data->flag & F_SPACE && data->flag & AP_NEG)
+		return (ret_conv);
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
+	//printf("dans ft_flags.c ret_flag = |%s|\n", ret_flag);
 		// if (data->flag & F_SHARP)
 	// if (data->flag & F_SHARP)
 	// 	{

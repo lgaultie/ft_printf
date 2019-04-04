@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/04 13:08:08 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/04 15:58:11 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,11 @@ int main(int argc, char **argv)
 
 	// ft_tests();
 
-   printf("%s\n", NULL);
-ft_printf("%s\n", NULL);
+	// printf("%s\n", NULL);
+	// ft_printf("%s\n", NULL);
 
 	// printf("%s\n", "lol");
 	// ft_printf("%s\n", "lol");
-
-
-
-
-
-
-
-
-
-
-
 
 	//  str = ft_strdup("oui");
 	// printf("Vrai : |%llx|\n", (long long)10);
@@ -50,52 +39,72 @@ ft_printf("%s\n", NULL);
 
 
 
-	// printf("|%-5.2s| is a string\n", "");
-	// ft_printf("|%-5.2s| is a string\n\n", "");
 
-	// printf("|%-20s| is a string\n", "this");
-	// ft_printf("|%-20s| is a string\n", "this");
+	printf("|%-20s| is a string\n", "this");
+	ft_printf("|%-20s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-2s| is a string\n", "this");
+	ft_printf("|%-2s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-.2s| is a string\n", "this");
+	ft_printf("|%-.2s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-5.2s| is a string\n", "this");
+	ft_printf("|%-5.2s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-7.7s| is a string\n", "this");
+	ft_printf("|%-7.7s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-5.2s| is a string\n", "");
+	ft_printf("|%-5.2s| is a string\n", "");
+	printf("--------------\n");
+	printf("|%-1.0d|\n", -18);
+	ft_printf("|%-1.0d|\n", -18);
+	printf("--------------\n");
+	printf("|%#10o|\n", 524);
+	ft_printf("|%#10o|\n", 524);
+	printf("--------------\n");
+	printf("|%08x|\n", 42);
+	ft_printf("|%08x|\n", 42);
+	printf("--------------\n");
+	printf("|%10.08x|\n", 42);
+	ft_printf("|%10.08x|\n", 42);
+	printf("--------------\n");
+	printf("|%.8x|\n", 42);
+	ft_printf("|%.8x|\n", 42);
+	printf("--------------\n");
+	printf("|%-5.2s| is a string\n", "");
+	ft_printf("|%-5.2s| is a string\n\n", "");
+	printf("--------------\n");
+	printf("%+d\n", -42);
+	ft_printf("%+d\n", -42);
+	printf("--------------\n");
+	printf("% d\n", -42);
+	ft_printf("% d\n", -42);
+	printf("--------------\n");
+	printf("%+5d\n", 42);
+	ft_printf("%+5d\n", 42);
+	printf("--------------\n");
+	printf("%+4.5d\n", 42);
+	ft_printf("%+4.5d\n", 42);
+	printf("--------------\n");
+	printf("%+.5d\n", 42);
+	ft_printf("%+.5d\n", 42);
+	printf("--------------\n");
+	printf("%05d\n", -42);
+	ft_printf("%05d\n", -42);
+	printf("--------------\n");
+	printf("%03.2d\n", -1);
+	ft_printf("%03.2d\n", -1);
 	// printf("--------------\n");
-	// printf("|%-2s| is a string\n", "this");
-	// ft_printf("|%-2s| is a string\n", "this");
+	// printf("%0+5d\n", 42);
+	// ft_printf("%0+5d\n", 42);
 	// printf("--------------\n");
-	// printf("|%-.2s| is a string\n", "this");
-	// ft_printf("|%-.2s| is a string\n", "this");
-	// printf("--------------\n");
-	// printf("|%-5.2s| is a string\n", "this");
-	// ft_printf("|%-5.2s| is a string\n", "this");
-	// printf("--------------\n");
-	// printf("|%-7.7s| is a string\n", "this");
-	// ft_printf("|%-7.7s| is a string\n", "this");
-	// printf("--------------\n");
-	// printf("|%-5.2s| is a string\n", "");
-	// ft_printf("|%-5.2s| is a string\n", "");
-	// printf("--------------\n");
-	// printf("|%-1.0d|\n", -18);
-	// ft_printf("|%-1.0d|\n", -18);
-	// printf("--------------\n");
-	// printf("|%#10o|\n", 524);
-	// ft_printf("|%#10o|\n", 524);
-	// printf("--------------\n");
-	// printf("|%08x|\n", 42);
-	// ft_printf("|%08x|\n", 42);
-	// printf("--------------\n");
-	// printf("|%10.08x|\n", 42);
-	// ft_printf("|%10.08x|\n", 42);
-	// printf("--------------\n");
-	// printf("|%.8x|\n", 42);
-	// ft_printf("|%.8x|\n", 42);
+	// printf("%0+5d\n", -42);
+	// ft_printf("%0+5d\n", -42);
 	// printf("--------------\n");
 	// printf("|%#08x|\n", 42);
 	// ft_printf("|%#08x|\n", 42);
-	// printf("--------------\n");
-	// printf("|%.*s|\n", 3, "Salut");
-	// ft_printf("|%.*s|\n", 3, "Salut");
-	// printf("--------------\n");
-	// printf("|%5.*s|\n", 3, "Salut");
-	// ft_printf("|%5.*s|\n", 3, "Salut");
-
-
 
 
 	// ft_printf("|%.0s|\n", "salutttt");
