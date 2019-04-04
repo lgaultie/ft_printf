@@ -3,40 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 13:20:29 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/04 15:47:00 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void ft_string_1_PW(char *ap, t_data *data)
-{
-	if (data->flag & F_STAR)
-	{
-		data->tmp = (va_arg(data->ap, int));
-		data->tmp_s = (va_arg(data->ap, char *));
-	}
-	else
-		data->tmp_s = ft_strdup(ap);
-}
-
-
 static char	*ft_string_1(t_data *data)
 {
 	char	*ap;
+	char	*tmp;
 
-	if (!(data->flag & F_STAR))
-		ap = ft_strdup((va_arg(data->ap, char*)));
-	// if (!(data->flag & F_STAR) && ap == NULL)
-	// 	return (ft_strdup("(null)"));
+	tmp = (va_arg(data->ap, char*));
+	if (tmp != NULL)
+		ap = ft_strdup(tmp);
+	else
+		return (ft_strdup("(null)"));
 	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
 	&& (!(data->flag & F_MINUS)))
-	{
-		ft_string_1_PW(ap, data);
-	}
+		data->tmp_s = ft_strdup(ap);
 	data->conv_sz = ft_strlen(ap);
 	data->ap_sz = ft_strlen(ap);
 	if (data->flag & F_MINUS)
