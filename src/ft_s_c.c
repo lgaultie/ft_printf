@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 15:47:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 15:12:12 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ char		*ft_char(t_data *data)
 		return (NULL);
 	final[0] = ap;
 	final[1] = '\0';
+	data->conv_sz = ft_strlen(final);
 	return (final);
 }
