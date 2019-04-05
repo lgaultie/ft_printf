@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 15:58:52 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 16:59:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static int		ft_print_format(char *format, t_data *data)
 	data->buf = ft_analyse(format, data);
 	ft_putstr(data->buf);
 	len = ft_strlen(data->buf);
+	if (data->flag & F_C_0)
+		len ++;
 	// free(data->buf); //to uncom when not in tests
 	return (len);
 
