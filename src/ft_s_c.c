@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 15:12:12 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 16:58:36 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ char		*ft_char(t_data *data)
 	char	*final;
 
 	ap = (va_arg(data->ap, int));
+	if (ap == 0)
+		data->flag |= F_C_0;
 	data->ap_sz = 1;
 	if (!(final = ft_memalloc(sizeof(char) * 2)))
 		return (NULL);
