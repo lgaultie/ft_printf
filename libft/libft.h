@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 20:20:26 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/02 23:42:38 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 18:39:11 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ char			*ft_itoa_base_mode(unsigned int v, unsigned int b, int m);
 char			*ft_itoa_base_mode_2(long long v, unsigned int b, int m);
 char			*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m);
 char			*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m);
+void			ft_putstrn(char const *s, int len);
 
 #endif

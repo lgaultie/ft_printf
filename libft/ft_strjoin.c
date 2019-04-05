@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:38:03 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/07 20:20:15 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 21:51:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	size = ft_strlen(s1) + ft_strlen(s2);
-	if (!(dest = (char*)malloc(sizeof(char) * (size + 1))))
+	if (!(dest = (char*)ft_memalloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	dest = ft_strcpy(dest, s1);
 	dest = ft_strcat(dest, s2);

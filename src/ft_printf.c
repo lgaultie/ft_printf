@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 16:59:04 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 22:18:59 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ char			*ft_got_flag(char *str, t_data *data)
 		data->flag_sz = 1;
 	else
 		data->flag_sz = x + 1;
-	if (!(flags = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
+	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	flags = ft_strncpy(flags, str, data->flag_sz);
-
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
 		return (NULL);
 	free(flags);
@@ -73,11 +72,18 @@ static int		ft_print_format(char *format, t_data *data)
 	if (!(data->buf = ft_strnew(0)))
 		return (-1);
 	data->buf = ft_analyse(format, data);
-	ft_putstr(data->buf);
 	len = ft_strlen(data->buf);
 	if (data->flag & F_C_0)
-		len ++;
-	// free(data->buf); //to uncom when not in tests
+	{
+		len++;
+		ft_putstrn(data->buf, data->tmp);
+		ft_putchar(0);
+		ft_putstr(&data->buf[data->tmp]);
+	}
+	else
+		ft_putstr(data->buf);
+
+	free(data->buf); //to uncom when not in tests
 	return (len);
 
 }

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:28:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 15:39:02 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 17:42:20 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1316,6 +1316,46 @@ void	ft_tests()
 	else
 		printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
 	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%-20s| is a string\n|, this\n", ++total);
+	str = ft_strdup("|%-20s| is a string\n");
+	tmp = ft_printf(str, "this");
+	printf("Before : OK\n");
+	if ((ft_strcmp("|this                | is a string\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%-2s| is a string\n, this\n", ++total);
+	str = ft_strdup("|%-2s| is a string\n");
+	tmp = ft_printf(str, "this");
+	printf("Before : OK\n");
+	if ((ft_strcmp("|this| is a string\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
+	printf("----- Test %d ----\n(|%%-5.2s| is a string, this\n", ++total);
+	str = ft_strdup("|%-5.2s| is a string\n");
+	tmp = ft_printf(str, "this");
+	printf("Before : OK\n");
+	if ((ft_strcmp("|th| is a string\n", tmp) == 0))
+	{
+		i++;
+		printf("\n----> OK <----\n\n");
+	}
+	else
+	printf("XXXXXXXXXXXXXXXXXXXX  NOOOON  XXXXXXXXXXXXXXXXXXXX\n");
+	printf("---------------\n\n");
+
 
 
 	printf("Score : %d/%d\n\n", i, total);
