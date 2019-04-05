@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 17:04:04 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 20:20:38 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@
 # define F_PERCENT 262144
 # define F_S 524288
 # define F_C_0 1048576
+# define F_S_0 2097152
+# define F_AFTER_IS_0 4194304
+
 
 
 typedef	struct	s_data

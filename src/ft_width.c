@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 16:47:43 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:51:15 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ char	*ft_width2(int width, t_data *data)
 			}
 			else
 			{
-				if (data->flag & F_PLUS)
+				if (data->flag & F_PLUS && !(data->flag & F_PERCENT))
 					surplus = 1;
 				while (i < width - data->conv_sz - surplus)
 				{
 					ret[i] = ' ';
 					i++;
 				}
-				if (data->flag & F_PLUS)
-				ret[i++] = '+';
+				if (data->flag & F_PLUS && !(data->flag & F_PERCENT))
+					ret[i++] = '+';
 				ret[i] = '\0';
 			}
 		}
@@ -117,6 +117,8 @@ char	*ft_width(char *flags, t_data *data)
 		free(conv);
 		data->flag &= ~F_WIDTH;
 	}
+	if (i < 0)
+		i = -i;
 	if (!(conv = ft_width2(i, data)))
 		return (NULL);
 	return (conv);

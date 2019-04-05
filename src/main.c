@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 17:05:06 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 20:25:06 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int main(int argc, char **argv)
 
 	str = ft_strdup("oui");
 
-	printf("%s\n", "this is a string");
-	ft_printf("%s\n", "this is a string");
+	printf("|%s|\n", "this is a string");
+	ft_printf("|%s|\n", "this is a string");
 	printf("--------------\n");
-	printf("%s\n", NULL);
-	ft_printf("%s\n", NULL);
+	printf("|%s|\n", NULL);
+	ft_printf("|%s|\n", NULL);
 	printf("--------------\n");
-	printf("%s\n", "lol");
-	ft_printf("%s\n", "lol");
+	printf("|%s|\n", "lol");
+	ft_printf("|%s|\n", "lol");
 	printf("--------------\n");
 	printf("|%llx|\n", (long long)10);
 	ft_printf("|%llx|\n", (long long)10);
@@ -75,55 +75,55 @@ int main(int argc, char **argv)
 	ft_printf("|%.8x|\n", 42);
 	printf("--------------\n");
 	printf("|%-5.2s| is a string\n", "");
-	ft_printf("|%-5.2s| is a string\n\n", "");
+	ft_printf("|%-5.2s| is a string\n", "");
 	printf("--------------\n");
-	printf("%+d\n", -42);
-	ft_printf("%+d\n", -42);
+	printf("|%+d|\n", -42);
+	ft_printf("|%+d|\n", -42);
 	printf("--------------\n");
-	printf("% d\n", -42);
-	ft_printf("% d\n", -42);
+	printf("|% d|\n", -42);
+	ft_printf("|% d|\n", -42);
 	printf("--------------\n");
-	printf("%+5d\n", 42);
-	ft_printf("%+5d\n", 42);
+	printf("|%+5d|\n", 42);
+	ft_printf("|%+5d|\n", 42);
 	printf("--------------\n");
-	printf("%+4.5d\n", 42);
-	ft_printf("%+4.5d\n", 42);
+	printf("|%+4.5d|\n", 42);
+	ft_printf("|%+4.5d|\n", 42);
 	printf("--------------\n");
-	printf("%+.5d\n", 42);
-	ft_printf("%+.5d\n", 42);
+	printf("|%+.5d|\n", 42);
+	ft_printf("|%+.5d|\n", 42);
 	printf("--------------\n");
-	printf("%05d\n", -42);
-	ft_printf("%05d\n", -42);
+	printf("|%05d|\n", -42);
+	ft_printf("|%05d|\n", -42);
 	printf("--------------\n");
-	printf("%03.2d\n", -1);
-	ft_printf("%03.2d\n", -1);
+	printf("|%03.2d|\n", -1);
+	ft_printf("|%03.2d|\n", -1);
 	printf("--------------\n");
-	printf("%#o\n", 42);
-	ft_printf("%#o\n", 42);
+	printf("|%#o|\n", 42);
+	ft_printf("|%#o|\n", 42);
 	printf("--------------\n");
-	printf("%#5x\n", 42);
-	ft_printf("%#5x\n", 42);
+	printf("|%#5x|\n", 42);
+	ft_printf("|%#5x|\n", 42);
 	printf("--------------\n");
-	printf("%#05x\n", 42);
-	ft_printf("%#05x\n", 42);
+	printf("|%#05x|\n", 42);
+	ft_printf("|%#05x|\n", 42);
 	printf("--------------\n");
-	printf("%#.05x\n", 42);
-	ft_printf("%#.05x\n", 42);
+	printf("|%#.05x|\n", 42);
+	ft_printf("|%#.05x|\n", 42);
 	printf("--------------\n");
 	printf("|%#08o|\n", 42);
 	ft_printf("|%#08o|\n", 42);
 	printf("--------------\n");
-	printf("%+05d\n", 42);
-	ft_printf("%+05d\n", 42);
+	printf("|%+05d|\n", 42);
+	ft_printf("|%+05d|\n", 42);
 	printf("--------------\n");
-	printf("%0+5d\n", -42);
-	ft_printf("%0+5d\n", -42);
+	printf("|%0+5d|\n", -42);
+	ft_printf("|%0+5d|\n", -42);
 	printf("--------------\n");
-	printf("%0+5d\n", 42);
-	ft_printf("%0+5d\n", 42);
+	printf("|%0+5d|\n", 42);
+	ft_printf("|%0+5d|\n", 42);
 	printf("--------------\n");
-	printf("%#10.05x\n", 42);
-	ft_printf("%#10.05x\n", 42);
+	printf("|%#10.05x|\n", 42);
+	ft_printf("|%#10.05x|\n", 42);
 	printf("--------------\n");
 	printf("|%-20.8o|\n", -42);
 	ft_printf("|%-20.8o|\n", -42);
@@ -158,8 +158,8 @@ int main(int argc, char **argv)
 	printf("|%.5%|\n");
 	ft_printf("|%.5%|\n");
 	printf("--------------\n");
-	printf("--------------\n");
-	printf("--------------\n");
+	printf("|%-.5%|\n");
+	ft_printf("|%-.5%|\n");
 	printf("--------------\n");
 	printf("|%8.5%|\n");
 	ft_printf("|%8.5%|\n");
@@ -167,8 +167,14 @@ int main(int argc, char **argv)
 	printf("|%+8.5%|\n");
 	ft_printf("|%+8.5%|\n");
 	printf("--------------\n");
-	printf("|%-+8.5%|\n");
-	ft_printf("|%-+8.5%|\n");
+	printf("|%-5%|\n");
+	ft_printf("|%-5%|\n");
+	printf("--------------\n");
+	printf("|%-8.5%|\n");
+	ft_printf("|%-8.5%|\n");
+	printf("--------------\n");
+	printf("|%+-8.5%|\n");
+	ft_printf("|%+-8.5%|\n");
 	printf("--------------\n");
 	printf("|%-8.5%|\n");
 	ft_printf("|%-8.5%|\n");
@@ -176,8 +182,53 @@ int main(int argc, char **argv)
 	printf("|%5.2s| is a string\n", "this");
 	ft_printf("|%5.2s| is a string\n", "this");
 	printf("--------------\n");
-	printf("|%-5%|\n");
-	ft_printf("|%-5%|\n");
+	printf("|%12s| is a string\n", "this");
+	ft_printf("|%12s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%5.x| |%5.0x|\n", 0, 0);
+	ft_printf("|%5.x| |%5.0x|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%#.x| |%#.0x|\n", 0, 0);
+	ft_printf("|%#.x| |%#.0x|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%.x| |%.0x|\n", 0, 0);
+	ft_printf("|%.x| |%.0x|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%#x|\n", 0);
+	ft_printf("|%#x|\n", 0);
+	printf("--------------\n");
+	printf("|%5.2s| is a string\n", "");
+	ft_printf("|%5.2s| is a string\n", "");
+	printf("--------------\n");
+	printf("|%.o| |%.0o|\n", 0, 0);
+	ft_printf("|%.o| |%.0o|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%#.o| |%#.0o|\n", 0, 0);
+	ft_printf("|%#.o| |%#.0o|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%#.x| |%#.0x|\n", 0, 0);
+	ft_printf("|%#.x| |%#.0x|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%.d| |%.0d|\n", 0, 0);
+	ft_printf("|%.d| |%.0d|\n", 0, 0);
+	printf("--------------\n");
+	printf("|%5.d| |%5.0d|\n", 0, 0);
+	ft_printf("|%5.d| |%5.0d|\n", 0, 0);
+	printf("--------------\n");
+	printf("%03.2d\n", 0);
+	ft_printf("%03.2d\n", 0);
+	printf("--------------\n");
+	printf("--------------\n");
+	printf("--------------\n");
+
+
+
+	// ft_printf("%#-08x", 42);
+	// ft_printf("%-05o", 2500);
+	// ft_printf("%-05d", 42);
+	// ft_printf("%-05d", -42);
+	// ft_printf("% u", 4294967295);
+	// ft_printf("%+u", 4294967295);
 
 	return 0;
 }
