@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 16:35:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 20:19:13 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 	int		size;
 	char	*ap;
 	int		surplus;
+	char	*for_s;
+	char	*tmp;
 
 	i = 0;
 	surplus = 0;
-	//ft_putstr("ici dans preci_width3\n");
 	size = ft_calculate_size(before, after, data);
 	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
@@ -47,7 +48,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 	{
 		if (data->flag & F_S)
 		{
-			ap = data->tmp_s;
+			ap = ft_strdup(data->tmp_s);
 			if (!(final = ft_strsub(ap, 0, after)))
 				return (NULL);
 			if (before > after)
@@ -110,6 +111,30 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 	}
 	else if (after < data->conv_sz && before > after)
 	{
+		if (data->flag & F_S)
+		{
+			ap = ft_strdup(data->tmp_s);
+			if (!(final = ft_strsub(ap, 0, after)))
+				return (NULL);
+			if (before > after)
+				data->width_precis_minus = before - after;
+			if (after >= before)
+				data->width_precis_minus = before - data->conv_sz;
+			if (ap[0] == '\0' && before > after)
+				data->width_precis_minus = before;
+			if (ap[0] == '\0' && before <= after)
+				data->width_precis_minus = after;
+			if (!(for_s = malloc(sizeof(char) * before - after + 1)))
+				return (NULL);
+			while (i < before - after)
+				for_s[i++] = ' ';
+			tmp = final;
+			if (!(final = ft_strjoin(for_s, tmp)))
+				return (NULL);
+			free(tmp);
+			free(for_s);
+			return (final);
+		}
 		if (data->flag & AP_NEG)
 		{
 			while (i < before - data->conv_sz - 1)
@@ -122,13 +147,19 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				final[i++] = '+';
 			while (i < before - data->conv_sz)
 				final[i++] = ' ';
+			if (after == 0)
+			{
+				data->flag |= F_AFTER_IS_0;
+				final[i++] = ' ';
+			}
 		}
 	}
 	else if ((after >= data->ap_sz && before > after) || (after == data->conv_sz))
 	{
+		// iciiiiiiiiii
 		if (!(data->flag & AP_NEG))
 		{
-			// printf("before = %d, after = %d, data->ap_sz = %d, data->conv_sz = %d\n", before, after, data->ap_sz, data->conv_sz);
+			//printf("before = %d, after = %d, data->ap_sz = %d, data->conv_sz = %d\n", before, after, data->ap_sz, data->conv_sz);
 			if (data->flag & F_SHARP)
 				surplus = 2;
 			else
@@ -145,10 +176,21 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				final[i++] = '0';
 				final[i++] = 'x';
 			}
-			while (after > data->conv_sz)
+			if (data->flag & F_S_0)
 			{
-				final[i++] = '0';
-				after--;
+				while (after > data->conv_sz)
+				{
+					final[i++] = ' ';
+					after--;
+				}
+			}
+			else
+			{
+				while (after > data->conv_sz)
+				{
+					final[i++] = '0';
+					after--;
+				}
 			}
 		}
 		else if (data->flag & AP_NEG)
@@ -200,7 +242,6 @@ char	*ft_preci_width2(char *flag, t_data *data, int i, int j)
 	j = ft_atoi(after);
 	free(before);
 	free(after);
-	//printf("i = %d, j = %d\n", i, j);
 	if (!(final = ft_preci_width3(i, j, data)))
 		return (NULL);
 	return (final);

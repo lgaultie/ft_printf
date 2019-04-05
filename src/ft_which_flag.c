@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 16:35:10 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 20:12:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,13 @@ char	*ft_which_flag2(char *flag, char cv, t_data *data)
 char	*ft_which_flag(char *flag, char cv, t_data *data)
 {
 	char	*final;
+	//printf("flag = |%s|    ft_strlen(flag) = %zu\n", flag, ft_strlen(flag));
+	if (ft_strlen(flag) == 2 && data->flag & F_PRECIS)
+		return (ft_strdup(""));
 	if (data->flag & F_SHARP || ((data->flag & F_PERCENT) \
 	&& ((data->flag & F_WIDTH) || data->flag & F_PRECIS)))
 	{
-		if (data->flag & F_W_P)
+		if (data->flag & F_W_P && !(data->flag & F_PERCENT))
 		{
 			if (!(final = ft_preci_width(flag, data)))
 				return (NULL);
@@ -87,6 +90,7 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 		{
 			if (!(final = ft_width(flag, data)))
 				return (NULL);
+			//printf("final dans which flag = |%s|\n", final);
 		}
 		else if (data->flag & F_PRECIS && !(data->flag & F_PERCENT))
 		{
@@ -107,6 +111,7 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 	}
 	else if (data->flag & F_PRECIS)
 	{
+		//ft_putstr("bien ici\n");
 		if (!(final = ft_precision_d(flag, data)))
 			return (NULL);
 	}
