@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 16:47:33 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:05:06 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,32 @@ int main(int argc, char **argv)
 	printf("|%05.2d|\n", 7);
 	ft_printf("|%05.2d|\n", 7);
 	printf("--------------\n");
-	// ft_printf("Vrai : %% |%-5%|\n");
-	// ft_printf("Vrai : %% |%5%|\n");
+	printf("|%5%|\n");
+	ft_printf("|%5%|\n");
+	printf("--------------\n");
+	printf("|%.5%|\n");
+	ft_printf("|%.5%|\n");
+	printf("--------------\n");
+	printf("--------------\n");
+	printf("--------------\n");
+	printf("--------------\n");
+	printf("|%8.5%|\n");
+	ft_printf("|%8.5%|\n");
+	printf("--------------\n");
+	printf("|%+8.5%|\n");
+	ft_printf("|%+8.5%|\n");
+	printf("--------------\n");
+	printf("|%-+8.5%|\n");
+	ft_printf("|%-+8.5%|\n");
+	printf("--------------\n");
+	printf("|%-8.5%|\n");
+	ft_printf("|%-8.5%|\n");
+	printf("--------------\n");
+	printf("|%5.2s| is a string\n", "this");
+	ft_printf("|%5.2s| is a string\n", "this");
+	printf("--------------\n");
+	printf("|%-5%|\n");
+	ft_printf("|%-5%|\n");
 
 	return 0;
 }
