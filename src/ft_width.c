@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 16:39:11 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 15:35:12 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ char	*ft_width(char *flags, t_data *data)
 	j = 0;
 	if (flags[0] == '0')
 		data->flag |= F_ZERO;
-		else
+	if (data->flag & F_WIDTH && (i = data->tmp))
+		data->flag &= ~F_WIDTH;
+	else
 	{
 		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 			return (0);
