@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 16:07:31 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:35:23 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 {
 	if (flag[i] == ' ')
 	{
-		//printf("flag[i] = |%c|\n", flag[i]);
 		data->flag |= F_SPACE;
 	}
 	else if (flag[i] == '#')
@@ -53,9 +52,9 @@ void	ft_active_flag2(char *flag, t_data *data, int i)
 		data->flag |= F_MINUS;
 	else if (flag[i] == '%')
 		data->flag |= F_PERCENT;
-	else if ((flag[0] == '0' || ((flag[i - 1] < '0' || flag[i - 1] > '9') \
-	&& flag[i - 1] != '.' && i > 1)))
-		data->flag |= F_ZERO;
+	// else if ((flag[i - 1] < '0' || flag[i - 1] > '9') \
+	// && flag[i - 1] != '.'&& flag[i - 1] != '#'  && flag[i] == '0' && i > 0)
+	// 	data->flag |= F_ZERO;
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
 }
@@ -71,6 +70,9 @@ int		ft_active_flag(char *flag, t_data *data)
 		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != 'u' \
 		&& flag[i] != '\0')
 	{
+		//printf("flag[i] = |%c|  i = %d\n", flag[i], i);
+		if (flag[i] == '0' && (flag[i - 1] < '0' || flag[i - 1] > '9'))
+			data->flag |= F_ZERO;
 		if (flag[i] == '.' && (data->flag & F_WIDTH))
 			data->flag |= F_W_P;
 		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
@@ -132,14 +134,6 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			return (NULL);
 		//printf("dans ft_flags.c ret_only_conversion = |%s|\n", ret_conv);
 	}
-	// if (data->flag & F_ZERO)
-	// 	ft_putstr("F_ZERO ACTIF\n");
-	// if (data->flag & F_W_P)
-	// 	ft_putstr("F_W_P ACTIF\n");
-	// if (data->flag & AP_NEG)
-	// 	ft_putstr("AP_NEG ACTIF\n");
-
-
 	if ((data->flag & F_MINUS) && (data->flag & F_WIDTH) \
 	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
 	&& !(data->flag & F_PLUS))
@@ -170,17 +164,59 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	}
 	if (data->flag & F_SPACE && data->flag & AP_NEG)
 		return (ret_conv);
+		// if (data->flag & F_WIDTH)
+		// ft_putstr("F_WIDTH ACTIF\n");
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
-	//printf("dans ft_flags.c ret_flag = |%s|\n", ret_flag);
-		// if (data->flag & F_SHARP)
+	// printf("ret_flag = |%s|\n", ret_flag);
+	// // //
+	// if (data->flag & F_ZERO)
+	// 	ft_putstr("F_ZERO ACTIF\n");
+	// if (data->flag & F_W_P)
+	// 	ft_putstr("F_W_P ACTIF\n");
+	// if (data->flag & AP_NEG)
+	// 	ft_putstr("AP_NEG ACTIF\n");
+	// if (data->flag & F_PLUS)
+	// 	ft_putstr("F_PLUS ACTIF\n");
 	// if (data->flag & F_SHARP)
-	// 	{
-	// 		tmp = ret_flag;
-	// 		if (!(ret_flag = ft_strjoin("0x", ret_flag)))
-	// 			return (NULL);
-	// 		free(tmp);
-	// 	}
+	// 	ft_putstr("F_SHARP ACTIF\n");
+	// if (data->flag & F_PRECIS)
+	// 	ft_putstr("F_PRECIS ACTIF\n");
+	if (data->flag & F_SHARP && data->flag & F_ZERO \
+	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) && (flag[i] == 'x' \
+	|| flag[i] == 'X'))
+	{
+		if (flag[i] == 'X')
+		{
+			ret_flag[0] = '0';
+			ret_flag[1] = 'X';
+		}
+		if (flag[i] == 'x')
+		{
+			ret_flag[0] = '0';
+			ret_flag[1] = 'x';
+		}
+	}
+	if (data->flag & F_SHARP && data->flag & F_ZERO && data->flag & F_PRECIS \
+	&& !(data->flag & F_W_P) && (flag[i] == 'x' \
+	|| flag[i] == 'X'))
+	{
+		if (flag[i] == 'X')
+		{
+			tmp = ret_flag;
+			if (!(ret_flag = ft_strjoin("0X", tmp)))
+				return (NULL);
+			free(tmp);
+		}
+		if (flag[i] == 'x')
+		{
+			tmp = ret_flag;
+			if (!(ret_flag = ft_strjoin("0x", tmp)))
+				return (NULL);
+			free(tmp);
+		}
+	}
+	//printf("dans ft_flags.c ret_flag = |%s|\n", ret_flag);
 	if ((data->flag & F_PRECIS) && (flag[i] == 's' || flag[i] == 'c'))
 		return (ret_flag);
 	if (flag[i] == '%')

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 15:15:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:35:10 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,12 @@ char	*ft_which_flag(char *flag, char cv, t_data *data)
 	if (data->flag & F_SHARP || ((data->flag & F_PERCENT) \
 	&& ((data->flag & F_WIDTH) || data->flag & F_PRECIS)))
 	{
-		if (data->flag & F_WIDTH)
+		if (data->flag & F_W_P)
+		{
+			if (!(final = ft_preci_width(flag, data)))
+				return (NULL);
+		}
+		else if (data->flag & F_WIDTH)
 		{
 			if (!(final = ft_width(flag, data)))
 				return (NULL);

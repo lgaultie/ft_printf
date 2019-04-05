@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 15:57:47 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:22:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_width2(int width, t_data *data)
 
 	i = 0;
 	surplus = 0;
+	//printf("width = %d, data->conv_sz = %d\n", width, data->conv_sz);
 	if (width > data->conv_sz)
 	{
 		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
@@ -28,6 +29,7 @@ char	*ft_width2(int width, t_data *data)
 		{
 			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
 			{
+				// ft_putstr("ici dans ft_width.c\n");
 				ret[i++] = '-';
 				while (i < width - data->conv_sz)
 				{
@@ -37,7 +39,9 @@ char	*ft_width2(int width, t_data *data)
 			}
 			else
 			{
-				while (i < width - data->conv_sz)
+				if (data->flag & F_PLUS)
+					ret[i++] = '+';
+				while (i < width - data->conv_sz - surplus)
 				{
 					ret[i] = '0';
 					i++;
@@ -100,9 +104,9 @@ char	*ft_width(char *flags, t_data *data)
 			return (0);
 		while (flags[i] != '\0')
 		{
-			if (flags[i] == '#')
+			if (flags[i] == '#' || flags[i] == '+')
 				i++;
-			if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '+' \
+			if ((flags[i] >= '0' && flags[i] <= '9') \
 			|| flags[i] == '-')
 				conv[j] = flags[i];
 			i++;

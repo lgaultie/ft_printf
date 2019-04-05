@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 18:41:55 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/05 15:35:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ char	*ft_hexa(t_data *data, int mode)
 
 	data->flag |= F_UNSIGNED;
 	tmp = ft_conv_hhhlll_u(data, 16, mode);
-	if ((data->flag & F_SHARP) && (ft_strcmp(tmp, "0") != 0))
+	if ( tmp[0] != '0' && tmp[1] != '\0' && (data->flag & F_SHARP) \
+	&& !(data->flag & F_PRECIS) \
+	&& !(data->flag & F_W_P) && !(data->flag & F_ZERO))
 	{
 		if (mode == 1)
 			if (!(final = ft_strjoin("0x", tmp)))

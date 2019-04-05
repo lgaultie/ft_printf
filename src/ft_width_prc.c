@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/03 18:55:26 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:35:14 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 
 	i = 0;
 	surplus = 0;
+	//ft_putstr("ici dans preci_width3\n");
 	size = ft_calculate_size(before, after, data);
 	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
@@ -123,24 +124,34 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				final[i++] = ' ';
 		}
 	}
-	else if ((after > data->ap_sz && before > after) || (after == data->conv_sz))
+	else if ((after >= data->ap_sz && before > after) || (after == data->conv_sz))
 	{
 		if (!(data->flag & AP_NEG))
 		{
-			while (before > after)
+			// printf("before = %d, after = %d, data->ap_sz = %d, data->conv_sz = %d\n", before, after, data->ap_sz, data->conv_sz);
+			if (data->flag & F_SHARP)
+				surplus = 2;
+			else
+				surplus = 0;
+			while (before > after + surplus)
 			{
 				final[i++] = ' ';
 				before--;
 			}
 			if (data->flag & F_PLUS)
 				final[i - 1] = '+';
+			if (data->flag & F_SHARP)
+			{
+				final[i++] = '0';
+				final[i++] = 'x';
+			}
 			while (after > data->conv_sz)
 			{
 				final[i++] = '0';
 				after--;
 			}
 		}
-		if (data->flag & AP_NEG)
+		else if (data->flag & AP_NEG)
 		{
 			while (before > after + 1)
 			{
@@ -156,6 +167,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 		}
 	}
 	final[i] = '\0';
+	//printf("final = |%s|\n", final);
 	return (final);
 }
 
@@ -185,11 +197,10 @@ char	*ft_preci_width2(char *flag, t_data *data, int i, int j)
 		after[j++] = flag[i++];
 	after[j] = '\0';
 	i = ft_atoi(before);
-	// if (i == 0)
-	// 	i = 1;
 	j = ft_atoi(after);
 	free(before);
 	free(after);
+	//printf("i = %d, j = %d\n", i, j);
 	if (!(final = ft_preci_width3(i, j, data)))
 		return (NULL);
 	return (final);
