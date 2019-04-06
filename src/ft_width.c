@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 17:51:15 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 17:26:29 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*ft_width(char *flags, t_data *data)
 		data->flag &= ~F_WIDTH;
 	else
 	{
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 			return (0);
 		while (flags[i] != '\0')
 		{
@@ -112,7 +112,8 @@ char	*ft_width(char *flags, t_data *data)
 			i++;
 			j++;
 		}
-		conv[i] = '\0';
+		conv[j - 1] = '\0';		//fais des invalid read size meme si
+		//on remplace par conv[j] = '\0';
 		i = ft_atoi(conv);
 		free(conv);
 		data->flag &= ~F_WIDTH;
@@ -236,7 +237,7 @@ char	*ft_width_s(char *flags, t_data *data)
 		data->flag &= ~F_WIDTH & ~F_STAR;
 	else
 	{
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 			return (0);
 		while (flags[i] != '\0')
 		{
@@ -248,7 +249,6 @@ char	*ft_width_s(char *flags, t_data *data)
 			i++;
 			j++;
 		}
-		conv[i] = '\0';
 		i = ft_atoi(conv);
 		free(conv);
 		data->flag &= ~F_WIDTH;

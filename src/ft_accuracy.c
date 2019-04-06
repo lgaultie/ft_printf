@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 19:01:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 16:22:10 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,6 @@ static int		ft_precision_d_else(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
-		return (-1);
 	while (flags[i] < '0' || flags[i] > '9')
 		i++;
 	while (flags[i] >= '0' && flags[i] <= '9')

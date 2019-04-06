@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 22:24:43 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 17:18:45 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,22 @@ char			*ft_got_flag(char *str, t_data *data)
 		data->flag_sz = 1;
 	else
 		data->flag_sz = x + 1;
-	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
+	// 	printf("str : |%s|\n", str);
+	// printf("\n data->bufffffffffff 1 : |%s|\n\n", data->buf);
+	// printf("data->flag_sz + 1 : %d\n", data->flag_sz+1);
+	// printf("on fait un malloc de flag avec 2 back0\n");
+	if (!(flags = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
+	// printf("adresse flag = %p\n", flags);
+	// printf("adresse de flag et data->buf sont pareilles\n");
+	// printf("\napres malloc de flag\n data->bufffffffffff 2 : |%s|\n\n", data->buf);
+	flags = ft_strncpy(flags, str, data->flag_sz);
+	// printf("\nflag devient le premier caractere de c\nflag : |%s|\n", flags);
+
 	flags = ft_strncpy(flags, str, data->flag_sz);
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
 		return (NULL);
+	// printf("\ndata->buffffffffff 3 : |%s|\n\n", data->buf);
 	free(flags);
 	return (final);
 }
@@ -82,7 +93,6 @@ static int		ft_print_format(char *format, t_data *data)
 	}
 	else
 		ft_putstr(data->buf);
-
 	free(data->buf); //to uncom when not in tests
 	return (len);
 

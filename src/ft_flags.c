@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 20:20:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 17:52:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int		ft_active_flag(char *flag, t_data *data)
 		&& flag[i] != '\0')
 	{
 		//printf("flag[i] = |%c|  i = %d\n", flag[i], i);
-		if (flag[i] == '0' && (flag[i - 1] < '0' || flag[i - 1] > '9'))
+		if ((flag[i] == '0' && i == 0) \
+		|| (flag[i] == '0' && (flag[i - 1] < '0' || flag[i - 1] > '9')))
 			data->flag |= F_ZERO;
 		if (flag[i] == '.' && (data->flag & F_WIDTH))
 			data->flag |= F_W_P;
@@ -144,7 +145,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			return (NULL);
 		if (ret_conv[0] == '\0' && data->flag & F_SHARP)
 			return (ret_conv);
-		// printf("dans ft_flags.c ret_only_conversion = |%s|\n", ret_conv);
+		//printf("dans ft_flags.c ret_only_conversion = |%s|\n", ret_conv);
 	}
 	if (!(data->flag & F_PERCENT) && (data->flag & F_MINUS) && (data->flag & F_WIDTH) \
 	&& !(data->flag & F_PRECIS) && !(data->flag & F_W_P) \
@@ -153,7 +154,6 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED) \
 		&& (flag[i] != 's' || flag[i] != 'c'))
 		{
-			//ft_putstr("oui\n");
 			if (!(ret_conv = ft_strjoin("-", ret_conv)))
 				return (NULL);
 		}
@@ -198,7 +198,10 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 		return (NULL);
 	if (data->flag & F_AFTER_IS_0)
+	{
+		free(ret_conv);
 		return (ret_flag);
+	}
 	//printf("ret_flag apres appel de wich flag= |%s|\n\n", ret_flag);
 
 	if (data->flag & F_SHARP && data->flag & F_ZERO \
@@ -237,7 +240,10 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	}
 	//printf("dans ft_flags.c ret_flag = |%s|\n", ret_flag);
 	if ((data->flag & F_PRECIS) && (flag[i] == 's' || flag[i] == 'c'))
+	{
+		free(ret_conv);
 		return (ret_flag);
+	}
 	if (flag[i] == '%')
 	{
 		if (!(final = ft_percent_percent(ret_flag, data)))
@@ -247,7 +253,9 @@ char	*ft_flag_conv(char *flag, t_data *data)
 	}
 	////////////// ici wtf
 	if (flag[i] == 's' && (data->flag & F_MINUS) && (data->flag & F_W_P))
+	{
 		final = ft_strdup(ret_flag);
+	}
 	else
 	{
 		if (!(final = ft_strjoin(ret_flag, ret_conv)))

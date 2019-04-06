@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 20:19:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 17:28:47 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 		if (data->flag & F_S)
 		{
 			ap = ft_strdup(data->tmp_s);
+			free(final);
 			if (!(final = ft_strsub(ap, 0, after)))
 				return (NULL);
 			if (before > after)
@@ -59,6 +60,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				data->width_precis_minus = before;
 			if (ap[0] == '\0' && before <= after)
 				data->width_precis_minus = after;
+			free(ap);
 		}
 		else
 		{
@@ -106,7 +108,6 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 			while (i < after - data->conv_sz)
 				final[i++] = '0';
 		}
-		final[i] = '\0';
 		return (final);
 	}
 	else if (after < data->conv_sz && before > after)
@@ -114,6 +115,8 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 		if (data->flag & F_S)
 		{
 			ap = ft_strdup(data->tmp_s);
+			free(data->tmp_s);
+			free(final);
 			if (!(final = ft_strsub(ap, 0, after)))
 				return (NULL);
 			if (before > after)
@@ -133,6 +136,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 				return (NULL);
 			free(tmp);
 			free(for_s);
+			free(ap);
 			return (final);
 		}
 		if (data->flag & AP_NEG)
@@ -208,7 +212,6 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 			}
 		}
 	}
-	final[i] = '\0';
 	//printf("final = |%s|\n", final);
 	return (final);
 }

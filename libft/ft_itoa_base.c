@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 22:09:05 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 16:05:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,6 @@ static int		ft_abs(int nb)
 		nb = -nb;
 	return (nb);
 }
-
-
-
-
-
-
 
 char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m)
 {
