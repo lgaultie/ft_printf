@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 15:59:25 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 15:26:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 11:44:19 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strndup(const char *s1, ssize_t len)
 {
-	size_t	counter;
+	ssize_t	counter;
 	char	*sdest;
 
 	counter = 0;
-	if (!(sdest = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s1) + 1))))
+	if (!(sdest = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
 		return (NULL);
-	while (s1[counter] != '\0')
+	while (s1[counter] != '\0' && counter < len)
 	{
 		sdest[counter] = s1[counter];
 		counter++;

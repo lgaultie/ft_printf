@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 15:07:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 18:00:59 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ char		*ft_char(t_data *data)
 	char	ap;
 	char	*final;
 
-	// int	test;
-
 	if (!(final = ft_memalloc(sizeof(char) * 2)))
 		return (NULL);
 	ap = (va_arg(data->ap, int));
@@ -101,14 +99,13 @@ char		*ft_char(t_data *data)
 		data->flag |= F_C_0;
 		final[0] = 0;
 		final[1] = '\0';
-		data->tmp = ft_strlen(data->buf);
-		//data->tmp = 12;
+		data->index_0 = ft_strlen(data->buf);
 	}
 	else
 	{
 		final[0] = ap;
 		final[1] = '\0';
 	}
-	data->conv_sz = ft_strlen(final);
+	data->conv_sz = 1;
 	return (final);
 }

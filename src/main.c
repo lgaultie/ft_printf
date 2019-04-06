@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 17:57:36 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 18:00:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,9 @@ int main(int argc, char **argv)
 	// printf("|%-3.6o|\n", -17);
 	// ft_printf("|%-3.6o|\n", -17);
 	// printf("--------------\n");
+	// printf("|%.0s|\n", "salutttt");
+	// ft_printf("|%.0s|\n", "salutttt");
+	// printf("--------------\n");
 	// printf("|% %|\n");
 	// ft_printf("|% %|\n");
 	// printf("--------------\n");
@@ -239,9 +242,6 @@ int main(int argc, char **argv)
 	// printf("--------------\n");
 	// printf("--------------\n");
 	// printf("--------------\n");
-	// printf("--------------\n");
-	// printf("|%.0s|\n", "salutttt");
-	// ft_printf("|%.0s|\n", "salutttt");
 
 
 
