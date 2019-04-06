@@ -6,7 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:28:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 18:37:40 by amamy            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> 6e321cfdcce0453becbba3b9146ad88924f89bab
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +24,8 @@ char	*ft_octal(t_data *data)
 
 	(void)ap;
 	data->flag |= F_UNSIGNED;
-	tmp = ft_conv_hhhlll_u(data, 8, 1);
+	if (!(tmp = ft_conv_hhhlll_u(data, 8, 1)))
+		return (NULL);
 	if ((data->flag & F_SHARP) && (ft_strcmp(tmp, "0") != 0))
 	{
 		if (!(final = ft_strjoin("0", tmp)))
@@ -30,15 +35,24 @@ char	*ft_octal(t_data *data)
 	else
 		final = tmp;
 	data->conv_sz = ft_strlen(final);
-	if (tmp[0] == '0' && tmp[1] == '\0' && (data->flag & F_SHARP) \
-	&& (data->flag & F_PRECIS))
-		return (ft_strdup("0"));
-	if (tmp[0] == '0' && tmp[1] == '\0' && ((data->flag & F_SHARP) \
-	|| data->flag & F_PRECIS))
-		return (ft_strdup(""));
-	if (tmp[0] == '0' && tmp[1] == '\0' && (data->flag & F_SHARP \
-	|| data->flag & F_W_P))
-	return (ft_strdup(" "));
+	if (ft_strcmp(tmp, "0") == 0)
+	{
+		if ((data->flag & F_SHARP) && (data->flag & F_PRECIS))
+		{
+			free(tmp);
+			return (ft_strdup("0"));
+		}
+		if ((data->flag & F_SHARP) || (data->flag & F_PRECIS))
+		{
+			free(tmp);
+			return (ft_strdup(""));
+		}
+		if ((data->flag & F_SHARP) || (data->flag & F_W_P))
+		{
+			free(tmp);
+			return (ft_strdup(" "));
+		}
+	}
 	return (final);
 }
 
@@ -68,6 +82,7 @@ char	*ft_hexa(t_data *data, int mode)
 	else
 		data->flag |= B_DONE;
 	data->conv_sz = ft_strlen(final);
+<<<<<<< HEAD
 	if (tmp[0] == '0' && tmp[1] == '\0' && (data->flag & F_SHARP) \
 	&& !(data->flag & F_PRECIS))
 		if (!(final = (ft_strdup("0"))))
@@ -86,5 +101,25 @@ char	*ft_hexa(t_data *data, int mode)
 		final = ft_strdup(tmp);
 	}
 	free(tmp);
+=======
+	if (ft_strcmp(tmp, "0") == 0)
+	{
+		if ((data->flag & F_SHARP) && !(data->flag & F_PRECIS))
+		{
+			free(tmp);
+			return (ft_strdup("0"));
+		}
+		if ((data->flag & F_SHARP) || (data->flag & F_PRECIS))
+		{
+			free(tmp);
+			return (ft_strdup(""));
+		}
+		if ((data->flag & F_SHARP) || (data->flag & F_W_P))
+		{
+			free(tmp);
+			return (ft_strdup(" "));
+		}
+	}
+>>>>>>> 6e321cfdcce0453becbba3b9146ad88924f89bab
 	return (final);
 }

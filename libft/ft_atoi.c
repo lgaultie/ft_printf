@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 16:16:26 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/03/20 16:16:29 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 16:16:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_atoi(const char *nptr)
 		sign = -1;
 	if (nptr[cnt] == '+' || nptr[cnt] == '-')
 		cnt++;
-	while (nptr[cnt] >= '0' && nptr[cnt] <= '9')
+	while (nptr[cnt] >= '0' && nptr[cnt] <= '9' && nptr[cnt] != '\0')
 	{
 		nb = nb * 10 + (nptr[cnt] - 48);
 		if (sign == 1 && nb > __INT64_MAX__)

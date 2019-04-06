@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 16:26:32 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 18:01:37 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char			*ft_got_flag(char *str, t_data *data)
 		return (NULL);
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
 		return (NULL);
+	// printf("\ndata->buffffffffff 3 : |%s|\n\n", data->buf);
 	free(flags);
 	return (final);
 }
@@ -81,7 +82,6 @@ static int		ft_print_format(char *format, t_data *data)
 	}
 	else
 		ft_putstr(data->buf);
-
 	free(data->buf); //to uncom when not in tests
 	return (len);
 
