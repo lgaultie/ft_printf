@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 22:19:54 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 15:30:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static void	ft_cat_conv(t_data *data, char *str, int i)
 
 	if (!(tmp = ft_strdup(data->buf)))
 		return ;
-	free(data->buf);
 	if (!(tmp2 = ft_got_flag(&str[i], data)))
 		return ;
+	free(data->buf);
 	if (!(data->buf = ft_strjoin(tmp, tmp2)))
 		return ;
 	free(tmp);

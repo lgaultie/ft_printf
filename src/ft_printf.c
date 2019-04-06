@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 22:24:43 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 15:34:59 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ char			*ft_got_flag(char *str, t_data *data)
 		data->flag_sz = 1;
 	else
 		data->flag_sz = x + 1;
-	if (!(flags = malloc(sizeof(char) * (data->flag_sz + 1))))
+	if (!(flags = ft_strndup(str, data->flag_sz)))
 		return (NULL);
-	flags = ft_strncpy(flags, str, data->flag_sz);
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
 		return (NULL);
 	free(flags);
