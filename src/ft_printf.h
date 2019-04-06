@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 22:24:29 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 16:15:09 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef	struct	s_data
 	int			conv_t_sz;
 	int			flag;
 	int			tmp;
+	int			index_0;
 	int			width_precis_minus;
 	char 		*tmp_s;
 }				t_data;

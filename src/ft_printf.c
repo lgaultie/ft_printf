@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 15:34:59 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 16:26:32 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ static int		ft_print_format(char *format, t_data *data)
 	if (data->flag & F_C_0)
 	{
 		len++;
-		ft_putstrn(data->buf, data->tmp);
+		ft_putstrn(data->buf, (data->index_0 + data->tmp));
 		ft_putchar(0);
-		ft_putstr(&data->buf[data->tmp]);
+		ft_putstr(&data->buf[data->index_0]);
 	}
 	else
 		ft_putstr(data->buf);

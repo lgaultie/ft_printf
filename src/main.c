@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 14:02:26 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 17:17:54 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	int	i;
-	int	i2;
+	// int	i;
+	// int	i2;
 
+printf("% c", NULL);
 
 	// ft_tests();
 	// ft_putchar('/0');
 //    printf("vrai|%2c|\n", 0);
 // ft_printf("mine|%2c|\n", 0);
 
-i2 = ft_printf("mine : null %c and text\n", 0);
-i = printf("vrai : null %c and text\n", 0);
-printf("Vrai : %d\nMine : %d\n",i, i2 );
+// 	i = printf("Vrai : |%3c|\n", 0);
+// i2 = ft_printf("Mine : |%3c|\n", 0);
+// printf("Vrai : %d\nMine : %d\n",i, i2 );
 
 //     i = printf("vrai : |@moulitest: %c|\n", 0);
 // i2 = ft_printf("mine : |@moulitest: %c|\n", 0);

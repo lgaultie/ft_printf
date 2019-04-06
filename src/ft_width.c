@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 17:51:15 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 17:14:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ char	*ft_width(char *flags, t_data *data)
 		i = ft_atoi(conv);
 		free(conv);
 		data->flag &= ~F_WIDTH;
+		if (data->flag & F_C_0)
+			data->index_0 += i - 1;
 	}
 	if (i < 0)
 		i = -i;

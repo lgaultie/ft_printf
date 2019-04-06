@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/05 20:20:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/06 15:59:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ char	*ft_flag_conv(char *flag, t_data *data)
 		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED) \
 		&& (flag[i] != 's' || flag[i] != 'c'))
 		{
-			//ft_putstr("oui\n");
 			if (!(ret_conv = ft_strjoin("-", ret_conv)))
 				return (NULL);
 		}

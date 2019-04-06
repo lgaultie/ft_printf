@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 15:40:01 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/06 16:15:39 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char		*ft_char(t_data *data)
 		data->flag |= F_C_0;
 		final[0] = 0;
 		final[1] = '\0';
-		data->tmp = ft_strlen(data->buf);
+		data->index_0 = ft_strlen(data->buf);
 	}
 	else
 	{
