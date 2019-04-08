@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 21:38:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 22:57:00 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ static char	*ft_string_1(t_data *data)
 	if ((data->f & F_PRECIS || data->f & F_WIDTH) \
 	&& (!(data->f & F_MINUS)))
 	{
-		free (ap);
-		ap = ft_strdup("");
+		free(ap);
+		if (!(ap = ft_strdup("")))
+			return (NULL);
 	}
 	return (ap);
 }
