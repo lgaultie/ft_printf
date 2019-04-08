@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 14:36:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:38:46 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static char	*ft_string_1(t_data *data)
 	else
 		return (ft_strdup("(null)"));
 	if (tmp[0] == '\0')
-		data->flag |= F_S_0;
-	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
-	&& (!(data->flag & F_MINUS)))
+		data->f |= F_S_0;
+	if ((data->f & F_PRECIS || data->f & F_WIDTH) \
+	&& (!(data->f & F_MINUS)))
 		data->tmp_s = ft_strdup(ap);
 	data->conv_sz = ft_strlen(ap);
 	data->ap_sz = ft_strlen(ap);
-	if (data->flag & F_MINUS)
+	if (data->f & F_MINUS)
 		data->tmp_s = ap;
-	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
-	&& (!(data->flag & F_MINUS)))
+	if ((data->f & F_PRECIS || data->f & F_WIDTH) \
+	&& (!(data->f & F_MINUS)))
 	{
 		free (ap);
 		ap = ft_strdup("");
@@ -55,13 +55,13 @@ char		*ft_string(char *flag, t_data *data, int mode)
 	if (mode == 1)
 	{
 		ap = data->tmp_s;
-		if (data->flag & F_PRECIS && !(data->flag & F_W_P))
+		if (data->f & F_PRECIS && !(data->f & F_W_P))
 		{
 			data->ap_sz = ft_precision_s(flag, data);
 			if (!(final = ft_strsub(ap, 0, data->ap_sz)))
 				return (NULL);
 		}
-		if (data->flag & F_WIDTH && !(data->flag & F_W_P))
+		if (data->f & F_WIDTH && !(data->f & F_W_P))
 		{
 			data->ap_sz = ft_strlen(ap);
 			ret_width = ft_width_s(flag, data);
@@ -69,7 +69,7 @@ char		*ft_string(char *flag, t_data *data, int mode)
 				return (NULL);
 			free(ret_width);
 		}
-		if (data->flag & F_W_P)
+		if (data->f & F_W_P)
 		{
 			data->ap_sz = ft_precision_s(flag, data);
 			if (!(final = ft_strsub(ap, 0, data->ap_sz)))
@@ -96,7 +96,7 @@ char		*ft_char(t_data *data)
 	data->ap_sz = 1;
 	if (ap == 0)
 	{
-		data->flag |= F_C_0;
+		data->f |= F_C_0;
 		final[0] = 0;
 		final[1] = '\0';
 		data->index_0 = ft_strlen(data->buf);

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 14:23:23 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:41:49 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 		return (NULL);
 	if (accuracy > data->conv_sz)
 	{
-		if (data->flag & F_ZERO)
+		if (data->f & F_ZERO)
 		{
-			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+			if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
 			{
 				ret[i++] = '-';
 				while (i < accuracy - data->conv_sz - 1)
@@ -43,9 +43,9 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 				}
 			}
 		}
-		if (!(data->flag & F_ZERO))
+		if (!(data->f & F_ZERO))
 		{
-			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+			if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
 			{
 				ret[i++] = '-';
 				while (i < accuracy - data->conv_sz + 1)
@@ -57,9 +57,9 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 			}
 			else
 			{
-				// if (data->flag & F_SHARP)
+				// if (data->f & F_SHARP)
 				// 	surplus = 2;
-				if (data->flag & F_PLUS)
+				if (data->f & F_PLUS)
 				{
 					surplus--;
 					ret[i++] = '+';
@@ -77,9 +77,9 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	// {
 	//
 	// }
-	// if (data->flag & AP_NEG)
+	// if (data->f & AP_NEG)
 	// {
-	// 	if (!(data->flag & F_UNSIGNED))
+	// 	if (!(data->f & F_UNSIGNED))
 	// 	{
 	// 		ret[i] = '-';
 	// 		i++;
@@ -87,7 +87,7 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	// 	while (i < accuracy - data->ap_sz + 1)
 	// 		ret[i++] = '0';
 	// }
-	// else if (data->flag & F_PLUS)
+	// else if (data->f & F_PLUS)
 	// {
 	// 	ret[i] = '+';
 	// 	i++;
@@ -96,7 +96,7 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	// }
 	// else
 	// {
-	// 	if (data->flag & F_MINUS && !(data->flag & F_UNSIGNED))
+	// 	if (data->f & F_MINUS && !(data->f & F_UNSIGNED))
 	// 		while (i < accuracy - data->ap_sz + 1)
 	// 			ret[i++] = '0';
 	// 	else
@@ -104,11 +104,11 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	// 			ret[i++] = '0';
 	if (accuracy <= data->conv_sz)
 	{
-		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+		if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
 			return (ft_strdup("-"));
-		else if (data->flag & F_PLUS && (data->flag & AP_NEG))
+		else if (data->f & F_PLUS && (data->f & AP_NEG))
 			return (ft_strdup("-"));
-		else if (data->flag & F_PLUS && !(data->flag & AP_NEG))
+		else if (data->f & F_PLUS && !(data->f & AP_NEG))
 			return (ft_strdup("+"));
 		ret = ft_strdup("");
 	}
@@ -155,15 +155,15 @@ char			*ft_precision_d(char *flags, t_data *data)
 	i = 0;
 	j = 0;
 	// if (flags[1] == '*' && (i = data->tmp)) a virer
-	// 	data->flag &= ~F_PRECIS & ~F_STAR;
+	// 	data->f &= ~F_PRECIS & ~F_STAR;
 	// else
 	i = ft_precision_d_else(flags, data);
 	conv = NULL;
 	if (i <= data->ap_sz)
 	{
-		if (data->flag & AP_NEG)
+		if (data->f & AP_NEG)
 			return (ft_strdup("-"));
-		if (data->flag & F_PLUS && !(data->flag & AP_NEG))
+		if (data->f & F_PLUS && !(data->f & AP_NEG))
 			return (ft_strdup("+"));
 		return (ft_strdup(""));
 	}
@@ -189,7 +189,7 @@ int				ft_precision_s(char *flags, t_data *data)
 	j = 0;
 	while (flags[i] < '0' || flags[i] > '9')
 		i++;
-	if (data->flag & F_W_P)
+	if (data->f & F_W_P)
 	{
 		while (flags[i] != '.')
 			i++;

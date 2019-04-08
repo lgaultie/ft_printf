@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 18:18:23 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:40:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char			*ft_width(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (data->flag & F_WIDTH && (i = data->tmp))
-		data->flag &= ~F_WIDTH;
+	if (data->f & F_WIDTH && (i = data->tmp))
+		data->f &= ~F_WIDTH;
 	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	while (flags[i] != '\0')
@@ -40,8 +40,8 @@ char			*ft_width(char *flags, t_data *data)
 	}
 	i = ft_atoi(conv);
 	free(conv);
-	data->flag &= ~F_WIDTH;
-	data->index_0 = (data->flag & F_C_0) ? data->index_0 += i - 1 : 0;
+	data->f &= ~F_WIDTH;
+	data->index_0 = (data->f & F_C_0) ? data->index_0 += i - 1 : 0;
 	i = (i < 0) ? -i : i;
 	return (ft_width2(i, data));
 }
@@ -53,21 +53,21 @@ static char		*ft_width_minus2(int width, t_data *data)
 	int		surplus;
 
 	i = 0;
-	surplus = (data->flag & AP_NEG) ? 1 : 0;
+	surplus = (data->f & AP_NEG) ? 1 : 0;
 	if (width > data->conv_sz)
 	{
 		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
 			return (NULL);
-		if (data->flag & F_ZERO)
+		if (data->f & F_ZERO)
 			while (i < width - data->conv_sz)
 				ret[i++] = '0';
-		if (!(data->flag & F_ZERO))
+		if (!(data->f & F_ZERO))
 			while (i < width - data->conv_sz - surplus)
 				ret[i++] = ' ';
 	}
 	else
 		return (ft_strdup(""));
-	if (data->flag & F_PLUS)
+	if (data->f & F_PLUS)
 		ret[i++] = '+';
 	return (ret);
 }
@@ -144,6 +144,6 @@ char			*ft_width_s(char *f, t_data *data)
 	}
 	i = ft_atoi(conv);
 	free(conv);
-	data->flag &= ~F_WIDTH;
+	data->f &= ~F_WIDTH;
 	return (ft_width_s2(i, data));
 }

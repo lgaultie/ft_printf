@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 16:51:20 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 22:12:57 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,23 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	int		i;
 
 	i = 0;
-	if (data->flag & F_S)
+	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
-	if (data->flag & AP_NEG)
+	if (data->f & AP_NEG)
 	{
 		while (i < before - data->conv_sz - 1)
 			final[i++] = ' ';
 		final[i++] = '-';
 	}
-	if (!(data->flag & AP_NEG))
+	if (!(data->f & AP_NEG))
 	{
-		if (data->flag & F_PLUS)
+		if (data->f & F_PLUS)
 			final[i++] = '+';
 		while (i < before - data->conv_sz)
 			final[i++] = ' ';
 		if (after == 0)
 		{
-			data->flag |= F_AFTER_IS_0;
+			data->f |= F0;
 			final[i++] = ' ';
 		}
 	}
@@ -85,17 +85,17 @@ static char		*ft_ap_neg(int before, int after, char *final, t_data *data)
 	int		surplus;
 
 	i = 0;
-	surplus = (data->flag & F_SHARP) ? 2 : 0;
+	surplus = (data->f & F_SHARP) ? 2 : 0;
 	while (before-- > after + surplus)
 		final[i++] = ' ';
-	if (data->flag & F_PLUS)
+	if (data->f & F_PLUS)
 		final[i - 1] = '+';
-	if (data->flag & F_SHARP)
+	if (data->f & F_SHARP)
 	{
 		final[i++] = '0';
 		final[i++] = 'x';
 	}
-	if (data->flag & F_S_0)
+	if (data->f & F_S_0)
 	{
 		while (after-- > data->conv_sz)
 			final[i++] = ' ';
@@ -115,12 +115,12 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 
 	i = 0;
 	surplus = 0;
-	if (!(data->flag & AP_NEG))
+	if (!(data->f & AP_NEG))
 	{
 		if (!(final = ft_ap_neg(before, after, final, data)))
 			return (NULL);
 	}
-	else if (data->flag & AP_NEG)
+	else if (data->f & AP_NEG)
 	{
 		while (before-- > after + 1)
 			final[i++] = ' ';

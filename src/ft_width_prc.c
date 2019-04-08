@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 17:36:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:39:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 		size = size - data->ap_sz;
 	if (size < data->ap_sz)
 		size = data->ap_sz;
-	if (data->flag & AP_NEG)
+	if (data->f & AP_NEG)
 		size++;
 	return (size);
 }
 
 static char		*ft_case1(char *final, int i, int after, t_data *data)
 {
-	if (data->flag & AP_NEG)
+	if (data->f & AP_NEG)
 	{
 		final[i++] = '-';
 		while (i < after - data->conv_sz + 1)
 			final[i++] = '0';
 	}
-	else if (data->flag & F_PLUS)
+	else if (data->f & F_PLUS)
 	{
 		final[i++] = '+';
 		while (i < after - data->conv_sz + 1)
@@ -70,7 +70,7 @@ static char		*ft_preci_width3(int before, int after, t_data *data)
 	size = ft_calculate_size(before, after, data);
 	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	if (data->flag & F_MINUS)
+	if (data->f & F_MINUS)
 		final = ft_flag_minus(before, after, final, data);
 	else if (before == after || before < after)
 		final = ft_case1(final, i, after, data);

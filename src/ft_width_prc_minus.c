@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 15:53:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 17:33:02 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:38:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char		*ft_else(char *final, int before, int after, t_data *data)
 
 	surplus = 0;
 	i = 0;
-	if (data->flag & F_PLUS)
+	if (data->f & F_PLUS)
 	{
 		surplus = 1;
 		final[i++] = '+';
@@ -57,11 +57,11 @@ char			*ft_flag_minus(int before, int after, char *final, t_data *data)
 	int		i;
 
 	i = 0;
-	if (data->flag & F_S)
+	if (data->f & F_S)
 		final = ft_minus_s(before, after, final, data);
 	else
 	{
-		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
+		if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
 		{
 			final[i++] = '-';
 			while (i < after - data->conv_sz + 1)
