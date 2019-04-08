@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/08 15:45:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:38:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,9 +192,6 @@ int main(int argc, char **argv)
 	printf("|%-8.5%|\n");
 	ft_printf("|%-8.5%|\n");
 	printf("--------------\n");
-	printf("|%+-8.5%|\n");
-	ft_printf("|%+-8.5%|\n");
-	printf("--------------\n");
 	printf("|%-8.5%|\n");
 	ft_printf("|%-8.5%|\n");
 	printf("--------------\n");
@@ -228,11 +225,8 @@ int main(int argc, char **argv)
 	printf("|%5.d| |%5.0d|\n", 0, 0);
 	ft_printf("|%5.d| |%5.0d|\n", 0, 0);			//invlaid read size sur strjoing ret_flag
 	printf("--------------\n");
-	printf("%03.2d\n", 0);
-	ft_printf("%03.2d\n", 0);
-	printf("--------------\n");
-	printf("--------------\n");
-	printf("--------------\n");
+	printf("|%03.2d|\n", 0);
+	ft_printf("|%03.2d|\n", 0);
 	printf("--------------\n");
 	printf("|%5.2s| is a string\n", "");
 	ft_printf("|%5.2s| is a string\n", "");				//LEAAAAAAAAAKs
@@ -245,6 +239,12 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("vrai: |%#.10o|\n", 0);
 	ft_printf("faux: |%#.10o|\n", 0);
+	printf("--------------\n");
+	printf("vrai |%+-8.5%|\n");
+	ft_printf("mine |%+-8.5%|\n");
+	printf("--------------\n");
+	printf("--------------\n");
+	printf("--------------\n");
 
 	//si on fait valgrind sur tous les tests en meme temps ya un leak supplementaire avec le data->tmp_s
 	// 9 bytes in 1 blocks are definitely lost in loss record 1 of 44
