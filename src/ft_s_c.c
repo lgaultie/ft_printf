@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:34:16 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/08 14:36:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char		*ft_string(char *flag, t_data *data, int mode)
 	if (mode == 1)
 	{
 		ap = data->tmp_s;
-		free(data->tmp_s);
 		if (data->flag & F_PRECIS && !(data->flag & F_W_P))
 		{
 			data->ap_sz = ft_precision_s(flag, data);

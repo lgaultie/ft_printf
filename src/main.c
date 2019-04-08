@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 18:09:15 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 15:45:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,8 +240,12 @@ int main(int argc, char **argv)
 	printf("|%12s| is a string\n", "this");
 	ft_printf("|%12s| is a string\n", "this");		//LEEEEEAAAAAAAKKKKKKKK
 	printf("--------------\n");
-	printf("|%#10o|\n", 0);
-	ft_printf("|%#10o|\n", 0);			//BUUUUUUUUUUUUUUUUUUUUUUUUUUUUUG
+	printf("vrai: |%#10o|\n", 0);
+	ft_printf("faux: |%#10o|\n", 0);
+	printf("--------------\n");
+	printf("vrai: |%#.10o|\n", 0);
+	ft_printf("faux: |%#.10o|\n", 0);
+
 	//si on fait valgrind sur tous les tests en meme temps ya un leak supplementaire avec le data->tmp_s
 	// 9 bytes in 1 blocks are definitely lost in loss record 1 of 44
 	// ==27174==    at 0x1000A4616: malloc (in /Users/lgaultie/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
