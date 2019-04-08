@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/08 17:46:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:29:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,7 @@ char	*ft_width_s(char *flags, t_data *data);
 char	*ft_flag_minus(int before, int after, char *final, t_data *data);
 char	*ft_case2(char *final, int before, int after, t_data *data);
 char	*ft_case3(char *final, int before, int after, t_data *data);
+char	*ft_percent_percent(char *ret_flag, t_data *data);
+int		ft_active_flag(char *flag, t_data *data);
 
 #endif
