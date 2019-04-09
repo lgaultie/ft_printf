@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:13:41 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 21:38:35 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/09 15:18:25 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*ft_minus(char *flag, t_data *data)
 
 	(void)flag;
 	(void)data;
-	final = ft_strnew(0);
+	if (!(final = ft_strnew(0)))
+		return (NULL);
 	return (final);
 }

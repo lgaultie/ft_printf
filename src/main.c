@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/09 14:10:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 15:50:13 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	ft_tests();
 // i |= 2; // active le bit 2
 // if (i & 2) // check if bit 2 is enable
 // i &= ~2;// disable bit 2
+
+//NORMEEEEEEE
+//fichier oxcapsx.c a faire
+//fichier plus_minus chelou
+// fichiers de la libft a faire (comme itoa base)
 
 int main(int argc, char **argv)
 {
