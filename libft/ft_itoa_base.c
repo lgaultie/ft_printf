@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 16:05:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:31:45 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int		ft_abs(int nb)
 	return (nb);
 }
 
-char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m)
+char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m, t_data *data)
 {
 	char			*str;
 	char			*tab;
@@ -89,47 +89,50 @@ char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m)
 	while (tmp /= b)
 		size++;
 	size = size + 1;
+	m = size;
 	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	str[size] = '\0';
 	while (size > 0)
 	{
-		str[size - 1] = tab[ft_abs(v % b)];
-		size--;
+		str[size-- - 1] = tab[ft_abs(v % b)];
 		v /= b;
 	}
+	if (m == 1 && str[0] == '0')
+		data->flag |= F_C_0;
 	return (str);
 }
 
-char	*ft_itoa_base_mode_2(long long v, unsigned int b, int m)
-{
-	char		*str;
-	char		*tab;
-	long long	tmp;
-	int			size;
+// char	*ft_itoa_base_mode_2(long long v, unsigned int b, int m)
+// {
+// 	char		*str;
+// 	char		*tab;
+// 	long long	tmp;
+// 	int			size;
+// 	int			test;
+//
+// 	size = 0;
+// 	if (m == 1)
+// 		tab = "0123456789abcdef";
+// 	else if (m == 2)
+// 		tab = "0123456789ABCDEF";
+// 	tmp = v;
+// 	while (tmp /= b)
+// 		size++;
+// 	size = size + 1;
+// 	test = size;
+// 	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
+// 		return (NULL);
+// 	str[size] = '\0';
+// 	while (size > 0)
+// 	{
+// 		str[size - 1] = tab[ft_abs(v % b)];
+// 		size--;
+// 		v /= b;
+// 	}
+// 	return (str);
+// }
 
-	size = 0;
-	if (m == 1)
-		tab = "0123456789abcdef";
-	else if (m == 2)
-		tab = "0123456789ABCDEF";
-	tmp = v;
-	while (tmp /= b)
-		size++;
-	size = size + 1;
-	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
-		return (NULL);
-	str[size] = '\0';
-	while (size > 0)
-	{
-		str[size - 1] = tab[ft_abs(v % b)];
-		size--;
-		v /= b;
-	}
-	return (str);
-}
-
-char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m)
+char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m, t_data *data)
 {
 	char				*str;
 	char				*tab;
@@ -145,19 +148,20 @@ char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m)
 	while (tmp /= b)
 		size++;
 	size = size + 1;
+	m = size;
 	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	str[size] = '\0';
 	while (size > 0)
 	{
-		str[size - 1] = tab[v % b];
-		size--;
+		str[size-- - 1] = tab[v % b];
 		v /= b;
 	}
+	if (m == 1 && str[0] == '0')
+		data->flag |= F_C_0;
 	return (str);
 }
 
-char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m)
+char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *data)
 {
 	char			*str;
 	char			*tab;
@@ -173,14 +177,15 @@ char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m)
 	while (tmp /= b)
 		size++;
 	size = size + 1;
+	m = size;
 	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	str[size] = '\0';
 	while (size > 0)
 	{
-		str[size - 1] = tab[ft_abs(v % b)];
-		size--;
+		str[size-- - 1] = tab[ft_abs(v % b)];
 		v /= b;
 	}
+	if (m == 1 && str[0] == '0')
+		data->flag |= F_C_0;
 	return (str);
 }

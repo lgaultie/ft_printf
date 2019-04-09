@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 20:20:26 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/05 18:39:11 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/08 21:31:14 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ void			lstendadd(t_list *alst, t_list *new);
 int				ft_nb_len_base(long long value, int base);
 char			*ft_itoa_base(long long n, int base);
 int				ft_intlen(long long nb);
-char			*ft_itoa_base_mode(unsigned int v, unsigned int b, int m);
+// char			*ft_itoa_base_mode(unsigned int v, unsigned int b, int m);
 char			*ft_itoa_base_mode_2(long long v, unsigned int b, int m);
-char			*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m);
-char			*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m);
+// char			*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m, t_data *data);
+// char			*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m);
 void			ft_putstrn(char const *s, int len);
 
 #endif

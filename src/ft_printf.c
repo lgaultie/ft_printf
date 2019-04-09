@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:01:37 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 19:32:06 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char		*ft_analyse_flags(char *flags, t_data *data)
 	len = data->flag_sz;
 	if (len == 1)
 	{
-		data->flag |= ONLY_CONV;
+		data->flag |= ONLY_CONV; 
 		final = ft_only_conv(flags, data);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 17:34:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:41:56 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char		*ft_only_conv3(char *flags, t_data *data)
 			return (NULL);
 	}
 	else
-		final = NULL;
+		final = (NULL);
 	return (final);
 }
 
@@ -88,7 +88,7 @@ static char		*ft_only_conv2(char *f, t_data *data)
 			return (NULL);
 	}
 	else
-		final = NULL;
+		final = (NULL);
 	return (final);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:34:16 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/08 15:37:35 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static char	*ft_string_1(t_data *data)
 	data->conv_sz = ft_strlen(ap);
 	data->ap_sz = ft_strlen(ap);
 	if (data->flag & F_MINUS)
-		data->tmp_s = ap;
+		// data->tmp_s = (ap);
+		data->tmp_s = ft_strdup(ap);
 	if ((data->flag & F_PRECIS || data->flag & F_WIDTH) \
 	&& (!(data->flag & F_MINUS)))
 	{
@@ -54,7 +55,7 @@ char		*ft_string(char *flag, t_data *data, int mode)
 	}
 	if (mode == 1)
 	{
-		ap = data->tmp_s;
+		ap = ft_strdup(data->tmp_s);
 		free(data->tmp_s);
 		if (data->flag & F_PRECIS && !(data->flag & F_W_P))
 		{

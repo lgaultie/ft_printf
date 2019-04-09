@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:01:49 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:56:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ char	*ft_flag_conv(char *flag, t_data *data)
 			tmp = ret_flag;
 			if (!(ret_flag = ft_strjoin("0X", tmp)))
 				return (NULL);
-			free(tmp);
+			free(tmp); 
 		}
 		if (flag[i] == 'x')
 		{

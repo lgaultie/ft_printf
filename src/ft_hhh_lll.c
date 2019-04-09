@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 15:55:55 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 20:48:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char	*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 	{
 		ap = (va_arg(data->ap, int));
 		data->ap_sz = ft_intlen(ap);
-		if (!(final = ft_itoa_base_mode((int)ap, base, mode)))
+		if (!(final = ft_itoa_base_mode((int)ap, base, mode, data)))
 			return (NULL);
 		return (final);
 	}
 	data->ap_sz = ft_intlen(ap);
-	if (!(final = ft_itoa_b_m_ul(ap, base, mode)))
+	if (!(final = ft_itoa_b_m_ul(ap, base, mode, data)))
 		return (NULL);
 	return (final);
 }

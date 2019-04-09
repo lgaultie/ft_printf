@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:03:09 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/09 12:32:17 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,19 +123,21 @@ static int		ft_precision_d_else(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	while (flags[i] < '0' || flags[i] > '9')
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
+		return (-1);
+	while ((flags[i] < '0' || flags[i] > '9') && flags[i] != '\0')
 		i++;
-	while (flags[i] >= '0' && flags[i] <= '9')
+	while ((flags[i] >= '0' && flags[i] <= '9') && flags[i] != '\0')
 	{
 		while (flags[i] == '.' || flags[i] == '*')
 			i++;
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
-			return (-1);
 		while (flags[i] >= '0' && flags[i] <= '9')
 			conv[j++] = flags[i++];
 	}
-	conv[j] = '\0';
-	i = ft_atoi(conv);
+	if (conv[0] == '\0')
+		i = 0;
+	else
+		i = ft_atoi(conv);
 	free(conv);
 	return (i);
 }
