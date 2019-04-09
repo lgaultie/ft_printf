@@ -6,18 +6,33 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 13:31:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 18:03:35 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_string_1(t_data *data)
+static void ft_string_1_if(char *ap, t_data *d)
+{
+	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
+	{
+		if (!(d->tmp_s = ft_strdup(ap)))
+			return ;
+		// free (d->tmp_s);
+	}
+	if (d->f & F_MINUS)
+	{
+		d->tmp_s = ft_strdup(ap);
+		// free (d->tmp_s);
+	}
+}
+
+static char		*ft_string_1(t_data *d)
 {
 	char	*ap;
 	char	*tmp;
 
-	tmp = (va_arg(data->ap, char*));
+	tmp = (va_arg(d->ap, char*));
 	if (tmp != NULL)
 	{
 		if (!(ap = ft_strdup(tmp)))
@@ -26,20 +41,52 @@ static char		*ft_string_1(t_data *data)
 	else
 		return (ft_strdup("(null)"));
 	if (tmp[0] == '\0')
-		data->f |= F_S_0;
-	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
-		if (!(data->tmp_s = ft_strdup(ap)))
-			return (NULL);
-	data->conv_sz = ft_strlen(ap);
-	data->ap_sz = ft_strlen(ap);
-	data->tmp_s = (data->f & F_MINUS) ? ft_strdup(ap) : data->tmp_s;
-	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
+		d->f |= F_S_0;
+	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
+		ft_string_1_if(ap, d);
+	d->conv_sz = ft_strlen(ap);
+	d->ap_sz = ft_strlen(ap);
+	if (d->f & F_MINUS)
+		ft_string_1_if(ap, d);
+	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
 		free(ap);
-	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
+	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
 		if (!(ap = ft_strdup("")))
 			return (NULL);
 	return (ap);
 }
+// static char		*ft_string_1(t_data *data)
+// {
+// 	char	*ap;
+// 	char	*tmp;
+//
+// 	tmp = (va_arg(data->ap, char*));
+// 	if (tmp != NULL)
+// 	{
+// 		if (!(ap = ft_strdup(tmp)))
+// 			return (NULL);
+// 	}
+// 	else
+// 		return (ft_strdup("(null)"));
+// 	if (tmp[0] == '\0')
+// 		data->f |= F_S_0;
+// 	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
+// 	{
+// 		if (!(data->tmp_s = ft_strdup(ap)))
+// 			return (NULL);
+// 	}
+// 	data->conv_sz = ft_strlen(ap);
+// 	data->ap_sz = ft_strlen(ap);
+// 	data->tmp_s = (data->f & F_MINUS) ? ft_strdup(ap) : data->tmp_s;
+// 	if (data->f & F_MINUS)
+// 		free (data->tmp_s);
+// 	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
+// 		free(ap);
+// 	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
+// 		if (!(ap = ft_strdup("")))
+// 			return (NULL);
+// 	return (ap);
+// }
 
 char			*ft_s_width(char *flag, char *ap, t_data *data)
 {
