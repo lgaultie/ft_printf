@@ -6,102 +6,47 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 13:50:02 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 15:14:15 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
+static char		*ft_accuracy_sup(int accuracy, char *ret, t_data *data)
 {
-	int		i;
 	int		surplus;
+	int		i;
 
 	i = 0;
-	surplus = 0;
+	if (data->f & F_ZERO)
+	{
+		surplus = (data->f & AP_NEG && !(data->f & F_UNSIGNED)) ? 1 : 0;
+		if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
+			ret[i++] = '-';
+		while (i < accuracy - data->conv_sz - surplus)
+			ret[i++] = '0';
+	}
+	if (!(data->f & F_ZERO))
+	{
+		if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
+			ret[i++] = '-';
+		else if (data->f & F_PLUS)
+			ret[i++] = '+';
+		surplus = (data->f & F_PLUS) ? 1 : 0;
+		surplus = (data->f & AP_NEG && !(data->f & F_UNSIGNED)) ? 1 : 0;
+		while (i < accuracy - data->conv_sz + surplus)
+			ret[i++] = '0';
+	}
+	return (ret);
+}
+
+static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
+{
 	if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 		return (NULL);
 	if (accuracy > data->conv_sz)
-	{
-		if (data->f & F_ZERO)
-		{
-			if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
-			{
-				ret[i++] = '-';
-				while (i < accuracy - data->conv_sz - 1)
-				{
-					ret[i] = '0';
-					i++;
-				}
-			}
-			else
-			{
-				while (i < accuracy - data->conv_sz)
-				{
-					ret[i] = '0';
-					i++;
-				}
-			}
-		}
-		if (!(data->f & F_ZERO))
-		{
-			if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
-			{
-				ret[i++] = '-';
-				while (i < accuracy - data->conv_sz + 1)
-				{
-					ret[i] = '0';		//remplacer par des . pour les tests
-					i++;
-				}
-				ret[i] = '\0';
-			}
-			else
-			{
-				// if (data->f & F_SHARP)
-				// 	surplus = 2;
-				if (data->f & F_PLUS)
-				{
-					surplus--;
-					ret[i++] = '+';
-				}
-				while (i < accuracy - data->conv_sz - surplus)
-				{
-					ret[i] = '0';		//remplacer par des . pour les tests
-					i++;
-				}
-				ret[i] = '\0';
-			}
-		}
-	}
-	// if (accuracy <= data->conv_sz)
-	// {
-	//
-	// }
-	// if (data->f & AP_NEG)
-	// {
-	// 	if (!(data->f & F_UNSIGNED))
-	// 	{
-	// 		ret[i] = '-';
-	// 		i++;
-	// 	}
-	// 	while (i < accuracy - data->ap_sz + 1)
-	// 		ret[i++] = '0';
-	// }
-	// else if (data->f & F_PLUS)
-	// {
-	// 	ret[i] = '+';
-	// 	i++;
-	// 	while (i < accuracy - data->ap_sz + 1)
-	// 		ret[i++] = '0';
-	// }
-	// else
-	// {
-	// 	if (data->f & F_MINUS && !(data->f & F_UNSIGNED))
-	// 		while (i < accuracy - data->ap_sz + 1)
-	// 			ret[i++] = '0';
-	// 	else
-	// 		while (i < accuracy - data->ap_sz)
-	// 			ret[i++] = '0';
+		if (!(ret = ft_accuracy_sup(accuracy, ret, data)))
+			return (NULL);
 	if (accuracy <= data->conv_sz)
 	{
 		if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
@@ -110,7 +55,7 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 			return (ft_strdup("-"));
 		else if (data->f & F_PLUS && !(data->f & AP_NEG))
 			return (ft_strdup("+"));
-		ret = ft_strdup("");
+		return (ft_strdup(""));
 	}
 	return (ret);
 }
@@ -156,9 +101,6 @@ char			*ft_precision_d(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	// if (flags[1] == '*' && (i = data->tmp)) a virer
-	// 	data->f &= ~F_PRECIS & ~F_STAR;
-	// else
 	i = ft_precision_d_else(flags, data);
 	conv = NULL;
 	if (i <= data->ap_sz)

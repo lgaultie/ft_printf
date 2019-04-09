@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 13:34:55 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 15:19:21 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ char			*ft_got_flag(char *str, t_data *data)
 		return (NULL);
 	if ((final = ft_analyse_flags(flags, data)) == NULL)
 		return (NULL);
-	// printf("\ndata->buffffffffff 3 : |%s|\n\n", data->buf);
 	free(flags);
 	return (final);
 }
@@ -89,9 +88,8 @@ static int		ft_print_format(char *format, t_data *data)
 	}
 	else
 		ft_putstr(data->buf);
-	free(data->buf); //to uncom when not in tests
+	free(data->buf);
 	return (len);
-
 }
 
 /*
@@ -99,18 +97,15 @@ static int		ft_print_format(char *format, t_data *data)
 */
 
 int				ft_printf(const char *format, ...)
-// char		*ft_printf(const char *format, ...) // for tests
 {
 	int			len;
 	t_data		*data;
 
 	if (!(data = ft_memalloc(sizeof(t_data))))
-		// return (NULL);
 		return (-1);
 	va_start(data->ap, format);
 	len = ft_print_format((char*)format, data);
 	va_end(data->ap);
-	free(data); //to uncom when not in tests
-	// return (data->buf);
- 	return (len);
+	free(data);
+	return (len);
 }
