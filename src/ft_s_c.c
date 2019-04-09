@@ -6,53 +6,82 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 22:57:00 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/09 12:22:42 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_string_1(t_data *data)
+static char		*ft_string_1(t_data *data)
 {
 	char	*ap;
 	char	*tmp;
 
 	tmp = (va_arg(data->ap, char*));
 	if (tmp != NULL)
-		ap = ft_strdup(tmp);
+	{
+		if (!(ap = ft_strdup(tmp)))
+			return (NULL);
+	}
 	else
 		return (ft_strdup("(null)"));
 	if (tmp[0] == '\0')
 		data->f |= F_S_0;
-	if ((data->f & F_PRECIS || data->f & F_WIDTH) \
-	&& (!(data->f & F_MINUS)))
-		data->tmp_s = ft_strdup(ap);
+	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
+		if (!(data->tmp_s = ft_strdup(ap)))
+			return (NULL);
 	data->conv_sz = ft_strlen(ap);
 	data->ap_sz = ft_strlen(ap);
-	if (data->f & F_MINUS)
-		data->tmp_s = ap;
-	if ((data->f & F_PRECIS || data->f & F_WIDTH) \
-	&& (!(data->f & F_MINUS)))
-	{
+	data->tmp_s = (data->f & F_MINUS) ? ap : data->tmp_s;
+	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
 		free(ap);
+	if ((data->f & F_PRECIS || data->f & F_WIDTH) && (!(data->f & F_MINUS)))
 		if (!(ap = ft_strdup("")))
 			return (NULL);
-	}
 	return (ap);
 }
 
-char		*ft_string(char *flag, t_data *data, int mode)
+char			*ft_s_width(char *flag, char *ap, t_data *data)
+{
+	char	*final;
+	char	*ret_width;
+
+	data->ap_sz = ft_strlen(ap);
+	if (!(ret_width = ft_width_s(flag, data)))
+		return (NULL);
+	if (!(final = ft_strjoin(ret_width, ap)))
+		return (NULL);
+	free(ret_width);
+	return (final);
+}
+
+char			*ft_s_fwp(char *flag, char *ap, t_data *data)
+{
+	char	*final;
+	char	*tmp;
+	char	*ret_width;
+
+	data->ap_sz = ft_precision_s(flag, data);
+	if (!(final = ft_strsub(ap, 0, data->ap_sz)))
+		return (NULL);
+	if (!(ret_width = ft_width_s(flag, data)))
+		return (NULL);
+	tmp = final;
+	if (!(final = ft_strjoin(ret_width, tmp)))
+		return (NULL);
+	free(tmp);
+	free(ret_width);
+	return (final);
+}
+
+char			*ft_string(char *flag, t_data *data, int mode)
 {
 	char	*ap;
 	char	*final;
-	char	*ret_width;
-	char	*tmp;
 
 	if (mode == 0)
-	{
 		if (!(final = ft_string_1(data)))
 			return (NULL);
-	}
 	if (mode == 1)
 	{
 		ap = data->tmp_s;
@@ -63,30 +92,16 @@ char		*ft_string(char *flag, t_data *data, int mode)
 				return (NULL);
 		}
 		if (data->f & F_WIDTH && !(data->f & F_W_P))
-		{
-			data->ap_sz = ft_strlen(ap);
-			ret_width = ft_width_s(flag, data);
-			if (!(final = ft_strjoin(ret_width, ap)))
+			if (!(final = ft_s_width(flag, ap, data)))
 				return (NULL);
-			free(ret_width);
-		}
 		if (data->f & F_W_P)
-		{
-			data->ap_sz = ft_precision_s(flag, data);
-			if (!(final = ft_strsub(ap, 0, data->ap_sz)))
+			if (!(final = ft_s_fwp(flag, ap, data)))
 				return (NULL);
-			ret_width = ft_width_s(flag, data);
-			tmp = final;
-			if (!(final = ft_strjoin(ret_width, tmp)))
-				return (NULL);
-			free(tmp);
-			free(ret_width);
-		}
 	}
 	return (final);
 }
 
-char		*ft_char(t_data *data)
+char			*ft_char(t_data *data)
 {
 	char	ap;
 	char	*final;
