@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/06 18:09:15 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/09 14:10:18 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 // i2 = ft_printf("mine : |@moulitest: %c|\n", 0);
 // printf("Vrai : %d\nMine : %d\n",i, i2 );
 
-
+		//invalid read size sur CMP
 
 
 	// str = ft_strdup("oui");
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("|%-7.7s| is a string\n", "this");
 	ft_printf("|%-7.7s| is a string\n", "this");
-	printf("--------------\n");
+	printf("--------10------\n");
 	printf("|%-5.2s| is a string\n", "");
 	ft_printf("|%-5.2s| is a string\n", "");
 	printf("--------------\n");
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("|%+5d|\n", 42);
 	ft_printf("|%+5d|\n", 42);
-	printf("--------------\n");
+	printf("-------20-------\n");
 	printf("|%+4.5d|\n", 42);
 	ft_printf("|%+4.5d|\n", 42);						//Invalid read of size 1
 	printf("--------------\n");
@@ -134,7 +134,7 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("|%+05d|\n", 42);
 	ft_printf("|%+05d|\n", 42);
-	printf("--------------\n");
+	printf("-------30-------\n");
 	printf("|%0+5d|\n", -42);
 	ft_printf("|%0+5d|\n", -42);				//invlaid read size sur strjoing ret_flag
 	printf("--------------\n");
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("|%07.5d|,|%d|\n",150789, 17);
 	ft_printf("|%07.5d|,|%d|\n",150789, 17);
-	printf("--------------\n");
+	printf("--------40------\n");
 	printf("|%00.05d| \n", 7);
 	ft_printf("|%00.05d| \n", 7);
 	printf("--------------\n");
@@ -192,12 +192,9 @@ int main(int argc, char **argv)
 	printf("|%-8.5%|\n");
 	ft_printf("|%-8.5%|\n");
 	printf("--------------\n");
-	printf("|%+-8.5%|\n");
-	ft_printf("|%+-8.5%|\n");
-	printf("--------------\n");
 	printf("|%-8.5%|\n");
 	ft_printf("|%-8.5%|\n");
-	printf("--------------\n");
+	printf("--------50------\n");
 	printf("|%5.2s| is a string\n", "this");
 	ft_printf("|%5.2s| is a string\n", "this");			//Conditional jump or move depends on uninitialised value(s)
 	printf("--------------\n");
@@ -227,12 +224,9 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("|%5.d| |%5.0d|\n", 0, 0);
 	ft_printf("|%5.d| |%5.0d|\n", 0, 0);			//invlaid read size sur strjoing ret_flag
-	printf("--------------\n");
-	printf("%03.2d\n", 0);
-	ft_printf("%03.2d\n", 0);
-	printf("--------------\n");
-	printf("--------------\n");
-	printf("--------------\n");
+	printf("--------60------\n");
+	printf("|%03.2d|\n", 0);
+	ft_printf("|%03.2d|\n", 0);
 	printf("--------------\n");
 	printf("|%5.2s| is a string\n", "");
 	ft_printf("|%5.2s| is a string\n", "");				//LEAAAAAAAAAKs
@@ -240,8 +234,18 @@ int main(int argc, char **argv)
 	printf("|%12s| is a string\n", "this");
 	ft_printf("|%12s| is a string\n", "this");		//LEEEEEAAAAAAAKKKKKKKK
 	printf("--------------\n");
-	printf("|%#10o|\n", 0);
-	ft_printf("|%#10o|\n", 0);			//BUUUUUUUUUUUUUUUUUUUUUUUUUUUUUG
+	printf("vrai: |%#10o|\n", 0);
+	ft_printf("faux: |%#10o|\n", 0);
+	printf("--------------\n");
+	printf("vrai: |%#.10o|\n", 0);
+	ft_printf("faux: |%#.10o|\n", 0);
+	printf("--------------\n");
+	printf("vrai |%+-8.5%|\n");
+	ft_printf("mine |%+-8.5%|\n");
+	printf("--------------\n");
+	printf("--------------\n");
+	printf("--------------\n");
+
 	//si on fait valgrind sur tous les tests en meme temps ya un leak supplementaire avec le data->tmp_s
 	// 9 bytes in 1 blocks are definitely lost in loss record 1 of 44
 	// ==27174==    at 0x1000A4616: malloc (in /Users/lgaultie/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)

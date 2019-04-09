@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:13:41 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/04 14:49:06 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:38:35 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ char	*ft_plus(char *flag, t_data *data)
 
 	(void)flag;
 	(void)data;
-	if (data->flag & F_PLUS_MINUS)
+	if (data->f & F_PLUS_MINUS)
 	{
 		if (!(final = ft_strdup("-")))
 			return (NULL);
 	}
-	else if (!(data->flag & AP_NEG))
+	else if (!(data->f & AP_NEG))
 	{
 		if (!(final = ft_strdup("+")))
 			return (NULL);

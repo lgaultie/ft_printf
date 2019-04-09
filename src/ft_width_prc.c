@@ -6,13 +6,17 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 17:28:47 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:39:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_calculate_size(int before, int after, t_data *data)
+/*
+** ft_calculate_size: calculates the needed size for final's malloc.
+*/
+
+static int		ft_calculate_size(int before, int after, t_data *data)
 {
 	int		size;
 
@@ -24,195 +28,57 @@ int		ft_calculate_size(int before, int after, t_data *data)
 		size = size - data->ap_sz;
 	if (size < data->ap_sz)
 		size = data->ap_sz;
-	if (data->flag & AP_NEG)
+	if (data->f & AP_NEG)
 		size++;
 	return (size);
 }
 
-char	*ft_preci_width3(int before, int after, t_data *data)
+static char		*ft_case1(char *final, int i, int after, t_data *data)
+{
+	if (data->f & AP_NEG)
+	{
+		final[i++] = '-';
+		while (i < after - data->conv_sz + 1)
+			final[i++] = '0';
+	}
+	else if (data->f & F_PLUS)
+	{
+		final[i++] = '+';
+		while (i < after - data->conv_sz + 1)
+			final[i++] = '0';
+	}
+	else
+	{
+		while (i < after - data->conv_sz)
+			final[i++] = '0';
+	}
+	return (final);
+}
+
+/*
+** ft_preci_width3: calls the appropriate function depending on which
+** cases we are: when the flag minus is on, when width > accuracy, etc...
+*/
+
+static char		*ft_preci_width3(int before, int after, t_data *data)
 {
 	int		i;
 	char	*final;
 	int		size;
-	char	*ap;
-	int		surplus;
-	char	*for_s;
-	char	*tmp;
 
 	i = 0;
-	surplus = 0;
 	size = ft_calculate_size(before, after, data);
 	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	if (data->flag & F_MINUS)
-	{
-		if (data->flag & F_S)
-		{
-			ap = ft_strdup(data->tmp_s);
-			free(final);
-			if (!(final = ft_strsub(ap, 0, after)))
-				return (NULL);
-			if (before > after)
-				data->width_precis_minus = before - after;
-			if (after >= before)
-				data->width_precis_minus = before - data->conv_sz;
-			if (ap[0] == '\0' && before > after)
-				data->width_precis_minus = before;
-			if (ap[0] == '\0' && before <= after)
-				data->width_precis_minus = after;
-			free(ap);
-		}
-		else
-		{
-			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
-			{
-				final[i++] = '-';
-				while (i < after - data->conv_sz + 1)
-					final[i++] = '0';
-				final[i] = '\0';
-				if (after == 0)
-					data->width_precis_minus = 0;
-			}
-			else
-			{
-				if (data->flag & F_PLUS)
-				{
-					surplus = 1;
-					final[i++] = '+';
-				}
-				while (i < after - data->conv_sz + surplus)
-					final[i++] = '0';
-				final[i] = '\0';
-			if (before > after)
-				data->width_precis_minus = before - i - data->conv_sz;
-			}
-		}
-		return (final);
-	}
+	if (data->f & F_MINUS)
+		final = ft_flag_minus(before, after, final, data);
 	else if (before == after || before < after)
-	{
-		if (data->flag & AP_NEG)
-		{
-			final[i++] = '-';
-			while (i < after - data->conv_sz + 1)
-				final[i++] = '0';
-		}
-		else if (data->flag & F_PLUS)
-		{
-			final[i++] = '+';
-			while (i < after - data->conv_sz + 1)
-				final[i++] = '0';
-		}
-		else
-		{
-			while (i < after - data->conv_sz)
-				final[i++] = '0';
-		}
-		return (final);
-	}
+		final = ft_case1(final, i, after, data);
 	else if (after < data->conv_sz && before > after)
-	{
-		if (data->flag & F_S)
-		{
-			ap = ft_strdup(data->tmp_s);
-			free(data->tmp_s);
-			free(final);
-			if (!(final = ft_strsub(ap, 0, after)))
-				return (NULL);
-			if (before > after)
-				data->width_precis_minus = before - after;
-			if (after >= before)
-				data->width_precis_minus = before - data->conv_sz;
-			if (ap[0] == '\0' && before > after)
-				data->width_precis_minus = before;
-			if (ap[0] == '\0' && before <= after)
-				data->width_precis_minus = after;
-			if (!(for_s = malloc(sizeof(char) * before - after + 1)))
-				return (NULL);
-			while (i < before - after)
-				for_s[i++] = ' ';
-			tmp = final;
-			if (!(final = ft_strjoin(for_s, tmp)))
-				return (NULL);
-			free(tmp);
-			free(for_s);
-			free(ap);
-			return (final);
-		}
-		if (data->flag & AP_NEG)
-		{
-			while (i < before - data->conv_sz - 1)
-			final[i++] = ' ';
-			final[i++] = '-';
-		}
-		if (!(data->flag & AP_NEG))
-		{
-			if (data->flag & F_PLUS)
-				final[i++] = '+';
-			while (i < before - data->conv_sz)
-				final[i++] = ' ';
-			if (after == 0)
-			{
-				data->flag |= F_AFTER_IS_0;
-				final[i++] = ' ';
-			}
-		}
-	}
-	else if ((after >= data->ap_sz && before > after) || (after == data->conv_sz))
-	{
-		// iciiiiiiiiii
-		if (!(data->flag & AP_NEG))
-		{
-			//printf("before = %d, after = %d, data->ap_sz = %d, data->conv_sz = %d\n", before, after, data->ap_sz, data->conv_sz);
-			if (data->flag & F_SHARP)
-				surplus = 2;
-			else
-				surplus = 0;
-			while (before > after + surplus)
-			{
-				final[i++] = ' ';
-				before--;
-			}
-			if (data->flag & F_PLUS)
-				final[i - 1] = '+';
-			if (data->flag & F_SHARP)
-			{
-				final[i++] = '0';
-				final[i++] = 'x';
-			}
-			if (data->flag & F_S_0)
-			{
-				while (after > data->conv_sz)
-				{
-					final[i++] = ' ';
-					after--;
-				}
-			}
-			else
-			{
-				while (after > data->conv_sz)
-				{
-					final[i++] = '0';
-					after--;
-				}
-			}
-		}
-		else if (data->flag & AP_NEG)
-		{
-			while (before > after + 1)
-			{
-				final[i++] = ' ';
-				before--;
-			}
-			final[i++] = '-';
-			while (after > data->conv_sz)
-			{
-				final[i++] = '0';
-				after--;
-			}
-		}
-	}
-	//printf("final = |%s|\n", final);
+		final = ft_case2(final, before, after, data);
+	else if ((after >= data->ap_sz && before > after) \
+	|| (after == data->conv_sz))
+		final = ft_case3(final, before, after, data);
 	return (final);
 }
 
@@ -221,7 +87,7 @@ char	*ft_preci_width3(int before, int after, t_data *data)
 ** them in 2 int to send to preci_width3 which will apply the flag effect.
 */
 
-char	*ft_preci_width2(char *flag, t_data *data, int i, int j)
+static char		*ft_preci_width2(char *flag, t_data *data, int i, int j)
 {
 	char	*final;
 	char	*before;
@@ -254,7 +120,7 @@ char	*ft_preci_width2(char *flag, t_data *data, int i, int j)
 ** ft_preci_width: will return the converted flag.
 */
 
-char	*ft_preci_width(char *flag, t_data *data)
+char			*ft_preci_width(char *flag, t_data *data)
 {
 	int		i;
 	int		j;

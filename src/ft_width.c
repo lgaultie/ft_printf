@@ -6,172 +6,78 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/06 18:00:28 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:40:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_width2(int width, t_data *data)
+/*
+** ft_width: analyse the flag to convert it into a int which will be width.
+** Sends this int to ft_width2 which will apply the conversion.
+*/
+
+char			*ft_width(char *flags, t_data *data)
+{
+	int		i;
+	int		j;
+	char	*conv;
+
+	i = 0;
+	j = 0;
+	if (data->f & F_WIDTH && (i = data->tmp))
+		data->f &= ~F_WIDTH;
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
+		return (NULL);
+	while (flags[i] != '\0')
+	{
+		if (flags[i] == '#' || flags[i] == '+')
+			i++;
+		if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '-')
+			conv[j] = flags[i];
+		i++;
+		j++;
+	}
+	i = ft_atoi(conv);
+	free(conv);
+	data->f &= ~F_WIDTH;
+	data->index_0 = (data->f & F_C_0) ? data->index_0 += i - 1 : 0;
+	i = (i < 0) ? -i : i;
+	return (ft_width2(i, data));
+}
+
+static char		*ft_width_minus2(int width, t_data *data)
 {
 	int		i;
 	char	*ret;
 	int		surplus;
 
 	i = 0;
-	surplus = 0;
-	//printf("width = %d, data->conv_sz = %d\n", width, data->conv_sz);
+	surplus = (data->f & AP_NEG) ? 1 : 0;
 	if (width > data->conv_sz)
 	{
 		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
 			return (NULL);
-		if (data->flag & F_ZERO)
-		{
-			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
-			{
-				// ft_putstr("ici dans ft_width.c\n");
-				ret[i++] = '-';
-				while (i < width - data->conv_sz)
-				{
-					ret[i] = '0';
-					i++;
-				}
-			}
-			else
-			{
-				if (data->flag & F_PLUS)
-					ret[i++] = '+';
-				while (i < width - data->conv_sz - surplus)
-				{
-					ret[i] = '0';
-					i++;
-				}
-			}
-		}
-		if (!(data->flag & F_ZERO))
-		{
-			if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
-			{
-				while (i < width - data->conv_sz - 1)
-				{
-					ret[i] = ' ';
-					i++;
-				}
-				ret[i++] = '-';
-				ret[i] = '\0';
-			}
-			else
-			{
-				if (data->flag & F_PLUS && !(data->flag & F_PERCENT))
-					surplus = 1;
-				while (i < width - data->conv_sz - surplus)
-				{
-					ret[i] = ' ';
-					i++;
-				}
-				if (data->flag & F_PLUS && !(data->flag & F_PERCENT))
-					ret[i++] = '+';
-				ret[i] = '\0';
-			}
-		}
-	}
-	if (width <= data->conv_sz)
-	{
-		if (data->flag & AP_NEG && !(data->flag & F_UNSIGNED))
-			return (ft_strdup("-"));
-		else if (data->flag & F_PLUS)
-			return (ft_strdup("+"));
-		ret = ft_strdup("");
-	}
-	return (ret);
-}
-
-char	*ft_width(char *flags, t_data *data)
-{
-	int		i;
-	int		j;
-	char	*conv;
-
-	i = 0;
-	j = 0;
-	if (flags[0] == '0')
-		data->flag |= F_ZERO;
-	if (data->flag & F_WIDTH && (i = data->tmp))
-		data->flag &= ~F_WIDTH;
-	else
-	{
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
-			return (0);
-		while (flags[i] != '\0')
-		{
-			if (flags[i] == '#' || flags[i] == '+')
-				i++;
-			if ((flags[i] >= '0' && flags[i] <= '9') \
-			|| flags[i] == '-')
-				conv[j] = flags[i];
-			i++;
-			j++;
-		}
-		conv[j - 1] = '\0';		//fais des invalid read size meme si
-		//on remplace par conv[j] = '\0';
-		i = ft_atoi(conv);
-		free(conv);
-		data->flag &= ~F_WIDTH;
-		if (data->flag & F_C_0)
-			data->index_0 += i - 1;
-	}
-	if (i < 0)
-		i = -i;
-	if (!(conv = ft_width2(i, data)))
-		return (NULL);
-	return (conv);
-}
-
-char	*ft_width_minus2(int width, t_data *data)
-{
-	int		i;
-	char	*ret;
-
-	i = 0;
-	if (width > data->conv_sz)
-	{
-		if (!(ret = malloc(sizeof(char) * (width - data->ap_sz + 1))))
-			return (NULL);
-		if (data->flag & F_ZERO)
+		if (data->f & F_ZERO)
 			while (i < width - data->conv_sz)
-			{
-				ret[i] = '0';
-				i++;
-			}
-		if (!(data->flag & F_ZERO))
-		{
-			if (data->flag & AP_NEG)
-			{
-				while (i < width - data->conv_sz - 1)
-				{
-					ret[i] = ' ';
-					i++;
-				}
-			}
-			else
-			{
-				while (i < width - data->conv_sz)
-				{
-					ret[i] = ' ';
-					i++;
-				}
-			}
-		}
+				ret[i++] = '0';
+		if (!(data->f & F_ZERO))
+			while (i < width - data->conv_sz - surplus)
+				ret[i++] = ' ';
 	}
 	else
 		return (ft_strdup(""));
-	if (data->flag & F_PLUS)
+	if (data->f & F_PLUS)
 		ret[i++] = '+';
-	ret[i] = '\0';
 	return (ret);
 }
 
-char	*ft_width_minus(char *flags, t_data *data)
+/*
+** ft_width_minus : Case of width + flag minus. Analyse the flag to convert it
+** into a int which will be width. Sends it to ft_width_minus2.
+*/
+
+char			*ft_width_minus(char *flags, t_data *data)
 {
 	int		i;
 	int		j;
@@ -179,31 +85,19 @@ char	*ft_width_minus(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (flags[0] == '0')
-		data->flag |= F_ZERO;
-	if (flags[0] == '*')
-	{
-		i = data->tmp;
-		data->flag &= ~F_WIDTH & ~F_STAR;
-	}
-	else
-	{
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
-			return (0);
-		while (flags[i] == '+' || flags[i] < '0' || flags[i] > '9' \
-		|| flags[i] == '-')
-			i++;
-		while (flags[i] >= '0' && flags[i] <= '9')
-			conv[j++] = flags[i++];
-		i = ft_atoi(conv);
-		free(conv);
-	}
-	if (!(conv = ft_width_minus2(i, data)))
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 		return (NULL);
-	return (conv);
+	while (flags[i] == '+' || flags[i] < '0' || flags[i] > '9' \
+	|| flags[i] == '-')
+		i++;
+	while (flags[i] >= '0' && flags[i] <= '9')
+		conv[j++] = flags[i++];
+	i = ft_atoi(conv);
+	free(conv);
+	return (ft_width_minus2(i, data));
 }
 
-char	*ft_width_s2(int width, t_data *data)
+static char		*ft_width_s2(int width, t_data *data)
 {
 	char	*ret;
 	int		i;
@@ -221,11 +115,15 @@ char	*ft_width_s2(int width, t_data *data)
 			i++;
 		}
 	}
-	ret[i++] = '\0';
 	return (ret);
 }
 
-char	*ft_width_s(char *flags, t_data *data)
+/*
+** ft_width_s : Deals with width in a %s case. Analyse the flag to convert it
+** into a int which will be width. Sends it to ft_width_s2.
+*/
+
+char			*ft_width_s(char *f, t_data *data)
 {
 	int		i;
 	int		j;
@@ -233,29 +131,19 @@ char	*ft_width_s(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (flags[0] == '0')
-		data->flag |= F_ZERO;
-	if (flags[0] == '*' && (i = data->tmp))
-		data->flag &= ~F_WIDTH & ~F_STAR;
-	else
-	{
-		if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
-			return (0);
-		while (flags[i] != '\0')
-		{
-			if (flags[i] == '#')
-				i++;
-			if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '+' \
-			|| flags[i] == '-')
-				conv[j] = flags[i];
-			i++;
-			j++;
-		}
-		i = ft_atoi(conv);
-		free(conv);
-		data->flag &= ~F_WIDTH;
-	}
-	if (!(conv = ft_width_s2(i, data)))
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
-	return (conv);
+	while (f[i] != '\0')
+	{
+		if (f[i] == '#')
+			i++;
+		if ((f[i] >= '0' && f[i] <= '9') || f[i] == '+' || f[i] == '-')
+			conv[j] = f[i];
+		i++;
+		j++;
+	}
+	i = ft_atoi(conv);
+	free(conv);
+	data->f &= ~F_WIDTH;
+	return (ft_width_s2(i, data));
 }

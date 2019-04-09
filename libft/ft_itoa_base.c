@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/08 21:31:45 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 13:57:15 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m, t_data *data)
 		v /= b;
 	}
 	if (m == 1 && str[0] == '0')
-		data->flag |= F_C_0;
+		data->f |= F_C_0;
 	return (str);
 }
 
@@ -157,7 +157,7 @@ char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m, t_data *data)
 		v /= b;
 	}
 	if (m == 1 && str[0] == '0')
-		data->flag |= F_C_0;
+		data->f |= F_C_0;
 	return (str);
 }
 
@@ -186,6 +186,6 @@ char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *data)
 		v /= b;
 	}
 	if (m == 1 && str[0] == '0')
-		data->flag |= F_C_0;
+		data->f |= F_C_0;
 	return (str);
 }

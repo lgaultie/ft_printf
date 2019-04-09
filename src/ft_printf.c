@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 19:32:06 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 13:34:55 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,22 @@ static char		*ft_analyse_flags(char *flags, t_data *data)
 {
 	int		len;
 	char	*final;
+	char	*ret_conv;
 
+	ret_conv = NULL;
 	len = data->flag_sz;
 	if (len == 1)
 	{
-		data->flag |= ONLY_CONV; 
-		final = ft_only_conv(flags, data);
+		data->f |= ONLY_CONV;
+		if (!(final = ft_only_conv(flags, data)))
+			return (NULL);
 	}
 	else
-		final = ft_flag_conv(flags, data);
+	{
+		len = ft_active_flag(flags, data);
+		if (!(final = ft_flag_conv(flags, ret_conv, len, data)))
+			return (NULL);
+	}
 	return (final);
 }
 
@@ -73,7 +80,7 @@ static int		ft_print_format(char *format, t_data *data)
 		return (-1);
 	data->buf = ft_analyse(format, data);
 	len = ft_strlen(data->buf);
-	if (data->flag & F_C_0)
+	if (data->f & F_C_0)
 	{
 		len++;
 		ft_putstrn(data->buf, (data->index_0 + data->tmp));

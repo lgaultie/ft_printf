@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/08 20:48:29 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 13:46:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char	*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 	unsigned long long	ap;
 	char	*final;
 
-	if (data->flag & F_H)
+	if (data->f & F_H)
 		ap = (unsigned short)(va_arg(data->ap, int));
-	else if (data->flag & F_HH)
+	else if (data->f & F_HH)
 		ap = (unsigned char)(va_arg(data->ap, int));
-	else if (data->flag & F_L)
+	else if (data->f & F_L)
 		ap = (unsigned long)(va_arg(data->ap, long));
-	else if (data->flag & F_LL)
+	else if (data->f & F_LL)
 		ap = (unsigned long long)(va_arg(data->ap, long long));
 	else
 	{
@@ -43,24 +43,24 @@ char	*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 {
 	long long			ap;
 
-	if (data->flag & F_H)
+	if (data->f & F_H)
 		ap = (short)(va_arg(data->ap, int));
-	else if (data->flag & F_HH)
+	else if (data->f & F_HH)
 		ap = (char)(va_arg(data->ap, int));
-	else if (data->flag & F_L)
+	else if (data->f & F_L)
 		ap = (long)(va_arg(data->ap, long));
-	else if (data->flag & F_LL)
+	else if (data->f & F_LL)
 		ap = (long long)(va_arg(data->ap, long long));
 	else
 		ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	if (ap < 0 && !(data->flag & ONLY_CONV) && (data->flag & F_PRECIS
-		|| data->flag & F_WIDTH))
+	if (ap < 0 && !(data->f & ONLY_CONV) && (data->f & F_PRECIS
+		|| data->f & F_WIDTH))
 	{
-		data->flag |= AP_NEG;
+		data->f |= AP_NEG;
 		ap = -ap;
 	}
 	if (ap < 0)
-		data->flag |= AP_NEG;
+		data->f |= AP_NEG;
 	return (ft_itoa(ap));
 }

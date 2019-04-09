@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/08 21:31:28 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/09 13:34:10 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 /* les defines pour agir sur les bit du int flag;
 ** bit activé = flag en place
-** if (data->flags & f_ZERO)
+** if (data->fs & f_ZERO)
 */
 
 # define F_ZERO 1
@@ -48,7 +48,7 @@
 # define F_S 524288
 # define F_C_0 1048576
 # define F_S_0 2097152
-# define F_AFTER_IS_0 4194304
+# define F0 4194304
 
 
 
@@ -61,7 +61,7 @@ typedef	struct	s_data
 	char 		*buf;
 	int			conv_sz;
 	int			conv_t_sz;
-	int			flag;
+	int			f;
 	int			tmp;
 	int			index_0;
 	int			width_precis_minus;
@@ -82,12 +82,13 @@ char	*ft_conv_p(t_data *data);
 char	*ft_precision_d(char *flags, t_data *data);
 int		ft_precision_s(char *flags, t_data *data);
 char	*ft_width(char *flags, t_data *data);
+char	*ft_width2(int width, t_data *data);
 char	*ft_octal(t_data *data);
 char	*ft_hexa(t_data *data, int mode);
 char	*ft_caps_x(t_data *data);
 char	*ft_conv_u(t_data *data);
 char	*ft_analyse_options(char *flags, t_data *data);
-char 	*ft_flag_conv(char *flags, t_data *data);
+char 	*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d);
 char 	*ft_only_conv(char *flags, t_data *data);
 char	*ft_which_flag(char *flag, char conv, t_data *data);
 char	*ft_zero(char *flag, t_data *data);
@@ -99,8 +100,16 @@ char	*ft_conv_hhhlll_u(t_data *data, int base, int mode);
 char	*ft_conv_hhhlll(t_data *data);
 char	*ft_preci_width_minus(char *flag, t_data *data);
 char	*ft_width_s(char *flags, t_data *data);
-char			*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m, t_data *data);
+char	*ft_itoa_b_m_ul(unsigned long long v, unsigned int b, int m, t_data *d);
 char	*ft_itoa_base_mode(unsigned int v, unsigned int b, int m, t_data *data);
 char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *data);
+char	*ft_flag_minus(int before, int after, char *final, t_data *data);
+char	*ft_case2(char *final, int before, int after, t_data *data);
+char	*ft_case3(char *final, int before, int after, t_data *data);
+char	*ft_percent_percent(char *ret_flag, t_data *data);
+int		ft_active_flag(char *flag, t_data *data);
+char	*ft_special_cases(int i, char *f, t_data *d);
+char	*ft_fwp_minus(char *final, t_data *data);
+char	*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
 
 #endif
