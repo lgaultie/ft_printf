@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:45:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 21:40:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:25:28 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,31 @@ static char		*ft_small_width(t_data *data)
 	return (ft_strdup(""));
 }
 
-char			*ft_width2(int width, t_data *data)
+char			*ft_width2(int width, t_data *d)
 {
 	int		i;
+	int		o;
 	char	*ret;
 
 	i = 0;
-	if (width > data->conv_sz)
+	if (width > d->conv_sz)
 	{
-		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
-			return (NULL);
-		if (data->f & F_ZERO)
+		o = (d->f & AP_NEG || d->f & F_PLUS) ? 1 : 0;
+		if (!(ret = ft_memalloc(sizeof(char) * ((width - d->ap_sz) + 1 + o))))
+				return (NULL);
+		if (d->f & F_ZERO)
 		{
-			if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
+			if (d->f & AP_NEG && !(d->f & F_UNSIGNED))
 				ret[i++] = '-';
-			else if (data->f & F_PLUS)
+			else if (d->f & F_PLUS)
 				ret[i++] = '+';
-			while (i < width - data->conv_sz)
+			while (i < width - d->conv_sz)
 				ret[i++] = '0';
 		}
-		if (!(data->f & F_ZERO))
-			ret = ft_no_flag_zero(ret, width, i, data);
+		if (!(d->f & F_ZERO))
+			ret = ft_no_flag_zero(ret, width, i, d);
 	}
-	if (width <= data->conv_sz)
-		return (ft_small_width(data));
+	if (width <= d->conv_sz)
+		return (ft_small_width(d));
 	return (ret);
 }

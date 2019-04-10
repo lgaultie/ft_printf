@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 15:14:15 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/10 18:10:54 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char		*ft_accuracy_sup(int accuracy, char *ret, t_data *data)
 {
 	int		surplus;
 	int		i;
+	int		overage;
 
 	i = 0;
 	if (data->f & F_ZERO)
@@ -33,8 +34,8 @@ static char		*ft_accuracy_sup(int accuracy, char *ret, t_data *data)
 		else if (data->f & F_PLUS)
 			ret[i++] = '+';
 		surplus = (data->f & F_PLUS) ? 1 : 0;
-		surplus = (data->f & AP_NEG && !(data->f & F_UNSIGNED)) ? 1 : 0;
-		while (i < accuracy - data->conv_sz + surplus)
+		overage = (data->f & AP_NEG && !(data->f & F_UNSIGNED)) ? 1 : 0;
+		while (i < accuracy - data->conv_sz + surplus + overage)
 			ret[i++] = '0';
 	}
 	return (ret);

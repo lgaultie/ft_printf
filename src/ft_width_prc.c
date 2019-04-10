@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width_prc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 16:33:16 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:50:41 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 		size = size - data->ap_sz;
 	if (size < data->ap_sz)
 		size = data->ap_sz;
-	if (data->f & AP_NEG)
+	if (data->f & AP_NEG || data->f & F_PLUS)
+		size++;
+	if (after == 0)
 		size++;
 	return (size);
 }
@@ -93,9 +95,9 @@ static char		*ft_preci_width2(char *flag, t_data *data, int i, int j)
 	char	*before;
 	char	*after;
 
-	if (!(before = malloc(sizeof(char) * data->flag_sz + 1)))
+	if (!(before = ft_memalloc(sizeof(char) * data->flag_sz + 1)))
 		return (NULL);
-	if (!(after = malloc(sizeof(char) * data->flag_sz + 1)))
+	if (!(after = ft_memalloc(sizeof(char) * data->flag_sz + 1)))
 		return (NULL);
 	while (flag[i] < '0' || flag[i] > '9')
 		i++;
