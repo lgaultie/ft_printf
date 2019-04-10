@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 22:49:22 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:44:39 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,15 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 {
 	char	*ret_flag2;
 	char	*final;
+	char	*tmp;
 
 	if (data->f & AP_NEG && !(data->f & F_UNSIGNED) \
 	&& (flag[i] != 's' || flag[i] != 'c'))
 	{
-		if (!(ret_conv = ft_strjoin("-", ret_conv)))
+		tmp = ret_conv;
+		if (!(ret_conv = ft_strjoin("-", tmp)))
 			return (NULL);
+		free(tmp);
 	}
 	if (!(ret_flag2 = ft_width_minus(flag, data)))
 		return (NULL);
