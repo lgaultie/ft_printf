@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 16:48:43 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/10 13:33:33 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static char		*ft_s(char *final, int before, int after, t_data *data)
 
 	i = 0;
 	ap = ft_strdup(data->tmp_s);
-	free(data->tmp_s);
 	free(final);
 	if (!(final = ft_strsub(ap, 0, after)))
 		return (NULL);

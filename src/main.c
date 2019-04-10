@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/09 18:05:17 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/10 14:21:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,79 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	printf("|%-20s| is a string\n", "this");
-	ft_printf("|%-20s| is a string\n", "this");
-	// printf("--------------\n");
-	// printf("|%-2s| is a string\n", "this");
-	// ft_printf("|%-2s| is a string\n", "this");
-	// printf("--------------\n");
-	// printf("|%-.2s| is a string\n", "this");
-	// ft_printf("|%-.2s| is a string\n", "this");		//JUMP untialiazed value
-	// printf("--------------\n");
-	// printf("|%-5.2s| is a string\n", "this");
-	// ft_printf("|%-5.2s| is a string\n", "this");
-	// printf("--------------\n");
-	// printf("|%-7.7s| is a string\n", "this");
-	// ft_printf("|%-7.7s| is a string\n", "this");
-	// printf("--------10------\n");
-	// printf("|%-5.2s| is a string\n", "");
-	// ft_printf("|%-5.2s| is a string\n", "");
-
-
-	//////////////////////// DEBUT DES TESTS
+	// 	printf("--------------\n");
+	// 	printf("\\n\n");
+	// 	ft_printf("\\n\n");
+	// 	printf("--------------\n");
+	// 	printf("%%\\n\n");
+	// 	ft_printf("%%\\n\n");
+	// 	printf("--------------\n");
+	// 	printf("%d\\n\n", 42);
+	// 	ft_printf("%d\\n\n", 42);
+	// 	printf("--------------\n");
+	// 	printf("%d%d\\n\n", 42, 41);
+	// 	ft_printf("%d%d\\n\n", 42, 41);
+	// 	printf("--------------\n");
+	// 	printf("%d%d%d\\n\n", 42, 43, 44);
+	// 	ft_printf("%d%d%d\\n\n", 42, 43, 44);
+	// 	printf("--------------\n");
+	// 	//printf("%ld\\n\n", 2147483647);
+	// 	ft_printf("%ld\\n\n", 2147483647);
+	// 	printf("--------------\n");
+	// 	//printf("%lld\\n\n", 9223372036854775807);
+	// 	ft_printf("%lld\\n\n", 9223372036854775807);
+	// 	printf("--------------\n");
+	// 	printf("%x\\n\n", 505);
+	// 	ft_printf("%x\\n\n", 505);
+	// 	printf("--------------\n");
+	// 	printf("%X\\n\n", 505);
+	// 	ft_printf("%X\\n\n", 505);
+	// 	printf("--------------\n");
+	// 	printf("%20.15d\\n\n", 54321);
+	// 	ft_printf("%20.15d\\n\n", 54321);
+	// 	printf("--------------\n");
+	// 	printf("%-10d\\n\n", 3);
+	// 	ft_printf("%-10d\\n\n", 3);
+	// 	printf("--------------\n");
+	// 	printf("% d\\n\n", 3);
+	// 	ft_printf("% d\\n\n", 3);
+	// 	printf("--------------\n");
+	// 	printf("%+d\\n\n", 3);
+	// 	ft_printf("%+d\\n\n", 3);
+	// 	printf("--------------\n");
+	// 	printf("%010d\\n\n", 1);
+	// 	ft_printf("%010d\\n\n", 1);
+	// 	printf("--------------\n");
+	// 	//printf("%hhd\\n\n", 0);
+	// 	ft_printf("%hhd\\n\n", 0);
+	// 	printf("--------------\n");
+	// 	//printf("%u\\n\n", 4294967295);
+	// 	ft_printf("%u\\n\n", 4294967295);
+	// 	printf("--------------\n");
+	// 	printf("%o\\n\n", 40);
+	// 	ft_printf("%o\\n\n", 40);
+	// 	printf("--------------\n");
+	// 	//printf("%%#08x\\n\n", 42);
+	// 	ft_printf("%%#08x\\n\n", 42);
+	// 	printf("--------------\n");
+	// 	printf("%x\\n\n", 1000);
+	// 	ft_printf("%x\\n\n", 1000);
+	// 	printf("--------------\n");
+	// 	printf("%#X\\n\n", 1000);
+	// 	ft_printf("%#X\\n\n", 1000);
+	// 	printf("--------------\n");
+	// 	printf("%s\\n\n", NULL);
+	// 	ft_printf("%s\\n\n", NULL);
+	// 	printf("--------------\n");
+	// 	printf("%s%s\\n\n", "test", "test");
+	// 	ft_printf("%s%s\\n\n", "test", "test");
+	// 	printf("--------------\n");
+	// 	printf("%s%s%s\\n\n", "test", "test", "test");
+	// 	ft_printf("%s%s%s\\n\n", "test", "test", "test");
+	//
+	//
+	//
+	// ////////////////////// DEBUT DES TESTS
 	// printf("|%s|\n", "this is a string");
 	// ft_printf("|%s|\n", "this is a string");
 	// printf("--------------\n");
@@ -139,7 +192,7 @@ int main(int argc, char **argv)
 	// printf("-------30-------\n");
 	// printf("|%0+5d|\n", -42);
 	// ft_printf("|%0+5d|\n", -42);				//invlaid read size sur strjoing ret_flag
-	// printf("--------------\n");
+	// // printf("--------------\n");
 	// printf("|%0+5d|\n", 42);
 	// ft_printf("|%0+5d|\n", 42);
 	// printf("--------------\n");
@@ -200,8 +253,20 @@ int main(int argc, char **argv)
 	// printf("|%5.2s| is a string\n", "this");
 	// ft_printf("|%5.2s| is a string\n", "this");			//Conditional jump or move depends on uninitialised value(s)
 	// printf("--------------\n");
+	// printf("|%12s| is a string\n", "this");
+	// ft_printf("|%12s| is a string\n", "this");
+	// printf("--------------\n");
+	// printf("vrai: |%#10o|\n", 0);
+	// ft_printf("faux: |%#10o|\n", 0);
+	// printf("--------------\n");
+	// printf("vrai: |%#.10o|\n", 0);
+	// ft_printf("faux: |%#.10o|\n", 0);
+	// printf("--------------\n");
+	// printf("vrai |%+-8.5%|\n");
+	// ft_printf("mine |%+-8.5%|\n");
+	// printf("--------------\n");
 	// printf("|%5.x| |%5.0x|\n", 0, 0);
-	// ft_printf("|%5.x| |%5.0x|\n", 0, 0);				//invlaid read size sur strjoing ret_flag
+	// ft_printf("|%5.x| |%5.0x|\n", 0, 0);
 	// printf("--------------\n");
 	// printf("|%#.x| |%#.0x|\n", 0, 0);
 	// ft_printf("|%#.x| |%#.0x|\n", 0, 0);
@@ -230,43 +295,24 @@ int main(int argc, char **argv)
 	// printf("|%03.2d|\n", 0);
 	// ft_printf("|%03.2d|\n", 0);
 	// printf("--------------\n");
-	// printf("|%5.2s| is a string\n", "");
-	// ft_printf("|%5.2s| is a string\n", "");				//LEAAAAAAAAAKs
-	// printf("--------------\n");
-	// printf("|%12s| is a string\n", "this");
-	// ft_printf("|%12s| is a string\n", "this");		//LEEEEEAAAAAAAKKKKKKKK
-	// printf("--------------\n");
-	// printf("vrai: |%#10o|\n", 0);
-	// ft_printf("faux: |%#10o|\n", 0);
-	// printf("--------------\n");
-	// printf("vrai: |%#.10o|\n", 0);
-	// ft_printf("faux: |%#.10o|\n", 0);
-	// printf("--------------\n");
-	// printf("vrai |%+-8.5%|\n");
-	// ft_printf("mine |%+-8.5%|\n");
+	printf("|%5.2s| is a string\n", "");
+	ft_printf("|%5.2s| is a string\n", "");
 	// printf("--------------\n");
 	// printf("--------------\n");
 	// printf("--------------\n");
+	// ft_printf("%jd\\n\n", 9223372036854775807);			//Leaks
+	// ft_printf("%zd\\n\n", 4294967295);				//Leaks
+	// ft_printf("%\\n\n");							//Leaks
+	// ft_printf("%U\\n\n", 4294967295);				//Leaks
+	// ft_printf("%S\\n\n", L"ݗݜशব");				//Leaks
+	// ft_printf("%p\\n\n", &ft_printf);		//Leaks
+	// ft_printf("%C\\n\n", 15000);				//Leaks
+	// ft_printf("%-05d\n", -42);				//Leaks
 
-	//si on fait valgrind sur tous les tests en meme temps ya un leak supplementaire avec le data->tmp_s
-	// 9 bytes in 1 blocks are definitely lost in loss record 1 of 44
-	// ==27174==    at 0x1000A4616: malloc (in /Users/lgaultie/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-	// ==27174==    by 0x100006B34: ft_memalloc (ft_memalloc.c:19)
-	// ==27174==    by 0x100006C6C: ft_strdup (ft_strdup.c:21)
-	// ==27174==    by 0x100003103: ft_string_1 (ft_s_c.c:29)
-	// ==27174==    by 0x100002E25: ft_string (ft_s_c.c:52)
-	// ==27174==    by 0x100007537: ft_only_conv (ft_only_conv.c:106)
-	// ==27174==    by 0x100003D91: ft_flag_conv (ft_flags.c:144)
-	// ==27174==    by 0x100002556: ft_analyse_flags (ft_printf.c:31)
-	// ==27174==    by 0x1000024C8: ft_got_flag (ft_printf.c:57)
-	// ==27174==    by 0x100002AF9: ft_cat_conv (ft_analyse.c:67)
-	// ==27174==    by 0x100002A01: ft_analyse (ft_analyse.c:111)
-	// ==27174==    by 0x100002766: ft_print_format (ft_printf.c:74)
 
 	// ft_printf("%#-08x", 42);
 	// ft_printf("%-05o", 2500);
 	// ft_printf("%-05d", 42);
-	// ft_printf("%-05d", -42);
 	// ft_printf("% u", 4294967295);
 	// ft_printf("%+u", 4294967295);
 
