@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 13:46:16 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/10 17:31:51 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,16 @@ char			*ft_only_conv(char *flags, t_data *data)
 {
 	char	*final;
 
-	if (flags[0] == 'd' || flags[0] == 'i' || flags[0] == 'f')
-	{
-		if (!(final = ft_conv_di(data)))
-			return (NULL);
-	}
+	if (flags[0] == 'd' || flags[0] == 'i')
+		return (ft_conv_di(data));
 	else if (flags[0] == 's')
 	{
 		if (!(final = ft_string(flags, data, 0)))
+			return (NULL);
+	}
+	else if (flags[0] == 'f')
+	{
+		if (!(final = ft_conv_f(data)))
 			return (NULL);
 	}
 	else if (flags[0] == 'u' || flags[0] == 'c' || flags[0] == 'o' \

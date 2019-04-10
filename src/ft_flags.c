@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 13:45:58 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:45:07 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ static char	*ft_final(char *ret_conv, char *ret_flag, char *final, int mode)
 		free(ret_conv);
 		free(ret_flag);
 	}
+	if (mode == 3 || mode == 4)
+	{
+		free(ret_conv);
+		if (mode == 3)
+			free(ret_flag);
+		return (NULL);
+	}
 	return (final);
 }
 
@@ -108,12 +115,12 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	if (d->f & F_PERCENT)
 		return (ft_conv_percent(i, f, d));
 	if (!(ret_flag = ft_special_cases(i, f, d)))
-		return (NULL);
+		return (ft_final(ret_conv, ret_flag, ret_flag, 4));
 	if ((d->f & F0) || ((d->f & F_PRECIS) && (f[i] == 's' || f[i] == 'c')))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 1));
 	if (f[i] == '%')
 		return (ft_end_percent(ret_flag, d));
 	if (!(final = ft_s_fwp_minus(f[i], ret_conv, ret_flag, d)))
-		return (NULL);
+		return (ft_final(ret_conv, ret_flag, ret_flag, 3));
 	return (ft_final(ret_conv, ret_flag, final, 2));
 }
