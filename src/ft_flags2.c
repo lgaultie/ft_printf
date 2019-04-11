@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 15:44:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/11 01:54:28 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 static char		*ft_ret_flag_sharp(char *ret_flag, char *f, int i)
 {
+	if (ft_strlen(ret_flag) < 2)
+	{
+		return (ret_flag);
+	}
 	ret_flag[0] = '0';
 	ret_flag[1] = f[i];
 	return (ret_flag);

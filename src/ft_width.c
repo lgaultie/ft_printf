@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/08 21:40:18 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/11 01:21:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ static char		*ft_width_minus2(int width, t_data *data)
 
 	i = 0;
 	surplus = (data->f & AP_NEG) ? 1 : 0;
+	if (data->f & F_MINUS && data->f & F_ZERO)
+		return (ft_strdup(""));
 	if (width > data->conv_sz)
 	{
-		if (!(ret = ft_memalloc(sizeof(char) * (width - data->ap_sz + 1))))
+		if (!(ret = ft_memalloc(sizeof(char) * ((width - data->conv_sz) + 1))))
 			return (NULL);
 		if (data->f & F_ZERO)
 			while (i < width - data->conv_sz)
