@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/11 23:49:49 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/12 00:23:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,34 +99,29 @@ char	*ft_conv_f(t_data *data)
 	char	*final;
 
 	ap = (va_arg(data->ap, double));
-
 	if (!(before = ft_itoa(ap)))
 		return (NULL);
-
-
 	before[ft_strlen(before)] = '.';	//a faire plus proprement pour le malloc
-
-
 	ret = ap - (int)ap;
 	i = ap;
 	ret = ret * 10;
 	after = ret;
-	// printf("after = %d     ret = %f\n",after, ret);
-	// printf("ap = %f, (float)i = %f\n   ap - (float)ap = %f\n", ap, (float)i, ap - (int)ap);
-	while (after != 0.0 && after > 0.0 && (ap - (int)ap) != 0.0 \
-	&& (ap - (int)ap) > 0.0)
+	printf("after = %d    ret = %f\n", after, ret);
+	while ((ap - (int)ap) != 0.0)
 	{
 		ret = ret * 10;
 		ap = ret;
+		printf("ret = %f\n", ret);
 	}
 	after = (int)ret;
-
+	if (after < 0)
+		after = -after;
+	printf("after = %d    ret = %f\n", after, ret);
 	if (!(str = ft_itoa(after)))
 	{
 		free(before);
 		return (NULL);
 	}
-	//printf("ret = %f     before = %s    str = %s    after = %d \n",ret, before, str, after);
 	if (!(final = ft_strjoin(before, str)))
 	{
 		free(before);
