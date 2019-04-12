@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/11 21:51:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/12 14:52:37 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,25 @@ void	ft_tests();
 
 int main(int argc, char **argv)
 {
+	long double		i;
+
 	(void)argc;
 	(void)argv;
-		printf("%f\n", 112553.654553);
-		ft_printf("%f\n", 112553.654553);
+	i = 123131;
+		printf("%lf\n", -132.55555724);
+		ft_printf("%lf\n", -132.55555724);		//avec les flags aussi ?
+		printf("--------------\n");
+		printf("%f\n", 132.55555724);
+		ft_printf("%f\n", 132.55555724);
+		printf("--------------\n");
+		printf("%lf\n", 243.5);
+		// ft_printf("%lf\n", 243.5);
+		printf("--------------\n");
+		printf("%Lf\n", i);
+		// ft_printf("%Lf\n", i);
+		printf("--------------\n");
+		printf("%f\n", -10.011012365432);
+		ft_printf("%f\n", -10.011012365432);			//fail il oublie le 0
 
 	// 	printf("--------------\n");
 	// 	printf("\\n\n");
