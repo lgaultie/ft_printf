@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/12 00:23:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/12 14:18:19 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,41 +94,72 @@ char	*ft_conv_f(t_data *data)
 	char	*before;
 	float	ret;
 	int		after;
-	char	*str;
-	int		i;
+	int		j;
 	char	*final;
+	char	*str_after;
+	char	*str_after_copy;
+	char	*tmp;
 
+	j = 0;
 	ap = (va_arg(data->ap, double));
+	printf("ap original = %f\n", ap);
 	if (!(before = ft_itoa(ap)))
 		return (NULL);
 	before[ft_strlen(before)] = '.';	//a faire plus proprement pour le malloc
+	if (ap < 0)
+		ap = -ap;
 	ret = ap - (int)ap;
-	i = ap;
-	ret = ret * 10;
 	after = ret;
-	printf("after = %d    ret = %f\n", after, ret);
-	while ((ap - (int)ap) != 0.0)
+	// printf("after = %d    ret = %f \n", after, ret);
+	while ((ap - (int)ap) != 0.0 && (ap - (int)ap) > 0.0 && j < 6)
 	{
 		ret = ret * 10;
+		after = ret;
+		if (j == 0)
+		{
+			free(str_after);
+			if (!(str_after = ft_itoa(after)))
+			{
+				free(before);
+				return (NULL);
+			}
+		}
+		else
+		{
+			if (!(str_after_copy = ft_itoa(after)))		//leaks
+			{
+				free(str_after);
+				free(before);
+				return (NULL);
+			}
+		}
+		after = 0;
+		ret = (ret - (int)ret);
+		if (j != 0)
+		{
+			tmp = str_after;
+			if (!(str_after = ft_strjoin(tmp, str_after_copy)))
+				{
+					free(before);
+					free(str_after);
+					free(str_after_copy);
+					return (NULL);
+				}
+			free(tmp);
+		}
 		ap = ret;
-		printf("ret = %f\n", ret);
+		// printf(" ap = %f       ret = %f     str_after = %s \n", ap, ret, str_after);
+		j++;
 	}
-	after = (int)ret;
-	if (after < 0)
-		after = -after;
-	printf("after = %d    ret = %f\n", after, ret);
-	if (!(str = ft_itoa(after)))
+	if (!(final = ft_strjoin(before, str_after)))
 	{
 		free(before);
-		return (NULL);
-	}
-	if (!(final = ft_strjoin(before, str)))
-	{
-		free(before);
-		free(str);
+		free(str_after);
+		free(str_after_copy);
 		return (NULL);
 	}
 	free(before);
-	free(str);
+	free(str_after);
+	free(str_after_copy);
 	return (final);
 }
