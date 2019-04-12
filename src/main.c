@@ -6,11 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2019/03/28 16:06:13 by amamy            ###   ########.fr       */
-=======
-/*   Updated: 2019/04/12 00:02:09 by amamy            ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2019/04/12 14:51:31 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +23,13 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-<<<<<<< Updated upstream
-	//char *str;
-	int		test_nb;
-	int		i;
+	long double	qp;
 
-	t_data *data;
-	test_nb = 9;
-	i = 0;
-	data = ft_memalloc(sizeof(t_data));
+	qp = 0;
 
-
-	//		ft_tests();
-	//  printf("Vrai : i = |%.6s|,|%d|, test\n", "Salut", 17);
-	//  ft_printf("Mine : i = |%.6s|,|%d|, test\n\n", "Salut", 17);
-		printf("Vrai : i = |%*s|, test\n", 3, "SALUT");
-		ft_printf("Mine : i = |%*s|, test\n", 3, "SALUT");
-//	printf("Vrai : %+2.5d\n", 12345);
-//	ft_printf("Vrai : %+2.5d\n", 12345);
-	// ft_printf("Mine : i = |%07.5d|,|%d|, test\n",150789, 17);
-	// ft_printf("i = |%05.2d|test\n", 7);
-	// ft_printf("i = %00.05d test\n",i);
-	// ft_printf("Mine : i = %5%\n");
-
-	// printf("Vrai : i = %5%\n");
-	// ft_printf("Mine : i = %5%\n");
-	//PUTAIN PRINTF printf("i = |%05.2d|test\n", 7);
-	//SEG parceque %3s pas géré ft_printf("i = %.5s%3s%dtest\n","oui","nononononononon", i);
-	// MARCHE PAS ft_printf("i = %00.05d test\n",i);
-=======
-		// printf("vrai : %f\n", 112553.6545);
-		ft_printf("ine : %f\n", 1.123);
+printf("%lu\n", sizeof(qp));
+		// printf("vrai : %f\n", 1.0123);
+		// ft_printf("mine : %f\n", 1.00123);
 		// ft_printf("ine : %f\n", 112553.6545);
 
 	// 	printf("--------------\n");
@@ -338,9 +310,6 @@ int main(int argc, char **argv)
 	// ft_printf("%C\\n\n", 15000);
 	// ft_printf("%-05d\n", -42);
 	// ft_printf("%p\\n\n", &ft_printf);
-
->>>>>>> Stashed changes
-
 
 	return 0;
 }

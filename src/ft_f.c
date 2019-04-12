@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/12 00:37:03 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/12 14:51:10 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,56 +85,57 @@
 // 	}
 // 	return (str);
 // }
+// static void ft_bridge_itoa(char *decimal, int f_decimal, int mode)
+// {
+// 	decimal = ft_itoa((int)f_decimal, mode);
+// 	ft_putstr("la\n");
+// }
 
-char	*ft_conv_f(t_data *data)
-{
-	float	ap;
-	float	f_decimal;
-	int		integer;
-	int		decimal;
-	char	*before;
-	// char	*final;
-
-	ap = (va_arg(data->ap, double));
-	if (!(before = ft_itoa(ap)))
-		return (NULL);
-	f_decimal = ap - (int)ap;
-	decimal = 0;
-	integer = ap;
-	ap -= integer;
-	printf("ap : %f\n", ap);
-	printf("f_deci : %f\n", f_decimal);
-	// if (ap != 0)
-	// {
-	// 	ap *= 10;
-	// 	ft_putstr("lol\n");
-	// }
-	// while ((ap - f_decimal) != 0.0)
-	// {
-	// 		printf("%d\n", decimal);
-	// 	ap *= 10;
-	// 	decimal = ap;
-	// }
-
-		ap *= 10;
-		decimal = ap;
-		printf("ap : %f\n", ap);
-		printf("decimal : %d\n", decimal);
-		ap *= 10;
-		decimal = ap;
-		printf("ap : %f\n", ap);
-		printf("decimal : %d\n", decimal);
-		ap *= 10;
-		decimal = ap;
-		printf("ap : %f\n", ap);
-		printf("decimal : %d\n", decimal);
-
-		printf("ap - f_deci : %f", (ap - f_decimal));
-	// if (!(before = ft_itoa((long long)ap)))
-	// 	return (NULL);
-
-	//final = ft_strjoin(before, ".");
-
-	//final = ft_strjoin(final, "64543");		//Lololol
-	return (before);
-}
+// char	*ft_conv_f(t_data *data)
+// {
+// 	float	ap;
+// 	float	f_decimal;
+// 	int		integer;
+// 	char	*int_;
+// 	char	*decimal;
+// 	char	*final;
+// 	int		zeros;
+// 	int i;
+//
+//
+// 	i = 0;
+// 	zeros  = 0;
+// 	ap = (va_arg(data->ap, double));
+// 	f_decimal = ap - (int)ap;
+// 	integer = (int)ap;
+// 	ap -= integer;
+// 	printf("ap : %f\n", ap);
+// 	printf("f_deci : %f\n\n", f_decimal);
+//
+// 	while ((ap - (int)ap) > 0.001)
+// 	{
+// 		printf("f_deci = %f\nap - (int)ap : %f\n", f_decimal, (ap - (int)ap));
+// 		f_decimal *= 10;
+// 		ap = f_decimal;
+// 		if ((int)ap == 0)
+// 			zeros++;
+// 	}
+// 	if (!(int_ = ft_itoa(ap, 2, (ft_nb_len_base(integer, 10) + 2))))
+// 		return (NULL);
+// 	int_[ft_strlen(int_)] = '.';
+// 	if (!(int_ = ft_itoa(ap, 2, (ft_nb_len_base(integer, 10) + 2))))
+// 	return (NULL);
+// 	if (!(decimal = (char*)ft_memalloc(sizeof(char) * ft_nb_len_base((int)f_decimal, 10) + 1 + zeros)))
+// 		return (NULL);
+// 	while (zeros-- > 0)
+// 		decimal[i++] = '0';
+// 	printf("i : %d\n", i);
+// 	if (i != 0)
+// 	{
+// 		ft_putstr(decimal);
+// 		ft_bridge_itoa(&decimal[i], (int)f_decimal, 2);
+// 	}
+// 	if (!(final = ft_strjoin(int_, decimal)))
+// 		return  (NULL);
+// 	return (final);
+// }
