@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/12 14:52:37 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:08:32 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	i = 123131;
+	i = 1231.234234231;
 		printf("%lf\n", -132.55555724);
 		ft_printf("%lf\n", -132.55555724);		//avec les flags aussi ?
 		printf("--------------\n");
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 		ft_printf("%f\n", 132.55555724);
 		printf("--------------\n");
 		printf("%lf\n", 243.5);
-		// ft_printf("%lf\n", 243.5);
+		ft_printf("%lf\n", 243.5);
 		printf("--------------\n");
 		printf("%Lf\n", i);
 		// ft_printf("%Lf\n", i);
