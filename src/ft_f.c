@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/12 14:51:44 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:41:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	*ft_conv_f(t_data *data)
 	}
 	free(before);
 	free(str_after);
-	free(str_after_copy);
+	if (j > 1)
+		free(str_after_copy);
 	return (final);
 }
