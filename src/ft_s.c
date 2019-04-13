@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:43 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 19:15:55 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:16:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static char		*ft_string_1(t_data *d)
 			return (NULL);
 	}
 	else
-		{
-			d->ap_sz = 6;
-			d->conv_sz = 6;
-			return (ft_strdup("(null)"));
-		}
+	{
+		d->ap_sz = 6;
+		d->conv_sz = 6;
+		return (ft_strdup("(null)"));
+	}
 	if (tmp[0] == '\0')
 		d->f |= F_S_0;
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
@@ -58,6 +58,7 @@ static char		*ft_string_1(t_data *d)
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
 		if (!(ap = ft_strdup("")))
 			return (NULL);
+
 	return (ap);
 }
 
@@ -113,7 +114,7 @@ char			*ft_string(char *flag, t_data *data, int mode)
 		{
 			if ((data->f & F_WIDTH) && !(data->f & F_W_P))
 				return (ft_width_s(flag, data));
-			else if (data->f & F_PRECIS && !(data->f & F_W_P))
+			else if (data->f & F_PRECIS && (data->f & F_W_P))
 				return(ft_strsub("(null)", 0, ft_precision_s(flag, data)));
 		}
 		if (data->f & F_PRECIS && !(data->f & F_W_P))
@@ -130,5 +131,6 @@ char			*ft_string(char *flag, t_data *data, int mode)
 				return (NULL);
 		free(ap);
 	}
+	data->f |= F_S;
 	return (final);
 }

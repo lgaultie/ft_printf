@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:41:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/10 15:39:28 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:28:39 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ char		*ft_analyse(char *str, t_data *data)
 		if (str[i] == '%')
 		{
 			ft_cat_conv(data, &str[1], i);
+			ft_disable_flag(data);
 			if ((str[i] == '%') && (str[i + 1] == '%'))
 				i += 2;
 			else
