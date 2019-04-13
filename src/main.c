@@ -6,13 +6,14 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/12 16:08:32 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:38:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
+#include <float.h>
 
 void	ft_tests();
 // ----------------- BITWISE ---------------------
@@ -28,24 +29,30 @@ void	ft_tests();
 int main(int argc, char **argv)
 {
 	long double		i;
+	char	*s = NULL;
 
 	(void)argc;
 	(void)argv;
 	i = 1231.234234231;
-		printf("%lf\n", -132.55555724);
-		ft_printf("%lf\n", -132.55555724);		//avec les flags aussi ?
-		printf("--------------\n");
-		printf("%f\n", 132.55555724);
-		ft_printf("%f\n", 132.55555724);
-		printf("--------------\n");
-		printf("%lf\n", 243.5);
-		ft_printf("%lf\n", 243.5);
-		printf("--------------\n");
-		printf("%Lf\n", i);
-		// ft_printf("%Lf\n", i);
-		printf("--------------\n");
-		printf("%f\n", -10.011012365432);
-		ft_printf("%f\n", -10.011012365432);			//fail il oublie le 0
+	// printf("%lf\n", 243.5);
+	//printf("%l13.42f\n", 243.5);
+	// ft_printf("%f\n", DBL_MAX);
+	// ft_printf("%f\n", 1.7976931348623157E+308);
+
+		// printf("%lf\n", -132.55555724);
+		// ft_printf("%lf\n", -132.55555724);		//avec les flags aussi ?
+		// printf("--------------\n");
+		// printf("%f\n", 132.55555724);
+		// ft_printf("%f\n", 132.55555724);
+		// printf("--------------\n");
+		// printf("%lf\n", 243.5);
+		// ft_printf("%lf\n", 243.5);
+		// printf("--------------\n");
+		// printf("%Lf\n", i);
+		// // ft_printf("%Lf\n", i);
+		// printf("--------------\n");
+		// printf("%f\n", -10.011012365432);
+		// ft_printf("%f\n", -10.011012365432);			//fail il oublie le 0
 
 	// 	printf("--------------\n");
 	// 	printf("\\n\n");
@@ -314,6 +321,12 @@ int main(int argc, char **argv)
 	// printf("--------------\n");
 	// printf("|%5.2s| is a string\n", "");
 	// ft_printf("|%5.2s| is a string\n", "");
+	// printf("--------------\n");
+	// printf("|%20p|\n", s);				//avec char *s = NULL;
+	// ft_printf("|%20p|\n", s);				//avec char *s = NULL;
+	// printf("--------------\n");
+	// printf("|%-20p|\n", s);				//avec char *s = NULL;
+	// ft_printf("|%-20p|\n", s);				//avec char *s = NULL;
 	// printf("--------------\n");
 	// printf("--------------\n");
 	// printf("--------------\n");

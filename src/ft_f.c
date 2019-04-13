@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/12 16:41:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:07:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ char	*ft_conv_f(t_data *data)
 		{
 			tmp = str_after;
 			if (!(str_after = ft_strjoin(tmp, str_after_copy)))
-				{
-					free(before);
-					free(str_after);
-					free(str_after_copy);
-					return (NULL);
-				}
+			{
+				free(before);
+				free(str_after);
+				free(str_after_copy);
+				return (NULL);
+			}
 			free(tmp);
 		}
 		ap = ret;
