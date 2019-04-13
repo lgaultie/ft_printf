@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 19:14:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:05:54 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ char	*ft_conv_f(t_data *data)
 		free(str_after_copy);
 	data->ap_sz = ft_strlen(final);
 	data->conv_sz = ft_strlen(final);
-	data->f |= FLOAT;
 	return (final);
 }

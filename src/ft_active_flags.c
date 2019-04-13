@@ -6,11 +6,38 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:27:48 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 16:24:11 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:10:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_disable_flag(t_data *d)
+{
+	d->f &= ~F_ZERO;
+	d->f &= ~F_PLUS;
+	d->f &= ~F_MINUS;
+	d->f &= ~F_SHARP;
+	d->f &= ~F_SPACE;
+	d->f &= ~F_WIDTH;
+	d->f &= ~F_PRECIS;
+	d->f &= ~F_STAR;
+	d->f &= ~F_W_P;
+	d->f &= ~B_DONE;
+	d->f &= ~F_PLUS_MINUS;
+	d->f &= ~F_H;
+	d->f &= ~F_HH;
+	d->f &= ~F_L;
+	d->f &= ~F_LL;
+	d->f &= ~AP_NEG;
+	d->f &= ~F_UNSIGNED;
+	d->f &= ~ONLY_CONV;
+	d->f &= ~F_PERCENT;
+	d->f &= ~F_S;
+	d->f &= ~F_S_0;
+	d->f &= ~F0;
+	d->f &= ~TMP_S_M;
+}
 
 /*
 ** ft_active_cast: active needed format flags for h, hh, l, ll.

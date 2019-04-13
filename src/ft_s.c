@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:43 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 19:15:55 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:42:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static char		*ft_string_1(t_data *d)
 		{
 			d->ap_sz = 6;
 			d->conv_sz = 6;
+			d->f |= F_S_0;
 			return (ft_strdup("(null)"));
 		}
 	if (tmp[0] == '\0')

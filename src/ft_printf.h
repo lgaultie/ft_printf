@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/13 19:14:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:33:32 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@
 # define F_S_0 2097152
 # define F0 4194304
 # define TMP_S_M 8388608
-# define FLOAT 16777216
 
 typedef	struct	s_data
 {
@@ -101,5 +100,6 @@ int				ft_active_flag(char *flag, t_data *data);
 char			*ft_special_cases(int i, char *f, t_data *d);
 char			*ft_fwp_minus(char *final, t_data *data);
 char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
+void			ft_disable_flag(t_data *data);
 
 #endif
