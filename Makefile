@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/12 17:07:39 by amamy            ###   ########.fr        #
+#    Updated: 2019/04/13 21:25:56 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRCS =	main.c					\
 		ft_width_prc2.c			\
 		ft_width2.c				\
 		ft_active_flags.c		\
-		ft_flags2.c
+		ft_flags2.c				\
+		ft_f2.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

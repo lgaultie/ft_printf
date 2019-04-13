@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/13 16:54:40 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/13 21:24:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,9 @@ int				ft_active_flag(char *flag, t_data *data);
 char			*ft_special_cases(int i, char *f, t_data *d);
 char			*ft_fwp_minus(char *final, t_data *data);
 char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
+void 			ft_free(char * bef, char *str_after, char *str_a_cp, int m);
+char			*ft_missing_zeros(int len, char *str_after);
+char			*ft_ffinal(char *bef, char *str_after, char *str_ar_cp, int j);
+
 
 #endif

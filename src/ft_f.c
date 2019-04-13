@@ -6,26 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:32:53 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/13 21:25:25 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void ft_free(char * before, char *str_after, char *str_after_copy, int m)
-{
-	if (m == 1)
-	{
-		free(str_after);
-		free(before);
-	}
-	if (m == 2)
-	{
-		free(before);
-		free(str_after); // to not do if j == 0
-		free(str_after_copy);
-	}
-}
 
 char	*ft_conv_f2_3(char *before, char *str_after, char *str_ar_cp)
 {
@@ -60,22 +45,6 @@ char	*ft_conv_f2_1(char *before, char *str_after, long long after)
 		}
 	return (str_after);
 }
-static char	*ft_final(char *before, char *str_after, char *str_ar_cp, int j)
-{
-	char *final;
-
-	if (!(final = ft_strjoin(before, str_after)))
-	{
-		ft_free(before, str_after, str_ar_cp, 2);
-		return (NULL);
-	}
-	free(before);
-	if (j > 0)
-		free(str_after);
-	if (j > 1)
-		free(str_ar_cp);
-	return (final);
-}
 
 char	*ft_conv_f2(long double ap, char *before, int j)
 {
@@ -84,9 +53,9 @@ char	*ft_conv_f2(long double ap, char *before, int j)
 	char			*str_after;
 	char			*str_ar_cp;
 
-	ret = ap - (int)ap;
+	ret = ap - (long long)ap;
 	after = ret;
-	while ((ap - (int)ap) != 0.0 && (ap - (int)ap) > 0.0 && j < 6)
+	while ((ap - (long long)ap) != 0.0 && (ap - (long long)ap) > 0.0 && j < 6)
 	{
 		ret = ret * 10;
 		after = ret;
@@ -99,12 +68,12 @@ char	*ft_conv_f2(long double ap, char *before, int j)
 			str_ar_cp = ft_conv_f2_2(before, str_after, after, str_ar_cp);
 		}
 		after = 0;
-		ret = (ret - (int)ret);
+		ret = (ret - (long long)ret);
 		if (j++ != 0)
 			str_after = ft_conv_f2_3(before, str_after, str_ar_cp);
 		ap = ret;
 	}
-	return (ft_final(before, str_after, str_ar_cp, j));
+	return (ft_ffinal(before, str_after, str_ar_cp, j));
 }
 
 char	*ft_conv_f(t_data *data)
