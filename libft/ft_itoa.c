@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:03:39 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/11 23:55:45 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:47:51 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char			*ft_itoa(long long n)
 	size_t	counter;
 
 	counter = 0;
-	if (!(str = (char*)malloc(sizeof(char) * ft_nb_len_base(n, 10) + 1)))
+	if (!(str = (char*)ft_memalloc(sizeof(char) * ft_nb_len_base(n, 10) + 1)))
 		return (NULL);
 	if (n == 0 || n == -0)
 		str[0] = '0';
