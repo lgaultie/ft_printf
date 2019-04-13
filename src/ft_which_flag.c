@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 22:06:11 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/14 00:08:57 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,24 @@ static char		*ft_sharp_precent(char *flag, t_data *d)
 	return (final);
 }
 
-static char		*ft_which_flag3(char *flag, t_data *data)
+// static char		*ft_which_flag4(char *flag, char cv, t_data *data)
+// {
+// 	char	*final;
+//
+// 	if (data->f & F_PRECIS && cv == 'f')
+// 	{
+// 		if (!(final = ft_conv_f(data, flag)))
+// 			return (NULL);
+// 	}
+// 	else
+// 		final = NULL;
+// 	return (final);
+// }
+static char		*ft_which_flag3(char *flag, char cv, t_data *data)
 {
 	char	*final;
 
+(void)cv;
 	if (data->f & F_SPACE)
 	{
 		if (!(final = ft_strnew(1)))
@@ -57,11 +71,11 @@ static char		*ft_which_flag3(char *flag, t_data *data)
 	}
 	else if (data->f & F_H || data->f & F_HH || data->f & F_L || data->f & F_LL)
 		return (ft_strdup(""));
-	else if (data->f & F_BIG_L)
-	{
-		if (!(final = ft_conv_f(data)))
-			return (NULL);
-	}
+	// else if (data->f & F_BIG_L || (data->f & F_PRECIS && cv == 'f'))
+	// {
+	// 	if (!(final = ft_conv_f(data, flag)))
+	// 		return (NULL);
+	// }
 	else
 		final = NULL;
 	return (final);
@@ -90,7 +104,8 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else
-		final = ft_which_flag3(flag, data);
+		if (!(final = ft_which_flag3(flag, cv, data)))
+			return (NULL);
 	return (final);
 }
 
@@ -114,11 +129,10 @@ char			*ft_which_flag(char *flag, char cv, t_data *d)
 	else if ((d->f & F_PRECIS || d->f & F_WIDTH) && cv == 's' \
 	&& !(d->f & F_W_P))
 	{
-		///////////////////////////////////////faudrait rajouter cv == 'f'
 		if (!(final = ft_string(flag, d, 1)))
 			return (NULL);
 	}
-	else if (d->f & F_PRECIS)
+	else if (d->f & F_PRECIS && cv != 'f')
 	{
 		if (!(final = ft_precision_d(flag, d)))
 			return (NULL);

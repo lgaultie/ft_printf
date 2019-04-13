@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 19:18:22 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:16:06 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ char			*ft_precision_d(char *flags, t_data *data)
 		if (!(conv = ft_precision_d_else2(data, conv, i)))
 			return (NULL);
 	}
-	printf("dans accuracy --> i = %d data->ap_sz = %d\n", i, data->ap_sz);
 	return (conv);
 }
 
