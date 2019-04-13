@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:27:48 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:10:03 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:11:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void		ft_active_flag2(char *flag, t_data *data, int i)
 		data->f |= F_PERCENT;
 	else if (flag[i] == 'h' || flag[i] == 'l')
 		ft_active_cast(flag, data, i);
+	else if (flag[i] == 'L')
+		data->f |= F_BIG_L;
 }
 
 /*
