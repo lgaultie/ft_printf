@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/09 16:14:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:17:58 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ char			*ft_which_flag(char *flag, char cv, t_data *d)
 	else if ((d->f & F_PRECIS || d->f & F_WIDTH) && cv == 's' \
 	&& !(d->f & F_W_P))
 	{
+		///////////////////////////////////////faudrait rajouter cv == 'f'
 		if (!(final = ft_string(flag, d, 1)))
 			return (NULL);
 	}

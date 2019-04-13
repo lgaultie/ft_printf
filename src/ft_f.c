@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 15:07:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:14:52 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_conv_f(t_data *data)
 
 	j = 0;
 	ap = (va_arg(data->ap, double));
-	printf("ap original = %f\n", ap);
+	// printf("ap original = %f\n", ap);
 	if (!(before = ft_itoa(ap)))
 		return (NULL);
 	tmp = before;
@@ -87,8 +87,12 @@ char	*ft_conv_f(t_data *data)
 		return (NULL);
 	}
 	free(before);
-	free(str_after);
+	if (j > 0)
+		free(str_after);
 	if (j > 1)
 		free(str_after_copy);
+	data->ap_sz = ft_strlen(final);
+	data->conv_sz = ft_strlen(final);
+	data->f |= FLOAT;
 	return (final);
 }

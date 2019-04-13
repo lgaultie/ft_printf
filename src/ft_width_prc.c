@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width_prc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 17:50:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/13 18:19:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 		size = before;
 	if (after >= before)
 		size = after;
-	if (size > data->ap_sz)
-		size = size - data->ap_sz;
 	if (size < data->ap_sz)
 		size = data->ap_sz;
 	if (data->f & AP_NEG || data->f & F_PLUS)
