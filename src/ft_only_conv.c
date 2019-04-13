@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 17:31:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 17:00:12 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static char		*ft_only_conv2(char *f, t_data *data)
 char			*ft_only_conv(char *flags, t_data *data)
 {
 	char	*final;
-
+	data->f |= ONLY_CONV;
 	if (flags[0] == 'd' || flags[0] == 'i')
 		return (ft_conv_di(data));
 	else if (flags[0] == 's')
@@ -116,5 +116,6 @@ char			*ft_only_conv(char *flags, t_data *data)
 	}
 	else
 		final = NULL;
+	data->f &= ~ONLY_CONV;
 	return (final);
 }

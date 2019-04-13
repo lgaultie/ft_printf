@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 15:38:21 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/13 16:59:07 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char		*ft_analyse_flags(char *flags, t_data *data)
 		data->f |= ONLY_CONV;
 		if (!(final = ft_only_conv(flags, data)))
 			return (NULL);
+		data->f &= ~ONLY_CONV;
 	}
 	else
 	{
