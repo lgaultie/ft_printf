@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:45:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/11 01:12:26 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/13 16:50:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char			*ft_width2(int width, t_data *d)
 	{
 		o = (d->f & AP_NEG || d->f & F_PLUS) ? 1 : 0;
 		if (!(ret = ft_memalloc(sizeof(char) * ((width - d->conv_sz) + 1 + o))))
-				return (NULL);
+			return (NULL);
 		if (d->f & F_ZERO)
 		{
 			if (d->f & AP_NEG && !(d->f & F_UNSIGNED))
