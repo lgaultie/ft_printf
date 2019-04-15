@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/14 00:32:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:04:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,86 @@ int main(int argc, char **argv)
 	// ft_printf("%f\n", 1.7976931348623157E+308);
 
 
-	// printf("|%46.23s|\n", str);
-	// ft_printf("|%46.23s|\n", str);
-	printf("|%20s|\n", str);		//dans width+precis2 ft_ap_not_neg
+	printf("|%46.23s|\n", str);
+	ft_printf("|%46.23s|\n", str);
+	printf("|%20s|\n", str);
 	ft_printf("|%20s|\n", str);
 	printf("--------------\n");
-	printf("|%.20s|\n", str);		//dans width+precis2 ft_ap_not_neg
-	ft_printf("|%.20s|\n", str);
+	printf("|%-.20s|\n", str);
+	ft_printf("|%-.20s|\n", str);
 	printf("--------------\n");
+	printf("|%.20s|\n", str);
+	ft_printf("|%.20s|\n", str);
+	printf("-------la------\n");
 	printf("|%-4.2s|\n", str);		//dans width+precis2 ft_ap_not_neg
 	ft_printf("|%-4.2s|\n", str);
-	printf("--------------\n");
-	printf("|%4.2s|\n", str);		//dans width+precis2 ft_ap_not_neg
-	ft_printf("|%4.2s|\n", str);
-	printf("--------------\n");
-	printf("|%4.23s|    |%d|     |%40d|   |%d|   |%.d|  |%3.5d|\n", str, -5, 123, 42, 2, 5);
-	ft_printf("|%4.23s|    |%d|     |%40d|   |%d|   |%.d|  |%3.5d|\n", str, -5, 123, 42, 2, 5);
+	printf("-------1------\n");
+	printf("|%2.2s|\n", "o");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%2.2s|\n", "o");
+	printf("-------1------\n");
+	printf("|%2.2s|\n", "o");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%2.2s|\n", "o");
+	printf("-------2------\n");
+	printf("|%-4.2s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%-4.2s|\n", "12345");
+	printf("-------2------\n");
+	printf("|%4.2s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%4.2s|\n", "12345");
+	printf("-------2------\n");
+	printf("|%-15.12s|\n", "1123456789101112");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%-15.12s|\n", "1123456789101112");
+	printf("-------2------\n");
+	printf("|%15.12s|\n", "1123456789101112");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%15.12s|\n", "1123456789101112");
+	printf("-------2------\n");
+	printf("|%14.12s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%14.12s|\n", "12345");
+	printf("-------2------\n");
+	printf("|%14.12s|\n", "");		//dans width+precis2 ft_ap_not_neg LLLLLLLEEEEEAAAAAKKKKKKSSS tmp_s
+	ft_printf("|%14.12s|\n", "");
+	printf("-------2------\n");
+	printf("|%-14.12s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
+	ft_printf("|%-14.12s|\n", "12345");
+	printf("-------2------\n");
+	printf("|%-14.12s|\n", "");		//dans width+precis2 ft_ap_not_neg LLLLLLLEEEEEAAAAAKKKKKKSSS tmp_s
+	ft_printf("|%-14.12s|\n", "");
+	printf("-------2.5------\n");
+	printf("|%5.12s| is a string\n", "12345");
+	ft_printf("|%5.12s| is a string\n", "12345");
+	printf("-------3------\n");
+	printf("|%5.2s| is a string\n", "");
+	ft_printf("|%5.2s| is a string\n", "");
+	printf("-------4------\n");
+	printf("|%5.2s| is a string\n", "1234");
+	ft_printf("|%5.2s| is a string\n", "1234");
+	printf("-------5------\n");
+	printf("|%5.20s| is a string\n", "");
+	ft_printf("|%5.20s| is a string\n", "");
+	printf("-------6------\n");
+	printf("|%4.23s| is a string\n", "this");
+	ft_printf("|%4.23s| is a string\n", "this");
+	printf("-------2.5------\n");
+	printf("|%-5.12s| is a string\n", "12345678");
+	ft_printf("|%-5.12s| is a string\n", "12345678");
+	printf("-------2.5------\n");
+	printf("|%-.2s| is a string\n", "1");
+	ft_printf("|%-1.2s| is a string\n", "1");
+	printf("-------3------\n");
+	printf("|%-5.2s| is a string\n", "");
+	ft_printf("|%-5.2s| is a string\n", "");
+	printf("-------4------\n");
+	printf("|%-5.2s| is a string\n", "1234");
+	ft_printf("|%-5.2s| is a string\n", "1234");
+	printf("-------5------\n");
+	printf("|%-5.0s| is a string\n", "");
+	ft_printf("|%-5.0s| is a string\n", "");
+	printf("-------6------\n");
+	printf("|%-4.23s| is a string\n", "this");
+	ft_printf("|%-4.23s| is a string\n", "this");
+	printf("-------7------\n");
+	printf("|%4.23s|    |%d|     |%40d|   |%d|   |%.d|  |%3.5d|\n", "o", -5, 123, 42, 2, 5);
+	ft_printf("|%4.23s|    |%d|     |%40d|   |%d|   |%.d|  |%3.5d|\n", "o", -5, 123, 42, 2, 5);
+	free(str);
 	// printf("|%40f|\n", 123.321);
 	// ft_printf("|%40f|\n", 123.321);
 	// printf("--------------\n");
@@ -239,9 +303,6 @@ int main(int argc, char **argv)
 	// printf("--------------\n");
 	// printf("|%.8x|\n", 42);
 	// ft_printf("|%.8x|\n", 42);
-	// printf("--------------\n");
-	// printf("|%-5.2s| is a string\n", "");
-	// ft_printf("|%-5.2s| is a string\n", "");
 	// printf("--------------\n");
 	// printf("|%+d|\n", -42);
 	// ft_printf("|%+d|\n", -42);

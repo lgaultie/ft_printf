@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/14 00:18:20 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 13:36:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ void 			ft_free(char * bef, char *str_after, char *str_a_cp, int m);
 char			*ft_missing_zeros(int len, char *str_after);
 char			*ft_ffinal(char *bef, char *str_after, char *str_ar_cp, int j);
 void			ft_disable_flag(t_data *data);
+char			*ft_s(char *final, int before, int after, t_data *data);
 
 #endif

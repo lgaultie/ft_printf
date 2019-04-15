@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/14 00:27:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 13:39:40 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			data->f |= F_S;
 		if (!(final = ft_preci_width(flag, data)))
 			return (NULL);
+		// printf("final dans whichflag = |%s|\n", final);
 	}
 	else if (data->f & F_ZERO || (data->f & F_WIDTH && !(data->f & F_PRECIS) \
 	&& !(data->f & F_W_P)))

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:47:44 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:41:31 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 		if (!(final = ft_strjoin(ret_flag, ret_conv)))
 			return (NULL);
 	}
-	if (d->f & F_W_P && d->f & F_MINUS)
+	if ((d->f & F_W_P) && d->f & F_MINUS)
 	{
 		if (!(final = ft_fwp_minus(final, d)))
 			return (NULL);
@@ -116,6 +116,7 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 		return (ft_conv_percent(i, f, d));
 	if (!(ret_flag = ft_special_cases(i, f, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 4));
+	// printf("ret_flag = |%s|\n", ret_flag);
 	if ((d->f & F0) || ((d->f & F_PRECIS) && (f[i] == 's' || f[i] == 'c')))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 1));
 	if (f[i] == '%')

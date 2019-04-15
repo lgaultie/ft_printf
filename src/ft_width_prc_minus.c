@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 15:53:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:42:55 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:06:25 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 	{
 		if (!(ap = ft_strdup(data->tmp_s)))
 			return (NULL);
+		free(data->tmp_s);
 	}
 	else
 	{
@@ -29,14 +30,36 @@ static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 	free(final);
 	if (!(final = ft_strsub(ap, 0, after)))
 		return (NULL);
-	if (before > after)
-		data->width_precis_minus = before - after;
-	if (after >= before)
+	if (before > after && after >= data->conv_sz)
+	{
+		// ft_putstr("case 1 !\n");
 		data->width_precis_minus = before - data->conv_sz;
-	if (ap[0] == '\0' && before > after)
+	}
+	if (before > after && after < data->conv_sz)
+	{
+		// ft_putstr("case 1.5 !\n");
+		data->width_precis_minus = before - after;
+	}
+	if (after >= before && after >= data->conv_sz)
+	{
+		// ft_putstr("case 2 !\n");
+		data->width_precis_minus = 0;
+	}
+	if (after >= before && after < data->conv_sz)
+	{
+		// ft_putstr("case 2.5 !\n");
+		data->width_precis_minus = before - data->conv_sz;
+	}
+	if (ap[0] == '\0' && before > after && after >= data->conv_sz)
+	{
+		// ft_putstr("case 3 !\n");
 		data->width_precis_minus = before;
-	if (ap[0] == '\0' && before <= after)
-		data->width_precis_minus = after;
+	}
+	if (ap[0] == '\0' && before <= after && after >= data->conv_sz)
+	{
+		// ft_putstr("case 4.5 !\n");
+		data->width_precis_minus = before;
+	}
 	free(ap);
 	return (final);
 }
