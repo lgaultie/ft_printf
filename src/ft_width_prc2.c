@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:07:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:46:40 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,17 @@ char		*ft_s(char *final, int before, int after, t_data *data)
 		if (!(final = ft_strsub(ap, 0, after)))
 			return (NULL);
 	}
-
-
-	if (before > after && after > data->conv_sz && !(data->f & F_S_0))
+	else if (before > after && after > data->conv_sz && !(data->f & F_S_0))
 	{
 		if (!(final = ft_strsub(ap, 0, after)))
 			return (NULL);
 	}
-	if (before > after && after < data->conv_sz && !(data->f & F_S_0))
+	else if (before > after && after < data->conv_sz && !(data->f & F_S_0))
 	{
 		if (!(final = ft_strsub(ap, 0, after)))
 			return (NULL);
 	}
-	if (before > after && (data->f & F_S_0))
+	else if (before > after && (data->f & F_S_0))
 	{
 		if (!(final = ft_strsub(ap, 0, before)))
 			return (NULL);
@@ -77,12 +75,12 @@ char		*ft_s(char *final, int before, int after, t_data *data)
 		data->width_precis_minus = after;
 	if (before <= after)
 	{
-		if (!(for_s = ft_memalloc(sizeof(char) * after - before + 1)))
+		if (!(for_s = ft_memalloc(sizeof(char) * after + 1)))
 			return (NULL);
 	}
 	if (before > after)
 	{
-		if (!(for_s = ft_memalloc(sizeof(char) * before - after + 1)))
+		if (!(for_s = ft_memalloc(sizeof(char) * before + 1)))
 			return (NULL);
 	}
 	surplus = 0 ;

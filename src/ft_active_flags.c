@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:27:48 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:11:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 17:15:33 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,8 @@ int				ft_active_flag(char *flag, t_data *data)
 	i = 0;
 	while (flag[i] != 'd' && flag[i] != 'c' && flag[i] != 's' \
 		&& flag[i] != 'p' && flag[i] != 'x' && flag[i] != 'o' \
-		&& flag[i] != 'x' && flag[i] != 'X' \
-		&& flag[i] != 'i' && flag[i] != 'f' && flag[i] != 'u' \
-		&& flag[i] != '\0')
+		&& flag[i] != 'x' && flag[i] != 'X' && flag[i] != 'i' \
+		&& flag[i] != 'f' && flag[i] != 'u' && flag[i] != '\0')
 	{
 		if ((flag[i] == '0' && i == 0) \
 		|| (flag[i] == '0' && (flag[i - 1] < '0' || flag[i - 1] > '9')))
@@ -108,6 +107,15 @@ int				ft_active_flag(char *flag, t_data *data)
 			ft_active_flag2(flag, data, i);
 		i++;
 	}
+	if (data->f & F_ZERO && data->f & F_MINUS)
+		data->f &= ~F_ZERO;
+	if ((flag[i] == 'c' || flag[i] == 'u') && data->f & F_SPACE)
+		data->f &= ~F_SPACE;
+	if ((flag[i] == 'u') && data->f & F_PLUS)
+		data->f &= ~F_PLUS;
+	if ((flag[i] == 'c') && data->f & F_PRECIS)
+		data->f &= ~F_PRECIS;
+
 	return (i);
 }
 
