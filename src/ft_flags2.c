@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 17:03:29 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 20:59:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,20 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 
 	if (!(ret_flag = ft_which_flag(f, f[i], d)))
 		return (NULL);
-	if (d->f & F_SHARP)
+		ft_putstr("dans flags2\n");
+	//if (d->f & F_SHARP)
 	// printf("ret_flag = |%s|\n", ret_flag);
 	if (d->f & F_SHARP && d->f & F_ZERO && !(d->f & F_PRECIS) \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_ret_flag_sharp(ret_flag, f, i);
-	if (d->f & F_SHARP && d->f & F_ZERO && d->f & F_PRECIS \
+	else if (d->f & F_SHARP && d->f & F_ZERO && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_sharp(i, f, ret_flag);
-	if (d->f & F_SHARP && d->f & F_PRECIS \
+	else if (d->f & F_SHARP && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_sharp(i, f, ret_flag);
-	if (d->f & F_SHARP && (d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
+	else if (d->f & F_SHARP && (d->f & F_W_P) && !(d->f & F_WIDTH) \
+	&& (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_sharp(i, f, ret_flag);
 	// printf("ret_flag = %s\n", ret_flag);
 	return (ret_flag);
@@ -68,6 +70,8 @@ char			*ft_fwp_minus(char *final, t_data *data)
 	int		i;
 
 	i = 0;
+	// ft_putstr("dans flag2.c\n");
+	// printf("%d\n", data->width_precis_minus);
 	if (!(ret = ft_memalloc(sizeof(char) * (data->width_precis_minus + 1))))
 		return (NULL);
 	while (i < data->width_precis_minus)

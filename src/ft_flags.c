@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:46:28 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 21:31:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 
 	if (f == 's' && (d->f & F_MINUS) && (d->f & F_W_P))
 	{
+		//ft_putstr("flags premier cas\n");
 		if (!(final = ft_strdup(ret_flag)))
 			return (NULL);
 	}
@@ -86,8 +87,10 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 	}
 	if ((d->f & F_W_P) && d->f & F_MINUS)
 	{
+		//ft_putstr("flags deuxieme cas\n");
 		if (!(final = ft_fwp_minus(final, d)))
 			return (NULL);
+		// printf("final dans flags = |%s|\n", final);
 	}
 	return (final);
 }
@@ -105,6 +108,7 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	{
 		if (!(ret_conv = ft_only_conv(&f[i], d)))
 			return (NULL);
+			// printf("ret_conv = |%s|\n", ret_conv);
 		if ((ret_conv[0] == '\0' && d->f & F_SHARP && !(d->f & F_WIDTH)) \
 		|| (d->f & F_SPACE && d->f & AP_NEG))
 			return (ret_conv);

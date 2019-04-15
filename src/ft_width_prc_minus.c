@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 15:53:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:06:25 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 20:12:13 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,36 @@ static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 		// ft_putstr("case 1 !\n");
 		data->width_precis_minus = before - data->conv_sz;
 	}
-	if (before > after && after < data->conv_sz)
+	else if (before > after && after < data->conv_sz)
 	{
 		// ft_putstr("case 1.5 !\n");
 		data->width_precis_minus = before - after;
 	}
-	if (after >= before && after >= data->conv_sz)
+	else if (after > before && after >= data->conv_sz)
 	{
 		// ft_putstr("case 2 !\n");
 		data->width_precis_minus = 0;
+		// data->width_precis_minus = after - data->conv_sz;
+		// printf("data->w_p_m = %d =  before %d -  data->conv_sz %d\n", data->width_precis_minus, after, data->conv_sz);
 	}
-	if (after >= before && after < data->conv_sz)
+	else if (after == before && after >= data->conv_sz)
+	{
+		// ft_putstr("case 2 !\n");
+		// data->width_precis_minus = 0;
+		data->width_precis_minus = after - data->conv_sz;
+		// printf("data->w_p_m = %d =  before %d -  data->conv_sz %d\n", data->width_precis_minus, after, data->conv_sz);
+	}
+	else if (after >= before && after < data->conv_sz)
 	{
 		// ft_putstr("case 2.5 !\n");
-		data->width_precis_minus = before - data->conv_sz;
+		data->width_precis_minus = 0;
 	}
-	if (ap[0] == '\0' && before > after && after >= data->conv_sz)
+	else if (ap[0] == '\0' && before > after && after >= data->conv_sz)
 	{
 		// ft_putstr("case 3 !\n");
 		data->width_precis_minus = before;
 	}
-	if (ap[0] == '\0' && before <= after && after >= data->conv_sz)
+	else if (ap[0] == '\0' && before <= after && after >= data->conv_sz)
 	{
 		// ft_putstr("case 4.5 !\n");
 		data->width_precis_minus = before;

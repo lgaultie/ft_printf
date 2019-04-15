@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 14:17:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 21:04:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static char		*ft_preci_width2(char *flag, t_data *data, int i, int j)
 		return (NULL);
 	while (flag[i] < '0' || flag[i] > '9')
 		i++;
-	while (flag[i] != '.')
+	while (flag[i] != '.' && flag[i] != '\0')
 		before[j++] = flag[i++];
 	before[j] = '\0';
 	j = 0;
