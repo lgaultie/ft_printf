@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:43 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:11:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 21:31:23 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		ft_string_1_if(char *ap, t_data *d)
 			return ;
 		d->f |= TMP_S_M;
 	}
-	if (d->f & F_MINUS)
+	else if (d->f & F_MINUS)
 	{
 		if (!(d->tmp_s = ft_strdup(ap)))
 			return ;
@@ -33,7 +33,7 @@ static char		*ft_string_1(t_data *d)
 	char	*ap;
 	char	*tmp;
 
-	tmp = (va_arg(d->ap, char*));
+	tmp = va_arg(d->ap, char*);
 	if (tmp != NULL)
 	{
 		if (!(ap = ft_strdup(tmp)))

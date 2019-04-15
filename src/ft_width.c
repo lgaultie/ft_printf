@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:41:36 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 18:50:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static char		*ft_width_minus2(int width, t_data *data)
 	int		surplus;
 
 	i = 0;
+	free(data->tmp_s);
 	surplus = (data->f & AP_NEG) ? 1 : 0;
 	if (data->f & F_MINUS && data->f & F_ZERO)
 		return (ft_strdup(""));

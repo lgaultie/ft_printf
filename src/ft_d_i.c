@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 15:42:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 18:32:33 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_conv_di(t_data *data)
 {
 	char	*final;
 
-	if (data->f & F_STAR && (data->f & F_WIDTH || data->f & F_PRECIS))
-		data->tmp = (va_arg(data->ap, int));
 	if (!(final = ft_conv_hhhlll(data)))
 		return (NULL);
 	if (((data->f & F_PLUS) || (data->f & F_MINUS)) && (data->f & AP_NEG) \
