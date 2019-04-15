@@ -6,13 +6,13 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/13 22:08:52 by amamy            ###   ########.fr        #
+#    Updated: 2019/04/15 17:26:01 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = clang
-CFLAGS += -Wall -Werror -Wextra -g
+CFLAGS += -Wall -Werror -Wextra
 OBJDIR = obj
 SRCDIR = src
 LIBDIR	= libft

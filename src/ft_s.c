@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:43 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/14 00:16:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:11:19 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ static char		*ft_string_1(t_data *d)
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
 		free(ap);
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
+	{
 		if (!(ap = ft_strdup("")))
 			return (NULL);
-
+	}
 	return (ap);
 }
 
@@ -109,6 +110,7 @@ char			*ft_string(char *flag, t_data *data, int mode)
 		{
 			if (!(ap = ft_strdup(data->tmp_s)))
 				return (NULL);
+			free(data->tmp_s);
 		}
 		else
 		{
