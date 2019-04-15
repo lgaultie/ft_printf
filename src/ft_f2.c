@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/13 23:16:49 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/15 17:29:32 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		ft_accuracy_size(char *flags, t_data *data)
 }
 
 
-char *ft_float_accuracy(t_data *d, char *flag, char *str_after)
+char *ft_float_accuracy(t_data *d, char *flag, t_float *ft)
 {
 	char *final;
 	char *tmp;
@@ -48,7 +48,7 @@ char *ft_float_accuracy(t_data *d, char *flag, char *str_after)
 	int	i;
 	int len;
 
-	len = ft_strlen(str_after);
+	len = ft_strlen(ft->s_deci_p);
 	i = ft_accuracy_size(flag, d);
 	diff = i - len;
 	i = 0;
@@ -57,29 +57,34 @@ char *ft_float_accuracy(t_data *d, char *flag, char *str_after)
 	while (diff-- > 0)
 		final[i++] = '0';
 	tmp = final;
-	if (!(final = ft_strjoin(str_after, tmp)))
+	if (!(final = ft_strjoin(ft->s_deci_p, tmp)))
 		return (NULL);
 	free (tmp);
 	return (final);
 
 }
 
-void ft_free(char * bef, char *str_after, char *str_a_cp, int m)
+void ft_free(t_float *ft, int j, int m)
 {
 	if (m == 1)
 	{
-		free(str_after);
-		free(bef);
+		free(ft->s_deci_p);
+		free(ft->int_p);
 	}
 	if (m == 2)
 	{
-		free(bef);
-		free(str_after); // to not do if j == 0
-		free(str_a_cp);
+		free(ft->int_p);
+		free(ft->s_deci_p); // to not do if j == 0
+		free(ft->str_deci_ar_cp);
 	}
+	free(ft->int_p);
+	if (j > 0)
+	free(ft->s_deci_p);
+	if (j > 1)
+	free(ft->str_deci_ar_cp);
 }
 
-char	*ft_missing_zeros(int len, char *str_after)
+char	*ft_missing_zeros(int len, t_float *ft)
 {
 	char *final;
 	char *tmp;
@@ -93,35 +98,33 @@ char	*ft_missing_zeros(int len, char *str_after)
 	while (diff-- > 0)
 		final[i++] = '0';
 	tmp = final;
-	if (!(final = ft_strjoin(str_after, tmp)))
+	if (!(final = ft_strjoin(ft->s_deci_p, tmp)))
 		return (NULL);
 	free (tmp);
 	return (final);
 }
 
-char	*ft_ffinal(char *bef, char *str_after, char *str_ar_cp, int j)
+char	*ft_ffinal(t_float *ft, t_data *data, char *flag, int j)
 {
 	char *final;
 	char *tmp;
 	int	len;
 
-	len = ft_strlen(str_after);
-	if (len < 6)
+	if (data->f & F_PRECIS)
+		ft_conv_f2_2(ft, data, flag, 2);
+	len = ft_strlen(ft->s_deci_p);
+	if (len < 6 && !(data->f & F_PRECIS))
 	{
-		tmp = str_after;
-		if (!(str_after = ft_missing_zeros(len, str_after)))
+		tmp = ft->s_deci_p;
+		if (!(ft->s_deci_p = ft_missing_zeros(len, ft)))
 			return (NULL);
 		free (tmp);
 	}
-	if (!(final = ft_strjoin(bef, str_after)))
+	if (!(final = ft_strjoin(ft->int_p, ft->s_deci_p)))
 	{
-		ft_free(bef, str_after, str_ar_cp, 2);
+		ft_free(ft, 0, 2);
 		return (NULL);
 	}
-	free(bef);
-	if (j > 0)
-		free(str_after);
-	if (j > 1)
-		free(str_ar_cp);
+	ft_free(ft, j, 0);
 	return (final);
 }

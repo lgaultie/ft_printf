@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/14 00:39:21 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/15 13:36:35 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ static char		*ft_which_flag3(char *flag, char cv, t_data *data)
 	}
 	else if (data->f & F_H || data->f & F_HH || data->f & F_L || data->f & F_LL)
 		return (ft_strdup(""));
-	// else if (data->f & F_BIG_L || (data->f & F_PRECIS && cv == 'f'))
-	// {
-	// 	if (!(final = ft_conv_f(data, flag)))
-	// 		return (NULL);
-	// }
+	else if (data->f & F_BIG_L || (data->f & F_PRECIS && cv == 'f'))
+	{
+		if (!(final = ft_conv_f(data, flag)))
+			return (NULL);
+	}
 	else
 		final = NULL;
 	return (final);

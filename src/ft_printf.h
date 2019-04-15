@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/14 00:40:19 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/15 17:30:15 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,19 @@ typedef	struct	s_data
 	char		*tmp_s;
 }				t_data;
 
+typedef	struct	s_float
+{
+	long double ap;
+	long long	deci_p;
+	char		*int_p;
+	char		*s_deci_p;
+	char		*str_deci_ar_cp;
+	// char 		*int_p	 // int_p
+	// long long	after; // -> deci_p
+	// char			*str_after; // s_deci_p
+	// char			*str_ar_cp; // s_deci_ar_p
+}				t_float;
+
 int				ft_printf(const char *str, ...);
 char			*ft_conv_di(t_data *data);
 char			*ft_conv_f(t_data *data, char *flag);
@@ -93,19 +106,20 @@ char			*ft_width_s(char *flags, t_data *data);
 char			*ibmul(unsigned long long v, unsigned int b, int m, t_data *d);
 char			*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *d);
 char			*itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *d);
-char			*ft_flag_minus(int before, int after, char *final, t_data *d);
-char			*ft_case2(char *final, int before, int after, t_data *data);
-char			*ft_case3(char *final, int before, int after, t_data *data);
+char			*ft_flag_minus(int int_p, int after, char *final, t_data *d);
+char			*ft_case2(char *final, int int_p, int after, t_data *data);
+char			*ft_case3(char *final, int int_p, int after, t_data *data);
 char			*ft_percent_percent(char *ret_flag, t_data *data);
 int				ft_active_flag(char *flag, t_data *data);
 char			*ft_special_cases(int i, char *f, t_data *d);
 char			*ft_fwp_minus(char *final, t_data *data);
 char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
-void 			ft_free(char * bef, char *str_after, char *str_a_cp, int m);
-char			*ft_missing_zeros(int len, char *str_after);
-char			*ft_ffinal(char *bef, char *str_after, char *str_ar_cp, int j);
-char			*ft_float_accuracy(t_data *d, char *flag, char *str_after);
+void 			ft_free(t_float *ft, int j, int m);
+char			*ft_missing_zeros(int len, t_float *ft);
+char			*ft_ffinal(t_float *ft, t_data *data, char *flag, int j);
+char			*ft_float_accuracy(t_data *d, char *flag, t_float *ft);
 void			ft_disable_flag(t_data *data);
+char			*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode);
 
 
 #endif
