@@ -6,13 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/15 17:29:32 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/15 21:36:41 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_accuracy_size(char *flags, t_data *data)
+int		ft_accuracy_size(char *flags, t_data *data)
 {
 	int		i;
 	int		j;
@@ -50,7 +50,10 @@ char *ft_float_accuracy(t_data *d, char *flag, t_float *ft)
 
 	len = ft_strlen(ft->s_deci_p);
 	i = ft_accuracy_size(flag, d);
-	diff = i - len;
+	if (i > len)
+		diff = i - len;
+	else
+		diff = len - i;
 	i = 0;
 	if (!(final = ft_memalloc(sizeof(char) * (diff + 1))))
 		return (NULL);
@@ -126,5 +129,7 @@ char	*ft_ffinal(t_float *ft, t_data *data, char *flag, int j)
 		return (NULL);
 	}
 	ft_free(ft, j, 0);
+	data->ap_sz = ft_strlen(final);
+	data->conv_sz = ft_strlen(final);
 	return (final);
 }

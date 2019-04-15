@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/15 17:34:02 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/15 21:08:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ char			*ft_float_accuracy(t_data *d, char *flag, t_float *ft);
 void			ft_disable_flag(t_data *data);
 char			*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode);
 char			*ft_s(char *final, int before, int after, t_data *data);
-
+int				ft_accuracy_size(char *flags, t_data *data);
 
 
 #endif
