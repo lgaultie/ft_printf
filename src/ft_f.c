@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:11:45 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:40:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,17 @@ char	*ft_conv_f2_1(char *before, char *str_after, long long after)
 	return (str_after);
 }
 
-char	*ft_conv_f2(long double ap, char *before, int j)
+char	*ft_conv_f2(long double ap, char *before, t_data *d, char *flag)
 {
 	long double		ret;
 	long long		after;
 	char			*str_after;
 	char			*str_ar_cp;
+	int				j;
 
+	(void)d;
+	(void)flag;
+	j = 0;
 	ret = ap - (long long)ap;
 	after = ret;
 	while ((ap - (long long)ap) != 0.0 && (ap - (long long)ap) > 0.0 && j < 6)
@@ -73,18 +77,20 @@ char	*ft_conv_f2(long double ap, char *before, int j)
 			str_after = ft_conv_f2_3(before, str_after, str_ar_cp);
 		ap = ret;
 	}
+	if (d->f & F_PRECIS)
+		if (!(str_after = ft_float_accuracy(d, flag, str_after)))
+			return (NULL);
 	return (ft_ffinal(before, str_after, str_ar_cp, j));
 }
 
-char	*ft_conv_f(t_data *data)
+char	*ft_conv_f(t_data *data, char *flag)
 {
 	long double	ap;
 	char	*before;
 	char 	*final;
-	int		j;
 
-	j = 0;
-	if (!(data->f & ONLY_CONV))
+
+	if (data->f & ONLY_CONV && (data->f & F_BIG_L || data->f & F_PRECIS))
 		return (ft_strdup(""));
 	if (data->f & F_BIG_L)
 		ap = (va_arg(data->ap, long double));
@@ -98,7 +104,7 @@ char	*ft_conv_f(t_data *data)
 	free(final);
 	if (ap < 0)
 		ap = -ap;
-	if (!(final = ft_conv_f2(ap, before, j)))
+	if (!(final = ft_conv_f2(ap, before, data, flag)))
 		return (NULL);
 	data->ap_sz = ft_strlen(final);
 	data->conv_sz = ft_strlen(final);

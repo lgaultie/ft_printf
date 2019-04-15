@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/15 13:36:08 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:12:52 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef	struct	s_data
 
 int				ft_printf(const char *str, ...);
 char			*ft_conv_di(t_data *data);
-char			*ft_conv_f(t_data *data);
+char			*ft_conv_f(t_data *data, char *flag);
 char			*ft_string(char *flag, t_data *data, int mode);
 char			*ft_char(t_data *data);
 char			*ft_got_flag(char *str, t_data *data);
@@ -104,7 +104,9 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
 void 			ft_free(char * bef, char *str_after, char *str_a_cp, int m);
 char			*ft_missing_zeros(int len, char *str_after);
 char			*ft_ffinal(char *bef, char *str_after, char *str_ar_cp, int j);
+char			*ft_float_accuracy(t_data *d, char *flag, char *str_after);
 void			ft_disable_flag(t_data *data);
 char			*ft_s(char *final, int before, int after, t_data *data);
+
 
 #endif
