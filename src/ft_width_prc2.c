@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 17:33:08 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:53:20 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,10 @@ static char		*ft_ap_neg(int before, int after, char *final, t_data *data)
 	if (data->f & F_SHARP)
 	{
 		final[i++] = '0';
-		final[i++] = 'x';
+		if (data->f & F_BIG_X)
+			final[i++] = 'X';
+		else
+			final[i++] = 'x';
 	}
 	if (data->f & F_S_0 || data->f & F_S)
 	{

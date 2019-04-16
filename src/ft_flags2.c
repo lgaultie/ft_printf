@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 17:54:50 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/16 21:50:00 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 		// ft_putstr("deuxieme ox\n");
 		ret_flag = ft_sharp(i, f, ret_flag);
 	}
-	else if (d->f & F_SHARP && (d->f & F_W_P) \
-	&& (f[i] == 'x' || f[i] == 'X') && !(d->f & F_C_0))
-	{
-		// ft_putstr("troisieme ox\n");
-		ret_flag = ft_sharp(i, f, ret_flag);
-	}
+	// else if (d->f & F_SHARP && (d->f & F_W_P) \
+	// && (f[i] == 'x' || f[i] == 'X') && !(d->f & F_C_0))
+	// {
+	// 	// ft_putstr("troisieme ox\n");
+	// 	ret_flag = ft_sharp(i, f, ret_flag);
+	// }
 		// printf("flags2.c, ret_flag = %s\n", ret_flag);
 	return (ret_flag);
 }

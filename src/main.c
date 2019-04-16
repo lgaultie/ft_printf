@@ -6,14 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/16 17:35:33 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 22:07:30 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
-#include <float.h>
 
 void	ft_tests();
 // ----------------- BITWISE ---------------------
@@ -29,290 +28,90 @@ void	ft_tests();
 int main(int argc, char **argv)
 {
 	long double		i;
-	// char	*s = NULL;
-
-	// tests de pute
-	// char	*s = NULL;
-	// printf("|%20s|\n", s);
-	// ft_printf("|%20s|\n", s);
-	// printf("--------------\n");
-	// printf("|%.2s|\n", s);
-	// ft_printf("|%.2s|\n", s);
-	// printf("--------------\n");
-	// printf("|%10.4s|\n", s);
-	// ft_printf("|%10.4s|\n", s);
-	// printf("--------------\n");
-	// printf("|%-10.4s|\n", s);
-	// ft_printf("|%-10.4s|\n", s);
-	// printf("--------------\n");
-	// printf("|%40f|\n", 123.321);
-	// ft_printf("|%40f|\n", 123.321);
-	// printf("--------------\n");
-	// printf("|%34p|\n", s);
-	// ft_printf("|%34p|\n", s);
-	// printf("--------------\n");
-	// printf("|%40f|\n", 123.321);
-	// ft_printf("|%40f|\n", 123.321);
-	// printf("--------------\n");
-	// printf("|%4f|\n", 123.321);
-	// ft_printf("|%4f|\n", 123.321);
-	// printf("--------------\n");
-	// printf("|%4.f|\n", 123.321);
-	// ft_printf("|%4.f|\n", 123.321);
-
 
 	(void)argc;
 	(void)argv;
-	i = 1231.234234231;
-	char *str = ft_strdup("o");
-	char *strnull = NULL;
-	char *s = ft_strdup("ouiiii");
-	// printf("|%55.0s|\n", strnull);
-	// ft_printf("|%55.0s|\n", strnull);
-	// printf("%lf\n", 243.5);
-	// ft_printf("%lf\n", 243.5);
-// 	printf("%13.25f\n", 243.5);
-// 	ft_printf("%13.25f\n", 243.5);
-// 	// printf("%f\n", DBL_MAX);
-// 	// ft_printf("%f\n", DBL_MAX);
-// 	// printf("%f\n", 1.7976931348623157E+308);
-// 	// ft_printf("%f\n", 1.7976931348623157E+308);
-//
-// 	printf("|%3.3d|\n", -11);
-// 	ft_printf("|%3.3d|\n\n", -11);
-// 	printf("--------------\n");
-// 	printf("|%3.2d|\n", -1);
-// 	ft_printf("|%3.2d|\n\n", -1);
-// 	printf("--------------\n");
-// 	printf("|%32.22d|\n", -1);
-// 	ft_printf("|%32.22d|\n\n", -1);
-// printf("--------------\n");
-// 	printf("|%46.253s|\n", str);
-// 	ft_printf("|%46.253s|\n", str);
-//
-// printf("%o, %ho, %hho\n", -42, -42, -42);
-// ft_printf("%o, %ho, %hho\n", -42, -42, -42);
-// ft_printf("%o\n", LONG_MAX);
-// ft_printf("%O\n", LONG_MIN);
-// ft_printf("% o|%+o\n", 42, 42);
-// ft_printf("%#.o\n", 42);
-// ft_printf("% x|%+x\n", 42, 42);
-// ft_printf("% X|%+X\n", 42, 42);
-// ft_printf("%*d\n", 5, 42);
-// ft_printf("{%3*p}\n", 10, 0);
-// ft_printf("{%05.*d}\n", -15, 42);
-// ft_printf("{%*3d}\n", 5, 0);
-// ft_printf("%*.*d\n", 0, 3, 0);
-// printf("--------------\n");
-// printf("--------------\n");
-// printf("--------------\n");
+	i = 123131;
 
-
-// printf("%s", 5);			//le vrai SEG
-// ft_printf("%s", 5);			//SEG
-// printf("{%*s}", 5, 0);			//Le vrai seg pas
-
-
-
-printf("|%#x|\n", 0);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#x|\n", 0);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%#o|\n", 0);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#o|\n", 0);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%.7x|\n", 4242424);			//BUUUUUUGGGGG
-ft_printf("|%.7x|\n", 4242424);			//BUUUUUUGGGGG mais marche sur width
-printf("--------------\n");
-printf("|%#.7x|\n", 4242424);			//BUUUUUUGGGGG
-ft_printf("|%#.7x|\n", 4242424);			//BUUUUUUGGGGG
-printf("--------------\n");
-printf("|%#8.10x|\n", 424242);		//BUUUUUUGGGGG
-ft_printf("|%#8.10x|\n", 424242);		//BUUUUUUGGGGG
-printf("--------------\n");
-printf("|%++10d|\n", 424242);		//BUUUUGGGGGGGG
-ft_printf("|%++10d|\n", 424242);		//BUUUUGGGGGGGG
-printf("--------------\n");
-printf("|%05.2d|\n", 7);
-ft_printf("|%05.2d|\n", 7);
-printf("--------------\n");
-printf("|%10.08x|\n", 42);
-ft_printf("|%10.08x|\n", 42);
-printf("--------------\n");
-printf("--------------\n");
-printf("--------------\n");
-printf("--------------\n");
-printf("--------------\n");
-printf("|%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%#7.1o|\n", 00);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#7.1o|\n", 00);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%#10.8o|\n", 424242);			//BUUUUUUGGGGG
-ft_printf("|%#10.8o|\n", 424242);			//BUUUUUUGGGGG
-printf("--------------\n");
-printf("|%#1.x|\n", 0);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#1.x|\n", 0);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%1.s|\n", "243");
-ft_printf("|%1.s|\n", "243");
-printf("--------------\n");
-printf("|%#1.x|\n", 45);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#1.x|\n", 145);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%#1.x|\n", 10);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#1.x|\n", 10);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
-ft_printf("|%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
-printf("--------------\n");
-printf("|%1.d|\n", 243);
-ft_printf("|%1.d|\n", 243);
-printf("--------------\n");
-printf("|%#10.05x|\n", 42);
-ft_printf("|%#10.05x|\n", 42);
-
-// ft_printf("{%*s}\n", 5, 0);			//SEG
-// printf(NULL);		//le vrai seg
-// printf("|%.*s|\n", 0, "42");		//le vrai seg pas
-// ft_printf("|%.*s|\n", 0, "42");		//le vrai seg pas
-// ft_printf("{%.*s}", 42);		//SEGFAULLLLT
-
-
-
-
-
-	// printf("% c", 0);
-	// ft_printf("% c", 0);
-	// // printf("--------------\n");
-	// ft_printf("%#-08x\n", 42);
+	// printf("vrai : |%+.10d|\n", -64); ok
+	// ft_printf("mine : |%+.10d|\n", -64);ok
+	// printf("--------------\n");ok
+	// printf("vrai : @moulitest: |%.10d|\n", -42);ok
+	// ft_printf("mine : @moulitest: |%.10d|\n", -42);ok
 	// printf("--------------\n");
-	// printf("|%20s|\n", str);
-	// ft_printf("|%20s|\n", str);
+	// printf("vrai : |%#10.5X|\n", 42); ok
+	// ft_printf("mine : |%#10.5X|\n", 42);ok
+	// printf("vrai : |%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
+	// ft_printf("mine : |%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
-	// printf("|%-.20s|\n", str);
-	// ft_printf("|%-.20s|\n", str);
+	// printf("vrai : |%#7.1o|\n", 00);					//BUUUUUG mais marche avec x mdr
+	// ft_printf("mine : |%#7.1o|\n", 00);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
-	// printf("|%.20s|\n", str);
-	// ft_printf("|%.20s|\n", str);
-	// printf("-------la------\n");
-	// printf("|%-4.2s|\n", str);		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%-4.2s|\n", str);
-	// printf("-------1------\n");
-	// printf("|%2.2s|\n", "o");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%2.2s|\n", "o");
-	// printf("-------1------\n");
-	// printf("|%2.2s|\n", "o");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%2.2s|\n", "o");
-	// printf("-------2------\n");
-	// printf("|%-4.2s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%-4.2s|\n", "12345");
-	// printf("-------2------\n");
-	// printf("|%4.2s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%4.2s|\n", "12345");
-	// printf("-------2------\n");
-	// printf("|%-15.12s|\n", "1123456789101112");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%-15.12s|\n", "1123456789101112");
-	// printf("-------2------\n");
-	// printf("|%15.12s|\n", "1123456789101112");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%15.12s|\n", "1123456789101112");
-	// printf("-------2------\n");
-	// printf("|%14.12s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%14.12s|\n", "12345");
-	// printf("-------2------\n");
-	// printf("|%14.12s|\n", "");		//dans width+precis2 ft_ap_not_neg LLLLLLLEEEEEAAAAAKKKKKKSSS tmp_s
-	// ft_printf("|%14.12s|\n", "");
-	// printf("-------2------\n");
-	// printf("|%-14.12s|\n", "12345");		//dans width+precis2 ft_ap_not_neg
-	// ft_printf("|%-14.12s|\n", "12345");
-	// printf("-------2------\n");
-	// printf("|%-14.12s|\n", "");		//dans width+precis2 ft_ap_not_neg LLLLLLLEEEEEAAAAAKKKKKKSSS tmp_s
-	// ft_printf("|%-14.12s|\n", "");
-	// printf("-------2.5------\n");
-	// printf("|%5.12s| is a string\n", "12345");
-	// ft_printf("|%5.12s| is a string\n", "12345");
-	// printf("-------3------\n");
-	// printf("|%5.2s| is a string\n", "");
-	// ft_printf("|%5.2s| is a string\n", "");
-	// printf("-------4------\n");
-	// printf("|%5.2s| is a string\n", "1234");
-	// ft_printf("|%5.2s| is a string\n", "1234");
-	// printf("-------5------\n");
-	// printf("|%5.20s| is a string\n", "");
-	// ft_printf("|%5.20s| is a string\n", "");
-	// printf("-------6------\n");
-	// printf("|%4.23s| is a string\n", "this");
-	// ft_printf("|%4.23s| is a string\n", "this");
-	// printf("-------3------\n");
-	// printf("|%-5.2s| is a string\n", "");
-	// ft_printf("|%-5.2s| is a string\n", "");
-	// printf("-------4------\n");
-	// printf("|%-5.2s| is a string\n", "1234");
-	// ft_printf("|%-5.2s| is a string\n", "1234");
-	// printf("-------5------\n");
-	// printf("|%-5.0s| is a string\n", "");
-	// ft_printf("|%-5.0s| is a string\n", "");
-	// printf("-------6------\n");
-	// printf("-------6------\n");
-	// printf("-------6------\n");
-	// printf("|%-4.4s| is a string\n", "");
-	// ft_printf("|%-4.4s| is a string\n", "");
-	// printf("-------6------\n");
-	// printf("|%-1.2s| is a string\n", "this");
-	// ft_printf("|%-1.2s| is a string\n", "this");
-	// printf("-------6------\n");
-	// printf("|%-7.7s| is a string\n", "this");
-	// ft_printf("|%-7.7s| is a string\n", "this");
-	// printf("-------6------\n");
-	// printf("|%-7.s| is a string\n", strnull);
-	// ft_printf("|%-7.s| is a string\n", strnull);
+	// printf("vrai : |%#10.8o|\n", 424242);			//BUUUUUUGGGGG
+	// ft_printf("mine : |%#10.8o|\n", 424242);			//BUUUUUUGGGGG
 	// printf("--------------\n");
-	// printf("|%-4.23s| is a string\n", "this");
-	// ft_printf("|%-4.23s| is a string\n", "this");
-	// printf("-------2.5------\n");
-	// printf("|%-5.12s|\n", "12345678");
-	// ft_printf("|%-5.12s|\n", "12345678");
-	// printf("-------2.5------\n");
-	// printf("|%-.2s| is a string\n", "1");
-	// ft_printf("|%-1.2s| is a string\n", "1");
-	// printf("-------7------\n");
-	// printf("|%4.23s|    |%d|     |%40d|   |%d|   |%.d|  |%3.5d|\n", "o", -5, 123, 42, 2, 5);
-	// ft_printf("|%4.23s|    |%d|     |%40d|   |%d|   |%.d|  |%3.5d|\n", "o", -5, 123, 42, 2, 5);
-	// printf("|%40f|\n", 123.321);
-	// ft_printf("|%40f|\n", 123.321);
+	// printf("vrai : |%#1.x|\n", 0);					//BUUUUUG mais marche avec x mdr
+	// ft_printf("mine : |%#1.x|\n", 0);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
-	// printf("|%4f|\n", 123.321);
-	// ft_printf("|%4f|\n", 123.321);
+	// printf("vrai : |%1.s|\n", "243");
+	// ft_printf("mine : |%1.s|\n", "243");
 	// printf("--------------\n");
+	// printf("vrai : |%#1.x|\n", 45);					//BUUUUUG mais marche avec x mdr
+	// ft_printf("mine : |%#1.x|\n", 145);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
+	// printf("vrai : |%#1.x|\n", 10);					//BUUUUUG mais marche avec x mdr
+	// ft_printf("mine : |%#1.x|\n", 10);					//BUUUUUG mais marche avec x mdr0
 	// printf("--------------\n");
+	// printf("vrai : |%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr`
+	// ft_printf("mine : |%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
-	// //faut itoa les f en s pour les passer dans la fonction s de precision
-	// printf("|%.1f|\n", 123.321);
-	// // ft_printf("|%.1f|\n", 123.321);
+	// printf("vrai : |%1.d|\n", 243);
+	// ft_printf("mine : |%1.d|\n", 243);
 	// printf("--------------\n");
-	// printf("|%.114f|\n", 123.321);
-	// ft_printf("|%.114f|\n", 123.321);
-	// printf("--------------\n");
-	// printf("|%4.f|\n", 123.321);
-	// ft_printf("|%4.f|\n", 123.321);
-	//
-	//
-	// 	printf("%lf\n", -132.55555724);
-	// 	ft_printf("%lf\n", -132.55555724);		//avec les flags aussi ?
 	// 	printf("--------------\n");
-	// 	printf("%f\n", 132.55555724);
-	// 	ft_printf("%f\n", 132.55555724);
-	// 	printf("--------------\n");
-	// 	printf("%lf\n", 243.552017);
-	// 	ft_printf("%lf\n", 243.552017);
-	// 	printf("--------------\n");
-	// 	printf("%Lf\n", i);
-	// 	// ft_printf("%Lf\n", i);
-	// 	printf("--------------\n");
-	// 	printf("%f\n", -10.011012365432);
-	// 	ft_printf("%f\n", -10.011012365432);			//fail il oublie le 0
-	//
+	printf("vrai : |%-+10d|\n", 42);
+	ft_printf("mine : |%-+10d|\n", 42);
+
+
+//----------FLOATS----------------------
+		// printf("vrai : %.10Lf\n", (long double)243.5);
+		// ft_printf("mine : %.10Lf\n", (long double)243.5);
+		// printf("--------------\n");
+		// printf("vrai : %.4Lf\n", (long double)243.5);
+		// ft_printf("mine : %.4Lf\n", (long double)243.5);
+		// printf("--------------\n");
+		// printf("vrai : %lf\n", 243.5);
+		// ft_printf("mine : %lf\n", 243.5);
+		// printf("--------------\n");
+		// printf("vrai : %f\n", 3.55);
+		// ft_printf("Mine : %f\n", 3.55);
+		// printf("--------------\n");
+		// printf("vrai : |%5f|\n", 9877893.5123109);
+		// ft_printf("Mine : |%5f|\n", 9877893.5123109);
+		// printf("--------------\n");
+		// ft_printf("Mine : |%5Lf |\n", (long double)9877893.5123109);
+		// printf("vrai : |%5Lf|\n", (long double)9877893.5123109);
+		// printf("--------------\n");
+		// printf("vrai : |%.5f|\n", 3.5);
+		// ft_printf("Mine : |%.5f|\n", 3.5);
+		// printf("--------------\n");
+		// printf("vrai : %Lf\n", (long double)243.5);
+		// ft_printf("Mine : %Lf\n", (long double)243.5);
+		// printf("--------------\n");
+		// printf("vrai : %f\n", -10.011012365432);
+		// ft_printf("mine : %f\n", -10.011012365432);
+		// printf("--------------\n");
+		// printf("vrai : |%4Lf|\n", (long double)243.59);
+		// ft_printf("vrai : |%4Lf|\n", (long double)243.59);
+		// printf("--------------\n");
+		// printf("vrai : |%1f|\n", 243.59);
+		// ft_printf("vrai : |%1f|\n", 243.59);
+		// printf("--------------\n");
+		// printf("vrai : |%10.1f|\n", 243.59);
+		// ft_printf("mine : |%10.1f|\n", 243.59);
+		// printf("--------------\n");
+		//----------FLOATS----------------------
+
 	// 	printf("--------------\n");
 	// 	printf("\\n\n");
 	// 	ft_printf("\\n\n");
@@ -385,7 +184,7 @@ ft_printf("|%#10.05x|\n", 42);
 	//
 	//
 	//
-	// //////////////////// DEBUT DES TESTS
+	// ////////////////////// DEBUT DES TESTS
 	// printf("|%s|\n", "this is a string");
 	// ft_printf("|%s|\n", "this is a string");
 	// printf("--------------\n");
@@ -404,15 +203,15 @@ ft_printf("|%#10.05x|\n", 42);
 	// printf("|%-2s| is a string\n", "this");
 	// ft_printf("|%-2s| is a string\n", "this");
 	// printf("--------------\n");
-	// printf("|%-7.7s| is a string\n", "this");
-	// ft_printf("|%-7.7s| is a string\n", "this");
-	// printf("--------10------\n");
 	// printf("|%-.2s| is a string\n", "this");
 	// ft_printf("|%-.2s| is a string\n", "this");		//JUMP untialiazed value
 	// printf("--------------\n");
 	// printf("|%-5.2s| is a string\n", "this");
 	// ft_printf("|%-5.2s| is a string\n", "this");
 	// printf("--------------\n");
+	// printf("|%-7.7s| is a string\n", "this");
+	// ft_printf("|%-7.7s| is a string\n", "this");
+	// printf("--------10------\n");
 	// printf("|%-5.2s| is a string\n", "");
 	// ft_printf("|%-5.2s| is a string\n", "");
 	// printf("--------------\n");
@@ -430,6 +229,9 @@ ft_printf("|%#10.05x|\n", 42);
 	// printf("--------------\n");
 	// printf("|%.8x|\n", 42);
 	// ft_printf("|%.8x|\n", 42);
+	// printf("--------------\n");
+	// printf("|%-5.2s| is a string\n", "");
+	// ft_printf("|%-5.2s| is a string\n", "");
 	// printf("--------------\n");
 	// printf("|%+d|\n", -42);
 	// ft_printf("|%+d|\n", -42);
@@ -503,6 +305,9 @@ ft_printf("|%#10.05x|\n", 42);
 	// printf("|%00.05d| \n", 7);
 	// ft_printf("|%00.05d| \n", 7);
 	// printf("--------------\n");
+	// printf("|%05.2d|\n", 7);
+	// ft_printf("|%05.2d|\n", 7);
+	// printf("--------------\n");
 	// printf("|%5%|\n");
 	// ft_printf("|%5%|\n");
 	// printf("--------------\n");
@@ -575,12 +380,6 @@ ft_printf("|%#10.05x|\n", 42);
 	// printf("|%5.2s| is a string\n", "");
 	// ft_printf("|%5.2s| is a string\n", "");
 	// printf("--------------\n");
-	// printf("|%20p|\n", s);				//avec char *s = NULL;
-	// ft_printf("|%20p|\n", s);				//avec char *s = NULL;
-	// printf("--------------\n");
-	// printf("|%-20p|\n", s);				//avec char *s = NULL;
-	// ft_printf("|%-20p|\n", s);				//avec char *s = NULL;
-	// printf("--------------\n");
 	// printf("--------------\n");
 	// printf("--------------\n");
 	// ft_printf("%jd\\n\n", 9223372036854775807);
@@ -591,8 +390,7 @@ ft_printf("|%#10.05x|\n", 42);
 	// ft_printf("%C\\n\n", 15000);
 	// ft_printf("%-05d\n", -42);
 	// ft_printf("%p\\n\n", &ft_printf);
-	free(s);
-	free(str);
+
 
 	// ft_printf("%#-08x", 42);
 	// ft_printf("%-05o", 2500);
