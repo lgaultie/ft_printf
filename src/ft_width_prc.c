@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 21:04:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:31:51 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,6 @@ char			*ft_preci_width(char *flag, t_data *data)
 	j = 0;
 	if (!(final = ft_preci_width2(flag, data, i, j)))
 		return (NULL);
+	// printf("final = |%s|\n", final);
 	return (final);
 }

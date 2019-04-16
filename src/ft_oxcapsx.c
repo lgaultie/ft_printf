@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 14:38:41 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:32:49 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 static char		*ft_for_c_o(char *final, t_data *d)
 {
-	if ((d->f & F_SHARP) && ((d->f & F_PRECIS) || d->f & F_WIDTH))
+	if (((d->f & F_SHARP) && ((d->f & F_PRECIS) || d->f & F_WIDTH)) ||
+		(d->f & F_SHARP && !(d->f & F_PRECIS) && !(d->f & F_WIDTH)))
 	{
+		// ft_putstr("case 1 dans oxcapsx \n");
 		free(final);
 		if (!(final = (ft_strdup("0"))))
 			return (NULL);
+		// printf("final = |%s|\n", final);
 	}
 	else if ((d->f & F_SHARP || d->f & F_PRECIS) && !(d->f & F_WIDTH))
 	{
+		// ft_putstr("case 2 dans oxcapsx\n");
 		free(final);
 		if (!(final = (ft_strdup(""))))
 			return (NULL);
 	}
 	else if ((d->f & F_SHARP) || (d->f & F_W_P))
 	{
+		// ft_putstr("case 3 dans oxcapsx\n");
 		free(final);
 		if (!(final = (ft_strdup(" "))))
 			return (NULL);

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 18:50:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:20:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ char			*ft_width(char *flags, t_data *data)
 	{
 		if (flags[i] == '#' || flags[i] == '+')
 			i++;
-		if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '-')
+		if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '-' \
+		|| flags[i] == '+')
 			conv[j] = flags[i];
 		i++;
 		j++;
@@ -43,6 +44,7 @@ char			*ft_width(char *flags, t_data *data)
 	data->f &= ~F_WIDTH;
 	data->index_0 = (data->f & F_C_0) ? data->index_0 += i - 1 : 0;
 	i = (i < 0) ? -i : i;
+	// printf("width = %d\n", i);
 	return (ft_width2(i, data));
 }
 
