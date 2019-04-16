@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 20:59:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:35:21 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,32 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 
 	if (!(ret_flag = ft_which_flag(f, f[i], d)))
 		return (NULL);
-		ft_putstr("dans flags2\n");
-	//if (d->f & F_SHARP)
+		// ft_putstr("ouiii\n");
+		// ft_putstr("dans flags2\n");
+	// if (d->f & F_SHARP)
 	// printf("ret_flag = |%s|\n", ret_flag);
 	if (d->f & F_SHARP && d->f & F_ZERO && !(d->f & F_PRECIS) \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_ret_flag_sharp(ret_flag, f, i);
 	else if (d->f & F_SHARP && d->f & F_ZERO && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
+	{
+		// ft_putstr("premier ox\n");
 		ret_flag = ft_sharp(i, f, ret_flag);
+	}
 	else if (d->f & F_SHARP && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
+	{
+		// ft_putstr("deuxieme ox\n");
 		ret_flag = ft_sharp(i, f, ret_flag);
-	else if (d->f & F_SHARP && (d->f & F_W_P) && !(d->f & F_WIDTH) \
-	&& (f[i] == 'x' || f[i] == 'X'))
+	}
+	else if (d->f & F_SHARP && (d->f & F_W_P) \
+	&& (f[i] == 'x' || f[i] == 'X') && !(d->f & F_C_0))
+	{
+		// ft_putstr("troisieme ox\n");
 		ret_flag = ft_sharp(i, f, ret_flag);
-	// printf("ret_flag = %s\n", ret_flag);
+	}
+		// printf("flags2.c, ret_flag = %s\n", ret_flag);
 	return (ret_flag);
 }
 

@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/15 21:30:16 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:35:33 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ int main(int argc, char **argv)
 	(void)argv;
 	i = 1231.234234231;
 	char *str = ft_strdup("o");
-	// char *strnull = NULL;
+	char *strnull = NULL;
 	char *s = ft_strdup("ouiiii");
+	// printf("|%55.0s|\n", strnull);
+	// ft_printf("|%55.0s|\n", strnull);
 	// printf("%lf\n", 243.5);
 	// ft_printf("%lf\n", 243.5);
 // 	printf("%13.25f\n", 243.5);
@@ -104,14 +106,86 @@ int main(int argc, char **argv)
 // printf("--------------\n");
 // printf("--------------\n");
 // printf("--------------\n");
-//// ft_printf("%s", 5);			//SEG
-//// ft_printf("{%*s}", 5, 0);			//SEG
-//// ft_printf("{%.*s}", 0, "42");		//SEGFAULLLLT
-// 	// printf("% c", 0);
-// 	// ft_printf("% c", 0);
-// 	// printf("--------------\n");
-// 	// printf("%#-08x\n", 42);
-// 	// ft_printf("%#-08x\n", 42);
+
+
+// printf("%s", 5);			//le vrai SEG
+// ft_printf("%s", 5);			//SEG
+// printf("{%*s}", 5, 0);			//Le vrai seg pas
+
+
+
+printf("|%#x|\n", 0);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#x|\n", 0);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%#o|\n", 0);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#o|\n", 0);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%.7x|\n", 4242424);			//BUUUUUUGGGGG
+ft_printf("|%.7x|\n", 4242424);			//BUUUUUUGGGGG mais marche sur width
+printf("--------------\n");
+printf("|%#.7x|\n", 4242424);			//BUUUUUUGGGGG
+ft_printf("|%#.7x|\n", 4242424);			//BUUUUUUGGGGG
+printf("--------------\n");
+printf("|%#8.10x|\n", 424242);		//BUUUUUUGGGGG
+ft_printf("|%#8.10x|\n", 424242);		//BUUUUUUGGGGG
+printf("--------------\n");
+printf("|%++10d|\n", 424242);		//BUUUUGGGGGGGG
+ft_printf("|%++10d|\n", 424242);		//BUUUUGGGGGGGG
+printf("--------------\n");
+printf("|%05.2d|\n", 7);
+ft_printf("|%05.2d|\n", 7);
+printf("--------------\n");
+printf("|%10.08x|\n", 42);
+ft_printf("|%10.08x|\n", 42);
+printf("--------------\n");
+printf("--------------\n");
+printf("--------------\n");
+printf("--------------\n");
+printf("--------------\n");
+printf("|%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%#7.1o|\n", 00);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#7.1o|\n", 00);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%#10.8o|\n", 424242);			//BUUUUUUGGGGG
+ft_printf("|%#10.8o|\n", 424242);			//BUUUUUUGGGGG
+printf("--------------\n");
+printf("|%#1.x|\n", 0);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#1.x|\n", 0);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%1.s|\n", "243");
+ft_printf("|%1.s|\n", "243");
+printf("--------------\n");
+printf("|%#1.x|\n", 45);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#1.x|\n", 145);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%#1.x|\n", 10);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#1.x|\n", 10);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
+ft_printf("|%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
+printf("--------------\n");
+printf("|%1.d|\n", 243);
+ft_printf("|%1.d|\n", 243);
+printf("--------------\n");
+printf("|%#10.05x|\n", 42);
+ft_printf("|%#10.05x|\n", 42);
+
+// ft_printf("{%*s}\n", 5, 0);			//SEG
+// printf(NULL);		//le vrai seg
+// printf("|%.*s|\n", 0, "42");		//le vrai seg pas
+// ft_printf("|%.*s|\n", 0, "42");		//le vrai seg pas
+// ft_printf("{%.*s}", 42);		//SEGFAULLLLT
+
+
+
+
+
+	// printf("% c", 0);
+	// ft_printf("% c", 0);
+	// // printf("--------------\n");
+	// ft_printf("%#-08x\n", 42);
 	// printf("--------------\n");
 	// printf("|%20s|\n", str);
 	// ft_printf("|%20s|\n", str);
@@ -429,9 +503,6 @@ int main(int argc, char **argv)
 	// printf("|%00.05d| \n", 7);
 	// ft_printf("|%00.05d| \n", 7);
 	// printf("--------------\n");
-	// printf("|%05.2d|\n", 7);
-	// ft_printf("|%05.2d|\n", 7);
-	// printf("--------------\n");
 	// printf("|%5%|\n");
 	// ft_printf("|%5%|\n");
 	// printf("--------------\n");
@@ -511,7 +582,7 @@ int main(int argc, char **argv)
 	// ft_printf("|%-20p|\n", s);				//avec char *s = NULL;
 	// printf("--------------\n");
 	// printf("--------------\n");
-// 	printf("--------------\n");
+	// printf("--------------\n");
 	// ft_printf("%jd\\n\n", 9223372036854775807);
 	// ft_printf("%zd\\n\n", 4294967295);
 	// ft_printf("%\\n\n");

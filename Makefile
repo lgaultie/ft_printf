@@ -6,13 +6,13 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/15 18:46:49 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/16 12:23:08 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = clang
-CFLAGS += -Wall -Werror -Wextra -g
+CFLAGS +=
 OBJDIR = obj
 SRCDIR = src
 LIBDIR	= libft
@@ -45,6 +45,7 @@ SRCS =	main.c					\
 		ft_strnew.c				\
 		ft_strsub.c				\
 		ft_tolower.c			\
+		ft_strchr.c				\
 		ft_atoi.c				\
 		ft_bzero.c				\
 		ft_memset.c				\
