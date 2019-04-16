@@ -6,11 +6,26 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 21:54:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/16 17:37:14 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		ft_float_width(t_data *d, t_float *ft, char *flag, long double ret)
+{
+	int max;
+
+	(void)ft;
+	if (d->f & F_PRECIS)
+		max = ft_accuracy_size(flag, d);
+	else if (d->f & F_W_P)
+		max = ft_float_w_a(d, ft, flag);
+	else
+		max = 6;
+	ft->deci_p = ret;
+	return (max);
+}
 
 char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 {
@@ -22,7 +37,7 @@ char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 		if (!(ft->s_deci_p = ft_strjoin(tmp, ft->str_deci_ar_cp)))
 		{
 			ft_free(ft, 0, 2);
-				return (NULL);
+			return (NULL);
 		}
 		free(tmp);
 		return (ft->s_deci_p);
@@ -34,15 +49,10 @@ char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 			return (NULL);
 		free(tmp);
 		return (NULL);
-
 	}
 	return (NULL);
 }
 
-// char	*ft_conv_f2_2(char *before, char *s_a, long long after, char *str_ar_cp)
-// char	*ft_conv_f2_2(t_float *ft)
-// {
-// }
 char	*ft_conv_f2_1(t_float *ft, int mode)
 {
 	if (mode == 1)
@@ -52,15 +62,17 @@ char	*ft_conv_f2_1(t_float *ft, int mode)
 			free(ft->int_p);
 			return (NULL);
 		}
-	return (ft->s_deci_p);
+		ft->deci_p = 0;
+		return (ft->s_deci_p);
 	}
 	if (mode == 2)
 	{
-		if (!(ft->str_deci_ar_cp = ft_itoa(ft->deci_p)))		//leaks
+		if (!(ft->str_deci_ar_cp = ft_itoa(ft->deci_p)))
 		{
 			ft_free(ft, 0, 1);
 			return (NULL);
 		}
+		ft->deci_p = 0;
 		return (ft->str_deci_ar_cp);
 	}
 	return (NULL);
@@ -70,15 +82,11 @@ char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
 {
 	long double		ret;
 	int				j;
-	int 			max;
+	int				max;
 
-	if (d->f & F_PRECIS || d->f & F_W_P)
-		max = ft_accuracy_size(flag, d);
-	else
-		max = 6;
 	j = 0;
 	ret = ft->ap - (long long)ft->ap;
-	ft->deci_p = ret;
+	max = ft_float_width(d, ft, flag, ret);
 	while ((ft->ap - (long long)ft->ap) > 0.0 && j < max)
 	{
 		ret = ret * 10;
@@ -91,7 +99,6 @@ char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
 				free(ft->str_deci_ar_cp);
 			ft->str_deci_ar_cp = ft_conv_f2_1(ft, 2);
 		}
-		ft->deci_p = 0;
 		ret = (ret - (long long)ret);
 		if (j++ != 0)
 			ft->s_deci_p = ft_conv_f2_2(ft, d, flag, 1);
@@ -103,7 +110,7 @@ char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
 char	*ft_conv_f(t_data *d, char *flag)
 {
 	t_float	*ft;
-	char 	*final;
+	char	*final;
 
 	if (((d->f & F_PRECIS || d->f & F_W_P) && (ft_strlen(flag) == 1)))
 		return (ft_strdup(""));
@@ -115,6 +122,7 @@ char	*ft_conv_f(t_data *d, char *flag)
 		ft->ap = (va_arg(d->ap, long double));
 	else
 		ft->ap = (va_arg(d->ap, double));
+	d->ap_sz = ft_intlen((int)ft->ap + 6);
 	if (!(ft->int_p = ft_itoa(ft->ap)))
 		return (NULL);
 	final = ft->int_p;
@@ -125,6 +133,5 @@ char	*ft_conv_f(t_data *d, char *flag)
 		ft->ap = -ft->ap;
 	if (!(final = ft_conv_f2(ft, d, flag)))
 		return (NULL);
-	free(ft);
 	return (final);
 }

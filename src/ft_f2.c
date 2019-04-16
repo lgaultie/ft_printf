@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/15 21:36:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/16 17:43:48 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ int		ft_accuracy_size(char *flags, t_data *data)
 	return (i);
 }
 
-
-char *ft_float_accuracy(t_data *d, char *flag, t_float *ft)
+char	*ft_float_accuracy(t_data *d, char *flag, t_float *ft)
 {
-	char *final;
-	char *tmp;
-	int diff;
-	int	i;
-	int len;
+	char	*final;
+	char	*tmp;
+	int		diff;
+	int		i;
+	int		len;
 
 	len = ft_strlen(ft->s_deci_p);
 	i = ft_accuracy_size(flag, d);
@@ -62,12 +61,11 @@ char *ft_float_accuracy(t_data *d, char *flag, t_float *ft)
 	tmp = final;
 	if (!(final = ft_strjoin(ft->s_deci_p, tmp)))
 		return (NULL);
-	free (tmp);
+	free(tmp);
 	return (final);
-
 }
 
-void ft_free(t_float *ft, int j, int m)
+void	ft_free(t_float *ft, int j, int m)
 {
 	if (m == 1)
 	{
@@ -77,22 +75,23 @@ void ft_free(t_float *ft, int j, int m)
 	if (m == 2)
 	{
 		free(ft->int_p);
-		free(ft->s_deci_p); // to not do if j == 0
+		free(ft->s_deci_p);
 		free(ft->str_deci_ar_cp);
 	}
 	free(ft->int_p);
 	if (j > 0)
-	free(ft->s_deci_p);
+		free(ft->s_deci_p);
 	if (j > 1)
-	free(ft->str_deci_ar_cp);
+		free(ft->str_deci_ar_cp);
+	free(ft);
 }
 
 char	*ft_missing_zeros(int len, t_float *ft)
 {
-	char *final;
-	char *tmp;
-	int diff;
-	int	i;
+	char	*final;
+	char	*tmp;
+	int		diff;
+	int		i;
 
 	diff = 6 - len;
 	i = 0;
@@ -103,33 +102,35 @@ char	*ft_missing_zeros(int len, t_float *ft)
 	tmp = final;
 	if (!(final = ft_strjoin(ft->s_deci_p, tmp)))
 		return (NULL);
-	free (tmp);
+	free(tmp);
 	return (final);
 }
 
 char	*ft_ffinal(t_float *ft, t_data *data, char *flag, int j)
 {
-	char *final;
-	char *tmp;
-	int	len;
+	char	*final;
+	char	*tmp;
+	int		len;
 
 	if (data->f & F_PRECIS)
 		ft_conv_f2_2(ft, data, flag, 2);
 	len = ft_strlen(ft->s_deci_p);
-	if (len < 6 && !(data->f & F_PRECIS))
+	if (len < 6 && !(data->f & F_PRECIS) && !(data->f & F_W_P))
 	{
 		tmp = ft->s_deci_p;
 		if (!(ft->s_deci_p = ft_missing_zeros(len, ft)))
 			return (NULL);
-		free (tmp);
+		free(tmp);
 	}
 	if (!(final = ft_strjoin(ft->int_p, ft->s_deci_p)))
 	{
 		ft_free(ft, 0, 2);
 		return (NULL);
 	}
+	if (data->f & F_W_P)
+		if (!(final = ft_float_w_a_width(final, ft, data)))
+			return (NULL);
 	ft_free(ft, j, 0);
-	data->ap_sz = ft_strlen(final);
 	data->conv_sz = ft_strlen(final);
 	return (final);
 }

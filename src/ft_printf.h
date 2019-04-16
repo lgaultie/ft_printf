@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/15 21:08:52 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/16 15:46:21 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef	struct	s_data
 
 typedef	struct	s_float
 {
+	int			width;
 	long double ap;
 	long long	deci_p;
 	char		*int_p;
@@ -122,6 +123,7 @@ void			ft_disable_flag(t_data *data);
 char			*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode);
 char			*ft_s(char *final, int before, int after, t_data *data);
 int				ft_accuracy_size(char *flags, t_data *data);
-
+int				ft_float_w_a(t_data *d, t_float *ft, char *flag);
+char			*ft_float_w_a_width(char *final, t_float *ft, t_data *d);
 
 #endif
