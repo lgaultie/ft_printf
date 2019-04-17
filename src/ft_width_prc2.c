@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:53:20 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/17 18:46:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 			final[i++] = '+';
 		while (i < before - data->conv_sz)
 			final[i++] = ' ';
-		if (after == 0)
+		// if (after == 0)
+		if (data->f & F_AP_0 && after == 0)
 		{
 			data->f |= F0;
 			final[i++] = ' ';
