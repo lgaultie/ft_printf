@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 21:50:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/17 12:29:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,24 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 {
 	char	*ret_flag2;
 	char	*final;
-	char	*tmp;
 
 	if (data->f & AP_NEG && !(data->f & F_UNSIGNED) \
 	&& (flag[i] != 's' || flag[i] != 'c'))
 	{
-		tmp = ret_conv;
-		if (!(ret_conv = ft_strjoin("-", tmp)))
+		final = ret_conv;
+		if (!(ret_conv = ft_strjoin("-", final)))
 			return (NULL);
-		free(tmp);
+		free(final);
 	}
 	if (!(ret_flag2 = ft_width_minus(flag, data)))
 		return (NULL);
+	if (data->f & F_PLUS && data->f & F_PLUS)
+	{
+		final = ret_conv;
+		if (!(ret_conv = ft_strjoin("+", final)))
+			return (NULL);
+		free(final);
+	}
 	if (!(final = ft_strjoin(ret_conv, ret_flag2)))
 		return (NULL);
 	free(ret_conv);

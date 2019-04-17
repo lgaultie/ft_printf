@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 14:05:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:48:12 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,11 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
 	&& !(d->f & F_PRECIS) && !(d->f & F_W_P) && !(d->f & F_PLUS))
 		return (ft_for_minus(ret_conv, f, i, d));
+	//has been added to debug ft_printf("mine : |%-+10d|\n", 42);
+	else if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
+	&& !(d->f & F_PRECIS) && !(d->f & F_W_P) && (d->f & F_PLUS))
+		return (ft_for_minus(ret_conv, f, i, d));
+	//-------------------------------
 	if (d->f & F_PERCENT)
 		return (ft_conv_percent(i, f, d));
 	if (!(ret_flag = ft_special_cases(i, f, d)))

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 17:31:51 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:36:18 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ static char		*ft_preci_width2(char *flag, t_data *data, int i, int j)
 	i++;
 	while (flag[i + 1] != '\0')
 		after[j++] = flag[i++];
+	if (ft_strlen(flag) > 2 && j == 0)
+		after[j++] = '0';
 	after[j] = '\0';
 	i = ft_atoi(before);
 	j = ft_atoi(after);
