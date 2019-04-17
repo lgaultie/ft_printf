@@ -6,11 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/04/16 12:13:42 by amamy            ###   ########.fr       */
-=======
-/*   Updated: 2019/04/16 17:39:03 by lgaultie         ###   ########.fr       */
->>>>>>> 756d2fb51622d37066c9e369a8ca7bd5bac3176f
+/*   Updated: 2019/04/16 19:28:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +16,7 @@ static char		*ft_sharp_precent(char *flag, char cv, t_data *d)
 {
 	char	*final;
 
+	(void)cv;
 	if (d->f & F_W_P && !(d->f & F_PERCENT))
 	{
 		// ft_putstr("ici dans which\n");

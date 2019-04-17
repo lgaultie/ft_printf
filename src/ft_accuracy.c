@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:11:53 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:31:32 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
 		return (NULL);
 	if (accuracy > data->conv_sz)
-		if (!(ret = ft_accuracy_sup(accuracy, ret, data)))
-			return (NULL);
+		ret = ft_accuracy_sup(accuracy, ret, data);
 	if (accuracy <= data->conv_sz)
 	{
+		free(ret);
 		if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
 			return (ft_strdup("-"));
 		else if (data->f & F_PLUS && (data->f & AP_NEG))

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:45:15 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:28:52 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 		return (ft_conv_percent(i, f, d));
 	if (!(ret_flag = ft_special_cases(i, f, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 4));
-	// printf("ret_flag = |%s|  ret_conv = |%s| f[i] = %c\n",ret_flag, ret_conv, f[i]);
 	if ((d->f & F0) || ((d->f & F_PRECIS) && (f[i] == 's' || f[i] == 'c')))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 1));
 	if (f[i] == '%')
