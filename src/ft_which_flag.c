@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 14:05:44 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:06:52 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static char		*ft_sharp_precent(char *flag, t_data *d)
 {
 	char	*final;
 
-	(void)cv;
 	if (d->f & F_W_P && !(d->f & F_PERCENT))
 	{
 		if (flag[ft_strlen(flag) - 1] == 'X')
