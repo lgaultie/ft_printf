@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:28:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:05:40 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,14 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	char	*final;
 	char	*ret_flag;
 
-	// if (d->f & F_W_P)
-	// 	ft_putstr("F_W_P\n");
-	// if (d->f & F_PRECIS)
-	// 	ft_putstr("F_PRECIS\n");
-	// if (d->f & F_WIDTH)
-	// 	ft_putstr("F_WIDTH\n");
-
 	if (f[i] != '%' && !(d->f & F_PERCENT))
 	{
 		if (!(ret_conv = ft_only_conv(&f[i], d)))
 			return (NULL);
+			// printf("ret_conv = |%s|\n", ret_conv);
 		if ((ret_conv[0] == '\0' && d->f & F_SHARP && !(d->f & F_WIDTH)) \
 		|| (d->f & F_SPACE && d->f & AP_NEG))
 			return (ret_conv);
-			// printf("ret_conv = |%s|\n", ret_conv);
 	}
 	if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
 	&& !(d->f & F_PRECIS) && !(d->f & F_W_P) && !(d->f & F_PLUS))
@@ -127,6 +120,7 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 		return (ft_conv_percent(i, f, d));
 	if (!(ret_flag = ft_special_cases(i, f, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 4));
+	// printf("ret_flag = |%s|\n", ret_flag);
 	if ((d->f & F0) || ((d->f & F_PRECIS) && (f[i] == 's' || f[i] == 'c')))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 1));
 	if (f[i] == '%')

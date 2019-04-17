@@ -6,20 +6,21 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:28:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:05:44 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_sharp_precent(char *flag, char cv, t_data *d)
+static char		*ft_sharp_precent(char *flag, t_data *d)
 {
 	char	*final;
 
 	(void)cv;
 	if (d->f & F_W_P && !(d->f & F_PERCENT))
 	{
-		// ft_putstr("ici dans which\n");
+		if (flag[ft_strlen(flag) - 1] == 'X')
+			d->f |= F_BIG_X;
 		if (!(final = ft_preci_width(flag, d)))
 			return (NULL);
 	}
@@ -125,7 +126,7 @@ char			*ft_which_flag(char *flag, char cv, t_data *d)
 	if (d->f & F_SHARP || ((d->f & F_PERCENT) && (d->f & F_WIDTH \
 	|| d->f & F_PRECIS)))
 	{
-		if (!(final = ft_sharp_precent(flag, cv, d)))
+		if (!(final = ft_sharp_precent(flag, d)))
 			return (NULL);
 	}
 	else if ((d->f & F_PRECIS || d->f & F_WIDTH) && cv == 's' \
@@ -138,7 +139,6 @@ char			*ft_which_flag(char *flag, char cv, t_data *d)
 	{
 		if (!(final = ft_precision_d(flag, d)))
 			return (NULL);
-		// printf("final = |%s|\n", final);
 	}
 	else
 		final = ft_which_flag2(flag, cv, d);
