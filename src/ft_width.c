@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 12:21:19 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/17 14:47:21 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ char			*ft_width(char *flags, t_data *data)
 	i = ft_atoi(conv);
 	free(conv);
 	data->f &= ~F_WIDTH;
+	// printf("flags = |%s|\n", flags);
+	// if (ft_strchr(flags, '+'))
+	// 	data->f &= ~F_MINUS;
 	data->index_0 = (data->f & F_C_0) ? data->index_0 += i - 1 : 0;
 	i = (i < 0) ? -i : i;
 	// printf("width = %d\n", i);
