@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/16 22:07:30 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/17 14:35:48 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ int main(int argc, char **argv)
 	(void)argv;
 	i = 123131;
 
-	// printf("vrai : |%+.10d|\n", -64); ok
-	// ft_printf("mine : |%+.10d|\n", -64);ok
-	// printf("--------------\n");ok
-	// printf("vrai : @moulitest: |%.10d|\n", -42);ok
-	// ft_printf("mine : @moulitest: |%.10d|\n", -42);ok
+	// printf("vrai : |%-+10d|\n", 42);					//ok
+	// ft_printf("mine : |%-+10d|\n", 42);					//ok
+	// printf("--------------\n");							//ok
+	// printf("vrai : |%+.10d|\n", -64);					//ok
+	// ft_printf("mine : |%+.10d|\n", -64);				//ok
+	// printf("--------------\n");							//ok
+	// printf("vrai : @moulitest: |%.10d|\n", -42);		//ok
+	// ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
 	// printf("--------------\n");
-	// printf("vrai : |%#10.5X|\n", 42); ok
-	// ft_printf("mine : |%#10.5X|\n", 42);ok
+	// printf("vrai : |%#10.5X|\n", 42); 					//ok
+	// ft_printf("mine : |%#10.5X|\n", 42);				//ok
 	// printf("vrai : |%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
 	// ft_printf("mine : |%#7.2o|\n", 0);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
@@ -65,13 +68,8 @@ int main(int argc, char **argv)
 	// printf("vrai : |%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr`
 	// ft_printf("mine : |%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
 	// printf("--------------\n");
-	// printf("vrai : |%1.d|\n", 243);
-	// ft_printf("mine : |%1.d|\n", 243);
-	// printf("--------------\n");
-	// 	printf("--------------\n");
-	printf("vrai : |%-+10d|\n", 42);
-	ft_printf("mine : |%-+10d|\n", 42);
-
+	printf("vrai : |%1.d|\n", 243);
+	ft_printf("mine : |%1.d|\n", 243);
 
 //----------FLOATS----------------------
 		// printf("vrai : %.10Lf\n", (long double)243.5);
