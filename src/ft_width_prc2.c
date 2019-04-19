@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:29:34 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 16:30:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	return (final);
 }
 
-static char		*ft_ap_neg(int before, int after, char *final, t_data *d)
+static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 {
 	int		i;
 	int		surplus;
