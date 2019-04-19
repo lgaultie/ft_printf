@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:03:11 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:00:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:00:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,11 @@ char	*ft_conv_u(t_data *data)
 	data->conv_sz = ft_strlen(final);
 	if (data->f & F_C_0)
 		data->f &= ~F_C_0;
+	if (data->f & F_AP_0 && (data->f & F_PRECIS || data->f & F_W_P))
+	{
+		free(final);
+		if (!(final = ft_strdup("")))
+			return (NULL);
+	}
 	return (final);
 }
