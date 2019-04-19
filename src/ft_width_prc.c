@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 14:59:07 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:01:47 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char		*ft_preci_width3(int before, int after, t_data *data)
 		return (NULL);
 	if (data->f & F_MINUS)
 		final = ft_flag_minus(before, after, final, data);
-	else if (before == after || before < after)
+	else if ((before == after || before < after) && !(data->f & F_SHARP))
 	{
 		if (data->f & F_S)
 			return (ft_s(final, before, after, data));
