@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 16:26:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 16:29:04 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,20 @@ int main(int argc, char **argv)
 	ft_printf("mine : |%1.d|\n", 243);					//ok
 	printf("--------------\n");
 	printf("vrai : |%-+10d|\n", 42);						//ok
+	ft_printf("mine : |%-+10d|\n", 42);					//ok
+	printf("--------------\n");
+	printf("vrai : |%+.10d|\n", -64);					//ok
+	ft_printf("mine : |%+.10d|\n", -64);					//ok
+	printf("--------------\n");
+	printf("vrai : @moulitest: |%.10d|\n", -42);			//ok
+	ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
+	printf("--------------\n");
+	printf("vrai : |%#10.5X|\n", 42); 					//ok
+	ft_printf("mine : |%#10.5X|\n", 42);					//ok
+	printf("--------------\n");
+
+
+	printf("vrai : |%-+10d|\n", 42);					//ok
 	ft_printf("mine : |%-+10d|\n", 42);					//ok
 	printf("--------------\n");
 	printf("vrai : |%+.10d|\n", -64);					//ok

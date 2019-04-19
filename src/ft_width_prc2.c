@@ -6,9 +6,10 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:02:29 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:24:33 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -143,7 +144,7 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	return (final);
 }
 
-static char		*ft_ap_neg(int before, int after, char *final, t_data *d)
+static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 {
 	int		i;
 	int		surplus;
@@ -170,6 +171,7 @@ static char		*ft_ap_neg(int before, int after, char *final, t_data *d)
 			final[i++] = '0';
 	// if (d->f & F_X_0 && before > 0)
 	// 	final[i++] = ' ';
+	// printf("final = |%s|\n", final);
 	return (final);
 }
 
@@ -180,11 +182,12 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 
 	i = 0;
 	surplus = 0;
+	// printf("before = %d  after = %d   data->conv_sz = %d     ", before, after, data->conv_sz);
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
 	if (!(data->f & AP_NEG))
 	{
-		if (!(final = ft_ap_neg(before, after, final, data)))
+		if (!(final = ft_not_ap_neg(before, after, final, data)))
 			return (NULL);
 	}
 	else if (data->f & AP_NEG)

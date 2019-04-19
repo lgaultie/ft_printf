@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 15:33:29 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 16:07:10 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,9 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 {
 	char	*ret_flag2;
 	char	*final;
+	int		plus;
 
+	plus = 0;
 	if (data->f & AP_NEG && !(data->f & F_UNSIGNED) \
 	&& (flag[i] != 's' || flag[i] != 'c'))
 	{
@@ -113,10 +115,11 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 		if (!(ret_conv = ft_strjoin("-", final)))
 			return (NULL);
 		free(final);
+		plus = 1;
 	}
 	if (!(ret_flag2 = ft_width_minus(flag, data)))
 		return (NULL);
-	if (data->f & F_PLUS && data->f & F_PLUS)
+	if (data->f & F_PLUS && data->f & F_PLUS && plus != 1)
 	{
 		final = ret_conv;
 		if (!(ret_conv = ft_strjoin("+", final)))
@@ -127,5 +130,6 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 		return (NULL);
 	free(ret_conv);
 	free(ret_flag2);
+	// printf("final = |%s|\n", final);
 	return (final);
 }
