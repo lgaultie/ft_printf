@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 12:29:04 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 11:40:23 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@ static char		*ft_ret_flag_sharp(char *ret_flag, char *f, int i)
 	return (ret_flag);
 }
 
-static char		*ft_sharp(int i, char *f, char *ret_flag)
+static char		*ft_sharp(int i, char *f, char *ret_flag, t_data *data)
 {
 	char	*tmp;
 
 	tmp = ret_flag;
-	if (f[i] == 'X')
+	if (f[i] == 'X' && !(data->f & F_X_0))
 		if (!(ret_flag = ft_strjoin("0X", tmp)))
 			return (NULL);
-	if (f[i] == 'x')
+	if (f[i] == 'x' && !(data->f & F_X_0))
 		if (!(ret_flag = ft_strjoin("0x", tmp)))
 			return (NULL);
+	if (data->f & F_X_0)
+		return (ret_flag);
 	free(tmp);
 	return (ret_flag);
 }
@@ -59,13 +61,13 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 	{
 		// ft_putstr("premier ox\n");
-		ret_flag = ft_sharp(i, f, ret_flag);
+		ret_flag = ft_sharp(i, f, ret_flag, d);
 	}
 	else if (d->f & F_SHARP && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 	{
 		// ft_putstr("deuxieme ox\n");
-		ret_flag = ft_sharp(i, f, ret_flag);
+		ret_flag = ft_sharp(i, f, ret_flag, d);
 	}
 	// else if (d->f & F_SHARP && (d->f & F_W_P) \
 	// && (f[i] == 'x' || f[i] == 'X') && !(d->f & F_C_0))
