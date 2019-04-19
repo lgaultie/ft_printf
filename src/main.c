@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/17 14:46:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/17 14:52:42 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int main(int argc, char **argv)
 	i = 123131;
 
 
-	// printf("vrai : |%-+10d|\n", 42);					//ok
-	// ft_printf("mine : |%-+10d|\n", 42);					//ok
-	// printf("--------------\n");							//ok
-	// printf("vrai : |%+.10d|\n", -64);					//ok
-	// ft_printf("mine : |%+.10d|\n", -64);				//ok
-	// printf("--------------\n");							//ok
-	// printf("vrai : @moulitest: |%.10d|\n", -42);		//ok
-	// ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
-	// printf("--------------\n");
-	// printf("vrai : |%#10.5X|\n", 42); 					//ok
-	// ft_printf("mine : |%#10.5X|\n", 42);				//ok
+	printf("vrai : |%-+10d|\n", 42);					//ok
+	ft_printf("mine : |%-+10d|\n", 42);					//ok
+	printf("--------------\n");							//ok
+	printf("vrai : |%+.10d|\n", -64);					//ok
+	ft_printf("mine : |%+.10d|\n", -64);				//ok
+	printf("--------------\n");							//ok
+	printf("vrai : @moulitest: |%.10d|\n", -42);		//ok
+	ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
+	printf("--------------\n");
+	printf("vrai : |%#10.5X|\n", 42); 					//ok
+	ft_printf("mine : |%#10.5X|\n", 42);				//ok
 
 
 printf("|%#x|\n", 0);
