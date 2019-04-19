@@ -6,9 +6,10 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:30:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 17:26:59 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -151,9 +152,7 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 	i = 0;
 	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X) ? 2 : 0;
 	while (before-- > after + surplus)
-	{
 		final[i++] = ' ';
-	}
 	if (d->f & F_PLUS)
 		final[i - 1] = '+';
 	if (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X)
@@ -165,15 +164,11 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 			final[i++] = 'x';
 	}
 	if (d->f & F_S_0 || d->f & F_S)
-	{
 		while (after-- > d->conv_sz)
 			final[i++] = ' ';
-	}
 	else
-	{
 		while (after-- > d->conv_sz)
 			final[i++] = '0';
-	}
 	// if (d->f & F_X_0 && before > 0)
 	// 	final[i++] = ' ';
 	// printf("final = |%s|\n", final);

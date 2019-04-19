@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:02:50 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 17:26:50 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 int		main(void)
 {
-	int		*tab = malloc(sizeof(int) * 10);
-	int		*tab2 = malloc(0);
+	// int		*tab = malloc(sizeof(int) * 10);
+	// int		*tab2 = malloc(0);
 
 	ft_printf("--------------------%%c--------------------\n");		//Perfect
 	printf("01) Vrai PRINTF : |%c|\n", 'a');
