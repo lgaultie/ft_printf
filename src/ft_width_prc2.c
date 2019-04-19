@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 18:02:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:00:01 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char		*ft_free_all(char *final, char *tmp, char *ap, char *for_s)
 	return (final);
 }
 
-char		*ft_s(char *final, int before, int after, t_data *data)
+char			*ft_s(char *final, int before, int after, t_data *data)
 {
 	char	*ap;
 	char	*for_s;
@@ -64,7 +64,6 @@ char		*ft_s(char *final, int before, int after, t_data *data)
 		if (!(final = ft_strsub(ap, 0, before)))
 			return (NULL);
 	}
-// printf("final = |%s|     before = %d    after = %d\n", final, before, after);
 	if (before > after)
 		data->width_precis_minus = before - after;
 	if (after >= before)
@@ -83,30 +82,26 @@ char		*ft_s(char *final, int before, int after, t_data *data)
 		if (!(for_s = ft_memalloc(sizeof(char) * before + 1)))
 			return (NULL);
 	}
-	surplus = 0 ;
+	surplus = 0;
 	if (data->f & F_S_0)
 		surplus++;
 	if (before >= after && after >= data->conv_sz)
 	{
-		// ft_putstr("case a\n");
 		while (i < before - data->conv_sz)
 			for_s[i++] = ' ';
 	}
 	if (before >= after && after < data->conv_sz)
 	{
-		// ft_putstr("case b\n");
 		while (i < before - after)
 			for_s[i++] = ' ';
 	}
 	if (before < after && after >= data->conv_sz)
 	{
-		// ft_putstr("case c\n");
-			while (i < before - data->conv_sz)
-				for_s[i++] = ' ';
+		while (i < before - data->conv_sz)
+			for_s[i++] = ' ';
 	}
 	if (before < after && after < data->conv_sz)
 	{
-		// ft_putstr("case d\n");
 		while (i < before - after)
 			for_s[i++] = ' ';
 	}
@@ -119,7 +114,6 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	int		i;
 
 	i = 0;
-	// printf("before = %d  after = %d   data->conv_sz = %d     \n", before, after, data->conv_sz);
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
 	if (data->f & AP_NEG)
@@ -134,7 +128,6 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 			final[i++] = '+';
 		while (i < before - data->conv_sz)
 			final[i++] = ' ';
-		// if (after == 0)
 		if (data->f & F_AP_0 && after == 0)
 		{
 			data->f |= F0;
@@ -169,9 +162,6 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 	else
 		while (after-- > d->conv_sz)
 			final[i++] = '0';
-	// if (d->f & F_X_0 && before > 0)
-	// 	final[i++] = ' ';
-	// printf("final = |%s|\n", final);
 	return (final);
 }
 
@@ -182,7 +172,6 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 
 	i = 0;
 	surplus = 0;
-	// printf("before = %d  after = %d   data->conv_sz = %d     \n", before, after, data->conv_sz);
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
 	if (!(data->f & AP_NEG) && !(data->f & F_UNSIGNED))

@@ -6,13 +6,20 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 17:41:07 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 19:24:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_conv_hhhlll_u(t_data *data, int base, int mode)
+static void		ft_initialize(unsigned long long ap, t_data *data)
+{
+	data->ap_sz = ft_intlen(ap);
+	if (ap == 0)
+		data->f |= F_AP_0;
+}
+
+char			*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 {
 	unsigned long long	ap;
 	char				*final;
@@ -35,15 +42,13 @@ char	*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 			return (NULL);
 		return (final);
 	}
-	data->ap_sz = ft_intlen(ap);
-	if (ap == 0)
-		data->f |= F_AP_0;
+	ft_initialize(ap, data);
 	if (!(final = ibmul(ap, base, mode, data)))
 		return (NULL);
 	return (final);
 }
 
-char	*ft_conv_hhhlll(t_data *data)
+char			*ft_conv_hhhlll(t_data *data)
 {
 	long long			ap;
 

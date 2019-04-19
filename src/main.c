@@ -6,15 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 18:02:34 by lgaultie         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*   Updated: 2019/04/19 17:32:23 by amamy            ###   ########.fr       */
-=======
-/*   Updated: 2019/04/19 17:23:35 by lgaultie         ###   ########.fr       */
->>>>>>> 9c6e5add772a1b70a01a3d24bc250c5f1f29daf3
->>>>>>> 0b05befa317c3417a67c22144ef2718a8f8cd8c3
+/*   Updated: 2019/04/19 18:04:07 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +34,10 @@ int main(int argc, char **argv)
 	i = 123131;
 	// char	*str = ft_strdup("ouii");
 	// char	*strnull = NULL;
-
-	printf("--------------\n");
-	printf("18) Vrai PRINTF : |%.u|\n", 0);
-	ft_printf("18) Mon PRINTF  : |%.u|\n", 0);
+	//
+	// printf("--------------\n");
+	// printf("18) Vrai PRINTF : |%.u|\n", 0);
+	// ft_printf("18) Mon PRINTF  : |%.u|\n", 0);
 	printf("--------------\n");
 	printf("vrai : |%3.2o|\n", 0);
 	ft_printf("mine : |%3.2o|\n", 0);
@@ -638,7 +630,6 @@ int main(int argc, char **argv)
 // 	printf("--------------\n");
 // 	printf("--------------\n");
 // 	printf("--------------\n");
->>>>>>> 9c6e5add772a1b70a01a3d24bc250c5f1f29daf3
 	// ft_printf("%jd\\n\n", 9223372036854775807);
 	// ft_printf("%zd\\n\n", 4294967295);
 	// ft_printf("%\\n\n");

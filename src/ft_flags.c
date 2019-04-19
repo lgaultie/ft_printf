@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:32:24 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 21:23:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,17 @@ static char	*ft_end_percent(char *ret_flag, t_data *data)
 {
 	char	*final;
 
-	if (!(final = ft_percent_percent(ret_flag, data)))
-		return (NULL);
+	if (data->f & F_WIDTH && !(data->f & F_PRECIS))
+	{
+		ret_flag[ft_strlen(ret_flag) - 1] = '%';
+		if (!(final = ft_strdup(ret_flag)))
+			return (NULL);
+	}
+	else
+	{
+		if (!(final = ft_strdup("%")))
+			return (NULL);
+	}
 	free(ret_flag);
 	return (final);
 }
@@ -77,7 +86,6 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 	if ((f == 's' && (d->f & F_MINUS) && (d->f & F_W_P)) \
 	|| (f == 'u' && (d->f & F_PRECIS) && (d->f & F_C_0)))
 	{
-		// ft_putstr("flags premier cas\n");
 		if (!(final = ft_strdup(ret_flag)))
 			return (NULL);
 	}
@@ -88,10 +96,8 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 	}
 	if ((d->f & F_W_P) && d->f & F_MINUS)
 	{
-		// ft_putstr("flags deuxieme cas\n");
 		if (!(final = ft_fwp_minus(final, d)))
 			return (NULL);
-		// printf("final dans flags = |%s|\n", final);
 	}
 	return (final);
 }
@@ -109,17 +115,12 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	{
 		if (!(ret_conv = ft_only_conv(&f[i], d)))
 			return (NULL);
-			// printf("ret_conv = |%s|\n", ret_conv);
 		if ((ret_conv[0] == '\0' && d->f & F_SHARP && !(d->f & F_WIDTH)) \
 		|| (d->f & F_SPACE && d->f & AP_NEG))
 			return (ret_conv);
 	}
 	if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
-	&& !(d->f & F_PRECIS) && !(d->f & F_W_P) && !(d->f & F_PLUS))
-		return (ft_for_minus(ret_conv, f, i, d));
-	//has been added to debug ft_printf("mine : |%-+10d|\n", 42);
-	else if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
-	&& !(d->f & F_PRECIS) && !(d->f & F_W_P) && (d->f & F_PLUS))
+	&& !(d->f & F_PRECIS) && !(d->f & F_W_P))
 		return (ft_for_minus(ret_conv, f, i, d));
 	if (d->f & F_PERCENT)
 		return (ft_conv_percent(i, f, d));
@@ -131,6 +132,5 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 		return (ft_end_percent(ret_flag, d));
 	if (!(final = ft_s_fwp_minus(f[i], ret_conv, ret_flag, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 3));
-		// printf("ret_flag = |%s|\n", ret_flag);
 	return (ft_final(ret_conv, ret_flag, final, 2));
 }

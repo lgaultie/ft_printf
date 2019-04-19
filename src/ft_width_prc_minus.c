@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 15:53:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 15:10:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:00:39 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,44 +31,19 @@ static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 	if (!(final = ft_strsub(ap, 0, after)))
 		return (NULL);
 	if (before > after && after >= data->conv_sz)
-	{
-		// ft_putstr("case 1 !\n");
 		data->width_precis_minus = before - data->conv_sz;
-	}
 	else if (before > after && after < data->conv_sz)
-	{
-		// ft_putstr("case 1.5 !\n");
 		data->width_precis_minus = before - after;
-	}
 	else if (after > before && after >= data->conv_sz)
-	{
-		// ft_putstr("case 2 !\n");
 		data->width_precis_minus = 0;
-		// data->width_precis_minus = after - data->conv_sz;
-		// printf("data->w_p_m = %d =  before %d -  data->conv_sz %d\n", data->width_precis_minus, after, data->conv_sz);
-	}
 	else if (after == before && after >= data->conv_sz)
-	{
-		// ft_putstr("case 2 !\n");
-		// data->width_precis_minus = 0;
 		data->width_precis_minus = after - data->conv_sz;
-		// printf("data->w_p_m = %d =  before %d -  data->conv_sz %d\n", data->width_precis_minus, after, data->conv_sz);
-	}
 	else if (after >= before && after < data->conv_sz)
-	{
-		// ft_putstr("case 2.5 !\n");
 		data->width_precis_minus = 0;
-	}
 	else if (ap[0] == '\0' && before > after && after >= data->conv_sz)
-	{
-		// ft_putstr("case 3 !\n");
 		data->width_precis_minus = before;
-	}
 	else if (ap[0] == '\0' && before <= after && after >= data->conv_sz)
-	{
-		// ft_putstr("case 4.5 !\n");
 		data->width_precis_minus = before;
-	}
 	free(ap);
 	return (final);
 }

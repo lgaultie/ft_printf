@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:55:58 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:04:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,11 @@ static char		*ft_sharp_precent(char *flag, t_data *d)
 	return (final);
 }
 
-// static char		*ft_which_flag4(char *flag, char cv, t_data *data)
-// {
-// 	char	*final;
-//
-// 	if (data->f & F_PRECIS && cv == 'f')
-// 	{
-// 		if (!(final = ft_conv_f(data, flag)))
-// 			return (NULL);
-// 	}
-// 	else
-// 		final = NULL;
-// 	return (final);
-// }
 static char		*ft_which_flag3(char *flag, char cv, t_data *data)
 {
 	char	*final;
 
-(void)cv;
+	(void)cv;
 	if (data->f & F_SPACE)
 	{
 		if (!(final = ft_strnew(1)))
@@ -95,7 +82,7 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else if (data->f & F_ZERO || (data->f & F_WIDTH && !(data->f & F_PRECIS) \
-	&& !(data->f & F_W_P)))
+	&& !(d->f & F_W_P)))
 	{
 		if (!(final = ft_width(flag, data)))
 			return (NULL);
@@ -106,8 +93,10 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else
+	{
 		if (!(final = ft_which_flag3(flag, cv, data)))
 			return (NULL);
+	}
 	return (final);
 }
 

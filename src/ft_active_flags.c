@@ -6,13 +6,13 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:27:48 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:36:23 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 20:34:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_disable_flag(t_data *d)
+void			ft_disable_flag(t_data *d)
 {
 	d->f &= ~F_ZERO;
 	d->f &= ~F_PLUS;
@@ -78,61 +78,43 @@ static void		ft_active_flag2(char *flag, t_data *data, int i)
 		data->f |= F_BIG_L;
 }
 
+static void		ft_not_going_together(char f, t_data *data)
+{
+	if (data->f & F_ZERO && data->f & F_MINUS)
+		data->f &= ~F_ZERO;
+	if ((f == 'c' || f == 'u') && data->f & F_SPACE)
+		data->f &= ~F_SPACE;
+	if ((f == 'u') && data->f & F_PLUS)
+		data->f &= ~F_PLUS;
+	if ((f == 'c') && data->f & F_PRECIS)
+		data->f &= ~F_PRECIS;
+}
+
 /*
 ** ft_active_flag: Analyses between % and the conversion, enable needed flags.
 ** F_W_P: active flag width + accuracy (ex: %5.2d)
 */
 
-int				ft_active_flag(char *flag, t_data *data)
+int				ft_active_flag(int i, char *f, t_data *data)
 {
-	int		i;
-
-	i = 0;
-	while (flag[i] != 'd' && flag[i] != 'c' && flag[i] != 's' \
-		&& flag[i] != 'p' && flag[i] != 'x' && flag[i] != 'o' \
-		&& flag[i] != 'x' && flag[i] != 'X' && flag[i] != 'i' \
-		&& flag[i] != 'f' && flag[i] != 'u' && flag[i] != '\0')
+	while (f[i] != 'd' && f[i] != 'c' && f[i] != 's' && f[i] != 'p' \
+	&& f[i] != 'x' && f[i] != 'o' && f[i] != 'x' && f[i] != 'X' \
+	&& f[i] != 'i' && f[i] != 'f' && f[i] != 'u' && f[i] != '\0')
 	{
-		if ((flag[i] == '0' && i == 0) \
-		|| (flag[i] == '0' && (flag[i - 1] < '0' || flag[i - 1] > '9')))
+		if ((f[i] == '0' && i == 0) || (f[i] == '0' && (f[i - 1] < '0' \
+		|| f[i - 1] > '9')))
 			data->f |= F_ZERO;
-		if (flag[i] == '.' && (data->f & F_WIDTH))
+		if (f[i] == '.' && (data->f & F_WIDTH))
 			data->f |= F_W_P;
-		else if (((flag[i] >= '0' && flag[i] <= '9') || flag[i] == '*')
+		else if (((f[i] >= '0' && f[i] <= '9') || f[i] == '*')
 			&& !(data->f & F_PRECIS))
 			data->f |= F_WIDTH;
-		else if (flag[i] == '.')
+		else if (f[i] == '.')
 			data->f |= F_PRECIS;
 		else
-			ft_active_flag2(flag, data, i);
+			ft_active_flag2(f, data, i);
 		i++;
 	}
-	if (data->f & F_ZERO && data->f & F_MINUS)
-		data->f &= ~F_ZERO;
-	if ((flag[i] == 'c' || flag[i] == 'u') && data->f & F_SPACE)
-		data->f &= ~F_SPACE;
-	if ((flag[i] == 'u') && data->f & F_PLUS)
-		data->f &= ~F_PLUS;
-	if ((flag[i] == 'c') && data->f & F_PRECIS)
-		data->f &= ~F_PRECIS;
-
+	ft_not_going_together(f[i], data);
 	return (i);
-}
-
-/*
-** ft_percent_percent: deals with %7%, %.5%, or % % cases.
-*/
-
-char			*ft_percent_percent(char *ret_flag, t_data *data)
-{
-	char	*final;
-
-	if (data->f & F_WIDTH && !(data->f & F_PRECIS))
-	{
-		ret_flag[ft_strlen(ret_flag) - 1] = '%';
-		final = ft_strdup(ret_flag);
-	}
-	else
-		final = ft_strdup("%");
-	return (final);
 }

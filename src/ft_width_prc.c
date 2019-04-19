@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:23:11 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 21:56:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 
 static char		*ft_case1(char *final, int i, int after, t_data *data)
 {
-
 	if (data->f & AP_NEG)
 	{
 		final[i++] = '-';
@@ -77,20 +76,13 @@ static char		*ft_preci_width3(int before, int after, t_data *data)
 	{
 		if (data->f & F_S)
 			return (ft_s(final, before, after, data));
-		// ft_putstr("case 1\n");
 		final = ft_case1(final, i, after, data);
 	}
 	else if (after < data->conv_sz && before > after && !(data->f & F_SHARP))
-	{
-		// ft_putstr("case 2\n");
 		final = ft_case2(final, before, after, data);
-	}
 	else if ((after >= data->ap_sz && before > after) \
 	|| (after == data->conv_sz) || data->f & F_SHARP)
-	{
-		// ft_putstr("case 3\n");
 		final = ft_case3(final, before, after, data);
-	}
 	return (final);
 }
 
@@ -113,14 +105,12 @@ static char		*ft_preci_width2(char *flag, t_data *data, int i, int j)
 		i++;
 	while (flag[i] != '.' && flag[i] != '\0')
 		before[j++] = flag[i++];
-	before[j] = '\0';
 	j = 0;
 	i++;
 	while (flag[i + 1] != '\0')
 		after[j++] = flag[i++];
 	if (ft_strlen(flag) > 2 && j == 0)
 		after[j++] = '0';
-	after[j] = '\0';
 	i = ft_atoi(before);
 	j = ft_atoi(after);
 	free(before);
@@ -144,6 +134,5 @@ char			*ft_preci_width(char *flag, t_data *data)
 	j = 0;
 	if (!(final = ft_preci_width2(flag, data, i, j)))
 		return (NULL);
-	// printf("final = |%s|\n", final);
 	return (final);
 }

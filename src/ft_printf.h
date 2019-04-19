@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 17:00:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 20:31:20 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@
 # define F_AP_0 67108864
 # define F_X_0 134217728
 # define F_X 268435456
-// # define C_0_PRECISU 536870912
 
 typedef	struct	s_data
 {
@@ -72,10 +71,6 @@ typedef	struct	s_float
 	char		*int_p;
 	char		*s_deci_p;
 	char		*str_deci_ar_cp;
-	// char 		*int_p	 // int_p
-	// long long	after; // -> deci_p
-	// char			*str_after; // s_deci_p
-	// char			*str_ar_cp; // s_deci_ar_p
 }				t_float;
 
 int				ft_printf(const char *str, ...);
@@ -116,11 +111,11 @@ char			*ft_flag_minus(int int_p, int after, char *final, t_data *d);
 char			*ft_case2(char *final, int int_p, int after, t_data *data);
 char			*ft_case3(char *final, int int_p, int after, t_data *data);
 char			*ft_percent_percent(char *ret_flag, t_data *data);
-int				ft_active_flag(char *flag, t_data *data);
+int				ft_active_flag(int i, char *f, t_data *data);
 char			*ft_special_cases(int i, char *f, t_data *d);
 char			*ft_fwp_minus(char *final, t_data *data);
 char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
-void 			ft_free(t_float *ft, int j, int m);
+void			ft_free(t_float *ft, int j, int m);
 char			*ft_missing_zeros(int len, t_float *ft);
 char			*ft_ffinal(t_float *ft, t_data *data, char *flag, int j);
 char			*ft_float_accuracy(t_data *d, char *flag, t_float *ft);

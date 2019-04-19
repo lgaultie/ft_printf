@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:49:03 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 21:41:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,36 +46,15 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 
 	if (!(ret_flag = ft_which_flag(f, f[i], d)))
 		return (NULL);
-	//if (d->f & F_SHARP)
-
-		// ft_putstr("ouiii\n");
-		// ft_putstr("dans flags2\n");
-	// if (d->f & F_SHARP)
-
-	// printf("ret_flag = |%s|\n", ret_flag);
-	// ft_putstr("passe dans special cases\n");
 	if (d->f & F_SHARP && d->f & F_ZERO && !(d->f & F_PRECIS) \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_ret_flag_sharp(ret_flag, f, i);
 	else if (d->f & F_SHARP && d->f & F_ZERO && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
-	{
-		// ft_putstr("premier ox\n");
 		ret_flag = ft_sharp(i, f, ret_flag, d);
-	}
 	else if (d->f & F_SHARP && d->f & F_PRECIS \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
-	{
-		// ft_putstr("deuxieme ox\n");
 		ret_flag = ft_sharp(i, f, ret_flag, d);
-	}
-	// else if (d->f & F_SHARP && (d->f & F_W_P) \
-	// && (f[i] == 'x' || f[i] == 'X') && !(d->f & F_C_0))
-	// {
-	// 	// ft_putstr("troisieme ox\n");
-	// 	ret_flag = ft_sharp(i, f, ret_flag);
-	// }
-		// printf("flags2.c, ret_flag = %s\n", ret_flag);
 	return (ret_flag);
 }
 
@@ -86,8 +65,6 @@ char			*ft_fwp_minus(char *final, t_data *data)
 	int		i;
 
 	i = 0;
-	// ft_putstr("dans flag2.c\n");
-	// printf("%d\n", data->width_precis_minus);
 	if (!(ret = ft_memalloc(sizeof(char) * (data->width_precis_minus + 1))))
 		return (NULL);
 	while (i < data->width_precis_minus)
@@ -100,15 +77,14 @@ char			*ft_fwp_minus(char *final, t_data *data)
 	return (final);
 }
 
-char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
+char			*ft_for_minus(char *ret_conv, char *f, int i, t_data *d)
 {
 	char	*ret_flag2;
 	char	*final;
 	int		plus;
 
 	plus = 0;
-	if (data->f & AP_NEG && !(data->f & F_UNSIGNED) \
-	&& (flag[i] != 's' || flag[i] != 'c'))
+	if (d->f & AP_NEG && !(d->f & F_UNSIGNED) && (f[i] != 's' || f[i] != 'c'))
 	{
 		final = ret_conv;
 		if (!(ret_conv = ft_strjoin("-", final)))
@@ -116,9 +92,9 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 		free(final);
 		plus = 1;
 	}
-	if (!(ret_flag2 = ft_width_minus(flag, data)))
+	if (!(ret_flag2 = ft_width_minus(f, d)))
 		return (NULL);
-	if (data->f & F_PLUS && data->f & F_PLUS && plus != 1)
+	if (d->f & F_PLUS && d->f & F_PLUS && plus != 1)
 	{
 		final = ret_conv;
 		if (!(ret_conv = ft_strjoin("+", final)))
@@ -129,6 +105,5 @@ char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data)
 		return (NULL);
 	free(ret_conv);
 	free(ret_flag2);
-	// printf("final = |%s|\n", final);
 	return (final);
 }

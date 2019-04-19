@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:04:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:16:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Sends this int to ft_width2 which will apply the conversion.
 */
 
-char			*ft_width(char *flags, t_data *data)
+char			*ft_width(char *f, t_data *data)
 {
 	int		i;
 	int		j;
@@ -29,53 +29,48 @@ char			*ft_width(char *flags, t_data *data)
 		data->f &= ~F_WIDTH;
 	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
-	while (flags[i] != '\0')
+	while (f[i] != '\0')
 	{
-		if (flags[i] == '#' || flags[i] == '+')
+		if (f[i] == '#' || f[i] == '+')
 			i++;
-		if ((flags[i] >= '0' && flags[i] <= '9') || flags[i] == '-' \
-		|| flags[i] == '+')
-			conv[j] = flags[i];
+		if ((f[i] >= '0' && f[i] <= '9') || f[i] == '-' || f[i] == '+')
+			conv[j] = f[i];
 		i++;
 		j++;
 	}
 	i = ft_atoi(conv);
 	free(conv);
 	data->f &= ~F_WIDTH;
-	// printf("flags = |%s|\n", flags);
-	// if (ft_strchr(flags, '+'))
-	// 	data->f &= ~F_MINUS;
 	data->index_0 = (data->f & F_C_0) ? data->index_0 += i - 1 : 0;
 	i = (i < 0) ? -i : i;
-	// printf("width = %d\n", i);
 	return (ft_width2(i, data));
 }
 
-static char		*ft_width_minus2(int width, t_data *data)
+static char		*ft_width_minus2(int width, t_data *d)
 {
 	int		i;
 	char	*ret;
 	int		surplus;
 
 	i = 0;
-	free(data->tmp_s);
-	surplus = (data->f & AP_NEG || (data->f & F_MINUS && data->f & F_PLUS)) ? 1 : 0;
-	if (data->f & F_MINUS && data->f & F_ZERO)
+	free(d->tmp_s);
+	surplus = (d->f & AP_NEG || (d->f & F_MINUS && d->f & F_PLUS)) ? 1 : 0;
+	if (d->f & F_MINUS && d->f & F_ZERO)
 		return (ft_strdup(""));
-	if (width > data->conv_sz)
+	if (width > d->conv_sz)
 	{
-		if (!(ret = ft_memalloc(sizeof(char) * ((width - data->conv_sz) + 1))))
+		if (!(ret = ft_memalloc(sizeof(char) * ((width - d->conv_sz) + 1))))
 			return (NULL);
-		if (data->f & F_ZERO)
-			while (i < width - data->conv_sz)
+		if (d->f & F_ZERO)
+			while (i < width - d->conv_sz)
 				ret[i++] = '0';
-		if (!(data->f & F_ZERO))
-			while (i < width - data->conv_sz - surplus)
+		if (!(d->f & F_ZERO))
+			while (i < width - d->conv_sz - surplus)
 				ret[i++] = ' ';
 	}
 	else
 		return (ft_strdup(""));
-	if (data->f & F_PLUS && !(data->f & F_MINUS))
+	if (d->f & F_PLUS && !(d->f & F_MINUS))
 		ret[i++] = '+';
 	return (ret);
 }

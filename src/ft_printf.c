@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:59:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 20:31:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static char		*ft_analyse_flags(char *flags, t_data *data)
 	int		len;
 	char	*final;
 	char	*ret_conv;
+	int		i;
 
+	i = 0;
 	ret_conv = NULL;
 	len = data->flag_sz;
 	if (len == 1)
@@ -33,7 +35,7 @@ static char		*ft_analyse_flags(char *flags, t_data *data)
 	}
 	else
 	{
-		len = ft_active_flag(flags, data);
+		len = ft_active_flag(i, flags, data);
 		if (!(final = ft_flag_conv(flags, ret_conv, len, data)))
 			return (NULL);
 	}
@@ -49,7 +51,7 @@ char			*ft_got_flag(char *str, t_data *data)
 {
 	int		x;
 	char	*flags;
-	char	*final;
+	char	*ret;
 
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
@@ -62,18 +64,13 @@ char			*ft_got_flag(char *str, t_data *data)
 		data->flag_sz = x + 1;
 	if (!(flags = ft_strndup(str, data->flag_sz)))
 		return (NULL);
-	if (ft_strchr(flags, '*'))
-	{
-		free(flags);
-		return (NULL);
-	}
-	if ((final = ft_analyse_flags(flags, data)) == NULL)
+	if (ft_strchr(flags, '*') || (ret = ft_analyse_flags(flags, data)) == NULL)
 	{
 		free(flags);
 		return (NULL);
 	}
 	free(flags);
-	return (final);
+	return (ret);
 }
 
 /*
