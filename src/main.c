@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 14:27:35 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 14:34:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,43 @@ printf("--------------\n");
 printf("|%.7x|\n", 4242424);
 ft_printf("|%.7x|\n", 4242424);
 printf("--------------\n");
+printf("|%#10.05x|\n", 42);
+ft_printf("|%#10.05x|\n", 42);
+printf("--------------\n");
+printf("|%-+10d|\n", 42);
+ft_printf("|%-+10d|\n", 42);
+printf("--------------\n");
+printf("|%-+.10d|\n", -64);
+ft_printf("|%-+.10d|\n", -64);
+printf("--------------\n");
+printf("|%#1.o|\n", 0);
+ft_printf("|%#1.o|\n", 0);
+printf("--------------\n");
+printf("|%1.d|\n", 243);
+ft_printf("|%1.d|\n", 243);
+printf("--------------\n");
 printf("|%#.7x|\n", 4242424);
 ft_printf("|%#.7x|\n", 4242424);
-printf("--------------\n");
-printf("|%#8.10x|\n", 424242);
-ft_printf("|%#8.10x|\n", 424242);
 printf("--------------\n");
 printf("|%++10d|\n", 424242);
 ft_printf("|%++10d|\n", 424242);
 printf("--------------\n");
-printf("|%05.2d|\n", 7);
-ft_printf("|%05.2d|\n", 7);
+printf("|%1.s|\n", "243");
+ft_printf("|%1.s|\n", "243");
 printf("--------------\n");
 printf("|%10.08x|\n", 42);
 ft_printf("|%10.08x|\n", 42);
+printf("--------------\n");
+printf("|%05.2d|\n", 7);
+ft_printf("|%05.2d|\n", 7);
+printf("--------------\n");
+printf("@moulitest: |%.0o|\n", 0);
+ft_printf("@moulitest: |%.0o|\n", 0);
+printf("--------------\n");
+printf("--------------\n");
+printf("--------------\n");
+printf("--------------\n");
+printf("--------------\n");
 printf("--------------\n");
 printf("|%#7.2o|\n", 0);
 ft_printf("|%#7.2o|\n", 0);
@@ -83,32 +106,17 @@ printf("--------------\n");
 printf("|%#1.x|\n", 0);
 ft_printf("|%#1.x|\n", 0);
 printf("--------------\n");
-printf("|%1.s|\n", "243");
-ft_printf("|%1.s|\n", "243");
-printf("--------------\n");
 printf("|%#1.x|\n", 45);
 ft_printf("|%#1.x|\n", 145);
 printf("--------------\n");
 printf("|%#1.x|\n", 10);
 ft_printf("|%#1.x|\n", 10);
 printf("--------------\n");
-printf("|%#1.o|\n", 0);
-ft_printf("|%#1.o|\n", 0);
-printf("--------------\n");
-printf("|%1.d|\n", 243);
-ft_printf("|%1.d|\n", 243);
-printf("--------------\n");
-printf("|%#10.05x|\n", 42);
-ft_printf("|%#10.05x|\n", 42);
-printf("--------------\n");
-printf("|%-+10d|\n", 42);
-ft_printf("|%-+10d|\n", 42);
-printf("--------------\n");
-printf("|%-+.10d|\n", -64);
-ft_printf("|%-+.10d|\n", -64);
-printf("--------------\n");
 printf("20) Vrai PRINTF : |%#10.5o|\n", 70);
 ft_printf("20) Mon PRINTF  : |%#10.5o|\n", 70); //le 0x doit apparaitre que avec x! pas o
+printf("--------------\n");
+printf("|%#8.10x|\n", 424242);
+ft_printf("|%#8.10x|\n", 424242);
 
 // ft_printf("{%*s}\n", 5, 0);			//SEG
 // printf(NULL);		//le vrai seg
@@ -233,8 +241,6 @@ ft_printf("20) Mon PRINTF  : |%#10.5o|\n", 70); //le 0x doit apparaitre que avec
 	// printf("vrai : |%03.2d|\n", 0);
 	// ft_printf("mine : |%03.2d|\n", 0);
 
-	printf("@moulitest: %.0o\n", 0);
-	ft_printf("@moulitest: %.0o\n", 0);
 	// printf("@moulitest: %.o %.0o\n", 0, 0);
 	// ft_printf("@moulitest: %.o %.0o\n", 0, 0);
 

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:13:41 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:25:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 15:17:28 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_minus(char *flag, t_data *data)
 	char	*final;
 
 	(void)flag;
-	(void)data;
+	free(data->tmp_s);
 	if (!(final = ft_strnew(0)))
 		return (NULL);
 	return (final);

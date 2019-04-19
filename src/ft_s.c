@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:43 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/15 21:56:56 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 15:31:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ static void		ft_string_1_if(char *ap, t_data *d)
 {
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
 	{
+		d->f |= TMP_S_M;
 		if (!(d->tmp_s = ft_strdup(ap)))
 			return ;
-		d->f |= TMP_S_M;
 	}
 	else if (d->f & F_MINUS)
 	{
+		d->f |= TMP_S_M;
 		if (!(d->tmp_s = ft_strdup(ap)))
 			return ;
-		d->f |= TMP_S_M;
 	}
 }
 
@@ -118,6 +118,9 @@ char			*ft_string(char *flag, t_data *data, int mode)
 				return (ft_width_s(flag, data));
 			else if (data->f & F_PRECIS && (data->f & F_W_P))
 				return(ft_strsub("(null)", 0, ft_precision_s(flag, data)));
+			else
+				if (!(ap = ft_strdup("(null)")))
+					return (NULL);
 		}
 		if (data->f & F_PRECIS && !(data->f & F_W_P))
 		{
