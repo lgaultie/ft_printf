@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:07:10 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 16:49:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 
 	if (!(ret_flag = ft_which_flag(f, f[i], d)))
 		return (NULL);
-
 	//if (d->f & F_SHARP)
 
 		// ft_putstr("ouiii\n");
