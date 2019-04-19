@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 14:47:21 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 15:13:27 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char		*ft_width_minus2(int width, t_data *data)
 
 	i = 0;
 	free(data->tmp_s);
-	surplus = (data->f & AP_NEG || (data->f & F_MINUS && data->f & F_PLUS)) ? 1 : 0;
+	surplus = (data->f & AP_NEG) ? 1 : 0;
 	if (data->f & F_MINUS && data->f & F_ZERO)
 		return (ft_strdup(""));
 	if (width > data->conv_sz)
@@ -75,7 +75,7 @@ static char		*ft_width_minus2(int width, t_data *data)
 	}
 	else
 		return (ft_strdup(""));
-	if (data->f & F_PLUS && !(data->f & F_MINUS))
+	if (data->f & F_PLUS)
 		ret[i++] = '+';
 	return (ret);
 }

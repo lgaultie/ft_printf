@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 22:47:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 11:40:23 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 15:33:29 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char			*ft_special_cases(int i, char *f, t_data *d)
 	// if (d->f & F_SHARP)
 
 	// printf("ret_flag = |%s|\n", ret_flag);
+	// ft_putstr("passe dans special cases\n");
 	if (d->f & F_SHARP && d->f & F_ZERO && !(d->f & F_PRECIS) \
 	&& !(d->f & F_W_P) && (f[i] == 'x' || f[i] == 'X'))
 		ret_flag = ft_ret_flag_sharp(ret_flag, f, i);

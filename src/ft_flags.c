@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 11:12:38 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 15:33:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,16 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	else if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
 	&& !(d->f & F_PRECIS) && !(d->f & F_W_P) && (d->f & F_PLUS))
 		return (ft_for_minus(ret_conv, f, i, d));
-	//-------------------------------
 	if (d->f & F_PERCENT)
 		return (ft_conv_percent(i, f, d));
 	if (!(ret_flag = ft_special_cases(i, f, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 4));
-	// printf("ret_flag = |%s|\n", ret_flag);
 	if ((d->f & F0) || ((d->f & F_PRECIS) && (f[i] == 's' || f[i] == 'c')))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 1));
 	if (f[i] == '%')
 		return (ft_end_percent(ret_flag, d));
 	if (!(final = ft_s_fwp_minus(f[i], ret_conv, ret_flag, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 3));
+		// printf("ret_flag = |%s|\n", ret_flag);
 	return (ft_final(ret_conv, ret_flag, final, 2));
 }
