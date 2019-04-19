@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:57:13 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/13 15:38:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 15:47:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ char			*ft_conv_p(t_data *data)
 	while (final[i++] != '\0')
 		final[i] = ft_tolower(final[i]);
 	ft_freetmpitoa(tmp, ret_itoa, 1);
+	data->conv_sz = ft_strlen(final);
 	return (final);
 }

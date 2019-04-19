@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 15:09:32 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 16:21:07 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,39 +143,42 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	return (final);
 }
 
-static char		*ft_ap_neg(int before, int after, char *final, t_data *data)
+static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 {
 	int		i;
 	int		surplus;
 
 	i = 0;
-	surplus = (data->f & F_SHARP && !(data->f & F_X_0)) ? 2 : 0;
+	// surplus = 0;
+	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && (d->f & F_X)) ? 2 : 0;
+	// printf("sruplus = %d\n", surplus);
 	while (before-- > after + surplus)
 	{
 		final[i++] = ' ';
 	}
-	if (data->f & F_PLUS)
+	if (d->f & F_PLUS)
 		final[i - 1] = '+';
-	if (data->f & F_SHARP && !(data->f & F_X_0) && data->f & F_X)
+	if (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X)
 	{
 		final[i++] = '0';
-		if (data->f & F_BIG_X)
+		if (d->f & F_BIG_X)
 			final[i++] = 'X';
 		else
 			final[i++] = 'x';
 	}
-	if (data->f & F_S_0 || data->f & F_S)
+	if (d->f & F_S_0 || d->f & F_S)
 	{
-		while (after-- > data->conv_sz)
+		while (after-- > d->conv_sz)
 			final[i++] = ' ';
 	}
 	else
 	{
-		while (after-- > data->conv_sz)
+		while (after-- > d->conv_sz)
 			final[i++] = '0';
 	}
 	// if (data->f & F_X_0 && before > 0)
 	// 	final[i++] = ' ';
+	// printf("final = |%s|\n", final);
 	return (final);
 }
 
@@ -186,11 +189,12 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 
 	i = 0;
 	surplus = 0;
+	// printf("before = %d  after = %d   data->conv_sz = %d     ", before, after, data->conv_sz);
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
 	if (!(data->f & AP_NEG))
 	{
-		if (!(final = ft_ap_neg(before, after, final, data)))
+		if (!(final = ft_not_ap_neg(before, after, final, data)))
 			return (NULL);
 	}
 	else if (data->f & AP_NEG)
