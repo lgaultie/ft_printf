@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 16:21:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 16:29:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,15 +143,13 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	return (final);
 }
 
-static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
+static char		*ft_ap_neg(int before, int after, char *final, t_data *d)
 {
 	int		i;
 	int		surplus;
 
 	i = 0;
-	// surplus = 0;
-	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && (d->f & F_X)) ? 2 : 0;
-	// printf("sruplus = %d\n", surplus);
+	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X) ? 2 : 0;
 	while (before-- > after + surplus)
 	{
 		final[i++] = ' ';
@@ -176,7 +174,7 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 		while (after-- > d->conv_sz)
 			final[i++] = '0';
 	}
-	// if (data->f & F_X_0 && before > 0)
+	// if (d->f & F_X_0 && before > 0)
 	// 	final[i++] = ' ';
 	// printf("final = |%s|\n", final);
 	return (final);
