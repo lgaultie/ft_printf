@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/09 15:49:58 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:34:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ char	*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *data)
 	}
 	if (m == 1 && str[0] == '0')
 		data->f |= F_C_0;
+	(void)data;
 	return (str);
 }
 

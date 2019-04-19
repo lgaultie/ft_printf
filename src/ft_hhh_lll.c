@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/16 16:19:11 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:34:47 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ char	*ft_conv_hhhlll(t_data *data)
 	}
 	if (ap < 0)
 		data->f |= AP_NEG;
+	if (ap == 0)
+		data->f |= F_AP_0;
 	return (ft_itoa(ap));
 }

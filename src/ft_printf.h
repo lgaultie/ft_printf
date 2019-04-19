@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/16 19:51:42 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/17 18:46:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define TMP_S_M 8388608
 # define F_BIG_L 16777216
 # define F_BIG_X 33554432
+# define F_AP_0 67108864
 
 typedef	struct	s_data
 {

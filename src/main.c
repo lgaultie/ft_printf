@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/17 14:52:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 14:27:35 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,9 +230,26 @@ ft_printf("20) Mon PRINTF  : |%#10.5o|\n", 70); //le 0x doit apparaitre que avec
 	// printf("--------------\n");
 	// printf("vrai : |%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr`
 	// ft_printf("mine : |%#1.o|\n", 0);					//BUUUUUG mais marche avec x mdr
+	// printf("vrai : |%03.2d|\n", 0);
+	// ft_printf("mine : |%03.2d|\n", 0);
+
+	printf("@moulitest: %.0o\n", 0);
+	ft_printf("@moulitest: %.0o\n", 0);
+	// printf("@moulitest: %.o %.0o\n", 0, 0);
+	// ft_printf("@moulitest: %.o %.0o\n", 0, 0);
+
+	// printf("vrai : |%03.2o|\n", 0);
+	// ft_printf("mine : |%03.2o|\n", 0);
+	// printf("vrai : |%03.2d|\n", 0);
+	// ft_printf("mine : |%03.2d|\n", 0);
+
 	// printf("--------------\n");
-	printf("vrai : |%1.d|\n", 243);
-	ft_printf("mine : |%1.d|\n", 243);
+	// printf("vrai : @moulitest: |%5.d| |%5.0d|\n", 0, 0);
+	// ft_printf("mine : @moulitest: |%5.d| |%5.0d|\n", 0, 0);
+	// printf("vrai : |%1.d|\n", 243);
+	// ft_printf("mine : |%1.d|\n", 243);
+	// printf("vrai : |%hd|\n", (short)(-32768));
+	// ft_printf("mine : |%hd|\n", (short)(-32768));
 
 //----------FLOATS----------------------
 		// printf("vrai : %.10Lf\n", (long double)243.5);
