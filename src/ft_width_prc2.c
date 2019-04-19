@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 18:46:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 15:09:32 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +149,14 @@ static char		*ft_ap_neg(int before, int after, char *final, t_data *data)
 	int		surplus;
 
 	i = 0;
-	surplus = (data->f & F_SHARP) ? 2 : 0;
+	surplus = (data->f & F_SHARP && !(data->f & F_X_0)) ? 2 : 0;
 	while (before-- > after + surplus)
 	{
 		final[i++] = ' ';
 	}
 	if (data->f & F_PLUS)
 		final[i - 1] = '+';
-	if (data->f & F_SHARP)
+	if (data->f & F_SHARP && !(data->f & F_X_0) && data->f & F_X)
 	{
 		final[i++] = '0';
 		if (data->f & F_BIG_X)
@@ -174,6 +174,8 @@ static char		*ft_ap_neg(int before, int after, char *final, t_data *data)
 		while (after-- > data->conv_sz)
 			final[i++] = '0';
 	}
+	// if (data->f & F_X_0 && before > 0)
+	// 	final[i++] = ' ';
 	return (final);
 }
 

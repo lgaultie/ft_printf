@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 14:36:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 14:59:07 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ static char		*ft_preci_width3(int before, int after, t_data *data)
 		// ft_putstr("case 1\n");
 		final = ft_case1(final, i, after, data);
 	}
-	else if (after < data->conv_sz && before > after)
+	else if (after < data->conv_sz && before > after && !(data->f & F_SHARP))
 	{
 		// ft_putstr("case 2\n");
 		final = ft_case2(final, before, after, data);
 	}
 	else if ((after >= data->ap_sz && before > after) \
-	|| (after == data->conv_sz))
+	|| (after == data->conv_sz) || data->f & F_SHARP)
 	{
 		// ft_putstr("case 3\n");
 		final = ft_case3(final, before, after, data);

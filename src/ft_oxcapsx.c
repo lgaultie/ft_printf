@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 20:38:39 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/19 15:10:16 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ static char		*ft_join_sharp(char *tmp, int mode)
 
 static char		*ft_hexa_is_0(char *final, t_data *d)
 {
-	if ((d->f & F_SHARP) && !(d->f & F_PRECIS))
+	d->f |= F_X_0;
+	if ((d->f & F_SHARP) && !(d->f & F_PRECIS) && !(d->f & F_W_P))
 	{
 		free(final);
 		if (!(final = (ft_strdup("0"))))
@@ -117,6 +118,7 @@ char			*ft_hexa(t_data *d, int mode)
 	char	*tmp;
 
 	d->f |= F_UNSIGNED;
+	d->f |= F_X;
 	if (!(tmp = ft_conv_hhhlll_u(d, 16, mode)))
 		return (NULL);
 	if (!(d->f & F_C_0) && (d->f & F_SHARP) && !(d->f & F_PRECIS) \
@@ -133,6 +135,8 @@ char			*ft_hexa(t_data *d, int mode)
 	if (d->f & F_C_0)
 		if (!(final = ft_hexa_is_0(final, d)))
 			return (NULL);
+			// if (!(final = ft_strdup("")))
+			// 		return (NULL);
 	free(tmp);
 	d->conv_sz = ft_strlen(final);
 	return (final);
