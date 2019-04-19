@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 17:23:35 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 17:57:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,18 @@ int main(int argc, char **argv)
 	// char	*str = ft_strdup("ouii");
 	// char	*strnull = NULL;
 
-	printf("vrai : |%03.2o|\n", 0);						//casse couille
-	ft_printf("mine : |%03.2o|\n", 0);					//casse couille
-	printf("--------------\n");
-	printf("|%#1.o|\n", 0);
-	ft_printf("|%#1.o|\n", 0);
 	printf("--------------\n");
 	printf("18) Vrai PRINTF : |%.u|\n", 0);
 	ft_printf("18) Mon PRINTF  : |%.u|\n", 0);
+	printf("--------------\n");
+	printf("vrai : |%3.2o|\n", 0);
+	ft_printf("mine : |%3.2o|\n", 0);
+	// printf("--------------\n");
+	// printf("|%5.o| |%5.0o|\n", 0, 0);
+	// ft_printf("|%5.o| |%5.0o|\n", 0, 0);
+	// printf("--------------\n");
+	// printf("|%#1.o|\n", 0);
+	// ft_printf("|%#1.o|\n", 0);
 
 // test going with casses couille
 	// printf("@moulitest: %.0o\n", 0);
@@ -54,10 +58,10 @@ int main(int argc, char **argv)
 	// ft_printf("mine : |%03.2d|\n", 0);
 // test going with casses couille
 
-printf("--------------\n");
-printf("|%#8.10x|\n", 424242);
-ft_printf("|%#8.10x|\n", 424242);
-printf("--------------\n");
+// printf("--------------\n");
+// printf("|%#8.10x|\n", 424242);
+// ft_printf("|%#8.10x|\n", 424242);
+// printf("--------------\n");
 // printf("|%#1.x|\n", 45);
 // ft_printf("|%#1.x|\n", 45);
 // printf("--------------\n");

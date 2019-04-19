@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:26:59 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 17:56:47 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 	int		i;
 
 	i = 0;
+	// printf("before = %d  after = %d   data->conv_sz = %d     \n", before, after, data->conv_sz);
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
 	if (data->f & AP_NEG)
@@ -182,10 +183,10 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 
 	i = 0;
 	surplus = 0;
-	// printf("before = %d  after = %d   data->conv_sz = %d     ", before, after, data->conv_sz);
+	// printf("before = %d  after = %d   data->conv_sz = %d     \n", before, after, data->conv_sz);
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
-	if (!(data->f & AP_NEG))
+	if (!(data->f & AP_NEG) && !(data->f & F_UNSIGNED))
 	{
 		if (!(final = ft_not_ap_neg(before, after, final, data)))
 			return (NULL);
