@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 18:04:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:12:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,52 @@ int main(int argc, char **argv)
 	// printf("--------------\n");
 	// printf("18) Vrai PRINTF : |%.u|\n", 0);
 	// ft_printf("18) Mon PRINTF  : |%.u|\n", 0);
+	printf("vrai : |%#7.2o|\n", 0);						//ok
+	ft_printf("mine : |%#7.2o|\n", 0);					//ok
+	printf("--------------\n");
+	printf("vrai : |%#7.1o|\n", 00);						//ok
+	ft_printf("mine : |%#7.1o|\n", 00);					//ok
+	printf("--------------\n");
+	printf("vrai : |%#10.8o|\n", 424242);				//ok
+	ft_printf("mine : |%#10.8o|\n", 424242);				//ok
+	printf("vrai : |%#10.8o|\n", 424242);				//ok
+	ft_printf("mine : |%#10.8o|\n", 424242);				//ok
+	printf("--------------\n");
+	printf("vrai : |%#1.x|\n", 0);						//ok
+	ft_printf("mine : |%#1.x|\n", 0);					//ok
+	printf("--------------\n");
+	printf("vrai : |%1.s|\n", "243");					//ok
+	ft_printf("mine : |%1.s|\n", "243");					//ok
+	printf("--------------\n");
+	printf("vrai : |%#1.x|\n", 45);						//ok
+	ft_printf("mine : |%#1.x|\n", 45);					//ok
+	printf("--------------\n");
+	printf("vrai : |%#1.x|\n", 10);						//ok
+	ft_printf("mine : |%#1.x|\n", 10);					//ok
+	printf("--------------\n");
+	printf("vrai : |%#1.o|\n", 0);						//ok
+	ft_printf("mine : |%#1.o|\n", 0);					//ok
+	printf("--------------\n");
+	printf("vrai : |%1.d|\n", 243);						//ok
+	ft_printf("mine : |%1.d|\n", 243);					//ok
+	printf("--------------\n");
+	printf("vrai : |%-+10d|\n", 42);						//ok
+	ft_printf("mine : |%-+10d|\n", 42);					//ok
+	printf("--------------\n");
+	printf("vrai : |%+.10d|\n", -64);					//ok
+	ft_printf("mine : |%+.10d|\n", -64);					//ok
+	printf("--------------\n");
+	printf("vrai : @moulitest: |%.10d|\n", -42);			//ok
+	ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
+	printf("--------------\n");
+	printf("vrai : |%#10.5X|\n", 42); 					//ok
+	ft_printf("mine : |%#10.5X|\n", 42);					//ok
+	printf("--------------\n");
+	printf("vrai : |%#10.8o|\n", 424242);				//ok
+	ft_printf("mine : |%#10.8o|\n", 424242);				//ok
+	printf("--------------\n");
+	printf("vrai : |%#8.10x|\n", 424242);
+	ft_printf("Mine : |%#8.10x|\n", 424242);
 	printf("--------------\n");
 	printf("vrai : |%3.2o|\n", 0);
 	ft_printf("mine : |%3.2o|\n", 0);

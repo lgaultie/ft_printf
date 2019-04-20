@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 21:23:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/20 10:36:28 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	{
 		if (!(ret_conv = ft_only_conv(&f[i], d)))
 			return (NULL);
+			// printf("ret_conv = |%s|\n", ret_conv);
 		if ((ret_conv[0] == '\0' && d->f & F_SHARP && !(d->f & F_WIDTH)) \
 		|| (d->f & F_SPACE && d->f & AP_NEG))
 			return (ret_conv);
@@ -132,5 +133,6 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 		return (ft_end_percent(ret_flag, d));
 	if (!(final = ft_s_fwp_minus(f[i], ret_conv, ret_flag, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 3));
+		// printf("ret_flag = |%s|\n", ret_flag);
 	return (ft_final(ret_conv, ret_flag, final, 2));
 }

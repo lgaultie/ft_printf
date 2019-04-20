@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 22:00:01 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/20 10:49:16 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 	surplus = 0;
 	if (data->f & F_S)
 		return (ft_s(final, before, after, data));
-	if (!(data->f & AP_NEG) && !(data->f & F_UNSIGNED))
+	if (!(data->f & AP_NEG)) //&& !(data->f & F_UNSIGNED))
 	{
 		if (!(final = ft_not_ap_neg(before, after, final, data)))
 			return (NULL);

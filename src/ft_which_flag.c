@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 22:04:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:11:22 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else if (data->f & F_ZERO || (data->f & F_WIDTH && !(data->f & F_PRECIS) \
-	&& !(d->f & F_W_P)))
+	&& !(data->f & F_W_P)))
 	{
 		if (!(final = ft_width(flag, data)))
 			return (NULL);
