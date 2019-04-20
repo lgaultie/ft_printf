@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:08:18 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/20 10:49:16 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/20 14:45:29 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,15 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 {
 	int		i;
 	int		surplus;
+	// int		overage;
 
 	i = 0;
 	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X) ? 2 : 0;
-	while (before-- > after + surplus)
+	// overage = (d->f & F_O && d->f & F_C_0 && (before <= 0 || after <= 0)) ? 2 : 0;
+	// while (before-- > (after + surplus + overage))
+	if (before && !after && d->f & F_O)
+		before--;
+	while (before-- > (after + surplus))
 		final[i++] = ' ';
 	if (d->f & F_PLUS)
 		final[i - 1] = '+';
@@ -160,6 +165,7 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 		while (after-- > d->conv_sz)
 			final[i++] = ' ';
 	else
+		// while ((overage + after--) > d->conv_sz)
 		while (after-- > d->conv_sz)
 			final[i++] = '0';
 	return (final);
