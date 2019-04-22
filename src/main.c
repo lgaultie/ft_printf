@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 12:03:44 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 13:41:45 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,18 @@ int main(int argc, char **argv)
 	i = 123131;
 	// char	*str = ft_strdup("ouii");
 	// char	*strnull = NULL;
-	//
+	// printf("|%43d| |%0.32Ld| |%-1d| |%#0x| |%32d| |%2c| \n", 42, 9, 0, 23, 2, 'c');		//fail
+	// printf("|%c| |%c| |%43d| |%#X|\n",0, 0, 42, 12);
+	// ft_printf("|%c| |%c| |%43d| |%#X|\n",0, 0, 42, 12);		//FAIL
+	printf("|%#X|\n", 12);
+	ft_printf("|%#X|\n", 12);
+	// ft_printf("|%#X|\n",0);
+	// ft_printf("oui |%c|\n",0);
+	printf("vrai	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');
+	ft_printf("mine	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');		//FAIL
+
 	// ft_printf("%O\n", 42);
 	// printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
-	ft_printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
 	// ft_printf("before %O after\n", 42);
 	// ft_printf("%O%O%O%O%O\n", 1, 100, 999, 42, 999988888);
 	// ft_printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
@@ -380,44 +388,44 @@ int main(int argc, char **argv)
 // 	printf("vrai : |%hd|\n", (short)(-32768));
 // 	ft_printf("mine : |%hd|\n", (short)(-32768));
 //
-//
+
 // ----------FLOATS----------------------
-		printf("vrai : %.10Lf\n", (long double)243.5);
-		ft_printf("mine : %.10Lf\n", (long double)243.5);
-		printf("--------------\n");
-		printf("vrai : %.4Lf\n", (long double)243.5);
-		ft_printf("mine : %.4Lf\n", (long double)243.5);
-		printf("--------------\n");
-		printf("vrai : %lf\n", 243.5);
-		ft_printf("mine : %lf\n", 243.5);
-		printf("--------------\n");
-		printf("vrai : %f\n", 3.55);
-		ft_printf("Mine : %f\n", 3.55);
-		printf("--------------\n");
-		printf("vrai : |%5f|\n", 9877893.5123109);
-		ft_printf("Mine : |%5f|\n", 9877893.5123109);
-		printf("--------------\n");
-		ft_printf("Mine : |%5Lf |\n", (long double)9877893.5123109);
-		printf("vrai : |%5Lf|\n", (long double)9877893.5123109);
-		printf("--------------\n");
-		printf("vrai : |%.5f|\n", 3.5);
-		ft_printf("Mine : |%.5f|\n", 3.5);
-		printf("--------------\n");
-		printf("vrai : %Lf\n", (long double)243.5);
-		ft_printf("Mine : %Lf\n", (long double)243.5);
-		printf("--------------\n");
-		printf("vrai : %f\n", -10.011012365432);
-		ft_printf("mine : %f\n", -10.011012365432);
-		printf("--------------\n");
-		printf("vrai : |%4Lf|\n", (long double)243.59);
-		ft_printf("vrai : |%4Lf|\n", (long double)243.59);
-		printf("--------------\n");
-		printf("vrai : |%1f|\n", 243.59);
-		ft_printf("vrai : |%1f|\n", 243.59);
-		printf("--------------\n");
-		printf("vrai : |%10.1f|\n", 243.59);
-		ft_printf("mine : |%10.1f|\n", 243.59);
-		printf("--------------\n");
+		// printf("vrai : %.10Lf\n", (long double)243.5);
+		// ft_printf("mine : %.10Lf\n", (long double)243.5);
+		// printf("--------------\n");
+		// printf("vrai : %.4Lf\n", (long double)243.5);
+		// ft_printf("mine : %.4Lf\n", (long double)243.5);
+		// printf("--------------\n");
+		// printf("vrai : %lf\n", 243.5);
+		// ft_printf("mine : %lf\n", 243.5);
+		// printf("--------------\n");
+		// printf("vrai : %f\n", 3.55);
+		// ft_printf("Mine : %f\n", 3.55);
+		// printf("--------------\n");
+		// printf("vrai : |%5f|\n", 9877893.5123109);
+		// ft_printf("Mine : |%5f|\n", 9877893.5123109);
+		// printf("--------------\n");
+		// ft_printf("Mine : |%5Lf |\n", (long double)9877893.5123109);
+		// printf("vrai : |%5Lf|\n", (long double)9877893.5123109);
+		// printf("--------------\n");
+		// printf("vrai : |%.5f|\n", 3.5);
+		// ft_printf("Mine : |%.5f|\n", 3.5);
+		// printf("--------------\n");
+		// printf("vrai : %Lf\n", (long double)243.5);
+		// ft_printf("Mine : %Lf\n", (long double)243.5);
+		// printf("--------------\n");
+		// printf("vrai : %f\n", -10.011012365432);
+		// ft_printf("mine : %f\n", -10.011012365432);
+		// printf("--------------\n");
+		// printf("vrai : |%4Lf|\n", (long double)243.59);
+		// ft_printf("vrai : |%4Lf|\n", (long double)243.59);
+		// printf("--------------\n");
+		// printf("vrai : |%1f|\n", 243.59);
+		// ft_printf("vrai : |%1f|\n", 243.59);
+		// printf("--------------\n");
+		// printf("vrai : |%10.1f|\n", 243.59);
+		// ft_printf("mine : |%10.1f|\n", 243.59);
+		// printf("--------------\n");
 // 	//	----------FLOATS----------------------
 //
 // 		printf("--------------\n");

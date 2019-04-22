@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 17:28:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 12:17:15 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -634,6 +634,31 @@ int		main(void)
 	ft_printf("49) Mon PRINTF  : |%.lld|\n", (long long)0);
 	printf("50) Vrai PRINTF : |%.lld|\n", (long long)100);
 	ft_printf("50) Mon PRINTF  : |%.lld|\n", (long long)100);
+	ft_printf("--------------------%%f--------------------\n");
+	printf("01) Vrai PRINTF	: |%.10Lf|\n", (long double)243.5);
+	ft_printf("01) Mon PRINTF	: |%.10Lf|\n", (long double)243.5);
+	printf("02) Vrai PRINTF	: |%f|\n", 3.55);
+	ft_printf("02) Mon PRINTF	: |%f|\n", 3.55);
+	printf("03) Vrai PRINTF	: |%5f|\n", 9877893.5123109);
+	ft_printf("03) Mon PRINTF	: |%5f|\n", 9877893.5123109);
+	printf("04) Vrai PRINTF	: |%5Lf|\n", (long double)9877893.5123109);
+	ft_printf("04) Mon PRINTF	: |%5Lf|\n", (long double)9877893.5123109);
+	printf("05) Vrai PRINTF	: |%10.1f|\n", 243.59);
+	ft_printf("05) Mon PRINTF	: |%10.1f|\n", 243.59);
+	printf("06) Vrai PRINTF	: |%.4Lf|\n", (long double)243.5);
+	ft_printf("06) Mon PRINTF	: |%.4Lf|\n", (long double)243.5);
+	printf("07) Vrai PRINTF	: |%lf|\n", 243.5);
+	ft_printf("07) Mon PRINTF	: |%lf|\n", 243.5);
+	printf("08) Vrai PRINTF	: |%.5f|\n", 3.5);
+	ft_printf("08) Mon PRINTF	: |%.5f|\n", 3.5);
+	printf("09) Vrai PRINTF	: |%Lf|\n", (long double)243.5);
+	ft_printf("09) Mon PRINTF	: |%Lf|\n", (long double)243.5);
+	printf("10) Vrai PRINTF	: |%f|\n", -10.011012365432);
+	ft_printf("10) Mon PRINTF	: |%f|\n", -10.011012365432);
+	printf("11) Vrai PRINTF	: |%4Lf|\n", (long double)243.59);
+	ft_printf("11) Mon PRINTF	: |%4Lf|\n", (long double)243.59);
+	printf("12) Vrai PRINTF	: |%1f|\n", 243.59);
+	ft_printf("12) Mon PRINTF	: |%1f|\n", 243.59);
 	ft_printf("--------------------%%o--------------------\n");		//perfect
 	printf("01) Vrai PRINTF : |%o|\n", 34);
 	ft_printf("01) Mon PRINTF  : |%o|\n", 34);
@@ -1530,8 +1555,8 @@ int		main(void)
 	ft_printf("16) Mon PRINTF  : |%03.4u|\n", 10);
 	printf("17) Vrai PRINTF : |%u|\n", 0);
 	ft_printf("17) Mon PRINTF  : |%u|\n", 0);
-	// printf("18) Vrai PRINTF : |%.u|\n", 0);
-	// ft_printf("18) Mon PRINTF  : |%.u|\n", 0);			//JARRRIVE PAS A LE DEBUG
+	printf("18) Vrai PRINTF : |%.u|\n", 0);
+	ft_printf("18) Mon PRINTF  : |%.u|\n", 0);
 	printf("19) Vrai PRINTF : |%10u|\n", 0);
 	ft_printf("19) Mon PRINTF  : |%10u|\n", 0);
 	printf("20) Vrai PRINTF : |%.u|\n", 88);
@@ -1573,8 +1598,8 @@ int		main(void)
 	ft_printf("15) Mon PRINTF  : |%08hu|\n", (unsigned short)64);
 	printf("16) Vrai PRINTF : |%03.4hu|\n", (unsigned short)10);
 	ft_printf("16) Mon PRINTF  : |%03.4hu|\n", (unsigned short)10);
-	// printf("17) Vrai PRINTF : |%.hu|\n", (unsigned short)0);
-	// ft_printf("17) Mon PRINTF  : |%.hu|\n", (unsigned short)0);
+	printf("17) Vrai PRINTF : |%.hu|\n", (unsigned short)0);
+	ft_printf("17) Mon PRINTF  : |%.hu|\n", (unsigned short)0);
 	printf("18) Vrai PRINTF : |%.hu|\n", (unsigned short)88);
 	ft_printf("18) Mon PRINTF  : |%.hu|\n", (unsigned short)88);
 	printf("19) Vrai PRINTF : |%hu|\n", (unsigned short)USHRT_MAX);
@@ -1614,8 +1639,8 @@ int		main(void)
 	ft_printf("15) Mon PRINTF  : |%08hhu|\n", (unsigned char)64);
 	printf("16) Vrai PRINTF : |%03.4hhu|\n", (unsigned char)10);
 	ft_printf("16) Mon PRINTF  : |%03.4hhu|\n", (unsigned char)10);
-	// printf("17) Vrai PRINTF : |%.hhu|\n", (unsigned char)0);
-	// ft_printf("17) Mon PRINTF  : |%.hhu|\n", (unsigned char)0);
+	printf("17) Vrai PRINTF : |%.hhu|\n", (unsigned char)0);
+	ft_printf("17) Mon PRINTF  : |%.hhu|\n", (unsigned char)0);
 	printf("18) Vrai PRINTF : |%.hhu|\n", (unsigned char)88);
 	ft_printf("18) Mon PRINTF  : |%.hhu|\n", (unsigned char)88);
 	printf("19) Vrai PRINTF : |%hhu|\n", (unsigned char)127);
@@ -1655,8 +1680,8 @@ int		main(void)
 	ft_printf("15) Mon PRINTF  : |%08lu|\n", (unsigned long)64);
 	printf("16) Vrai PRINTF : |%03.4lu|\n", (unsigned long)10);
 	ft_printf("16) Mon PRINTF  : |%03.4lu|\n", (unsigned long)10);
-	// printf("17) Vrai PRINTF : |%.lu|\n", (unsigned long)0);
-	// ft_printf("17) Mon PRINTF  : |%.lu|\n", (unsigned long)0);
+	printf("17) Vrai PRINTF : |%.lu|\n", (unsigned long)0);
+	ft_printf("17) Mon PRINTF  : |%.lu|\n", (unsigned long)0);
 	printf("18) Vrai PRINTF : |%.lu|\n", (unsigned long)88);
 	ft_printf("18) Mon PRINTF  : |%.lu|\n", (unsigned long)88);
 	printf("19) Vrai PRINTF : |%lu|\n", (unsigned long)ULONG_MAX);

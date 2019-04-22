@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/20 12:28:47 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 14:26:57 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define F_X_0 134217728
 # define F_X 268435456
 # define F_O 536870912
+# define F_W_P_O_0 1073741824
 
 typedef	struct	s_data
 {
@@ -83,7 +84,7 @@ char			*ft_got_flag(char *str, t_data *data);
 char			*ft_next_p100(char *str, t_data *data);
 char			*ft_analyse(char *str, t_data *data);
 char			*ft_conv_dif(char *flags, t_data *data);
-char			*ft_jonh_claude(char *flags, t_data *data);
+char			*ft_string_mode1(char *flag, t_data *data);
 char			*ft_conv_p(t_data *data);
 char			*ft_precision_d(char *flags, t_data *data);
 int				ft_precision_s(char *flags, t_data *data);
@@ -96,6 +97,7 @@ char			*ft_conv_u(t_data *data);
 char			*ft_analyse_options(char *flags, t_data *data);
 char			*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d);
 char			*ft_only_conv(char *flags, t_data *data);
+char			*ft_s_width(char *flag, char *ap, t_data *data);
 char			*ft_which_flag(char *flag, char conv, t_data *data);
 char			*ft_preci_width(char *flag, t_data *data);
 char			*ft_plus(char *flag, t_data *data);
@@ -109,8 +111,11 @@ char			*ibmul(unsigned long long v, unsigned int b, int m, t_data *d);
 char			*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *d);
 char			*itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *d);
 char			*ft_flag_minus(int int_p, int after, char *final, t_data *d);
+char			*ft_case1(char *final, int i, int after, t_data *data);
 char			*ft_case2(char *final, int int_p, int after, t_data *data);
 char			*ft_case3(char *final, int int_p, int after, t_data *data);
+char			*ft_sharp(int i, char *f, char *ret_flag, t_data *data);
+char			*ft_ret_flag_sharp(char *ret_flag, char *f, int i);
 char			*ft_percent_percent(char *ret_flag, t_data *data);
 int				ft_active_flag(int i, char *f, t_data *data);
 char			*ft_special_cases(int i, char *f, t_data *d);
