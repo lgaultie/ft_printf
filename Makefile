@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/17 14:05:21 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/22 14:28:27 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,19 @@ HEAD	= $(SRCDIR)/ft_printf.h
 
 SRCS =	mainkevin.c				\
 		ft_printf.c				\
-		ft_analyse.c			\
+		ft_analyse_format.c		\
 		ft_d_i.c				\
 		ft_c.c					\
-		ft_s.c					\
+		ft_u.c					\
+		ft_s_mode0.c			\
+		ft_s_mode1.c			\
 		ft_f.c					\
-		ft_oxcapsx.c			\
+		ft_o.c					\
 		ft_flags.c				\
 		ft_accuracy.c			\
 		ft_width.c				\
 		ft_p.c					\
+		ft_xx.c					\
 		ft_which_flag.c			\
 		ft_intlen.c				\
 		ft_itoa.c				\
@@ -54,17 +57,20 @@ SRCS =	mainkevin.c				\
 		ft_strcpy.c				\
 		ft_plus_minus.c			\
 		ft_only_conv.c			\
-		ft_width_prc.c			\
+		ft_fwp.c				\
+		ft_fwp2.c				\
+		ft_sharp.c				\
+		ft_fwp_string.c			\
 		ft_hhh_lll.c			\
 		ft_strcmp.c				\
 		ft_strndup.c			\
-		ft_width_prc_minus.c 	\
-		ft_width_prc2.c			\
-		ft_width2.c				\
+		ft_fwp_minus.c 			\
+		ft_width_string_minus.c	\
 		ft_active_flags.c		\
 		ft_flags2.c				\
 		ft_f2.c					\
-		ft_f_width_accuracy.c
+		ft_f_width_accuracy.c	\
+		ft_disable_flag.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
