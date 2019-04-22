@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 21:35:30 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 22:16:02 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,22 +83,22 @@ static void		ft_print_char_0(t_data *d)
 	int to_print;
 
 	to_print = 1;
-	ft_putstrn(d->buf, (d->i_0[to_print] + d->tmp));
+	ft_putstrn(d->buf, (d->index_0[to_print] + d->tmp));
 	ft_putchar(0);
 
-	while (d->i_0[0] - to_print > 0)
+	while (d->index_0[0] - to_print > 0)
 	{
-		if (to_print + d->i_0[0] == 2)
-			ft_putstr(&d->buf[d->i_0[to_print]]);
+		if (to_print + d->index_0[0] == 2)
+			ft_putstr(&d->buf[d->index_0[to_print]]);
 		else
 		{
-			ft_putstrn(&d->buf[d->i_0[to_print]],
-				(d->i_0[to_print + 1] - d->i_0[to_print]));
+			ft_putstrn(&d->buf[d->index_0[to_print]],
+				(d->index_0[to_print + 1] - d->index_0[to_print]));
 			ft_putchar(0);
 		}
 		to_print++;
 	}
-	ft_putstr(&d->buf[d->i_0[to_print]]);
+	ft_putstr(&d->buf[d->index_0[to_print]]);
 }
 
 /*
@@ -120,6 +120,7 @@ static int		ft_print_format(char *format, t_data *data)
 	}
 	else
 		ft_putstr(data->buf);
+	free(data->index_0);
 	free(data->buf);
 	return (len);
 }

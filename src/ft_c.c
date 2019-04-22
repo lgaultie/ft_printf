@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 21:35:53 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 22:14:11 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static void		ft_char_0(t_data *data)
 
 	nb_0 = 0;
 	if (data->f & F_C_02)
-		nb_0 = (data->i_0[0] + 1);
+		nb_0 = (data->index_0[0] + 1);
 	else
 	{
-		if (!(data->i_0 = ft_memalloc(sizeof(int) * 100)))
+		if (!(data->index_0 = ft_memalloc(sizeof(int) * 15)))
 			return ;
 		nb_0 = 1;
 	}
-	data->i_0[0] = nb_0;
-	data->i_0[nb_0] = ft_strlen(data->buf);
+	data->index_0[0] = nb_0;
+	data->index_0[nb_0] = ft_strlen(data->buf);
 	data->f |= F_C_02;
 }
 

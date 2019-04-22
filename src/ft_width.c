@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 21:15:39 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 23:06:25 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char			*ft_width2(int width, t_data *d)
 ** Sends this int to ft_width2 which will apply the conversion.
 */
 
-char			*ft_width(char *f, t_data *d)
+char			*ft_width(char *f, t_data *data)
 {
 	int		i;
 	int		j;
@@ -98,9 +98,9 @@ char			*ft_width(char *f, t_data *d)
 
 	i = 0;
 	j = 0;
-	if (d->f & F_WIDTH && (i = d->tmp))
-		d->f &= ~F_WIDTH;
-	if (!(conv = ft_memalloc(sizeof(char) * (d->flag_sz + 1))))
+	if (data->f & F_WIDTH && (i = data->tmp))
+		data->f &= ~F_WIDTH;
+	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
 		return (NULL);
 	while (f[i] != '\0')
 	{
@@ -113,8 +113,9 @@ char			*ft_width(char *f, t_data *d)
 	}
 	i = ft_atoi(conv);
 	free(conv);
-	j = ft_strlen(f) - 1;
-	(d->f & F_C_02 && f[j] == 'c' && d->f & F_AP_0) ? d->i_0[d->i_0[0]] += i - 1 : 0;
+	if (data->f & F_C_02)
+		data->index_0[data->index_0[0]] += (f[ft_strlen(f) - 1] == 'c'
+		&& data->f & F_AP_0) ?  i - 1 : 0;
 	i = (i < 0) ? -i : i;
-	return (ft_width2(i, d));
+	return (ft_width2(i, data));
 }
