@@ -6,11 +6,15 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:57:13 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 15:47:43 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:29:40 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_initialize: data->conv_sz is needed in files dealing with flags.
+*/
 
 static int		ft_initialize(t_data *d)
 {
@@ -20,6 +24,10 @@ static int		ft_initialize(t_data *d)
 	return (0);
 }
 
+/*
+** ft_freetmpitoa: free and return.
+*/
+
 static char		*ft_freetmpitoa(char *tmp, char *ret_itoa, int mode)
 {
 	free(tmp);
@@ -27,6 +35,10 @@ static char		*ft_freetmpitoa(char *tmp, char *ret_itoa, int mode)
 		free(ret_itoa);
 	return (NULL);
 }
+
+/*
+** ft_conv_p: deals with %p cases.
+*/
 
 char			*ft_conv_p(t_data *data)
 {

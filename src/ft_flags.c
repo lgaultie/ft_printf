@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 13:57:42 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 14:30:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_end_percent: %% cases.
+*/
 
 static char	*ft_end_percent(char *ret_flag, t_data *data)
 {
@@ -30,6 +34,11 @@ static char	*ft_end_percent(char *ret_flag, t_data *data)
 	free(ret_flag);
 	return (final);
 }
+
+/*
+** ft_conv_percent: deals with %242% cases. We have to return ret_flag + % or
+** % + ret_flag depending on wether the flag PERCENT is enabled or not.
+*/
 
 static char	*ft_conv_percent(int i, char *flag, t_data *data)
 {
@@ -57,6 +66,10 @@ static char	*ft_conv_percent(int i, char *flag, t_data *data)
 	return (final);
 }
 
+/*
+** ft_final: free ret_conv or ret_flag and return final.
+*/
+
 static char	*ft_final(char *ret_conv, char *ret_flag, char *final, int mode)
 {
 	if (mode == 1)
@@ -79,6 +92,12 @@ static char	*ft_final(char *ret_conv, char *ret_flag, char *final, int mode)
 	return (final);
 }
 
+/*
+** ft_s_fwp_minus: return the final string, join flag + conv in normal cases,
+** and calls ft_fwp_minus when the flag minus is activated: we have to join
+** conv + flag in such a case.
+*/
+
 static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 {
 	char *final;
@@ -89,8 +108,7 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 		return (NULL);
 	}
 	else if ((f == 's' && (d->f & F_MINUS) && (d->f & F_W_P)) \
-	|| (f == 'u' && (d->f & F_PRECIS) && (d->f & F_C_0)))
-	// || (f == 'o' && (d->f & F_W_P) && (d->f & F_C_0)))
+		|| (f == 'u' && (d->f & F_PRECIS) && (d->f & F_C_0)))
 	{
 		if (!(final = ft_strdup(ret_flag)))
 			return (NULL);
@@ -121,13 +139,12 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 	{
 		if (!(ret_conv = ft_only_conv(&f[i], d)))
 			return (NULL);
-			// printf("ret_conv = |%s|\n", ret_conv);
 		if ((ret_conv[0] == '\0' && d->f & F_SHARP && !(d->f & F_WIDTH)) \
-		|| (d->f & F_SPACE && d->f & AP_NEG))
+			|| (d->f & F_SPACE && d->f & AP_NEG))
 			return (ret_conv);
 	}
 	if (!(d->f & F_PERCENT) && (d->f & F_MINUS) && (d->f & F_WIDTH) \
-	&& !(d->f & F_PRECIS) && !(d->f & F_W_P))
+		&& !(d->f & F_PRECIS) && !(d->f & F_W_P))
 		return (ft_for_minus(ret_conv, f, i, d));
 	if (d->f & F_PERCENT)
 		return (ft_conv_percent(i, f, d));
@@ -139,6 +156,5 @@ char		*ft_flag_conv(char *f, char *ret_conv, int i, t_data *d)
 		return (ft_end_percent(ret_flag, d));
 	if (!(final = ft_s_fwp_minus(f[i], ret_conv, ret_flag, d)))
 		return (ft_final(ret_conv, ret_flag, ret_flag, 3));
-		// printf("ret_flag = |%s|\n", ret_flag);
 	return (ft_final(ret_conv, ret_flag, final, 2));
 }

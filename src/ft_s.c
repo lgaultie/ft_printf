@@ -6,13 +6,17 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:43 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 19:12:26 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:33:45 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_string_1_if(char *ap, char *tmp, t_data *d, int mode)
+/*
+** ft_string_mode0_2: In cases of flag MINUS is activated.
+*/
+
+static void		ft_stringmode0_2(char *ap, char *tmp, t_data *d, int mode)
 {
 	if (mode == 1)
 	{
@@ -38,7 +42,11 @@ static void		ft_string_1_if(char *ap, char *tmp, t_data *d, int mode)
 	}
 }
 
-static char		*ft_string_1(t_data *d)
+/*
+** ft_string_mode0: mode 0 is called when there are no flags to deal with.
+*/
+
+static char		*ft_string_mode0(t_data *d)
 {
 	char	*ap;
 	char	*tmp;
@@ -56,9 +64,9 @@ static char		*ft_string_1(t_data *d)
 		return (ft_strdup("(null)"));
 	}
 	if (((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS))) \
-	|| (d->f & F_MINUS))
-		ft_string_1_if(ap, tmp, d, 2);
-	ft_string_1_if(ap, tmp, d, 1);
+		|| (d->f & F_MINUS))
+		ft_stringmode0_2(ap, tmp, d, 2);
+	ft_stringmode0_2(ap, tmp, d, 1);
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
 		free(ap);
 	if ((d->f & F_PRECIS || d->f & F_WIDTH) && (!(d->f & F_MINUS)))
@@ -66,6 +74,10 @@ static char		*ft_string_1(t_data *d)
 			return (NULL);
 	return (ap);
 }
+
+/*
+** ft_s_width: deals with cases such as %5s --> width only.
+*/
 
 char			*ft_s_width(char *flag, char *ap, t_data *data)
 {
@@ -80,6 +92,10 @@ char			*ft_s_width(char *flag, char *ap, t_data *data)
 	free(ret_width);
 	return (final);
 }
+
+/*
+** ft_s_fwp: deals with cases such as %8.5s --> accuracy + width.
+*/
 
 char			*ft_s_fwp(char *flag, char *ap, t_data *data)
 {
@@ -100,48 +116,73 @@ char			*ft_s_fwp(char *flag, char *ap, t_data *data)
 	return (final);
 }
 
-char			*ft_string(char *flag, t_data *data, int mode)
+static char		*ft_string_mode1_2(char *flag, char *ap, t_data *data)
+{
+	char	*final;
+
+	if (data->f & F_PRECIS && !(data->f & F_W_P))
+	{
+		data->ap_sz = ft_precision_s(flag, data);
+		if (!(final = ft_strsub(ap, 0, data->ap_sz)))
+			return (NULL);
+	}
+	if (data->f & F_WIDTH && !(data->f & F_W_P))
+		if (!(final = ft_s_width(flag, ap, data)))
+			return (NULL);
+	if (data->f & F_W_P)
+		if (!(final = ft_s_fwp(flag, ap, data)))
+			return (NULL);
+	free(ap);
+	return (final);
+}
+
+/*
+** ft_string_mode 1: mode 1 is called with flags such as precision or width.
+*/
+
+char			*ft_string_mode1(char *flag, t_data *data)
 {
 	char	*ap;
 	char	*final;
 
-	if (mode == 0)
-		if (!(final = ft_string_1(data)))
-			return (NULL);
-	if (mode == 1)
+	if (data->tmp_s)
 	{
-		if (data->tmp_s)
-		{
-			if (!(ap = ft_strdup(data->tmp_s)))
-				return (NULL);
-			free(data->tmp_s);
-		}
+		if (!(ap = ft_strdup(data->tmp_s)))
+			return (NULL);
+		free(data->tmp_s);
+	}
+	else
+	{
+		if ((data->f & F_WIDTH) && !(data->f & F_W_P))
+			return (ft_width_s(flag, data));
+		else if (data->f & F_PRECIS && (data->f & F_W_P))
+			return (ft_strsub("(null)", 0, ft_precision_s(flag, data)));
 		else
 		{
-			if ((data->f & F_WIDTH) && !(data->f & F_W_P))
-				return (ft_width_s(flag, data));
-			else if (data->f & F_PRECIS && (data->f & F_W_P))
-				return (ft_strsub("(null)", 0, ft_precision_s(flag, data)));
-			else
-			{
-				if (!(ap = ft_strdup("(null)")))
-					return (NULL);
-			}
-		}
-		if (data->f & F_PRECIS && !(data->f & F_W_P))
-		{
-			data->ap_sz = ft_precision_s(flag, data);
-			if (!(final = ft_strsub(ap, 0, data->ap_sz)))
+			if (!(ap = ft_strdup("(null)")))
 				return (NULL);
 		}
-		if (data->f & F_WIDTH && !(data->f & F_W_P))
-			if (!(final = ft_s_width(flag, ap, data)))
-				return (NULL);
-		if (data->f & F_W_P)
-			if (!(final = ft_s_fwp(flag, ap, data)))
-				return (NULL);
-		free(ap);
 	}
+	if (!(final = ft_string_mode1_2(flag, ap, data)))
+		return (NULL);
 	data->f |= F_S;
+	return (final);
+}
+
+/*
+** ft_string: mode 0 is called when there is only a conversion to do, without
+** flags. Mode 1 is called with flags such as precision or width.
+*/
+
+char			*ft_string(char *flag, t_data *data, int mode)
+{
+	char	*final;
+
+	if (mode == 0)
+		if (!(final = ft_string_mode0(data)))
+			return (NULL);
+	if (mode == 1)
+		if (!(final = ft_string_mode1(flag, data)))
+			return (NULL);
 	return (final);
 }

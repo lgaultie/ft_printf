@@ -6,11 +6,15 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:45:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 21:17:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:55:07 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_no_flag_zero: deals with cases not dealing with flag zero.
+*/
 
 static char		*ft_no_flag_zero(char *ret, int width, int i, t_data *data)
 {
@@ -33,6 +37,11 @@ static char		*ft_no_flag_zero(char *ret, int width, int i, t_data *data)
 	return (ret);
 }
 
+/*
+** ft_small_width: when width is smaller than data->conv_sz which is the size
+** of ap.
+*/
+
 static char		*ft_small_width(t_data *data)
 {
 	if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
@@ -41,6 +50,11 @@ static char		*ft_small_width(t_data *data)
 		return (ft_strdup("+"));
 	return (ft_strdup(""));
 }
+
+/*
+** ft_width2: apply the conversion and return converted flag. Called by
+** ft_width in ft_width.c.
+*/
 
 char			*ft_width2(int width, t_data *d)
 {

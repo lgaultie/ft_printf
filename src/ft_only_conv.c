@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/17 19:47:02 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 10:53:55 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ static char		*ft_only_conv3(char *flags, t_data *data)
 	return (final);
 }
 
+/*
+** ft_only_conv1,2,3: call the appropriate function for each conversion,
+** and returns the converted sentence.
+*/
+
 static char		*ft_only_conv2(char *f, t_data *data)
 {
 	char	*final;
@@ -92,6 +97,11 @@ static char		*ft_only_conv2(char *f, t_data *data)
 	return (final);
 }
 
+/*
+** ft_only_conv1,2,3: call the appropriate function for each conversion,
+** and returns the converted sentence.
+*/
+
 char			*ft_only_conv(char *flags, t_data *data)
 {
 	char	*final;
@@ -109,7 +119,8 @@ char			*ft_only_conv(char *flags, t_data *data)
 			return (NULL);
 	}
 	else if (flags[0] == 'u' || flags[0] == 'c' || flags[0] == 'o' \
-	|| flags[0] == 'x' || flags[0] == 'X' || flags[0] == 'p' || flags[0] == '%')
+		|| flags[0] == 'x' || flags[0] == 'X' || flags[0] == 'p' \
+			|| flags[0] == '%')
 	{
 		if (!(final = ft_only_conv2(flags, data)))
 			return (NULL);

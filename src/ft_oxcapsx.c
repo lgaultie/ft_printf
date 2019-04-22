@@ -6,16 +6,22 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:14:52 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 14:27:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+** ft_for_c_0: for %o conversions.
+** when ap is 0, we have to return an empty string, or only a
+** space or 0 depending on the flags.
+*/
+
 static char		*ft_for_c_o(char *final, t_data *d)
 {
-	if (((d->f & F_SHARP) && ((d->f & F_PRECIS) || d->f & F_WIDTH)) ||
-		(d->f & F_SHARP && !(d->f & F_PRECIS) && !(d->f & F_WIDTH)))
+	if (((d->f & F_SHARP) && ((d->f & F_PRECIS) || d->f & F_WIDTH)) \
+		|| (d->f & F_SHARP && !(d->f & F_PRECIS) && !(d->f & F_WIDTH)))
 	{
 		free(final);
 		if (!(final = (ft_strdup("0"))))
@@ -36,6 +42,10 @@ static char		*ft_for_c_o(char *final, t_data *d)
 	d->f &= ~F_C_0;
 	return (final);
 }
+
+/*
+** ft_octal: deals with %o cases.
+*/
 
 char			*ft_octal(t_data *d)
 {
@@ -62,6 +72,11 @@ char			*ft_octal(t_data *d)
 	return (final);
 }
 
+/*
+** ft_join_sharp: when we have to return | 0x34234|, we have to join 0x
+** on the conversion and not the flag.
+*/
+
 static char		*ft_join_sharp(char *tmp, int mode)
 {
 	char	*final;
@@ -74,6 +89,11 @@ static char		*ft_join_sharp(char *tmp, int mode)
 			return (NULL);
 	return (final);
 }
+
+/*
+** ft_hexa_is_0: when ap is 0, we have to return an empty string, or only a
+** space or 0 depending on the flags.
+*/
 
 static char		*ft_hexa_is_0(char *final, t_data *d)
 {
@@ -117,7 +137,7 @@ char			*ft_hexa(t_data *d, int mode)
 	if (!(tmp = ft_conv_hhhlll_u(d, 16, mode)))
 		return (NULL);
 	if (!(d->f & F_C_0) && (d->f & F_SHARP) && !(d->f & F_PRECIS) \
-	&& !(d->f & F_W_P) && !(d->f & F_ZERO))
+		&& !(d->f & F_W_P) && !(d->f & F_ZERO))
 	{
 		if (!(final = ft_join_sharp(tmp, mode)))
 			return (NULL);

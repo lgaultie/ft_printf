@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 20:31:26 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/20 13:55:12 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ char			*ft_got_flag(char *str, t_data *data)
 
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
-		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%'	\
-		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
+		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%' \
+			&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f')
 		x++;
 	if (str[x] == '%' && str[x - 1] == '%')
 		data->flag_sz = 1;
