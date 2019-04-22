@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 21:13:09 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 21:38:42 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 # include <stdarg.h>
 # include "../libft/libft.h"
 # include <stdio.h>
+
+/*
+** define:
+** F_W_P : flag width + precision
+** B_DONE : in ft_analyse, when it's the end of format, nothing more to read
+** F_PLUS_MINUS : When +- are on
+** AP_NEG : when the variadic argument is negative.
+** F_UNSIGNED : when it's a u,o, x, X conversion.
+** ONLY_CONV : when there are no flags to deals with.
+** F_PERCENT : %43% cases.
+** F_S : when it's a %s converion.
+** F_C_0 : when the variadic argument is 0.
+*/
 
 # define F_ZERO 1
 # define F_PLUS 2
