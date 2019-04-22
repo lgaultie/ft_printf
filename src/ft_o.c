@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:04:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:04:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 15:19:06 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char		*ft_for_c_o(char *final, t_data *d)
 		if (!(final = (ft_strdup(""))))
 			return (NULL);
 	}
-	else if (((d->f & F_SHARP) || (d->f & F_W_P)))
+	else if (d->f & F_SHARP)
 	{
 		free(final);
 		if (!(final = (ft_strdup(" "))))

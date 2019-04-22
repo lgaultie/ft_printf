@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:46:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:22:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 14:55:38 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			ft_disable_flag2(t_data *d)
 	d->f &= ~F_X_0;
 	d->f &= ~F_X;
 	d->f &= ~F_O;
-	d->f &= ~F_W_P_O_0;
+	d->f &= ~F_W_P_0;
 }
 
 /*

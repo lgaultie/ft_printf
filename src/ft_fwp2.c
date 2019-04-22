@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:36 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:35:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 15:44:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 	i = 0;
 	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X) ? 2 : 0;
 	before = (before && !after && d->f & F_O) ? before-- : before;
+	if (after + surplus == 0)
+		before = before - d->conv_sz;
 	while (before-- > (after + surplus))
 		final[i++] = ' ';
 	if (d->f & F_PLUS)
