@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/20 11:46:07 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 12:25:59 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char			*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 		return (final);
 	}
 	ft_initialize(ap, data);
+	if (ap == 0)
+		data->f |= F_AP_0;
 	if (!(final = ibmul(ap, base, mode, data)))
 		return (NULL);
 	return (final);

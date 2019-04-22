@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/20 14:41:32 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 13:57:42 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,12 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 {
 	char *final;
 
-	if ((f == 's' && (d->f & F_MINUS) && (d->f & F_W_P)) \
+	if (d->f & F_W_P_0)
+	{
+		if (!(final = ft_strdup("")))
+		return (NULL);
+	}
+	else if ((f == 's' && (d->f & F_MINUS) && (d->f & F_W_P)) \
 	|| (f == 'u' && (d->f & F_PRECIS) && (d->f & F_C_0)))
 	// || (f == 'o' && (d->f & F_W_P) && (d->f & F_C_0)))
 	{

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/20 14:55:15 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 14:14:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char		*ft_for_c_o(char *final, t_data *d)
 		if (!(final = (ft_strdup(""))))
 			return (NULL);
 	}
-	else if (((d->f & F_SHARP) || (d->f & F_W_P)))
+	else if (((d->f & F_SHARP) || (d->f & F_W_P)) && !(d->f & F_AP_0))
 	{
 		free(final);
 		if (!(final = (ft_strdup(" "))))
@@ -52,15 +52,11 @@ char			*ft_octal(t_data *d)
 			return (NULL);
 	}
 	else
-	{
 		if (!(final = ft_strdup(tmp)))
 			return (NULL);
-	}
-	if (d->f & F_C_0)
-	{
+	if (d->f & F_AP_0)
 		if (!(final = ft_for_c_o(final, d)))
 			return (NULL);
-	}
 	d->conv_sz = ft_strlen(final);
 	free(tmp);
 	return (final);
@@ -82,19 +78,21 @@ static char		*ft_join_sharp(char *tmp, int mode)
 static char		*ft_hexa_is_0(char *final, t_data *d)
 {
 	d->f |= F_X_0;
-	if ((d->f & F_SHARP) && !(d->f & F_PRECIS) && !(d->f & F_W_P))
+
+	if (((d->f & F_SHARP) && ((d->f & F_PRECIS) || d->f & F_WIDTH)) ||
+		(d->f & F_SHARP && !(d->f & F_PRECIS) && !(d->f & F_WIDTH)))
 	{
 		free(final);
 		if (!(final = (ft_strdup("0"))))
 			return (NULL);
 	}
-	else if (d->f & F_SHARP || d->f & F_PRECIS)
+	else if ((d->f & F_SHARP || d->f & F_PRECIS) && !(d->f & F_WIDTH))
 	{
 		free(final);
 		if (!(final = (ft_strdup(""))))
 			return (NULL);
 	}
-	else if ((d->f & F_SHARP || d->f & F_W_P) && !(d->f & F_PRECIS))
+	else if ((d->f & F_SHARP || d->f & F_W_P) && !(d->f & F_AP_0))
 	{
 		free(final);
 		if (!(final = ft_strdup(" ")))
@@ -129,7 +127,7 @@ char			*ft_hexa(t_data *d, int mode)
 		if (!(final = ft_strdup(tmp)))
 			return (NULL);
 	}
-	if (d->f & F_C_0)
+	if (d->f & F_AP_0)
 		if (!(final = ft_hexa_is_0(final, d)))
 			return (NULL);
 	free(tmp);
