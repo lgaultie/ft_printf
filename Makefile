@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/22 14:28:27 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/22 16:28:42 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,10 +105,7 @@ clean:
 
 fclean: clean
 	@printf "fclean... "
-	@rm -f $(NAME)
-	@rm -rf ft_printf.dSYM
-	@rm -rf a.out.dSYM
-	@rm -rf a.out
+	@rm -rf $(NAME)
 	@printf "[$(_BLUE)✓$(_END)]\n"
 
 re: fclean all clean
