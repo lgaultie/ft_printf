@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 18:16:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:42:48 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ char			*ft_width(char *f, t_data *data)
 	i = (i < 0) ? -i : i;
 	return (ft_width2(i, data));
 }
+
+/*
+** ft_width_minus2 : Case of width + flag minus. Returns the converted flag.
+*/
 
 static char		*ft_width_minus2(int width, t_data *d)
 {
@@ -91,7 +95,7 @@ char			*ft_width_minus(char *flags, t_data *data)
 	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz - 1))))
 		return (NULL);
 	while (flags[i] == '+' || flags[i] < '0' || flags[i] > '9' \
-	|| flags[i] == '-')
+		|| flags[i] == '-')
 		i++;
 	while (flags[i] >= '0' && flags[i] <= '9')
 		conv[j++] = flags[i++];
@@ -99,6 +103,10 @@ char			*ft_width_minus(char *flags, t_data *data)
 	free(conv);
 	return (ft_width_minus2(i, data));
 }
+
+/*
+** ft_width_s : Deals with width in a %s case. Returns converted flag.
+*/
 
 static char		*ft_width_s2(int width, t_data *data)
 {

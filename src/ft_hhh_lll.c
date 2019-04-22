@@ -6,11 +6,16 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 19:24:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:10:20 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_initialize: initializes data->ap_size, and enable flag when ap = 0.
+** data->ap_sz is useful in precision and others flags.
+*/
 
 static void		ft_initialize(unsigned long long ap, t_data *data)
 {
@@ -18,6 +23,11 @@ static void		ft_initialize(unsigned long long ap, t_data *data)
 	if (ap == 0)
 		data->f |= F_AP_0;
 }
+
+/*
+** ft_conv_hhhlll_u: does the good cast depending on previous flags (ex: %hhu),
+** also deals with < 0 numbers. Enable needed flags.
+*/
 
 char			*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 {
@@ -47,6 +57,11 @@ char			*ft_conv_hhhlll_u(t_data *data, int base, int mode)
 		return (NULL);
 	return (final);
 }
+
+/*
+** ft_conv_hhhlll: does the good cast depending on previous flags (ex: %hhd),
+** also deals with < 0 numbers. Enable needed flags.
+*/
 
 char			*ft_conv_hhhlll(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/20 10:47:14 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:41:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 		size++;
 	return (size);
 }
+
+/*
+** ft_case1: Deals with cases where before == or < after.
+*/
 
 static char		*ft_case1(char *final, int i, int after, t_data *data)
 {
@@ -81,7 +85,7 @@ static char		*ft_preci_width3(int before, int after, t_data *data)
 	else if (after < data->conv_sz && before > after && !(data->f & F_SHARP))
 		final = ft_case2(final, before, after, data);
 	else if ((after >= data->ap_sz && before > after) \
-	|| (after == data->conv_sz) || data->f & F_SHARP)
+		|| (after == data->conv_sz) || data->f & F_SHARP)
 		final = ft_case3(final, before, after, data);
 	return (final);
 }

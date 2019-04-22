@@ -6,11 +6,16 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 18:04:44 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 10:58:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_accuracy_sup: write the good numbers of 0 in a string.
+** Returns the converted flag.
+*/
 
 static char		*ft_accuracy_sup(int accuracy, char *ret, t_data *data)
 {
@@ -41,6 +46,11 @@ static char		*ft_accuracy_sup(int accuracy, char *ret, t_data *data)
 	return (ret);
 }
 
+/*
+** ft_precision_d_else2: write the good numbers of 0 in a string and deals
+** with +- cases. Returns the converted flag.
+*/
+
 static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 {
 	if (!(ret = ft_memalloc(sizeof(char) * (accuracy + 1))))
@@ -60,6 +70,10 @@ static char		*ft_precision_d_else2(t_data *data, char *ret, int accuracy)
 	}
 	return (ret);
 }
+
+/*
+** ft_precision_d_else: convert .123 (precision numbers) in int.
+*/
 
 static int		ft_precision_d_else(char *flags, t_data *data)
 {
@@ -89,9 +103,9 @@ static int		ft_precision_d_else(char *flags, t_data *data)
 }
 
 /*
-** s'occupe de la precision pour d: converti les chiffres de .123 en int,
-** pour ensuite ecrire dans une str malloquée le bon nombre de '0'.
-** C'est a dire 123 - ag_sz zeros.
+** ft_precision_d: convert .123 (precision numbers) in int by calling
+** ft_precision_d_else, and then write the good numbers of 0 in a string
+** with ft_precision_d_else2.
 */
 
 char			*ft_precision_d(char *flags, t_data *data)

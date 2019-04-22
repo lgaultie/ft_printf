@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/16 17:43:48 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 10:11:24 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	*ft_ffinal(t_float *ft, t_data *data, char *flag, int j)
 
 	if (data->f & F_PRECIS)
 		ft_conv_f2_2(ft, data, flag, 2);
-	len = ft_strlen(ft->s_deci_p);
+	len = (ft->s_deci_p) ? ft_strlen(ft->s_deci_p) : 0;
 	if (len < 6 && !(data->f & F_PRECIS) && !(data->f & F_W_P))
 	{
 		tmp = ft->s_deci_p;

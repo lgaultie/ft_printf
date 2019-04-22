@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/19 22:12:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:53:47 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,58 +35,69 @@ int main(int argc, char **argv)
 	// char	*str = ft_strdup("ouii");
 	// char	*strnull = NULL;
 	//
+	// ft_printf("%O\n", 42);
+	// printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
+	ft_printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
+	// ft_printf("before %O after\n", 42);
+	// ft_printf("%O%O%O%O%O\n", 1, 100, 999, 42, 999988888);
+	// ft_printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
+	// ft_printf("%O\n", LONG_MAX);
+
+
+
 	// printf("--------------\n");
 	// printf("18) Vrai PRINTF : |%.u|\n", 0);
 	// ft_printf("18) Mon PRINTF  : |%.u|\n", 0);
-	printf("vrai : |%#7.2o|\n", 0);						//ok
-	ft_printf("mine : |%#7.2o|\n", 0);					//ok
-	printf("--------------\n");
-	printf("vrai : |%#7.1o|\n", 00);						//ok
-	ft_printf("mine : |%#7.1o|\n", 00);					//ok
-	printf("--------------\n");
-	printf("vrai : |%#10.8o|\n", 424242);				//ok
-	ft_printf("mine : |%#10.8o|\n", 424242);				//ok
-	printf("vrai : |%#10.8o|\n", 424242);				//ok
-	ft_printf("mine : |%#10.8o|\n", 424242);				//ok
-	printf("--------------\n");
-	printf("vrai : |%#1.x|\n", 0);						//ok
-	ft_printf("mine : |%#1.x|\n", 0);					//ok
-	printf("--------------\n");
-	printf("vrai : |%1.s|\n", "243");					//ok
-	ft_printf("mine : |%1.s|\n", "243");					//ok
-	printf("--------------\n");
-	printf("vrai : |%#1.x|\n", 45);						//ok
-	ft_printf("mine : |%#1.x|\n", 45);					//ok
-	printf("--------------\n");
-	printf("vrai : |%#1.x|\n", 10);						//ok
-	ft_printf("mine : |%#1.x|\n", 10);					//ok
-	printf("--------------\n");
-	printf("vrai : |%#1.o|\n", 0);						//ok
-	ft_printf("mine : |%#1.o|\n", 0);					//ok
-	printf("--------------\n");
-	printf("vrai : |%1.d|\n", 243);						//ok
-	ft_printf("mine : |%1.d|\n", 243);					//ok
-	printf("--------------\n");
-	printf("vrai : |%-+10d|\n", 42);						//ok
-	ft_printf("mine : |%-+10d|\n", 42);					//ok
-	printf("--------------\n");
-	printf("vrai : |%+.10d|\n", -64);					//ok
-	ft_printf("mine : |%+.10d|\n", -64);					//ok
-	printf("--------------\n");
-	printf("vrai : @moulitest: |%.10d|\n", -42);			//ok
-	ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
-	printf("--------------\n");
-	printf("vrai : |%#10.5X|\n", 42); 					//ok
-	ft_printf("mine : |%#10.5X|\n", 42);					//ok
-	printf("--------------\n");
-	printf("vrai : |%#10.8o|\n", 424242);				//ok
-	ft_printf("mine : |%#10.8o|\n", 424242);				//ok
-	printf("--------------\n");
-	printf("vrai : |%#8.10x|\n", 424242);
-	ft_printf("Mine : |%#8.10x|\n", 424242);
-	printf("--------------\n");
-	printf("vrai : |%3.2o|\n", 0);
-	ft_printf("mine : |%3.2o|\n", 0);
+	// printf("vrai : |%#7.2o|\n", 0);						//ok
+	// ft_printf("mine : |%#7.2o|\n", 0);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#7.1o|\n", 00);						//ok
+	// ft_printf("mine : |%#7.1o|\n", 00);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#10.8o|\n", 424242);				//ok
+	// ft_printf("mine : |%#10.8o|\n", 424242);				//ok
+	// printf("vrai : |%#10.8o|\n", 424242);				//ok
+	// ft_printf("mine : |%#10.8o|\n", 424242);				//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#1.x|\n", 0);						//ok
+	// ft_printf("mine : |%#1.x|\n", 0);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%1.s|\n", "243");					//ok
+	// ft_printf("mine : |%1.s|\n", "243");					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#1.x|\n", 45);						//ok
+	// ft_printf("mine : |%#1.x|\n", 45);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#1.x|\n", 10);						//ok
+	// ft_printf("mine : |%#1.x|\n", 10);					//ok
+	// printf("--------------\n");
+	// printf("--------------\n");
+	// printf("vrai : |%1.d|\n", 243);						//ok
+	// ft_printf("mine : |%1.d|\n", 243);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%-+10d|\n", 42);						//ok
+	// ft_printf("mine : |%-+10d|\n", 42);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%+.10d|\n", -64);					//ok
+	// ft_printf("mine : |%+.10d|\n", -64);					//ok
+	// printf("--------------\n");
+	// printf("vrai : @moulitest: |%.10d|\n", -42);			//ok
+	// ft_printf("mine : @moulitest: |%.10d|\n", -42);		//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#10.5X|\n", 42); 					//ok
+	// ft_printf("mine : |%#10.5X|\n", 42);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#10.8o|\n", 424242);				//ok
+	// ft_printf("mine : |%#10.8o|\n", 424242);				//ok
+	// printf("--------------\n");
+	// printf("vrai : |%#8.10x|\n", 424242);
+	// ft_printf("Mine : |%#8.10x|\n", 424242);
+	// printf("--------------\n");
+	// printf("vrai : |%#1.o|\n", 0);						//ok
+	// ft_printf("mine : |%#1.o|\n", 0);					//ok
+	// printf("--------------\n");
+	// printf("vrai : |%3.2o|\n", 0);
+	// ft_printf("mine : |%3.2o|\n", 0);
 	// printf("--------------\n");
 	// printf("|%5.o| |%5.0o|\n", 0, 0);
 	// ft_printf("|%5.o| |%5.0o|\n", 0, 0);
@@ -367,43 +378,43 @@ int main(int argc, char **argv)
 // 	ft_printf("mine : |%hd|\n", (short)(-32768));
 //
 //
-// // ----------FLOATS----------------------
-// 		printf("vrai : %.10Lf\n", (long double)243.5);
-// 		ft_printf("mine : %.10Lf\n", (long double)243.5);
-// 		printf("--------------\n");
-// 		printf("vrai : %.4Lf\n", (long double)243.5);
-// 		ft_printf("mine : %.4Lf\n", (long double)243.5);
-// 		printf("--------------\n");
-// 		printf("vrai : %lf\n", 243.5);
-// 		ft_printf("mine : %lf\n", 243.5);
-// 		printf("--------------\n");
-// 		printf("vrai : %f\n", 3.55);
-// 		ft_printf("Mine : %f\n", 3.55);
-// 		printf("--------------\n");
-// 		printf("vrai : |%5f|\n", 9877893.5123109);
-// 		ft_printf("Mine : |%5f|\n", 9877893.5123109);
-// 		printf("--------------\n");
-// 		ft_printf("Mine : |%5Lf |\n", (long double)9877893.5123109);
-// 		printf("vrai : |%5Lf|\n", (long double)9877893.5123109);
-// 		printf("--------------\n");
-// 		printf("vrai : |%.5f|\n", 3.5);
-// 		ft_printf("Mine : |%.5f|\n", 3.5);
-// 		printf("--------------\n");
-// 		printf("vrai : %Lf\n", (long double)243.5);
-// 		ft_printf("Mine : %Lf\n", (long double)243.5);
-// 		printf("--------------\n");
-// 		printf("vrai : %f\n", -10.011012365432);
-// 		ft_printf("mine : %f\n", -10.011012365432);
-// 		printf("--------------\n");
-// 		printf("vrai : |%4Lf|\n", (long double)243.59);
-// 		ft_printf("vrai : |%4Lf|\n", (long double)243.59);
-// 		printf("--------------\n");
-// 		printf("vrai : |%1f|\n", 243.59);
-// 		ft_printf("vrai : |%1f|\n", 243.59);
-// 		printf("--------------\n");
-// 		printf("vrai : |%10.1f|\n", 243.59);
-// 		ft_printf("mine : |%10.1f|\n", 243.59);
-// 		printf("--------------\n");
+// ----------FLOATS----------------------
+		printf("vrai : %.10Lf\n", (long double)243.5);
+		ft_printf("mine : %.10Lf\n", (long double)243.5);
+		printf("--------------\n");
+		printf("vrai : %.4Lf\n", (long double)243.5);
+		ft_printf("mine : %.4Lf\n", (long double)243.5);
+		printf("--------------\n");
+		printf("vrai : %lf\n", 243.5);
+		ft_printf("mine : %lf\n", 243.5);
+		printf("--------------\n");
+		printf("vrai : %f\n", 3.55);
+		ft_printf("Mine : %f\n", 3.55);
+		printf("--------------\n");
+		printf("vrai : |%5f|\n", 9877893.5123109);
+		ft_printf("Mine : |%5f|\n", 9877893.5123109);
+		printf("--------------\n");
+		ft_printf("Mine : |%5Lf |\n", (long double)9877893.5123109);
+		printf("vrai : |%5Lf|\n", (long double)9877893.5123109);
+		printf("--------------\n");
+		printf("vrai : |%.5f|\n", 3.5);
+		ft_printf("Mine : |%.5f|\n", 3.5);
+		printf("--------------\n");
+		printf("vrai : %Lf\n", (long double)243.5);
+		ft_printf("Mine : %Lf\n", (long double)243.5);
+		printf("--------------\n");
+		printf("vrai : %f\n", -10.011012365432);
+		ft_printf("mine : %f\n", -10.011012365432);
+		printf("--------------\n");
+		printf("vrai : |%4Lf|\n", (long double)243.59);
+		ft_printf("vrai : |%4Lf|\n", (long double)243.59);
+		printf("--------------\n");
+		printf("vrai : |%1f|\n", 243.59);
+		ft_printf("vrai : |%1f|\n", 243.59);
+		printf("--------------\n");
+		printf("vrai : |%10.1f|\n", 243.59);
+		ft_printf("mine : |%10.1f|\n", 243.59);
+		printf("--------------\n");
 // 	//	----------FLOATS----------------------
 //
 // 		printf("--------------\n");

@@ -6,11 +6,17 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 22:11:22 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:35:45 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_sharp_precent: if flag SHARP or PERCENT + WIDTH or PRECIS.
+** Call appropriates flag function depending of enabled flags.
+** Will return the converted flag.
+*/
 
 static char		*ft_sharp_precent(char *flag, t_data *d)
 {
@@ -41,6 +47,11 @@ static char		*ft_sharp_precent(char *flag, t_data *d)
 	return (final);
 }
 
+/*
+** ft_which_flag3: Call appropriates flag function depending of enabled flags.
+** Will return the converted flag.
+*/
+
 static char		*ft_which_flag3(char *flag, char cv, t_data *data)
 {
 	char	*final;
@@ -51,7 +62,7 @@ static char		*ft_which_flag3(char *flag, char cv, t_data *data)
 		if (!(final = ft_strnew(1)))
 			return (NULL);
 		else if (!(data->f & F_PERCENT))
-			final[0] = ' ';			// to check
+			final[0] = ' ';
 	}
 	else if (data->f & F_MINUS && !(data->f & F_W_P))
 	{
@@ -70,6 +81,11 @@ static char		*ft_which_flag3(char *flag, char cv, t_data *data)
 	return (final);
 }
 
+/*
+** ft_which_flag2: Call appropriates flag function depending of enabled flags.
+** Will return the converted flag.
+*/
+
 static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 {
 	char	*final;
@@ -82,7 +98,7 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else if (data->f & F_ZERO || (data->f & F_WIDTH && !(data->f & F_PRECIS) \
-	&& !(data->f & F_W_P)))
+		&& !(data->f & F_W_P)))
 	{
 		if (!(final = ft_width(flag, data)))
 			return (NULL);
@@ -93,10 +109,7 @@ static char		*ft_which_flag2(char *flag, char cv, t_data *data)
 			return (NULL);
 	}
 	else
-	{
-		if (!(final = ft_which_flag3(flag, cv, data)))
-			return (NULL);
-	}
+		return (ft_which_flag3(flag, cv, data));
 	return (final);
 }
 
@@ -112,13 +125,13 @@ char			*ft_which_flag(char *flag, char cv, t_data *d)
 	if (ft_strlen(flag) == 2 && d->f & F_PRECIS)
 		return (ft_strdup(""));
 	if (d->f & F_SHARP || ((d->f & F_PERCENT) && (d->f & F_WIDTH \
-	|| d->f & F_PRECIS)))
+		|| d->f & F_PRECIS)))
 	{
 		if (!(final = ft_sharp_precent(flag, d)))
 			return (NULL);
 	}
 	else if ((d->f & F_PRECIS || d->f & F_WIDTH) && cv == 's' \
-	&& !(d->f & F_W_P))
+		&& !(d->f & F_W_P))
 	{
 		if (!(final = ft_string(flag, d, 1)))
 			return (NULL);

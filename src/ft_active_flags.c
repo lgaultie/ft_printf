@@ -6,11 +6,15 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:27:48 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 20:34:26 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:54:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_disable_flag: disable flags after our ft_printf dealed with a % cases.
+*/
 
 void			ft_disable_flag(t_data *d)
 {
@@ -49,16 +53,21 @@ void			ft_active_cast(char *flag, t_data *data, int i)
 
 	len = ft_strlen(&flag[i]);
 	if (flag[i] == 'h' && flag[i + 1] == 'h' && len == 3 \
-	&& (!(data->f & F_H)))
+		&& (!(data->f & F_H)))
 		data->f |= F_HH;
 	else if (flag[i] == 'h' && len == 2 && (!(data->f & F_HH)))
 		data->f |= F_H;
 	else if (flag[i] == 'l' && len == 2 && (!(data->f & F_LL)))
 		data->f |= F_L;
 	else if (flag[i] == 'l' && flag[i + 1] == 'l' && len == 3 \
-	&& (!(data->f & F_L)))
+		&& (!(data->f & F_L)))
 		data->f |= F_LL;
 }
+
+/*
+** ft_active_flag2: Enable needed flags.
+** F_PERCENT --> for ft_printf("%323%"); cases.
+*/
 
 static void		ft_active_flag2(char *flag, t_data *data, int i)
 {
@@ -77,6 +86,11 @@ static void		ft_active_flag2(char *flag, t_data *data, int i)
 	else if (flag[i] == 'L')
 		data->f |= F_BIG_L;
 }
+
+/*
+** ft_not_going_together: some flags don't work together, so some are disabled
+** here in such cases.
+*/
 
 static void		ft_not_going_together(char f, t_data *data)
 {
@@ -98,11 +112,11 @@ static void		ft_not_going_together(char f, t_data *data)
 int				ft_active_flag(int i, char *f, t_data *data)
 {
 	while (f[i] != 'd' && f[i] != 'c' && f[i] != 's' && f[i] != 'p' \
-	&& f[i] != 'x' && f[i] != 'o' && f[i] != 'x' && f[i] != 'X' \
-	&& f[i] != 'i' && f[i] != 'f' && f[i] != 'u' && f[i] != '\0')
+		&& f[i] != 'x' && f[i] != 'o' && f[i] != 'x' && f[i] != 'X' \
+			&& f[i] != 'i' && f[i] != 'f' && f[i] != 'u' && f[i] != '\0')
 	{
 		if ((f[i] == '0' && i == 0) || (f[i] == '0' && (f[i - 1] < '0' \
-		|| f[i - 1] > '9')))
+			|| f[i - 1] > '9')))
 			data->f |= F_ZERO;
 		if (f[i] == '.' && (data->f & F_WIDTH))
 			data->f |= F_W_P;

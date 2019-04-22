@@ -6,11 +6,15 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/10 14:40:24 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:03:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_char: Deals with %c conversion, enable needed flag when ap == 0.
+*/
 
 char			*ft_char(t_data *data)
 {

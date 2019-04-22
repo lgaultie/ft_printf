@@ -6,11 +6,42 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 15:53:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/19 22:00:39 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 11:40:20 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_minus_s2: Initialize data->width_precis_minus so we will know how much
+** space or 0 is to be printed at the end of ret_conv in ft_flag_conv.
+*/
+
+static void		ft_minus_s2(int before, int after, t_data *data, int mode)
+{
+	if (mode == 1)
+	{
+		if (before > after && after >= data->conv_sz)
+			data->width_precis_minus = before - data->conv_sz;
+		else if (before > after && after < data->conv_sz)
+			data->width_precis_minus = before - after;
+		else if (after > before && after >= data->conv_sz)
+			data->width_precis_minus = 0;
+	}
+	if (mode == 2)
+	{
+		if (after == before && after >= data->conv_sz)
+			data->width_precis_minus = after - data->conv_sz;
+		else if (after >= before && after < data->conv_sz)
+			data->width_precis_minus = 0;
+	}
+}
+
+/*
+** ft_minus_s: deals with WIDTH + PRECIS + MINUS cases on strings.
+** Initialize data->width_precis_minus so we will know how much space or 0
+** is to be printed at the end of ret_conv in ft_flag_conv.
+*/
 
 static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 {
@@ -30,23 +61,21 @@ static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 	free(final);
 	if (!(final = ft_strsub(ap, 0, after)))
 		return (NULL);
-	if (before > after && after >= data->conv_sz)
-		data->width_precis_minus = before - data->conv_sz;
-	else if (before > after && after < data->conv_sz)
-		data->width_precis_minus = before - after;
-	else if (after > before && after >= data->conv_sz)
-		data->width_precis_minus = 0;
-	else if (after == before && after >= data->conv_sz)
-		data->width_precis_minus = after - data->conv_sz;
-	else if (after >= before && after < data->conv_sz)
-		data->width_precis_minus = 0;
-	else if (ap[0] == '\0' && before > after && after >= data->conv_sz)
+	ft_minus_s2(before, after, data, 1);
+	if (ap == '\0' && before > after && after >= data->conv_sz)
 		data->width_precis_minus = before;
-	else if (ap[0] == '\0' && before <= after && after >= data->conv_sz)
+	else if (ap == '\0' && before <= after && after >= data->conv_sz)
 		data->width_precis_minus = before;
+	else
+		ft_minus_s2(before, after, data, 2);
 	free(ap);
 	return (final);
 }
+
+/*
+** ft_else: deals with ap is not negative. WIDTH + PRECIS + MINUS cases.
+** Return the converted flag.
+*/
 
 static char		*ft_else(char *final, int before, int after, t_data *data)
 {
@@ -67,6 +96,11 @@ static char		*ft_else(char *final, int before, int after, t_data *data)
 		data->width_precis_minus = before - i - data->conv_sz;
 	return (final);
 }
+
+/*
+** ft_flag_minus: WIDTH + PRECIS + MINUS cases. Return the converted flag.
+** if it is %s, calls ft_minus_s dealing with string cases.
+*/
 
 char			*ft_flag_minus(int before, int after, char *final, t_data *data)
 {
