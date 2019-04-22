@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 15:45:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 17:34:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ int main(int argc, char **argv)
 	printf("--------------\n");
 	printf("vrai : |%3.2x|\n", 0);						//casse couille
 	ft_printf("mine : |%3.2x|\n", 0);					//casse couille
+
 	// printf("vrai	|%c|\n",0);
 	// ft_printf("mien	|%c|\n",0);
 	// printf("vrai	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');
