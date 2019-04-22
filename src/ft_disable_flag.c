@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:46:37 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:22:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 15:49:17 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			ft_disable_flag2(t_data *d)
 	d->f &= ~F_X_0;
 	d->f &= ~F_X;
 	d->f &= ~F_O;
-	d->f &= ~F_W_P_O_0;
+	d->f &= ~F_W_P_0;
 }
 
 /*
@@ -40,7 +40,6 @@ void				ft_disable_flag(t_data *d)
 	d->f &= ~F_SPACE;
 	d->f &= ~F_WIDTH;
 	d->f &= ~F_PRECIS;
-	d->f &= ~F_STAR;
 	d->f &= ~F_W_P;
 	d->f &= ~B_DONE;
 	d->f &= ~F_PLUS_MINUS;

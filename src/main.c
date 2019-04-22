@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 14:37:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 21:36:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,17 @@ int main(int argc, char **argv)
 	// printf("|%43d| |%0.32Ld| |%-1d| |%#0x| |%32d| |%2c| \n", 42, 9, 0, 23, 2, 'c');		//fail
 	// printf("|%c| |%c| |%43d| |%#X|\n",0, 0, 42, 12);
 	// ft_printf("|%c| |%c| |%43d| |%#X|\n",0, 0, 42, 12);		//FAIL
-	printf("|%#X|\n", 12);
-	ft_printf("|%#X|\n", 12);
+	// printf("|%#X|\n", 12);
+	// ft_printf("|%#X|\n", 12);
 	// ft_printf("|%#X|\n",0);
-	// ft_printf("oui |%c|\n",0);
-	printf("vrai	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');
-	ft_printf("mine	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');		//FAIL
+	// printf("oui |%5c| %2c\n",0, 0);
+	// ft_printf("oui |%5c| %2c\n",0, 0);
+	// printf("oui |%5c| haha |%c|bla ba blou |%5d|fewfew\n",0, 0, 1);
+	// ft_printf("oui |%5c| haha |%c|bla ba blou |%5d|fewfew\n",0, 0, 1);
+	// printf("@moulitest: %c\n", 0);
+	// ft_printf("@moulitest: %c\n", 0);
+	// printf("vrai	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');
+	// ft_printf("mine	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');		//FAIL
 
 	// ft_printf("%O\n", 42);
 	// printf(".%%.%%.%%.%%.%%.%%.%%.%%.");

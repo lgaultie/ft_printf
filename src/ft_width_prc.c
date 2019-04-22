@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:54:57 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:27:26 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 15:02:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 ** ft_case1: Deals with cases where before == or < after.
 */
 
-static char		*ft_case1(char *final, int i, int after, t_data *data)
+char		*ft_case1(char *final, int i, int after, t_data *data)
 {
 	if (data->f & AP_NEG)
 	{

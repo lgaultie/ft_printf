@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 13:54:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 21:15:39 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char			*ft_width2(int width, t_data *d)
 ** Sends this int to ft_width2 which will apply the conversion.
 */
 
-char			*ft_width(char *f, t_data *data)
+char			*ft_width(char *f, t_data *d)
 {
 	int		i;
 	int		j;
@@ -98,9 +98,9 @@ char			*ft_width(char *f, t_data *data)
 
 	i = 0;
 	j = 0;
-	if (data->f & F_WIDTH && (i = data->tmp))
-		data->f &= ~F_WIDTH;
-	if (!(conv = ft_memalloc(sizeof(char) * (data->flag_sz + 1))))
+	if (d->f & F_WIDTH && (i = d->tmp))
+		d->f &= ~F_WIDTH;
+	if (!(conv = ft_memalloc(sizeof(char) * (d->flag_sz + 1))))
 		return (NULL);
 	while (f[i] != '\0')
 	{
@@ -113,8 +113,8 @@ char			*ft_width(char *f, t_data *data)
 	}
 	i = ft_atoi(conv);
 	free(conv);
-	data->f &= ~F_WIDTH;
-	data->index_0 = (data->f & F_C_0) ? data->index_0 += i - 1 : 0;
+	j = ft_strlen(f) - 1;
+	(d->f & F_C_02 && f[j] == 'c' && d->f & F_AP_0) ? d->i_0[d->i_0[0]] += i - 1 : 0;
 	i = (i < 0) ? -i : i;
-	return (ft_width2(i, data));
+	return (ft_width2(i, d));
 }

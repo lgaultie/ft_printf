@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/20 13:55:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 21:35:30 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,34 @@ char			*ft_got_flag(char *str, t_data *data)
 }
 
 /*
+** ft_print_char_0 :
+** In case %c with value 0, need to print 0(non-printale]).
+*/
+
+static void		ft_print_char_0(t_data *d)
+{
+	int to_print;
+
+	to_print = 1;
+	ft_putstrn(d->buf, (d->i_0[to_print] + d->tmp));
+	ft_putchar(0);
+
+	while (d->i_0[0] - to_print > 0)
+	{
+		if (to_print + d->i_0[0] == 2)
+			ft_putstr(&d->buf[d->i_0[to_print]]);
+		else
+		{
+			ft_putstrn(&d->buf[d->i_0[to_print]],
+				(d->i_0[to_print + 1] - d->i_0[to_print]));
+			ft_putchar(0);
+		}
+		to_print++;
+	}
+	ft_putstr(&d->buf[d->i_0[to_print]]);
+}
+
+/*
 ** ft_print_format : print final sentence returned by ft_analyse.
 */
 
@@ -85,12 +113,10 @@ static int		ft_print_format(char *format, t_data *data)
 		return (-1);
 	data->buf = ft_analyse(format, data);
 	len = ft_strlen(data->buf);
-	if (data->f & F_C_0)
+	if (data->f & F_C_02)
 	{
 		len++;
-		ft_putstrn(data->buf, (data->index_0 + data->tmp));
-		ft_putchar(0);
-		ft_putstr(&data->buf[data->index_0]);
+		ft_print_char_0(data);
 	}
 	else
 		ft_putstr(data->buf);

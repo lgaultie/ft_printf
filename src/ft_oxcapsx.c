@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:27:24 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/22 15:42:57 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ static char		*ft_hexa_is_0(char *final, t_data *d)
 		if (!(final = ft_strdup(" ")))
 			return (NULL);
 	}
-	d->f &= ~F_C_0;
 	return (final);
 }
 
@@ -136,7 +135,7 @@ char			*ft_hexa(t_data *d, int mode)
 	d->f |= F_X;
 	if (!(tmp = ft_conv_hhhlll_u(d, 16, mode)))
 		return (NULL);
-	if (!(d->f & F_C_0) && (d->f & F_SHARP) && !(d->f & F_PRECIS) \
+	if (!(d->f & F_AP_0) && (d->f & F_SHARP) && !(d->f & F_PRECIS) \
 		&& !(d->f & F_W_P) && !(d->f & F_ZERO))
 	{
 		if (!(final = ft_join_sharp(tmp, mode)))

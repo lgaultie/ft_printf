@@ -6,11 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/04/22 14:26:57 by lgaultie         ###   ########.fr       */
-=======
-/*   Updated: 2019/04/22 13:57:55 by amamy            ###   ########.fr       */
->>>>>>> 16272bb1d51cfc4c8d294a827b573989e6fa0e67
+/*   Updated: 2019/04/22 21:13:09 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +24,7 @@
 # define F_SPACE 16
 # define F_WIDTH 32
 # define F_PRECIS 64
-# define F_STAR 128
+# define F_C_02 128
 # define F_W_P 256
 # define B_DONE 512
 # define F_PLUS_MINUS 1024
@@ -51,11 +47,7 @@
 # define F_X_0 134217728
 # define F_X 268435456
 # define F_O 536870912
-<<<<<<< HEAD
-# define F_W_P_O_0 1073741824
-=======
 # define F_W_P_0 1073741824
->>>>>>> 16272bb1d51cfc4c8d294a827b573989e6fa0e67
 
 typedef	struct	s_data
 {
@@ -68,7 +60,7 @@ typedef	struct	s_data
 	int			conv_t_sz;
 	int			f;
 	int			tmp;
-	int			index_0;
+	int			*i_0;
 	int			width_precis_minus;
 	char		*tmp_s;
 }				t_data;
