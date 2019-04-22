@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 11:53:47 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 12:03:44 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,23 @@ int main(int argc, char **argv)
 	// printf("vrai : |%3.2o|\n", 0);
 	// ft_printf("mine : |%3.2o|\n", 0);
 	// printf("--------------\n");
-	// printf("|%5.o| |%5.0o|\n", 0, 0);
-	// ft_printf("|%5.o| |%5.0o|\n", 0, 0);
+	// printf("vrai : |%03.2x|\n", 0);						//casse couille
+	// ft_printf("mine : |%03.2x|\n", 0);					//casse couille
 	// printf("--------------\n");
-	// printf("|%#1.o|\n", 0);
-	// ft_printf("|%#1.o|\n", 0);
-
-// test going with casses couille
+	// printf("vrai : |%03.2X|\n", 0);						//casse couille
+	// ft_printf("mine : |%03.2X|\n", 0);					//casse couille
+	// printf("--------------\n");
+	// printf("vrai : |%03.2d|\n", 0);						//casse couille
+	// ft_printf("mine : |%03.2d|\n", 0);					//casse couille
+	// printf("--------------\n");
+	//
+	//
 	// printf("@moulitest: %.0o\n", 0);
 	// ft_printf("@moulitest: %.0o\n", 0);
-	// // printf("@moulitest: %.o %.0o\n", 0, 0);
-	// // ft_printf("@moulitest: %.o %.0o\n", 0, 0);=
+	// printf("@moulitest: %.o %.0o\n", 0, 0);
+	// ft_printf("@moulitest: %.o %.0o\n", 0, 0);
 	// printf("vrai : |%03.2d|\n", 0);
 	// ft_printf("mine : |%03.2d|\n", 0);
-// test going with casses couille
 
 // printf("--------------\n");
 // printf("|%#8.10x|\n", 424242);

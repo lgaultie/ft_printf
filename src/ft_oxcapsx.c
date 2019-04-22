@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:12:59 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 11:28:07 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 12:03:58 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char			*ft_octal(t_data *d)
 	char	*tmp;
 
 	d->f |= F_UNSIGNED;
+	d->f |= F_O;
 	if (!(tmp = ft_conv_hhhlll_u(d, 8, 1)))
 		return (NULL);
 	if ((d->f & F_SHARP) && !(d->f & F_C_0))
