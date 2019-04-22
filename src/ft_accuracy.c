@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:09:52 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 14:37:13 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ char			*ft_precision_d(char *flags, t_data *data)
 	j = 0;
 	i = ft_precision_d_else(flags, data);
 	conv = NULL;
+	if (!i && data->f & F_AP_0 && data->f & F_X)
+		data->f |= F_W_P_0;
 	if (i < data->ap_sz)
 	{
 		if (data->f & AP_NEG)

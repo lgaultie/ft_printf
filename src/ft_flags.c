@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 12:04:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/22 14:30:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,12 @@ static char	*ft_s_fwp_minus(char f, char *ret_conv, char *ret_flag, t_data *d)
 {
 	char *final;
 
-	if ((f == 's' && (d->f & F_MINUS) && (d->f & F_W_P)) \
+	if (d->f & F_W_P_0)
+	{
+		if (!(final = ft_strdup("")))
+		return (NULL);
+	}
+	else if ((f == 's' && (d->f & F_MINUS) && (d->f & F_W_P)) \
 		|| (f == 'u' && (d->f & F_PRECIS) && (d->f & F_C_0)))
 	{
 		if (!(final = ft_strdup(ret_flag)))
