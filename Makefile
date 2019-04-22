@@ -6,21 +6,20 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/22 16:28:42 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/22 17:30:47 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = clang
-CFLAGS += -Wall -Werror -Wextra -g
+CFLAGS += -Wall -Werror -Wextra
 OBJDIR = obj
 SRCDIR = src
 LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	mainkevin.c				\
-		ft_printf.c				\
+SRCS =	ft_printf.c				\
 		ft_analyse_format.c		\
 		ft_d_i.c				\
 		ft_c.c					\
