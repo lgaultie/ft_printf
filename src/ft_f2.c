@@ -6,11 +6,16 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 10:11:24 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 14:59:59 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_accuracy_size :
+** Gets the number given for accuracy in the format.
+*/
 
 int		ft_accuracy_size(char *flags, t_data *data)
 {
@@ -39,6 +44,11 @@ int		ft_accuracy_size(char *flags, t_data *data)
 	return (i);
 }
 
+/*
+** ft_float_accuracy :
+** Free different variables depend on conversion.
+*/
+
 char	*ft_float_accuracy(t_data *d, char *flag, t_float *ft)
 {
 	char	*final;
@@ -65,6 +75,11 @@ char	*ft_float_accuracy(t_data *d, char *flag, t_float *ft)
 	return (final);
 }
 
+/*
+** ft_free :
+** Free different variables depend on conversion.
+*/
+
 void	ft_free(t_float *ft, int j, int m)
 {
 	if (m == 1)
@@ -86,6 +101,11 @@ void	ft_free(t_float *ft, int j, int m)
 	free(ft);
 }
 
+/*
+** ft_missing_zeros :
+** Ad missing 0 if necessary.
+*/
+
 char	*ft_missing_zeros(int len, t_float *ft)
 {
 	char	*final;
@@ -105,6 +125,11 @@ char	*ft_missing_zeros(int len, t_float *ft)
 	free(tmp);
 	return (final);
 }
+
+/*
+** ft_ffinal :
+** Concat decimal part, Adjust final return.
+*/
 
 char	*ft_ffinal(t_float *ft, t_data *data, char *flag, int j)
 {

@@ -6,11 +6,16 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 17:37:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 15:00:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_float_width :
+** Adjusts the number of character in decimal part we need to get.
+*/
 
 int		ft_float_width(t_data *d, t_float *ft, char *flag, long double ret)
 {
@@ -26,6 +31,12 @@ int		ft_float_width(t_data *d, t_float *ft, char *flag, long double ret)
 	ft->deci_p = ret;
 	return (max);
 }
+
+/*
+** ft_conv_f2_1 :
+** Mode 1 : concat the digits of decimal part in s_deci_p.
+** Mode 2 : Assigns the accuracy if needed (used in ft_ffinal)
+*/
 
 char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 {
@@ -53,6 +64,12 @@ char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 	return (NULL);
 }
 
+/*
+** ft_conv_f2_1 :
+** used to convert and store char by char the decimal digit passed by
+** ft_conv_f2.
+*/
+
 char	*ft_conv_f2_1(t_float *ft, int mode)
 {
 	if (mode == 1)
@@ -77,6 +94,11 @@ char	*ft_conv_f2_1(t_float *ft, int mode)
 	}
 	return (NULL);
 }
+
+/*
+** ft_conv_f2 :
+** Gets the decimal part of the number.
+*/
 
 char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
 {
@@ -106,6 +128,13 @@ char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
 	}
 	return (ft_ffinal(ft, d, flag, j));
 }
+
+/*
+** ft_conv_f :
+** Root function for floats. Get the ap, set the size of it in data(d) and
+** return the result.
+** in case of conversions with accuracy, return "", conversion happens later.
+*/
 
 char	*ft_conv_f(t_data *d, char *flag)
 {

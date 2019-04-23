@@ -6,11 +6,17 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:52:37 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 11:54:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:03:45 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_float_w_a :
+** Calculates how many digits ft_conv_f2 needs to get in case of WIDTH +
+** accuracy.
+*/
 
 int		ft_float_w_a(t_data *d, t_float *ft, char *flag)
 {
@@ -30,6 +36,11 @@ int		ft_float_w_a(t_data *d, t_float *ft, char *flag)
 	accuracy = ft_accuracy_size(&flag[i], d);
 	return (accuracy);
 }
+
+/*
+** ft_float_w_a_width :
+** adjust the result in case of Width + accuracy.
+*/
 
 char	*ft_float_w_a_width(char *final, t_float *ft, t_data *d)
 {
