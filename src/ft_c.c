@@ -6,11 +6,38 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 22:14:11 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 19:19:31 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+
+static int		*ft_array_increase_size(t_data *data)
+{
+	int i;
+	int	*tmp;
+
+	i = 0;
+	if (!(tmp = ft_memalloc(sizeof(int) * (data->index_0[0] + 1))))
+		return (0);
+	while (i <= data->index_0[0])
+	{
+		tmp[i] = data->index_0[i];
+		i++;
+	}
+	free(data->index_0);
+	if (!(data->index_0 = ft_memalloc(sizeof(int) * (tmp[0] + 2))))
+		return (0);
+	i = 0;
+	while (i <= tmp[0])
+	{
+		data->index_0[i] = tmp[i];
+		i++;
+	}
+	free(tmp);
+	return (data->index_0);
+}
 
 /*
 ** ft_char_0:
@@ -23,10 +50,18 @@ static void		ft_char_0(t_data *data)
 
 	nb_0 = 0;
 	if (data->f & F_C_02)
+	{
+		// tmp = ft_arraydup(data, data->index_0);
+		// free(data->index_0);
+		if (!(data->index_0 = ft_array_increase_size(data)))
+			return ;
+		// data->index_0 = ft_arraydup(data, tmp);
+		// free(tmp);
 		nb_0 = (data->index_0[0] + 1);
+	}
 	else
 	{
-		if (!(data->index_0 = ft_memalloc(sizeof(int) * 15)))
+		if (!(data->index_0 = ft_memalloc(sizeof(int) * 2)))
 			return ;
 		nb_0 = 1;
 	}
