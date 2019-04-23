@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/23 22:37:47 by amamy            ###   ########.fr        #
+#    Updated: 2019/04/23 22:48:42 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,56 +21,56 @@ LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	$(LIBDIR)/ft_atoi.c				\
+SRCS =	$(LIBDIR)/ft_atoi.c					\
 		$(LIBDIR)/ft_bzero.c				\
 		$(LIBDIR)/ft_intlen.c				\
 		$(LIBDIR)/ft_itoa_base.c			\
-		$(LIBDIR)/ft_itoa.c				\
-		$(LIBDIR)/ft_memalloc.c			\
+		$(LIBDIR)/ft_itoa.c					\
+		$(LIBDIR)/ft_memalloc.c				\
 		$(LIBDIR)/ft_memset.c				\
-		$(LIBDIR)/ft_nb_len_base.c		\
-		$(LIBDIR)/ft_putchar.c			\
+		$(LIBDIR)/ft_nb_len_base.c			\
+		$(LIBDIR)/ft_putchar.c				\
 		$(LIBDIR)/ft_putstr.c				\
 		$(LIBDIR)/ft_strcat.c				\
 		$(LIBDIR)/ft_strchr.c				\
 		$(LIBDIR)/ft_strcmp.c				\
 		$(LIBDIR)/ft_strcpy.c				\
 		$(LIBDIR)/ft_strdup.c				\
-		$(LIBDIR)/ft_strjoin.c			\
+		$(LIBDIR)/ft_strjoin.c				\
 		$(LIBDIR)/ft_strlen.c				\
-		$(LIBDIR)/ft_strncpy.c			\
-		$(LIBDIR)/ft_strndup.c			\
+		$(LIBDIR)/ft_strncpy.c				\
+		$(LIBDIR)/ft_strndup.c				\
 		$(LIBDIR)/ft_strnew.c				\
 		$(LIBDIR)/ft_strsub.c				\
-		$(LIBDIR)/ft_tolower.c			\
+		$(LIBDIR)/ft_tolower.c				\
 		$(CONVDIR)/ft_c.c					\
-		$(CONVDIR)/ft_d_i.c				\
+		$(CONVDIR)/ft_d_i.c					\
 		$(CONVDIR)/ft_f.c					\
 		$(CONVDIR)/ft_f2.c					\
 		$(CONVDIR)/ft_o.c					\
 		$(CONVDIR)/ft_p.c					\
-		$(CONVDIR)/ft_s_mode0.c			\
-		$(CONVDIR)/ft_s_mode1.c			\
+		$(CONVDIR)/ft_s_mode0.c				\
+		$(CONVDIR)/ft_s_mode1.c				\
 		$(CONVDIR)/ft_u.c					\
 		$(CONVDIR)/ft_xx.c					\
 		$(FLAGDIR)/ft_accuracy.c			\
 		$(FLAGDIR)/ft_f_width_accuracy.c	\
 		$(FLAGDIR)/ft_fwp_minus.c 			\
 		$(FLAGDIR)/ft_fwp_string.c			\
-		$(FLAGDIR)/ft_fwp.c				\
+		$(FLAGDIR)/ft_fwp.c					\
 		$(FLAGDIR)/ft_fwp2.c				\
-		$(FLAGDIR)/ft_hhh_lll.c			\
+		$(FLAGDIR)/ft_hhh_lll.c				\
 		$(FLAGDIR)/ft_plus_minus.c			\
 		$(FLAGDIR)/ft_sharp.c				\
 		$(FLAGDIR)/ft_width_string_minus.c	\
 		$(FLAGDIR)/ft_width.c				\
-		ft_printf.c				\
-		ft_analyse_format.c		\
-		ft_flags.c				\
-		ft_which_flag.c			\
-		ft_only_conv.c			\
-		ft_active_flags.c		\
-		ft_flags2.c				\
+		ft_printf.c							\
+		ft_analyse_format.c					\
+		ft_flags.c							\
+		ft_which_flag.c						\
+		ft_only_conv.c						\
+		ft_active_flags.c					\
+		ft_flags2.c							\
 		ft_disable_flag.c
 
 CFLAGS += -I$(INCDIR)
