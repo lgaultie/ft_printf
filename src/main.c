@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 19:28:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 22:19:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -781,8 +781,8 @@ int main(int argc, char **argv)
 // 	printf("|%#x|\n", 0);
 // 	ft_printf("|%#x|\n", 0);
 // 	printf("--------------\n");
-// 	printf("|%.o| |%.0o|\n", 0, 0);
-// 	ft_printf("|%.o| |%.0o|\n", 0, 0);
+	printf("|%.o| |%.0o|\n", 0, 0);
+	ft_printf("|%.o| |%.0o|\n", 0, 0);
 // 	printf("--------------\n");
 // 	printf("|%#.o| |%#.0o|\n", 0, 0);
 // 	ft_printf("|%#.o| |%#.0o|\n", 0, 0);				////invalid read size sur CMP

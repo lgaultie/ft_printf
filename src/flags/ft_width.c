@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 23:06:25 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 21:52:55 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_no_flag_zero: deals with cases not dealing with flag zero.

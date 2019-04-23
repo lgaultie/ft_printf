@@ -6,11 +6,11 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 16:35:53 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 21:10:53 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_accuracy_size :

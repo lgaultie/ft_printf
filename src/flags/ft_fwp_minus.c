@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:20:28 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 18:26:38 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:53:00 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_minus_s2: Initialize data->width_precis_minus so we will know how much

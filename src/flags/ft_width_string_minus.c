@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:19:28 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 18:12:02 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:52:56 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_width_minus2 : Case of width + flag minus. Returns the converted flag.

@@ -6,11 +6,11 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:57:13 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 11:29:40 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:10:52 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_initialize: data->conv_sz is needed in files dealing with flags.

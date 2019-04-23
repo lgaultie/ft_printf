@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:36 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 15:44:43 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:52:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_case3: Deals with cases where before > after and after >= data->conv_sz.

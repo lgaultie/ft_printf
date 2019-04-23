@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:03:08 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 23:00:23 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 21:10:50 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_join_sharp: when we have to return | 0x34234|, we have to join 0x

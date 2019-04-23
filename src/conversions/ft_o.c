@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:04:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 15:19:06 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:10:53 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_for_c_0: for %o conversions.

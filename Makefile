@@ -6,69 +6,71 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/23 14:32:27 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/23 22:20:52 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = clang
-CFLAGS += -Wall -Werror -Wextra -g
+CFLAGS += -Wall -Werror -Wextra
 OBJDIR = obj
 SRCDIR = src
+CONVDIR = conversions
+FLAGDIR = flags
 LIBDIR	= libft
 INCDIR	= $(LIBDIR)
 HEAD	= $(SRCDIR)/ft_printf.h
 
-SRCS =	ft_printf.c				\
+SRCS =	$(LIBDIR)/ft_atoi.c				\
+		$(LIBDIR)/ft_bzero.c				\
+		$(LIBDIR)/ft_intlen.c				\
+		$(LIBDIR)/ft_itoa_base.c			\
+		$(LIBDIR)/ft_itoa.c				\
+		$(LIBDIR)/ft_memalloc.c			\
+		$(LIBDIR)/ft_memset.c				\
+		$(LIBDIR)/ft_nb_len_base.c		\
+		$(LIBDIR)/ft_putchar.c			\
+		$(LIBDIR)/ft_putstr.c				\
+		$(LIBDIR)/ft_strcat.c				\
+		$(LIBDIR)/ft_strchr.c				\
+		$(LIBDIR)/ft_strcmp.c				\
+		$(LIBDIR)/ft_strcpy.c				\
+		$(LIBDIR)/ft_strdup.c				\
+		$(LIBDIR)/ft_strjoin.c			\
+		$(LIBDIR)/ft_strlen.c				\
+		$(LIBDIR)/ft_strncpy.c			\
+		$(LIBDIR)/ft_strndup.c			\
+		$(LIBDIR)/ft_strnew.c				\
+		$(LIBDIR)/ft_strsub.c				\
+		$(LIBDIR)/ft_tolower.c			\
+		$(CONVDIR)/ft_c.c					\
+		$(CONVDIR)/ft_d_i.c				\
+		$(CONVDIR)/ft_f.c					\
+		$(CONVDIR)/ft_f2.c					\
+		$(CONVDIR)/ft_o.c					\
+		$(CONVDIR)/ft_p.c					\
+		$(CONVDIR)/ft_s_mode0.c			\
+		$(CONVDIR)/ft_s_mode1.c			\
+		$(CONVDIR)/ft_u.c					\
+		$(CONVDIR)/ft_xx.c					\
+		$(FLAGDIR)/ft_accuracy.c			\
+		$(FLAGDIR)/ft_f_width_accuracy.c	\
+		$(FLAGDIR)/ft_fwp_minus.c 			\
+		$(FLAGDIR)/ft_fwp_string.c			\
+		$(FLAGDIR)/ft_fwp.c				\
+		$(FLAGDIR)/ft_fwp2.c				\
+		$(FLAGDIR)/ft_hhh_lll.c			\
+		$(FLAGDIR)/ft_plus_minus.c			\
+		$(FLAGDIR)/ft_sharp.c				\
+		$(FLAGDIR)/ft_width_string_minus.c	\
+		$(FLAGDIR)/ft_width.c				\
+		ft_printf.c				\
 		ft_analyse_format.c		\
-		ft_d_i.c				\
-		ft_c.c					\
-		ft_u.c					\
-		ft_s_mode0.c			\
-		ft_s_mode1.c			\
-		ft_f.c					\
-		ft_o.c					\
 		ft_flags.c				\
-		ft_accuracy.c			\
-		ft_width.c				\
-		ft_p.c					\
-		ft_xx.c					\
 		ft_which_flag.c			\
-		ft_intlen.c				\
-		ft_itoa.c				\
-		ft_itoa_base.c			\
-		ft_memalloc.c			\
-		ft_putchar.c			\
-		ft_putstr.c				\
-		ft_strdup.c				\
-		ft_strjoin.c			\
-		ft_strlen.c				\
-		ft_strncpy.c			\
-		ft_strnew.c				\
-		ft_strsub.c				\
-		ft_tolower.c			\
-		ft_strchr.c				\
-		ft_atoi.c				\
-		ft_bzero.c				\
-		ft_memset.c				\
-		ft_nb_len_base.c		\
-		ft_strcat.c				\
-		ft_strcpy.c				\
-		ft_plus_minus.c			\
 		ft_only_conv.c			\
-		ft_fwp.c				\
-		ft_fwp2.c				\
-		ft_sharp.c				\
-		ft_fwp_string.c			\
-		ft_hhh_lll.c			\
-		ft_strcmp.c				\
-		ft_strndup.c			\
-		ft_fwp_minus.c 			\
-		ft_width_string_minus.c	\
 		ft_active_flags.c		\
 		ft_flags2.c				\
-		ft_f2.c					\
-		ft_f_width_accuracy.c	\
 		ft_disable_flag.c
 
 CFLAGS += -I$(INCDIR)
@@ -83,17 +85,24 @@ _END=\e[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@printf "compiling... "
-	@ar rcs $@ $^
-	@printf "[$(_GREEN)✓$(_END)]\n"
+	printf "compiling... "
+	ar rcs $@ $^
+	printf "[$(_GREEN)✓$(_END)]\n"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $< -o $@
-$(OBJDIR)/%.o: $(LIBDIR)/%.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/$(LIBDIR)/%.o: $(LIBDIR)/%.c $(HEAD)
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/$(CONVDIR)/%.o: $(OBJDIR)/$(CONVDIR)/%.c $(HEAD)
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/$(FLAGDIR)/%.o: $(OBJDIR)/$(FLAGDIR)/%.c $(HEAD)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR) :
 	@mkdir $@
+	@mkdir $@/$(CONVDIR)
+	@mkdir $@/$(FLAGDIR)
+	@mkdir $@/$(LIBDIR)
 
 $(OBJ) : | $(OBJDIR)
 
