@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:20:28 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:20:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:26:38 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char		*ft_minus_s(int before, int after, char *final, t_data *data)
 {
 	char	*ap;
 
-	if (data->tmp_s)
+	if (data->f & TMP_S_M)
 	{
 		if (!(ap = ft_strdup(data->tmp_s)))
 			return (NULL);
