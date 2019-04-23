@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:51:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 21:53:01 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 22:29:27 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int				ft_precision_s(char *flags, t_data *data)
 
 	i = 0;
 	j = 0;
-	while (flags[i] < '0' || flags[i] > '9')
+	while ((flags[i] < '0' || flags[i] > '9') && flags[i] != '\0')
 		i++;
 	if (data->f & F_W_P)
 	{

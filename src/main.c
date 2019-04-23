@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 22:19:43 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 22:40:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ void	ft_tests();
 
 int main(int argc, char **argv)
 {
-	long double		i;
+	// long double		i;
 
 	(void)argc;
 	(void)argv;
-	i = 123131;
 
 	// printf("%5f\n", 0.00);
 	// ft_printf("%5f\n", 0.00);
@@ -147,9 +146,8 @@ int main(int argc, char **argv)
 
 	// printf("vrai	|%c|\n",0);
 	// ft_printf("mien	|%c|\n",0);
-
-	// printf("vrai	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');
-	// ft_printf("mine	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');		//FAIL
+	printf("vrai	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');
+	ft_printf("mine	|%c| |%c| |%43d| |%#X| |%x| |%-1d| |%#x| |%32d| |%2c| \n",0, 0, 42, 12, 0, 0, 23, 2, 'c');		//FAIL
 
 	// ft_printf("%O\n", 42);
 	// printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
@@ -781,8 +779,8 @@ int main(int argc, char **argv)
 // 	printf("|%#x|\n", 0);
 // 	ft_printf("|%#x|\n", 0);
 // 	printf("--------------\n");
-	printf("|%.o| |%.0o|\n", 0, 0);
-	ft_printf("|%.o| |%.0o|\n", 0, 0);
+	// printf("|%.o| |%.0o|\n", 0, 0);
+	// ft_printf("|%.o| |%.0o|\n", 0, 0);
 // 	printf("--------------\n");
 // 	printf("|%#.o| |%#.0o|\n", 0, 0);
 // 	ft_printf("|%#.o| |%#.0o|\n", 0, 0);				////invalid read size sur CMP

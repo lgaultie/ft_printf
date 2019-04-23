@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:17:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 18:12:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:26:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,21 @@ int		main(void)
 	ft_printf("--------------------%%p--------------------\n");			//perfect
 	printf("Coucou %.0s\n%s%---12s\n", "hi", "coco", NULL);
 	ft_printf("Coucou %.0s\n%s%---12s\n", "hi", "coco", NULL);
+	ft_printf("--------------------%%p--------------------\n");			//perfect
+	printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
+	// ft_printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
+	ft_printf("--------------------%%p--------------------\n");			//perfect
+	printf("%+%\n");
+	ft_printf("%+%\n");
+	ft_printf("--------------------%%p--------------------\n");			//perfect
+	printf("titi % +---12.5% et%%%0004% et %+1%\n");
+	ft_printf("titi % +---12.5% et%%%0004% et %+1%\n");
+	ft_printf("--------------------%%p--------------------\n");			//perfect
+	printf("|%1.4s| et |%-6.8s| et |%4.2s|\n", "tuuu", "12345", "hu");
+	ft_printf("|%1.4s| et |%-6.8s| et |%4.2s|\n", "tuuu", "12345", "hu");
+	ft_printf("--------------------%%p--------------------\n");			//perfect
+	printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
+	ft_printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
 	// ft_printf("--------------------%%p--------------------\n");			//perfect
 	// printf("01) Vrai PRINTF : |%p|\n", "salut");
 	// ft_printf("01) Mon PRINTF  : |%p|\n", "salut");

@@ -6,11 +6,21 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:36 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 21:52:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 22:28:05 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+static char		*ft_sharp_x(char *final, int i, t_data *data)
+{
+	final[i++] = '0';
+	if (data->f & F_BIG_X)
+		final[i++] = 'X';
+	else
+		final[i++] = 'x';
+	return (final);
+}
 
 /*
 ** ft_case3: Deals with cases where before > after and after >= data->conv_sz.
@@ -32,13 +42,7 @@ static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
 	if (d->f & F_PLUS)
 		final[i - 1] = '+';
 	if (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X)
-	{
-		final[i++] = '0';
-		if (d->f & F_BIG_X)
-			final[i++] = 'X';
-		else
-			final[i++] = 'x';
-	}
+		final = ft_sharp_x(final, i, d);
 	if (d->f & F_S_0 || d->f & F_S)
 		while (after-- > d->conv_sz)
 			final[i++] = ' ';

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 19:29:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 22:13:05 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static void		ft_print_char_0(t_data *d)
 	to_print = 1;
 	ft_putstrn(d->buf, (d->index_0[to_print] + d->tmp));
 	ft_putchar(0);
-
 	while (d->index_0[0] - to_print > 0)
 	{
 		if (to_print + d->index_0[0] == 2)
