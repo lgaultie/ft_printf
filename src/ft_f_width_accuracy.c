@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:52:37 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 15:03:45 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 17:43:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,24 @@ char	*ft_float_w_a_width(char *final, t_float *ft, t_data *d)
 	free(tmp);
 	free(tmp2);
 	return (final);
+}
+
+/*
+** ft_float_width :
+** Adjusts the number of character in decimal part we need to get.
+*/
+
+int		ft_float_width(t_data *d, t_float *ft, char *flag, long double ret)
+{
+	int max;
+
+	(void)ft;
+	if (d->f & F_PRECIS)
+		max = ft_accuracy_size(flag, d);
+	else if (d->f & F_W_P)
+		max = ft_float_w_a(d, ft, flag);
+	else
+		max = 6;
+	ft->deci_p = ret;
+	return (max);
 }

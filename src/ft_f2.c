@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 21:19:57 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 14:59:59 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 16:35:53 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,6 @@ char	*ft_ffinal(t_float *ft, t_data *data, char *flag, int j)
 		if (!(final = ft_float_w_a_width(final, ft, data)))
 			return (NULL);
 	ft_free(ft, j, 0);
-	data->conv_sz = ft_strlen(final);
+data->conv_sz = ft_strlen(final);
 	return (final);
 }
