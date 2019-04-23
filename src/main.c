@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 21:40:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 22:13:34 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,10 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	wchar_t	s[4];
+	// printf("%5f\n", 0.00);
+	// ft_printf("%5f\n", 0.00);
 
-	i = 123131;
-	// 	s[0] = 0x53;
-	// 	s[1] = 0x3abc;
-	// 	s[2] = 0x81000;
-	// 	s[3] = '\0';
-	// printf("|%.ls|\n", s);
-	// ft_printf("|%.ls|\n", s);
+
 	// printf("vrai : |%#7.2o|\n", 0);						//ok
 	// ft_printf("mine : |%#7.2o|\n", 0);					//ok
 	// printf("--------------\n");
@@ -127,6 +122,7 @@ int main(int argc, char **argv)
 
 	// printf("oui |%5c| %2c\n",0, 0);
 	// ft_printf("oui |%5c| %2c\n",0, 0);
+
 	// printf("oui |%5c| haha |%c|bla ba blou |%5d|fewfew\n",0, 0, 1);
 	// ft_printf("oui |%5c| haha |%c|bla ba blou |%5d|fewfew\n",0, 0, 1);
 	// printf("@moulitest: %c\n", 0);
@@ -513,7 +509,7 @@ int main(int argc, char **argv)
 		// printf("vrai : |%5f|\n", 9877893.5123109);
 		// ft_printf("Mine : |%5f|\n", 9877893.5123109);
 		// printf("--------------\n");
-		// ft_printf("Mine : |%5Lf |\n", (long double)9877893.5123109);
+		// ft_printf("Mine : |%5Lf|\n", (long double)9877893.5123109);
 		// printf("vrai : |%5Lf|\n", (long double)9877893.5123109);
 		// printf("--------------\n");
 		// printf("vrai : |%.5f|\n", 3.5);
