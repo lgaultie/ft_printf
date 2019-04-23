@@ -6,28 +6,19 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:05:23 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/16 17:37:14 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 17:40:23 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_float_width(t_data *d, t_float *ft, char *flag, long double ret)
-{
-	int max;
+/*
+** ft_conv_f2_1 :
+** Mode 1 : concat the digits of decimal part in s_deci_p.
+** Mode 2 : Assigns the accuracy if needed (used in ft_ffinal)
+*/
 
-	(void)ft;
-	if (d->f & F_PRECIS)
-		max = ft_accuracy_size(flag, d);
-	else if (d->f & F_W_P)
-		max = ft_float_w_a(d, ft, flag);
-	else
-		max = 6;
-	ft->deci_p = ret;
-	return (max);
-}
-
-char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
+char			*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 {
 	char *tmp;
 
@@ -53,7 +44,13 @@ char	*ft_conv_f2_2(t_float *ft, t_data *d, char *flag, int mode)
 	return (NULL);
 }
 
-char	*ft_conv_f2_1(t_float *ft, int mode)
+/*
+** ft_conv_f2_1 :
+** used to convert and store char by char the decimal digit passed by
+** ft_conv_f2.
+*/
+
+static char		*ft_conv_f2_1(t_float *ft, int mode)
 {
 	if (mode == 1)
 	{
@@ -78,16 +75,19 @@ char	*ft_conv_f2_1(t_float *ft, int mode)
 	return (NULL);
 }
 
-char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
+/*
+** ft_conv_f2 :
+** Gets the decimal part of the number.
+*/
+
+static char		*ft_conv_f2(t_float *ft, t_data *d, char *flag, int j)
 {
 	long double		ret;
-	int				j;
 	int				max;
 
-	j = 0;
 	ret = ft->ap - (long long)ft->ap;
 	max = ft_float_width(d, ft, flag, ret);
-	while ((ft->ap - (long long)ft->ap) > 0.0 && j < max)
+	while (((ft->ap - (long long)ft->ap) > 0.0 && j < max) || d->f & F_AP_0)
 	{
 		ret = ret * 10;
 		ft->deci_p = ret;
@@ -103,26 +103,43 @@ char	*ft_conv_f2(t_float *ft, t_data *d, char *flag)
 		if (j++ != 0)
 			ft->s_deci_p = ft_conv_f2_2(ft, d, flag, 1);
 		ft->ap = ret;
+		d->f &= ~F_AP_0;
 	}
 	return (ft_ffinal(ft, d, flag, j));
 }
 
-char	*ft_conv_f(t_data *d, char *flag)
+static void		ft_cases(t_data *d, t_float *ft)
+{
+	if (d->f & F_BIG_L)
+		ft->ap = (va_arg(d->ap, long double));
+	else
+		ft->ap = (va_arg(d->ap, double));
+	if (ft->ap == 0)
+		d->f |= F_AP_0;
+}
+
+/*
+** ft_conv_f :
+** Root function for floats. Get the ap, set the size of it in data(d) and
+** return the result.
+** in case of conversions with accuracy, return "", conversion happens later.
+*/
+
+char			*ft_conv_f(t_data *d, char *flag)
 {
 	t_float	*ft;
+	int		j;
 	char	*final;
 
+	j = 0;
 	if (((d->f & F_PRECIS || d->f & F_W_P) && (ft_strlen(flag) == 1)))
 		return (ft_strdup(""));
 	if (((d->f & F_BIG_L && !(d->f & F_PRECIS)) && (ft_strlen(flag) != 1)))
 		return (ft_strdup(""));
 	if (!(ft = ft_memalloc(sizeof(t_float))))
 		return (NULL);
-	if (d->f & F_BIG_L)
-		ft->ap = (va_arg(d->ap, long double));
-	else
-		ft->ap = (va_arg(d->ap, double));
-	d->ap_sz = ft_intlen((int)ft->ap + 6);
+	ft_cases(d, ft);
+	d->ap_sz = ft_intlen((int)ft->ap) + 7;
 	if (!(ft->int_p = ft_itoa(ft->ap)))
 		return (NULL);
 	final = ft->int_p;
@@ -131,7 +148,7 @@ char	*ft_conv_f(t_data *d, char *flag)
 	free(final);
 	if (ft->ap < 0)
 		ft->ap = -ft->ap;
-	if (!(final = ft_conv_f2(ft, d, flag)))
+	if (!(final = ft_conv_f2(ft, d, flag, j)))
 		return (NULL);
 	return (final);
 }

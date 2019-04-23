@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 22:13:23 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 16:15:13 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,5 +144,7 @@ char			*ft_s(char *final, int before, int after, t_data *data);
 int				ft_accuracy_size(char *flags, t_data *data);
 int				ft_float_w_a(t_data *d, t_float *ft, char *flag);
 char			*ft_float_w_a_width(char *final, t_float *ft, t_data *d);
+int				ft_float_width(t_data *d, t_float *ft, char *flag,
+long double ret);
 
 #endif

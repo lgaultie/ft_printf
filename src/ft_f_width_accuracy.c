@@ -6,11 +6,17 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:52:37 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/22 11:54:12 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 17:43:24 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** ft_float_w_a :
+** Calculates how many digits ft_conv_f2 needs to get in case of WIDTH +
+** accuracy.
+*/
 
 int		ft_float_w_a(t_data *d, t_float *ft, char *flag)
 {
@@ -30,6 +36,11 @@ int		ft_float_w_a(t_data *d, t_float *ft, char *flag)
 	accuracy = ft_accuracy_size(&flag[i], d);
 	return (accuracy);
 }
+
+/*
+** ft_float_w_a_width :
+** adjust the result in case of Width + accuracy.
+*/
 
 char	*ft_float_w_a_width(char *final, t_float *ft, t_data *d)
 {
@@ -58,4 +69,24 @@ char	*ft_float_w_a_width(char *final, t_float *ft, t_data *d)
 	free(tmp);
 	free(tmp2);
 	return (final);
+}
+
+/*
+** ft_float_width :
+** Adjusts the number of character in decimal part we need to get.
+*/
+
+int		ft_float_width(t_data *d, t_float *ft, char *flag, long double ret)
+{
+	int max;
+
+	(void)ft;
+	if (d->f & F_PRECIS)
+		max = ft_accuracy_size(flag, d);
+	else if (d->f & F_W_P)
+		max = ft_float_w_a(d, ft, flag);
+	else
+		max = 6;
+	ft->deci_p = ret;
+	return (max);
 }

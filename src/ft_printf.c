@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 18:27:09 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:32:18 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void		ft_print_char_0(t_data *d)
 	}
 	ft_putstr(&d->buf[d->index_0[to_print]]);
 }
-
+g
 /*
 ** ft_print_format : print final sentence returned by ft_analyse.
 */
