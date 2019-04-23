@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:02 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 23:06:25 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 21:41:30 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char		*ft_small_width(t_data *data)
 {
 	if (data->f & AP_NEG && !(data->f & F_UNSIGNED))
 		return (ft_strdup("-"));
-	else if (data->f & F_PLUS)
+	else if (data->f & F_PLUS && !(data->f & F_PERCENT))
 		return (ft_strdup("+"));
 	return (ft_strdup(""));
 }
@@ -72,7 +72,7 @@ char			*ft_width2(int width, t_data *d)
 		{
 			if (d->f & AP_NEG && !(d->f & F_UNSIGNED))
 				ret[i++] = '-';
-			else if (d->f & F_PLUS)
+			else if (d->f & F_PLUS && !(d->f & F_PERCENT))
 				ret[i++] = '+';
 			while (i < width - d->conv_sz)
 				ret[i++] = '0';
@@ -83,6 +83,14 @@ char			*ft_width2(int width, t_data *d)
 	if (width <= d->conv_sz)
 		return (ft_small_width(d));
 	return (ret);
+}
+
+static void		ft_c_null(char *f, int i, t_data *data)
+{
+	if (f[ft_strlen(f) - 1] == 'c' && data->f & F_AP_0)
+		data->index_0[data->index_0[0]] += i - 1;
+	else
+		data->index_0[data->index_0[0]] += 0;
 }
 
 /*
@@ -114,8 +122,7 @@ char			*ft_width(char *f, t_data *data)
 	i = ft_atoi(conv);
 	free(conv);
 	if (data->f & F_C_02)
-		data->index_0[data->index_0[0]] += (f[ft_strlen(f) - 1] == 'c'
-		&& data->f & F_AP_0) ?  i - 1 : 0;
+		ft_c_null(f, i, data);
 	i = (i < 0) ? -i : i;
 	return (ft_width2(i, data));
 }

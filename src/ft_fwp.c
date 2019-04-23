@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 15:31:30 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:06:32 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static char		*ft_preci_width2(char *flag, t_data *data, int i, int j)
 		return (NULL);
 	if (!(after = ft_memalloc(sizeof(char) * data->flag_sz + 1)))
 		return (NULL);
-	while (flag[i] < '0' || flag[i] > '9')
+	while ((flag[i] < '0' || flag[i] > '9') && flag[i] != '\0')
 		i++;
 	while (flag[i] != '.' && flag[i] != '\0')
 		before[j++] = flag[i++];

@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/23 14:32:27 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/23 22:10:59 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ SRCS =	ft_printf.c				\
 		ft_strcmp.c				\
 		ft_strndup.c			\
 		ft_fwp_minus.c 			\
-		ft_width_string_minus.c	\
+		ft_width_minus.c		\
+		ft_width_string.c		\
 		ft_active_flags.c		\
 		ft_flags2.c				\
 		ft_f2.c					\

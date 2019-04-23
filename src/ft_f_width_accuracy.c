@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:52:37 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 17:43:24 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 21:03:11 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_float_w_a(t_data *d, t_float *ft, char *flag)
 	i = 0;
 	if (!(tmp = ft_memalloc(sizeof(char) * (d->flag_sz - 1))))
 		return (-1);
-	while (flag[i] >= '0' && flag[i] <= '9')
+	while (flag[i] >= '0' && flag[i] <= '9' && flag[i] != '\0')
 		tmp[ft->width++] = flag[i++];
 	ft->width = ft_atoi(tmp);
 	free(tmp);

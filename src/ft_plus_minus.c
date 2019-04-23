@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:13:41 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 11:32:20 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 20:39:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_plus(char *flag, t_data *data)
 		if (!(final = ft_strdup("-")))
 			return (NULL);
 	}
-	else if (!(data->f & AP_NEG))
+	else if (!(data->f & AP_NEG) && (!(data->f & F_PERCENT)))
 	{
 		if (!(final = ft_strdup("+")))
 			return (NULL);

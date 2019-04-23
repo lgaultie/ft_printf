@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 18:32:18 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:29:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static void		ft_print_char_0(t_data *d)
 	to_print = 1;
 	ft_putstrn(d->buf, (d->index_0[to_print] + d->tmp));
 	ft_putchar(0);
-
 	while (d->index_0[0] - to_print > 0)
 	{
 		if (to_print + d->index_0[0] == 2)
@@ -100,7 +99,7 @@ static void		ft_print_char_0(t_data *d)
 	}
 	ft_putstr(&d->buf[d->index_0[to_print]]);
 }
-g
+
 /*
 ** ft_print_format : print final sentence returned by ft_analyse.
 */

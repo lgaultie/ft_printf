@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:14:31 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 17:57:13 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 20:54:04 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static char		*ft_string_mode1_2(char *flag, char *ap, t_data *data)
 
 	if (data->f & F_PRECIS && !(data->f & F_W_P))
 	{
-		data->ap_sz = ft_precision_s(flag, data);
+		if (!(data->ap_sz = ft_precision_s(flag, data)))
+			return (NULL);
 		if (!(final = ft_strsub(ap, 0, data->ap_sz)))
 			return (NULL);
 	}
