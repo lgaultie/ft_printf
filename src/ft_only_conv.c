@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 10:53:55 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 11:04:13 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ static char		*ft_p100(t_data *data)
 		return (NULL);
 	final[0] = '%';
 	final[1] = '\0';
+	return (final);
+}
+
+
+static char		*ft_only_conv4(char *flags, t_data *data)
+{
+	char	*final;
+
+	if (flags[0] == 'C')
+	{
+		return (NULL);
+	}
+	else if (flags[0] == '%')
+	{
+		if (!(final = ft_p100(data)))
+			return (NULL);
+	}
+	else
+		final = (NULL);
 	return (final);
 }
 
@@ -53,10 +72,10 @@ static char		*ft_only_conv3(char *flags, t_data *data)
 		if (!(final = ft_hexa(data, 2)))
 			return (NULL);
 	}
-	else if (flags[0] == '%')
+	else if (flags[0] == 'C' || flags[0] == '%')
 	{
-		if (!(final = ft_p100(data)))
-			return (NULL);
+		if (!(final = ft_only_conv4(flags, data)))
+		return (NULL);
 	}
 	else
 		final = (NULL);
@@ -87,7 +106,8 @@ static char		*ft_only_conv2(char *f, t_data *data)
 		if (!(final = ft_char(data)))
 			return (NULL);
 	}
-	else if (f[0] == 'o' || f[0] == 'x' || f[0] == 'X' || f[0] == '%')
+	else if (f[0] == 'o' || f[0] == 'x' || f[0] == 'X' || f[0] == '%'
+		|| f[0] == 'C')
 	{
 		if (!(final = ft_only_conv3(f, data)))
 			return (NULL);
@@ -120,7 +140,7 @@ char			*ft_only_conv(char *flags, t_data *data)
 	}
 	else if (flags[0] == 'u' || flags[0] == 'c' || flags[0] == 'o' \
 		|| flags[0] == 'x' || flags[0] == 'X' || flags[0] == 'p' \
-			|| flags[0] == '%')
+		|| flags[0] == '%'|| flags[0] == 'C')
 	{
 		if (!(final = ft_only_conv2(flags, data)))
 			return (NULL);
