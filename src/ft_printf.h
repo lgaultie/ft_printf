@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 16:15:13 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:37:26 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,6 @@ int				ft_float_w_a(t_data *d, t_float *ft, char *flag);
 char			*ft_float_w_a_width(char *final, t_float *ft, t_data *d);
 int				ft_float_width(t_data *d, t_float *ft, char *flag,
 long double ret);
+char			*ft_free_then_return(char *ap);
 
 #endif
