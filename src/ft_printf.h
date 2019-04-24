@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/24 12:20:41 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:43:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,5 +164,6 @@ char			*ft_hexa(t_data *data, int mode);
 char			*ibmul(unsigned long long v, unsigned int b, int m, t_data *d);
 char			*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *d);
 char			*itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *d);
+char			*ft_free_then_return(char *ap);
 
 #endif

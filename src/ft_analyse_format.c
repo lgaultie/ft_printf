@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:28:17 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:28:19 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 13:37:06 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ char		*ft_analyse(char *str, t_data *data)
 		if (str[i] == '%')
 		{
 			ft_cat_conv(data, &str[1], i);
+			if (data->f & B_DONE)
+				return (ft_free_then_return(data->buf));
 			ft_disable_flag(data);
 			if ((str[i] == '%') && (str[i + 1] == '%'))
 				i += 2;
