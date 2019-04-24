@@ -6,12 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 21:10:22 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 11:15:44 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
 
 static int		*ft_array_increase_size(t_data *data)
 {
@@ -51,12 +50,8 @@ static void		ft_char_0(t_data *data)
 	nb_0 = 0;
 	if (data->f & F_C_02)
 	{
-		// tmp = ft_arraydup(data, data->index_0);
-		// free(data->index_0);
 		if (!(data->index_0 = ft_array_increase_size(data)))
 			return ;
-		// data->index_0 = ft_arraydup(data, tmp);
-		// free(tmp);
 		nb_0 = (data->index_0[0] + 1);
 	}
 	else
