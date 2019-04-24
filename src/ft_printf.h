@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/24 14:29:08 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 16:05:56 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,13 @@ char			*ft_fwp_minus(char *final, t_data *data);
 char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
 char			*ft_only_conv(char *flags, t_data *data);
 char			*ft_which_flag(char *flag, char conv, t_data *data);
+char			*ft_search_forbidden_conv(char *str);
 
 char			*ft_precision_d(char *flags, t_data *data);
 int				ft_precision_s(char *flags, t_data *data);
 int				ft_float_w_a(t_data *d, t_float *ft, char *flag);
 char			*ft_float_w_a_width(char *final, t_float *ft, t_data *d);
-int				ft_float_width(t_data *d, t_float *ft, char *flag, long double ret);
+int				ft_float_width(t_data *d, t_float *ft, char *f, long double r);
 
 char			*ft_flag_minus(int int_p, int after, char *final, t_data *d);
 char			*ft_s(char *final, int before, int after, t_data *data);
