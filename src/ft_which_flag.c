@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:23:12 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 20:39:31 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:41:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ static char		*ft_sharp_precent(char *flag, t_data *d)
 		if (!(final = ft_preci_width(flag, d)))
 			return (NULL);
 	}
-	else if (d->f & F_WIDTH)
-	{
-		if (!(final = ft_width(flag, d)))
-			return (NULL);
-	}
+	else if (d->f & F_WIDTH && !(d->f & F_MINUS))
+		return (ft_width(flag, d));
+	else if (d->f & F_WIDTH && d->f & F_MINUS)
+		return (ft_width_minus(flag, d));
 	else if (d->f & F_PRECIS && !(d->f & F_PERCENT))
 	{
 		if (!(final = ft_precision_d(flag, d)))

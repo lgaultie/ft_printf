@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/24 14:54:39 by amamy            ###   ########.fr        #
+#    Updated: 2019/04/24 16:06:09 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS =	$(LIBDIR)/ft_atoi.c					\
 		$(LIBDIR)/ft_bzero.c				\
 		$(LIBDIR)/ft_intlen.c				\
 		$(LIBDIR)/ft_itoa_base.c			\
+		$(LIBDIR)/ft_itoa_bmul.c			\
 		$(LIBDIR)/ft_itoa.c					\
 		$(LIBDIR)/ft_memalloc.c				\
 		$(LIBDIR)/ft_memset.c				\
@@ -72,7 +73,8 @@ SRCS =	$(LIBDIR)/ft_atoi.c					\
 		ft_only_conv.c						\
 		ft_active_flags.c					\
 		ft_flags2.c							\
-		ft_disable_flag.c
+		ft_disable_flag.c					\
+		ft_forbidden_conv.c
 
 CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
