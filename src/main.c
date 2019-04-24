@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 22:13:34 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 22:55:23 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int main(int argc, char **argv)
 	// printf("%5f\n", 0.00);
 	// ft_printf("%5f\n", 0.00);
 
-
+printf("test %-7C %007d%-10.2s\n", 0xd777, 0x45, "L〻");
+ft_printf("test %-7C %007d%-10.2s\n", 0xd777, 0x45, "L〻");
 	// printf("vrai : |%#7.2o|\n", 0);						//ok
 	// ft_printf("mine : |%#7.2o|\n", 0);					//ok
 	// printf("--------------\n");

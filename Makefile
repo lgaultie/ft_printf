@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/23 22:10:59 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/23 22:47:57 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS =	ft_printf.c				\
 		ft_memalloc.c			\
 		ft_putchar.c			\
 		ft_putstr.c				\
+		ft_putnbr.c				\
 		ft_strdup.c				\
 		ft_strjoin.c			\
 		ft_strlen.c				\
