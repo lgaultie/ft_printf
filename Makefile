@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/24 17:35:43 by amamy            ###   ########.fr        #
+#    Updated: 2019/04/24 17:38:00 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ SRCS =	$(LIBDIR)/ft_atoi.c					\
 		$(FLAGDIR)/ft_fwp_minus.c 			\
 		$(FLAGDIR)/ft_fwp_string.c			\
 		$(FLAGDIR)/ft_fwp.c					\
-		$(FLAGDIR)/ft_fwp2.c				\
+		$(FLAGDIR)/ft_fwp_not_ap_neg.c		\
+		$(FLAGDIR)/ft_fwp_cases.c			\
 		$(FLAGDIR)/ft_hhh_lll.c				\
 		$(FLAGDIR)/ft_plus_minus.c			\
 		$(FLAGDIR)/ft_sharp.c				\
