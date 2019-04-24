@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/24 13:41:24 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/24 14:54:39 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,30 +80,27 @@ LIB		= $(LIBDIR)/libft.a
 
 _GREEN=\e[32m
 _YELLOW=\e[33m
-_BLUE=\e[34m
+_CYAN=\e[36m
 _END=\e[0m
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	printf "compiling... "
-	ar rcs $@ $^
-	printf "[$(_GREEN)✓$(_END)]\n"
+	@printf "Compilation OK! "
+	@ar rcs $@ $^
+	@printf "[$(_GREEN)✓$(_END)]\n"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@printf "Sources : "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(_CYAN)$<\n$(_END)"
 $(OBJDIR)/$(LIBDIR)/%.o: $(LIBDIR)/%.c $(HEAD)
-	$(CC) $(CFLAGS) -c $< -o $@
-$(OBJDIR)/$(CONVDIR)/%.o: $(OBJDIR)/$(CONVDIR)/%.c $(HEAD)
-	$(CC) $(CFLAGS) -c $< -o $@
-$(OBJDIR)/$(FLAGDIR)/%.o: $(OBJDIR)/$(FLAGDIR)/%.c $(HEAD)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@printf "Libft : "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(_YELLOW)$<\n$(_END)"
 
 $(OBJDIR) :
-	@mkdir $@
-	@mkdir $@/$(CONVDIR)
-	@mkdir $@/$(FLAGDIR)
-	@mkdir $@/$(LIBDIR)
+	@mkdir $@ $@/$(CONVDIR) $@/$(FLAGDIR) $@/$(LIBDIR)
 
 $(OBJ) : | $(OBJDIR)
 
