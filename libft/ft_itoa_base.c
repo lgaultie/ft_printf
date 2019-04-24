@@ -6,13 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 18:04:20 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/17 20:34:58 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 16:01:06 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_nb_neg(char *str, long n, int base)
+static char	*ft_nb_neg(char *str, long n, int base)
 {
 	size_t	counter;
 	size_t	end;
@@ -37,7 +37,7 @@ static char		*ft_nb_neg(char *str, long n, int base)
 	return (str);
 }
 
-char			*ft_itoa_base(long long n, int base)
+char		*ft_itoa_base(long long n, int base)
 {
 	char	*str;
 	long	counter;
@@ -66,14 +66,14 @@ char			*ft_itoa_base(long long n, int base)
 	return (str);
 }
 
-static int		ft_abs(int nb)
+static int	ft_abs(int nb)
 {
 	if (nb < 0)
 		nb = -nb;
 	return (nb);
 }
 
-char	*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *data)
+char		*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *data)
 {
 	char			*str;
 	char			*tab;
@@ -99,40 +99,10 @@ char	*itoa_base_m(unsigned int v, unsigned int b, int m, t_data *data)
 	}
 	if (m == 1 && str[0] == '0')
 		data->f |= F_C_0;
-	(void)data;
 	return (str);
 }
 
-char	*ibmul(unsigned long long v, unsigned int b, int m, t_data *data)
-{
-	char				*str;
-	char				*tab;
-	unsigned long long	tmp;
-	int					size;
-
-	size = 0;
-	if (m == 1)
-		tab = "0123456789abcdef";
-	else if (m == 2)
-		tab = "0123456789ABCDEF";
-	tmp = v;
-	while (tmp /= b)
-		size++;
-	size = size + 1;
-	m = size;
-	if (!(str = (char *)ft_memalloc(sizeof(char) * size + 1)))
-		return (NULL);
-	while (size > 0)
-	{
-		str[size-- - 1] = tab[v % b];
-		v /= b;
-	}
-	if (m == 1 && str[0] == '0')
-		data->f |= F_C_0;
-	return (str);
-}
-
-char	*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *data)
+char		*ft_itoa_b_m_ui(unsigned int v, unsigned int b, int m, t_data *data)
 {
 	char			*str;
 	char			*tab;

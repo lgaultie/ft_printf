@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 17:22:30 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 15:35:05 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:55:24 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static char	*ft_conv_percent(int i, char *flag, t_data *data)
 		if (!(ret_flag = ft_which_flag(flag, flag[i], data)))
 			return (NULL);
 		if (data->f & F_WIDTH)
-		if (!(final = ft_strjoin("%", ret_flag)))
-			return (NULL);
+			if (!(final = ft_strjoin("%", ret_flag)))
+				return (NULL);
 	}
 	free(ret_flag);
 	return (final);

@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:21:56 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/23 22:27:47 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 15:51:20 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char			*ft_conv_hhhlll(t_data *data)
 	else
 		ap = (va_arg(data->ap, int));
 	data->ap_sz = ft_intlen(ap);
-	if (ap < 0 && !(data->f & ONLY_CONV) && (data->f & F_PRECIS
+	if (ap < 0 && !(data->f & ONLY_CONV) && (data->f & F_PRECIS \
 		|| data->f & F_WIDTH))
 	{
 		data->f |= AP_NEG;
