@@ -6,7 +6,7 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/04/24 11:10:01 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/04/24 11:11:14 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRCS =	$(LIBDIR)/ft_atoi.c					\
 		$(FLAGDIR)/ft_hhh_lll.c				\
 		$(FLAGDIR)/ft_plus_minus.c			\
 		$(FLAGDIR)/ft_sharp.c				\
-		$(FLAGDIR)/ft_width_string_minus.c	\
+		$(FLAGDIR)/ft_width_string.c		\
+		$(FLAGDIR)/ft_width_minus.c			\
 		$(FLAGDIR)/ft_width.c				\
 		ft_printf.c							\
 		ft_analyse_format.c					\
