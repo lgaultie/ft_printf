@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:27:48 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 13:46:48 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 11:42:38 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ft_active_cast: active needed format flags for h, hh, l, ll.
 */
 
-void			ft_active_cast(char *flag, t_data *data, int i)
+static void			ft_active_cast(char *flag, t_data *data, int i)
 {
 	int	len;
 
