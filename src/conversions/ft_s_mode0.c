@@ -6,11 +6,15 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:14:00 by lgaultie          #+#    #+#             */
+<<<<<<< HEAD:src/ft_s_mode0.c
 /*   Updated: 2019/04/23 23:00:49 by lgaultie         ###   ########.fr       */
+=======
+/*   Updated: 2019/04/23 22:32:42 by amamy            ###   ########.fr       */
+>>>>>>> da34c2fa18e6dc690f01a56d37110c423b8cb972:src/conversions/ft_s_mode0.c
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_string_mode0_2: In cases of flag MINUS is activated.

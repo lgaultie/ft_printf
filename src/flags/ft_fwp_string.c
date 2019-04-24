@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:59:22 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/22 13:59:23 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:52:59 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_free_all: free and return or free, join and return the converted flag.

@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:14:31 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 20:54:04 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 22:32:32 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_s_fwp: deals with cases such as %8.5s --> accuracy + width.

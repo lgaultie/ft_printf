@@ -6,7 +6,11 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:46:30 by amamy             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/04/23 22:55:23 by lgaultie         ###   ########.fr       */
+=======
+/*   Updated: 2019/04/23 22:40:04 by amamy            ###   ########.fr       */
+>>>>>>> da34c2fa18e6dc690f01a56d37110c423b8cb972
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +31,7 @@ void	ft_tests();
 
 int main(int argc, char **argv)
 {
-	long double		i;
+	// long double		i;
 
 	(void)argc;
 	(void)argv;
@@ -780,8 +784,8 @@ ft_printf("test %-7C %007d%-10.2s\n", 0xd777, 0x45, "L〻");
 // 	printf("|%#x|\n", 0);
 // 	ft_printf("|%#x|\n", 0);
 // 	printf("--------------\n");
-// 	printf("|%.o| |%.0o|\n", 0, 0);
-// 	ft_printf("|%.o| |%.0o|\n", 0, 0);
+	// printf("|%.o| |%.0o|\n", 0, 0);
+	// ft_printf("|%.o| |%.0o|\n", 0, 0);
 // 	printf("--------------\n");
 // 	printf("|%#.o| |%#.0o|\n", 0, 0);
 // 	ft_printf("|%#.o| |%#.0o|\n", 0, 0);				////invalid read size sur CMP

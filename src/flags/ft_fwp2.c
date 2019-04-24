@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:36 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 21:25:23 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 22:28:05 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static char		*ft_sharp_x(char *final, int i, t_data *data)
 {

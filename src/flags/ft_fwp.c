@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 21:06:32 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/23 22:28:35 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 /*
 ** ft_calculate_size: calculates the needed size for final's malloc.

@@ -6,11 +6,11 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:40:16 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 19:19:31 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/23 21:10:22 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 
 static int		*ft_array_increase_size(t_data *data)
