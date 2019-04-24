@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:14:31 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 13:37:03 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 13:43:10 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ft_s_fwp: deals with cases such as %8.5s --> accuracy + width.
 */
 
-char			*ft_s_fwp(char *flag, char *ap, t_data *data)
+static char			*ft_s_fwp(char *flag, char *ap, t_data *data)
 {
 	char	*final;
 	char	*tmp;
