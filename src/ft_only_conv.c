@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 11:04:13 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 11:32:45 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,16 @@ static char		*ft_p100(t_data *data)
 	return (final);
 }
 
-
 static char		*ft_only_conv4(char *flags, t_data *data)
 {
 	char	*final;
 
-	if (flags[0] == 'C')
+	if (flags[0] == 'c')
+	{
+		if (!(final = ft_char(data)))
+			return (NULL);
+	}
+	else if (flags[0] == 'C')
 	{
 		return (NULL);
 	}
@@ -72,10 +76,10 @@ static char		*ft_only_conv3(char *flags, t_data *data)
 		if (!(final = ft_hexa(data, 2)))
 			return (NULL);
 	}
-	else if (flags[0] == 'C' || flags[0] == '%')
+	else if (flags[0] == 'C' || flags[0] == '%' || flags[0] == 'c')
 	{
 		if (!(final = ft_only_conv4(flags, data)))
-		return (NULL);
+			return (NULL);
 	}
 	else
 		final = (NULL);
@@ -101,13 +105,8 @@ static char		*ft_only_conv2(char *f, t_data *data)
 		if (!(final = ft_conv_p(data)))
 			return (NULL);
 	}
-	else if (f[0] == 'c')
-	{
-		if (!(final = ft_char(data)))
-			return (NULL);
-	}
-	else if (f[0] == 'o' || f[0] == 'x' || f[0] == 'X' || f[0] == '%'
-		|| f[0] == 'C')
+	else if (f[0] == 'o' || f[0] == 'x' || f[0] == 'X' || f[0] == '%' \
+		|| f[0] == 'C' || f[0] == 'c')
 	{
 		if (!(final = ft_only_conv3(f, data)))
 			return (NULL);
@@ -122,27 +121,26 @@ static char		*ft_only_conv2(char *f, t_data *data)
 ** and returns the converted sentence.
 */
 
-char			*ft_only_conv(char *flags, t_data *data)
+char			*ft_only_conv(char *f, t_data *data)
 {
 	char	*final;
 
-	if (flags[0] == 'd' || flags[0] == 'i')
+	if (f[0] == 'd' || f[0] == 'i')
 		return (ft_conv_di(data));
-	else if (flags[0] == 's')
+	else if (f[0] == 's')
 	{
-		if (!(final = ft_string(flags, data, 0)))
+		if (!(final = ft_string(f, data, 0)))
 			return (NULL);
 	}
-	else if (flags[0] == 'f')
+	else if (f[0] == 'f')
 	{
-		if (!(final = ft_conv_f(data, flags)))
+		if (!(final = ft_conv_f(data, f)))
 			return (NULL);
 	}
-	else if (flags[0] == 'u' || flags[0] == 'c' || flags[0] == 'o' \
-		|| flags[0] == 'x' || flags[0] == 'X' || flags[0] == 'p' \
-		|| flags[0] == '%'|| flags[0] == 'C')
+	else if (f[0] == 'u' || f[0] == 'c' || f[0] == 'o' || f[0] == 'x' \
+		|| f[0] == 'X' || f[0] == 'p' || f[0] == '%' || f[0] == 'C')
 	{
-		if (!(final = ft_only_conv2(flags, data)))
+		if (!(final = ft_only_conv2(f, data)))
 			return (NULL);
 	}
 	else

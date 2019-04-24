@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:14:00 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 11:23:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 11:33:35 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ static char		*ft_string_mode0(t_data *d)
 	tmp = va_arg(d->ap, char*);
 	if (tmp != NULL)
 	{
-		// ft_putstr("ici ca seg1\n");
-		// ft_putnbr(tmp[0]);
-		// ft_putstr("ici ca seg2\n");
 		if (!(ap = ft_strdup(tmp)))
 			return (NULL);
 	}
