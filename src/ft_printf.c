@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 10:42:24 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:38:43 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,15 @@ char			*ft_got_flag(char *str, t_data *data)
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%' \
-		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f' && str[x] != 0 \
-		&& str[x] != 'C')
+		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f' && str[x] != 'C' \
+		&& str[x] != 0)
 		x++;
-	if (str[x] == '%' && str[x - 1] == '%')
-		data->flag_sz = 1;
-	else
-		data->flag_sz = x + 1;
+	if (str[x] == 'C')
+	{
+		data->f |= B_DONE;
+		return (NULL);
+	}
+	data->flag_sz = (str[x] == '%' && str[x - 1] == '%') ? 1 : x + 1;
 	if (!(flags = ft_strndup(str, data->flag_sz)))
 		return (NULL);
 	if (ft_strchr(flags, '*') || (ret = ft_analyse_flags(flags, data)) == NULL)
@@ -111,7 +113,11 @@ static int		ft_print_format(char *format, t_data *data)
 
 	if (!(data->buf = ft_strnew(0)))
 		return (-1);
-	data->buf = ft_analyse(format, data);
+	if ((data->buf = ft_analyse(format, data)) == NULL)
+	{
+		free(data->index_0);
+		return (-1);
+	}
 	len = ft_strlen(data->buf);
 	if (data->f & F_C_02)
 	{

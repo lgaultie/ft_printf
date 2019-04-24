@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 11:32:45 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 13:35:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ static char		*ft_only_conv4(char *flags, t_data *data)
 			return (NULL);
 	}
 	else if (flags[0] == 'C')
-	{
 		return (NULL);
-	}
 	else if (flags[0] == '%')
 	{
 		if (!(final = ft_p100(data)))

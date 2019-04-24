@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:14:31 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/23 22:32:32 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:37:03 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ static char		*ft_string_mode1_2(char *flag, char *ap, t_data *data)
 	return (final);
 }
 
+char			*ft_free_then_return(char *ap)
+{
+	free(ap);
+	return (NULL);
+}
+
 /*
 ** ft_string_mode 1: mode 1 is called with flags such as precision or width.
 */
@@ -84,7 +90,7 @@ char			*ft_string_mode1(char *flag, t_data *data)
 		}
 	}
 	if (!(final = ft_string_mode1_2(flag, ap, data)))
-		return (NULL);
+		return (ft_free_then_return(ap));
 	data->f |= F_S;
 	return (final);
 }
