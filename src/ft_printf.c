@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:34:06 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 13:38:43 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 14:57:23 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,35 @@ static char		*ft_analyse_flags(char *flags, t_data *data)
 	return (final);
 }
 
+static char		*ft_search_forbidden_conv(char *str)
+{
+	int		x;
+
+	x = 0;
+	while (str[x] != '\0' && str[x] != '%')
+	{
+		if (str[x] == '+' || str[x] == '-' || str[x] == '#' || str[x] == ' ' \
+		|| str[x] == '.')
+			x++;
+		if ((str[x] >= 'a' && str[x] <= 'z') && str[x] != 'c' && str[x] != 's' \
+			&& str[x] != 'p' && str[x] != 'd' && str[x] != 'i' \
+			&& str[x] != 'o' && str[x] != 'u' && str[x] != 'x' \
+			&& str[x] != 'f' && str[x] != 'l' && str[x] != 'h')
+		{
+			free(str);
+			return (NULL);
+		}
+		if ((str[x] >= 'A' && str[x] <= 'Z') && str[x] != 'L' && str[x] != 'X'
+			&& str[x] != 'U')
+		{
+			free(str);
+			return (NULL);
+		}
+		x++;
+	}
+	return (str);
+}
+
 /*
 ** ft_got_flag: returns the new converted sentence by calling ft_analyse_flags,
 ** %flagconv will be replaced by this new sentence.
@@ -56,17 +85,17 @@ char			*ft_got_flag(char *str, t_data *data)
 	x = 0;
 	while (str[x] != 'c' && str[x] != 's' && str[x] != 'p' && str[x] != 'd' \
 		&& str[x] != 'i' && str[x] != 'o' && str[x] != 'u' && str[x] != '%' \
-		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f' && str[x] != 'C' \
+		&& str[x] != 'x' && str[x] != 'X' && str[x] != 'f' \
 		&& str[x] != 0)
 		x++;
-	if (str[x] == 'C')
+	data->flag_sz = (str[x] == '%' && str[x - 1] == '%') ? 1 : x + 1;
+	if (!(flags = ft_strndup(str, data->flag_sz)))
+		return (NULL);
+	if ((ret = ft_search_forbidden_conv(flags)) == NULL)
 	{
 		data->f |= B_DONE;
 		return (NULL);
 	}
-	data->flag_sz = (str[x] == '%' && str[x - 1] == '%') ? 1 : x + 1;
-	if (!(flags = ft_strndup(str, data->flag_sz)))
-		return (NULL);
 	if (ft_strchr(flags, '*') || (ret = ft_analyse_flags(flags, data)) == NULL)
 	{
 		free(flags);

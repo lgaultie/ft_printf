@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 13:35:53 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 14:35:47 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static char		*ft_only_conv4(char *flags, t_data *data)
 		if (!(final = ft_char(data)))
 			return (NULL);
 	}
-	else if (flags[0] == 'C')
-		return (NULL);
 	else if (flags[0] == '%')
 	{
 		if (!(final = ft_p100(data)))
@@ -74,7 +72,7 @@ static char		*ft_only_conv3(char *flags, t_data *data)
 		if (!(final = ft_hexa(data, 2)))
 			return (NULL);
 	}
-	else if (flags[0] == 'C' || flags[0] == '%' || flags[0] == 'c')
+	else if (flags[0] == '%' || flags[0] == 'c')
 	{
 		if (!(final = ft_only_conv4(flags, data)))
 			return (NULL);
@@ -104,7 +102,7 @@ static char		*ft_only_conv2(char *f, t_data *data)
 			return (NULL);
 	}
 	else if (f[0] == 'o' || f[0] == 'x' || f[0] == 'X' || f[0] == '%' \
-		|| f[0] == 'C' || f[0] == 'c')
+		|| f[0] == 'c')
 	{
 		if (!(final = ft_only_conv3(f, data)))
 			return (NULL);
@@ -136,7 +134,7 @@ char			*ft_only_conv(char *f, t_data *data)
 			return (NULL);
 	}
 	else if (f[0] == 'u' || f[0] == 'c' || f[0] == 'o' || f[0] == 'x' \
-		|| f[0] == 'X' || f[0] == 'p' || f[0] == '%' || f[0] == 'C')
+		|| f[0] == 'X' || f[0] == 'p' || f[0] == '%')
 	{
 		if (!(final = ft_only_conv2(f, data)))
 			return (NULL);

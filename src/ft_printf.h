@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/24 13:43:43 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 14:29:08 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@
 /*
 ** Defines for specifics conversions.
 */
+
 # define F_S 524288
 # define F_PERCENT 262144
 
 /*
 ** Defines for flags.
 */
+
 # define F_ZERO 1
 # define F_PLUS 2
 # define F_MINUS 4
@@ -79,7 +81,6 @@
 # define ONLY_CONV 131072
 # define F0 4194304
 
-
 typedef	struct	s_data
 {
 	va_list		ap;
@@ -118,7 +119,6 @@ char			*ft_fwp_minus(char *final, t_data *data);
 char			*ft_for_minus(char *ret_conv, char *flag, int i, t_data *data);
 char			*ft_only_conv(char *flags, t_data *data);
 char			*ft_which_flag(char *flag, char conv, t_data *data);
-
 
 char			*ft_precision_d(char *flags, t_data *data);
 int				ft_precision_s(char *flags, t_data *data);
