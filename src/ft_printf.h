@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 15:57:52 by amamy             #+#    #+#             */
-/*   Updated: 2019/04/24 16:05:56 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:23:03 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ char			*ft_preci_width(char *flag, t_data *data);
 char			*ft_case1(char *final, int i, int after, t_data *data);
 char			*ft_case2(char *final, int int_p, int after, t_data *data);
 char			*ft_case3(char *final, int int_p, int after, t_data *data);
+char			*ft_not_ap_neg(int before, int after, char *final, t_data *d);
 char			*ft_conv_hhhlll_u(t_data *data, int base, int mode);
 char			*ft_conv_hhhlll(t_data *data);
 char			*ft_plus(char *flag, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:56:03 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 15:42:30 by amamy            ###   ########.fr       */
+/*   Updated: 2019/04/24 17:32:58 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,32 @@ static int		ft_calculate_size(int before, int after, t_data *data)
 ** cases we are: when the flag minus is on, when width > accuracy, etc...
 */
 
-static char		*ft_preci_width3(int before, int after, t_data *data)
+static char		*ft_preci_width3(int b, int a, t_data *d)
 {
 	int		i;
 	char	*final;
 	int		size;
 
 	i = 0;
-	size = ft_calculate_size(before, after, data);
+	size = ft_calculate_size(b, a, d);
 	if (!(final = ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	if (!after && !before && (data->f & F_O || (data->f & F_X \
-		&& !(data->f & F_SHARP))) && data->f & F_AP_0)
-		data->f |= F_W_P_0;
-	if (data->f & F_MINUS)
-		final = ft_flag_minus(before, after, final, data);
-	else if ((before == after || before < after) && !(data->f & F_SHARP))
+	if (!a && !b && (d->f & F_O || (d->f & F_X \
+		&& !(d->f & F_SHARP))) && d->f & F_AP_0)
+		d->f |= F_W_P_0;
+	if (d->f & F_MINUS)
+		final = ft_flag_minus(b, a, final, d);
+	else if ((b == a || b < a) && !(d->f & F_SHARP))
 	{
-		if (data->f & F_S)
-			return (ft_s(final, before, after, data));
-		final = ft_case1(final, i, after, data);
+		if (d->f & F_S)
+			return (ft_s(final, b, a, d));
+		final = ft_case1(final, i, a, d);
 	}
-	else if (after < data->conv_sz && before > after && !(data->f & F_SHARP))
-		final = ft_case2(final, before, after, data);
-	else if ((after >= data->ap_sz && before > after) \
-		|| (after == data->conv_sz) || data->f & F_SHARP)
-		final = ft_case3(final, before, after, data);
+	else if (a < d->conv_sz && b > a && !(d->f & F_SHARP && d->f & F_X))
+		final = ft_case2(final, b, a, d);
+	else if ((a >= d->ap_sz && b > a) \
+		|| (a == d->conv_sz) || d->f & F_SHARP)
+		final = ft_case3(final, b, a, d);
 	return (final);
 }
 

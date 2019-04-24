@@ -1,66 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fwp2.c                                          :+:      :+:    :+:   */
+/*   ft_fwp_cases.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 13:56:36 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/04/24 16:16:55 by amamy            ###   ########.fr       */
+/*   Created: 2019/04/24 17:15:32 by amamy             #+#    #+#             */
+/*   Updated: 2019/04/24 17:29:57 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static char		*ft_sharp_x(char *final, int i, t_data *data)
-{
-	final[i++] = '0';
-	if (data->f & F_BIG_X)
-		final[i++] = 'X';
-	else
-		final[i++] = 'x';
-	return (final);
-}
-
-/*
-** ft_case3: Deals with cases where before > after and after >= data->conv_sz.
-** When ap is not negative.
-*/
-
-static char		*ft_not_ap_neg(int before, int after, char *final, t_data *d)
-{
-	int		i;
-	int		surplus;
-
-	i = 0;
-	surplus = (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X) ? 2 : 0;
-	surplus += (surplus != 0 && after < 2) ? 2 : 0;
-	before += (before && !after && d->f & F_O) ? -1 : 0;
-	if (after + surplus == 0)
-		before = before - d->conv_sz;
-	while (before-- > (after + surplus))
-		final[i++] = ' ';
-	if (d->f & F_PLUS)
-		final[i - 1] = '+';
-	if (d->f & F_SHARP && !(d->f & F_X_0) && d->f & F_X)
-	{
-		final = ft_sharp_x(final, i, d);
-		i+= 2;
-	}
-	if (d->f & F_S_0 || d->f & F_S)
-		while (after-- > d->conv_sz)
-			final[i++] = ' ';
-	else
-		while (after-- > d->conv_sz)
-			final[i++] = '0';
-	return (final);
-}
-
 /*
 ** ft_case3: Deals with cases where before > after and after >= data->conv_sz.
 */
 
-char			*ft_case3(char *final, int before, int after, t_data *data)
+char		*ft_case3(char *final, int before, int after, t_data *data)
 {
 	int		surplus;
 	int		i;
@@ -85,11 +41,23 @@ char			*ft_case3(char *final, int before, int after, t_data *data)
 	return (final);
 }
 
+static char	*ft_case2_no_neg(char *final, int i, int after, t_data *data)
+{
+	if (data->f & F_AP_0 && after == 0)
+	{
+		data->f |= F0;
+		final[i++] = ' ';
+	}
+	if (data->f & F_AP_0 && data->f & F_SHARP && data->f & F_O)
+		final[i - 1] = '0';
+	return (final);
+}
+
 /*
 ** ft_case2: Deals with cases where before > after and after < data->conv_sz.
 */
 
-char			*ft_case2(char *final, int before, int after, t_data *data)
+char		*ft_case2(char *final, int before, int after, t_data *data)
 {
 	int		i;
 
@@ -108,11 +76,7 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 			final[i++] = '+';
 		while (i < before - data->conv_sz)
 			final[i++] = ' ';
-		if (data->f & F_AP_0 && after == 0)
-		{
-			data->f |= F0;
-			final[i++] = ' ';
-		}
+		final = ft_case2_no_neg(final, i, after, data);
 	}
 	return (final);
 }
@@ -121,7 +85,7 @@ char			*ft_case2(char *final, int before, int after, t_data *data)
 ** ft_case1: Deals with cases where before == or < after.
 */
 
-char			*ft_case1(char *final, int i, int after, t_data *data)
+char		*ft_case1(char *final, int i, int after, t_data *data)
 {
 	if (data->f & AP_NEG)
 	{
