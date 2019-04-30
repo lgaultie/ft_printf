@@ -69,3 +69,5 @@ then compile your file with the generated **libftprintf.a** by adding in the mai
 and use it like the real printf function.
 
 ## Example
+
+![Screen Shot 2019-04-30 at 5 42 42 PM](https://user-images.githubusercontent.com/45974214/56974806-da542400-6b6f-11e9-8354-3dd691d35cb9.png)
