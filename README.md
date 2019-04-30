@@ -5,7 +5,7 @@ ft_printf
 
 This project is about recoding the famous printf C function to learn variadic functions and improve algorithmic methodology.
 
-```
+```c
 int ft_printf(const char * (restrict) format, ...);
 ```
 
@@ -24,7 +24,7 @@ See below what are flags, length modifier and conversions.
 ## Features
 
 Conversions:
-```
+```c
 c    char
 s    char *
 p    void * (to print pointer's adress)
@@ -46,7 +46,7 @@ space   Positive values begin with a space.
   %#X   0X prefix added to non-zero values.
 ```
 length modifiers:
-```
+```c
 h       short
 l       long
 L       long double
@@ -63,7 +63,7 @@ cd ft_printf
 make
 ```
 then compile your file with the generated **libftprintf.a** by adding in the main 
-```
+```c
 #include "src/ft_printf.h"
 ```
 and use it like the real printf function.
