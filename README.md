@@ -57,7 +57,7 @@ L       long double
 You can try our project with the following commands:
 
 First, clone the repository
-```
+```shell
 git clone https://github.com/lgaultie/ft_printf
 cd ft_printf
 make
